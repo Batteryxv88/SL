@@ -1,0 +1,25 @@
+.part {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    color: #24305e;
+    border-bottom: 1px solid #24305e;
+    justify-content: space-between;
+    padding-right: 5px;
+}
+
+.name {
+    width: 45%;
+    //border: 1px solid red;
+}
+
+.number {
+    width: 45%;
+}
+
+.qty {
+    width: 10%;
+    display: flex;
+    justify-content: flex-end;
+}

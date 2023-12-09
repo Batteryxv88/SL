@@ -1,0 +1,36 @@
+.calendar {
+    width: 100%;
+    margin-left: 10px;
+}
+
+.box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.name {
+   
+}
+
+.number {
+    margin-left: 100px;
+}
+
+.man {
+   //margin-right: 30px;
+}
+
+.date {
+    margin-right: 25px;
+}
+
+.res {
+    margin-right: 45px;
+}
+
+.qty {
+    margin-right: 10px;
+}

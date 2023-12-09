@@ -1,0 +1,38 @@
+.replacedPart {
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.date {
+    display: flex;
+    flex-direction: row;
+}
+
+.name {
+    width: 200px;
+}
+
+.number {
+    width: 120px;
+}
+
+.man {
+    width: 100px;
+}
+
+.qty {
+    width: 25px;
+}
+
+.percentRed {
+    width: 50px;
+    background-color: var(--color-coral);
+    text-align: center;
+}
+
+.percentGreen {
+    width: 50px;
+    background-color: #14a76c;
+}

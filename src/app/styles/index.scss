@@ -1,0 +1,32 @@
+@import "reset";
+@import "variables/global";
+//@import "themes/light";
+//@import "themes/dark";
+// @import "fonts/fonts.scss";
+
+body {
+    font: var(--font-m);
+    color: var(--primary-color);
+    height: 100%;
+}
+
+.app {
+    //min-height: 100vh;
+    height: 100%;
+    background-color: #A8D0E6;
+}
+      
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.content-page {
+    display: flex;
+}
+
+.page-wrapper {
+    flex-grow: 1;
+    padding: 20px;
+}
