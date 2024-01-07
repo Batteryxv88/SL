@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import cls from "./Stock.module.scss";
 import { fetchParts } from "../../../app/providers/StoreProvider/Store/PartSlice";
 import Part from "../../../shared/ui/Part/Part";
+import { AppDispatch } from "../../../app/providers/StoreProvider/Store";
 
 
 type Part = {
@@ -14,13 +15,13 @@ type Part = {
   };
   
   type PartData = {
-    id: string;
-    part: Part;
+    id?: string;
+    part?: Part;
   };
 
 
 const Stock = () => {
-    const dispatch = useDispatch<any>();
+    const dispatch = useDispatch<AppDispatch>();
     const partsData: PartData[] = useSelector<any, PartData[]>((state) => state.parts.partsArray);
   
     useEffect(() => {
@@ -43,6 +44,7 @@ const Stock = () => {
               number={item.part.partN}
               qty={item.part.quantity}
               key={item.id}
+              id={item.id}
             />
           ))}
         </>
@@ -57,6 +59,9 @@ const Stock = () => {
         {renderSection("Developing section")}
         {renderSection("Intermediate transfer section")}
         {renderSection("Fusing section")}
+        {renderSection("Toner collection section")}
+        {renderSection("Paper feed section")}
+        {renderSection("Paper exit section")}
       </div>
     );
   };

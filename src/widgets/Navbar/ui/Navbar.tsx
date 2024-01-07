@@ -9,8 +9,9 @@ type NavbarProps = {
 const Navbar = () => {
     return (
         <div className={cls.navbar}>
-            <Link to={"/"}><Button name={'ГЛАВНАЯ'} /></Link>
-            <Link to={"/schedule"}><Button name={'КАЛЕНДАРЬ'} /></Link>
+            <Link className={cls.button} to={"/"}><Button name={'ГЛАВНАЯ'} /></Link>
+            <Link className={cls.button} to={"/schedule"}><Button name={'ЗАМЕНА ДЕТАЛЕЙ'} /></Link>
+            <Link className={cls.button} to={"/toner"}> <Button name={'ЗАМЕНА ТОНЕРА'} /> </Link >
         </div>
     );
 };

@@ -1,14 +1,22 @@
 .navbar {
     display: flex;
-    //width: 350px;
     width: 100%;
     height: 70px;
     background-color: #f76c6c;
-    justify-content: start;
     align-items: center;
-    //border-bottom-right-radius: 10px;
-    //border-bottom-left-radius: 10px;
-    //border-bottom: 3px solid white;
-    background-color: #24305e;
+    //background-color: #24305e;
+
+    //background: #24305E;
+    background: -moz-linear-gradient(-45deg, #24305E 0%, #374785 100%);
+    background: -webkit-linear-gradient(-45deg, #24305E 0%, #374785 100%);
+    background: linear-gradient(135deg, #24305E 0%, #374785 100%);
+
     font-size: 14px;
+}
+
+.button {
+    margin: 0;
+    color: #FFFFFF;
+    text-shadow: 0 0 10px #FFFFFF;
+
 }

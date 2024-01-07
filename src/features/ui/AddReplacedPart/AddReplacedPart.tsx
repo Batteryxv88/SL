@@ -5,9 +5,11 @@ import {
     addUsedPart,
     updateUsedPart,
 } from "../../../app/providers/StoreProvider/Store/ReplacedPartSlice";
-import { updateStock } from "../../../app/providers/StoreProvider/Store/PartSlice";
+import { fetchParts, updateStock } from "../../../app/providers/StoreProvider/Store/PartSlice";
 import { partsFilter } from "../../lib/partsFilter/partsFilter";
 import { findIdByPartNAndLatestDate } from "../../lib/findIdByPartNandDate/findByNumberAndDate";
+import { doc, updateDoc } from "firebase/firestore";
+import db from "../../../app/config/fbConfig";
 
 const AddReplacedPart = () => {
     const stockData: any = useSelector<any>((state) => state.parts.partsArray);
@@ -19,13 +21,13 @@ const AddReplacedPart = () => {
 
     const [partN, setPartN] = useState<string>("");
     const [serviceLife, setServiceLife] = useState<string>("");
-    const [quantity, setQuantity] = useState<number>(undefined);
+    const [quantity, setQuantity] = useState<number>(0);
     const [date, setDate] = useState<any>("");
     const [man, setMan] = useState<string>("");
     const [partName, setPartName] = useState<string>();
 
     useEffect(() => {
-        fetch("http://worldtimeapi.org/api/timezone/Europe/Moscow")
+        fetch("https://worldtimeapi.org/api/timezone/Europe/Moscow" )
             .then((res) => {
                 return res.json();
             })
@@ -33,7 +35,8 @@ const AddReplacedPart = () => {
             .catch((err) => {
                 console.log("Ошибка. Запрос не выполнен: ", err);
             });
-    }, [quantity]);
+    }, [man, quantity])
+
 
     const handleAddPart = (e: React.FormEvent) => {
         e.preventDefault();
@@ -41,21 +44,33 @@ const AddReplacedPart = () => {
         const currentPart = stockData.filter(
             (item: any) => item.part.partN === partN
         );
+
+        
+
         const newQuantity = currentPart[0].part.quantity - quantity;
+        const newName = currentPart[0].part.partName
         const section = partsFilter(partN);
         const newServiceLife = serviceLife;
 
+
         const partU = {
-            partN,
-            quantity,
-            date,
-            section,
-            man,
-            partName,
+            partN: partN,
+            quantity: quantity,
+            date: date,
+            section: section,
+            man: man,
+            partName: newName
         };
 
         const part = {
             quantity: newQuantity,
+        };
+
+        const updatedStockPart = {
+            id: currentPart[0].id,
+            part: {
+                quantity: newQuantity,
+            },
         };
 
         const idForUpdate = findIdByPartNAndLatestDate(
@@ -67,19 +82,21 @@ const AddReplacedPart = () => {
             id: idForUpdate,
             part: {
                serviceLife: newServiceLife,
-            },
+            }  
         };
 
         dispatch(updateUsedPart(updatedPart));
-        dispatch(updateStock({ id: currentPart[0].id, part }));
+        dispatch(updateStock(updatedStockPart));
         dispatch(addUsedPart(partU));
 
         setPartN("");
         setServiceLife("");
-        setQuantity(undefined);
+        setQuantity(0);
         setPartName("");
         setMan("");
     };
+
+    console.log(replacedPartsdata)
 
     return (
         <form className={cls.addReplacedPart} onSubmit={handleAddPart}>
@@ -89,14 +106,6 @@ const AddReplacedPart = () => {
                     className={cls.input}
                     onChange={(e) => setPartN(e.target.value.trim())}
                     value={partN}
-                ></input>
-            </div>
-            <div className={cls.box}>
-                <label className={cls.label}>Наименование</label>
-                <input
-                    className={cls.input}
-                    onChange={(e) => setPartName(e.target.value.trim())}
-                    value={partName}
                 ></input>
             </div>
             <div className={cls.box}>

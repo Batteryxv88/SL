@@ -13,4 +13,16 @@
     margin-top: 15px;
     list-style-type: none;
     cursor: pointer;
+    transition: ease-in .1s;
+    //font-size: 18px;
+    
+}
+
+.li:hover {
+    margin-left: 20px;
+    transition: ease-in .1s;
+}
+
+.li:first-of-type:hover {
+    margin-left: 0px;
 }

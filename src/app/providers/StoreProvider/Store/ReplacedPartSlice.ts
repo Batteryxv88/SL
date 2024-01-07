@@ -53,13 +53,28 @@ const partSlice = createSlice({
         .addCase(fetchUsedParts.fulfilled, (state, action)=> {
             state.usedPartsArray = action.payload
         })
+        // .addCase(updateUsedPart.fulfilled, (state, action)=> {
+        //     const {id, part} = action.payload
+        //     const partIndex = state.usedPartsArray.findIndex((part)=> part.id === id);
+        //     if(partIndex !== -1) {
+        //         state.usedPartsArray[partIndex] = {id: id, part}
+        //     }
+        // })
         .addCase(updateUsedPart.fulfilled, (state, action)=> {
-            const {id, part} = action.payload
+            const {id, part} = action.payload;
             const partIndex = state.usedPartsArray.findIndex((part)=> part.id === id);
             if(partIndex !== -1) {
-                state.usedPartsArray[partIndex] = {id: id, part}
+                // Используем оператор расширения для изменения определенных свойств объекта part
+                state.usedPartsArray[partIndex] = {
+                    ...state.usedPartsArray[partIndex],
+                    part: {
+                        ...state.usedPartsArray[partIndex].part,
+                        ...part  // Обновляем определенные свойства part
+                    }
+                };
             }
         })
+       
     }
 })
 

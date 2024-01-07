@@ -4,6 +4,8 @@ import { SchedulePage } from "../pages/SchedulePage";
 import { Suspense } from "react";
 import { Navbar } from "../widgets/Navbar";
 import Sidebar from "../widgets/Sidebar/ui/Sidebar";
+import { TonerPage } from "../pages/TonerPage";
+
 
 const App = () => {
     return (
@@ -11,8 +13,10 @@ const App = () => {
             <Navbar />
             <div className="container">
                 <Sidebar />
+
                 <Suspense fallback={<div>Loading...</div>}>
                     <Routes>
+                        <Route path={"/toner"} element={<TonerPage />} />
                         <Route path={"/schedule"} element={<SchedulePage />} />
                         <Route path={"/"} element={<MainPage />} />
                     </Routes>
