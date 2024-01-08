@@ -14,10 +14,10 @@ export type replacedPartProps = {
 const ReplacedPart = (props: replacedPartProps) => {
     const { name, number, qty, date, man, life } = props;
 
-    const dat = new Date(date);
-    const month = dat.toLocaleString("ru-RU", { month: "numeric" });
-    const day = dat.toLocaleString("ru-RU", { day: "2-digit" });
-    const year = dat.getFullYear();
+    const newDate = new Date(date);
+    const month = newDate.toLocaleString("ru-RU", { month: "numeric" });
+    const day = newDate.toLocaleString("ru-RU", { day: "2-digit" });
+    const year = newDate.getFullYear();
 
     const partsData: any = useSelector<any>((state) => state.parts.partsArray);
 

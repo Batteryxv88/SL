@@ -96,7 +96,6 @@ const AddReplacedPart = () => {
         setMan("");
     };
 
-    console.log(replacedPartsdata)
 
     return (
         <form className={cls.addReplacedPart} onSubmit={handleAddPart}>
