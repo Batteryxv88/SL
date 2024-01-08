@@ -4,3 +4,22 @@
     margin: 0px 0 5px 5px;
     padding: 10px;
 }
+
+.box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    background-color: var(--color-very-light-blue);
+    height: 40px;
+    border-radius: 6px;
+}
+
+.date {
+    margin-right: 20px;
+}
+
+.color {
+    margin-left: 10px;
+}

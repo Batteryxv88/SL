@@ -19,6 +19,12 @@ const TonerReplace = () => {
 
 
     return ( <div className={cls.toners}>
+        <div className={cls.box}>
+                <p className={cls.color}>Цвет</p>
+                <p className={cls.counter}>Счетчик</p>
+                <p className={cls.man}>Ответственный</p>
+                <p className={cls.date}>Дата</p>
+            </div>
         {data.map((item: any) => (
                 <TonerPart
                     color={item.toner.color}
