@@ -53,13 +53,6 @@ const partSlice = createSlice({
         .addCase(fetchUsedParts.fulfilled, (state, action)=> {
             state.usedPartsArray = action.payload
         })
-        // .addCase(updateUsedPart.fulfilled, (state, action)=> {
-        //     const {id, part} = action.payload
-        //     const partIndex = state.usedPartsArray.findIndex((part)=> part.id === id);
-        //     if(partIndex !== -1) {
-        //         state.usedPartsArray[partIndex] = {id: id, part}
-        //     }
-        // })
         .addCase(updateUsedPart.fulfilled, (state, action)=> {
             const {id, part} = action.payload;
             const partIndex = state.usedPartsArray.findIndex((part)=> part.id === id);

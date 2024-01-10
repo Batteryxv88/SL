@@ -12,10 +12,31 @@ interface Part {
     id: string;
     part: Part;
   }
+
+  const sameColorParts = [
+    "A5WH0Y0C",
+    "A5WH0Y0M",
+    "A5WH0Y0Y",
+    "A5WH0Y0K",
+    "A50UR70323C",
+    "A50UR70323M",
+    "A50UR70323Y",
+    "A50UR70323K",
+    "A50UR70244C",
+    "A50UR70244M",
+    "A50UR70244Y",
+    "A50UR70244K",
+];
   
   export function findIdByPartNAndLatestDate(arr: ArrayItem[], partN: string): string | null {
     // Фильтруем массив по номеру partN
     const filteredByPartN = arr.filter(item => item.part.partN === partN);
+  //   const filteredByPartN = arr.filter((item: any) => {
+  //     if (sameColorParts.includes(partN)) {
+  //         return item.part.partN === partN.slice(0, -1);
+  //     }
+  //     return item.part.partN === partN;
+  // });
   
     // Если нет объектов с указанным номером partN, возвращаем null
     if (filteredByPartN.length === 0) {

@@ -5,6 +5,7 @@ import { fetchParts } from "../../../app/providers/StoreProvider/Store/PartSlice
 import Part from "../../../shared/ui/Part/Part";
 import { AppDispatch } from "../../../app/providers/StoreProvider/Store";
 
+
 type Part = {
     partN: string;
     section: string;
@@ -52,6 +53,7 @@ const Stock = () => {
             </>
         );
     };
+
 
     return (
         <div className={cls.stock}>

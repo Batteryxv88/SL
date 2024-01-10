@@ -23,6 +23,7 @@ const ReplacedPart = (props: replacedPartProps) => {
 
     const percent = lifePercent(number, partsData, life);
 
+
     return (
         <div className={cls.replacedPart}>
             <p className={cls.name}>{name}</p>

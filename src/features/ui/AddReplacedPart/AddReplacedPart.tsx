@@ -5,7 +5,10 @@ import {
     addUsedPart,
     updateUsedPart,
 } from "../../../app/providers/StoreProvider/Store/ReplacedPartSlice";
-import { fetchParts, updateStock } from "../../../app/providers/StoreProvider/Store/PartSlice";
+import {
+    fetchParts,
+    updateStock,
+} from "../../../app/providers/StoreProvider/Store/PartSlice";
 import { partsFilter } from "../../lib/partsFilter/partsFilter";
 import { findIdByPartNAndLatestDate } from "../../lib/findIdByPartNandDate/findByNumberAndDate";
 import { doc, updateDoc } from "firebase/firestore";
@@ -27,7 +30,7 @@ const AddReplacedPart = () => {
     const [partName, setPartName] = useState<string>();
 
     useEffect(() => {
-        fetch("https://worldtimeapi.org/api/timezone/Europe/Moscow" )
+        fetch("https://worldtimeapi.org/api/timezone/Europe/Moscow")
             .then((res) => {
                 return res.json();
             })
@@ -35,23 +38,37 @@ const AddReplacedPart = () => {
             .catch((err) => {
                 console.log("Ошибка. Запрос не выполнен: ", err);
             });
-    }, [man, quantity])
+    }, [man, quantity]);
 
+    const sameColorParts = [
+        "A5WH0Y0C",
+        "A5WH0Y0M",
+        "A5WH0Y0Y",
+        "A5WH0Y0K",
+        "A50UR70323C",
+        "A50UR70323M",
+        "A50UR70323Y",
+        "A50UR70323K",
+        "A50UR70244C",
+        "A50UR70244M",
+        "A50UR70244Y",
+        "A50UR70244K",
+    ];
 
     const handleAddPart = (e: React.FormEvent) => {
         e.preventDefault();
 
-        const currentPart = stockData.filter(
-            (item: any) => item.part.partN === partN
-        );
-
-        
+        const currentPart = stockData.filter((item: any) => {
+            if (sameColorParts.includes(partN)) {
+                return item.part.partN === partN.slice(0, -1);
+            }
+            return item.part.partN === partN;
+        });
 
         const newQuantity = currentPart[0].part.quantity - quantity;
-        const newName = currentPart[0].part.partName
+        const newName = currentPart[0].part.partName;
         const section = partsFilter(partN);
         const newServiceLife = serviceLife;
-
 
         const partU = {
             partN: partN,
@@ -59,11 +76,7 @@ const AddReplacedPart = () => {
             date: date,
             section: section,
             man: man,
-            partName: newName
-        };
-
-        const part = {
-            quantity: newQuantity,
+            partName: newName,
         };
 
         const updatedStockPart = {
@@ -81,9 +94,10 @@ const AddReplacedPart = () => {
         const updatedPart = {
             id: idForUpdate,
             part: {
-               serviceLife: newServiceLife,
-            }  
+                serviceLife: newServiceLife,
+            },
         };
+
 
         dispatch(updateUsedPart(updatedPart));
         dispatch(updateStock(updatedStockPart));
@@ -95,7 +109,6 @@ const AddReplacedPart = () => {
         setPartName("");
         setMan("");
     };
-
 
     return (
         <form className={cls.addReplacedPart} onSubmit={handleAddPart}>

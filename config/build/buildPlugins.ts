@@ -7,7 +7,7 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin"
 export function buildPlugins ({paths}: BuildOptions): webpack.WebpackPluginInstance[] {
     return [
         new HtmlWebpackPlugin({
-            template: paths.html
+            template: paths.html,
         }),
         new webpack.ProgressPlugin(),
         new MiniCssExtractPlugin({

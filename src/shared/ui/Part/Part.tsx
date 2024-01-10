@@ -8,6 +8,7 @@ import {
     fetchParts,
     updateStock,
 } from "../../../app/providers/StoreProvider/Store/PartSlice";
+import { useInView } from 'react-intersection-observer';
 
 export type PartProps = {
     name: string;
@@ -19,11 +20,12 @@ export type PartProps = {
 const Part = (props: PartProps) => {
     const [onEdit, setOnEdit] = useState<boolean>(false);
     const [newQuantity, setNewQuantity] = useState<string | number>("");
-    const [clickOutside, setClickOutside] = useState<boolean>(false)
+    const [clickOutside, setClickOutside] = useState<boolean>(false);
 
     const dispatch = useDispatch<any>();
 
     const { name, number, qty, id } = props;
+
 
     const submitFormHandler = (e: React.FormEvent) => {
         e.preventDefault();
@@ -62,7 +64,7 @@ const Part = (props: PartProps) => {
             {onEdit ? (
                 ""
             ) : (
-                <button className={cls.button}  onClick={() => setOnEdit(true)}>
+                <button className={cls.button} onClick={() => setOnEdit(true)}>
                     <EditIcon></EditIcon>
                 </button>
             )}
