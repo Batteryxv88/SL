@@ -1,9 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import cls from './TonerReplace.module.scss'
-import { TonerArray, fetchToners } from '../../../app/providers/StoreProvider/Store/TonerSlice';
+import { fetchToners } from '../../../app/providers/StoreProvider/Store/TonerSlice';
 import { useEffect } from 'react';
 import { AppDispatch } from '../../../app/providers/StoreProvider/Store';
 import TonerPart from '../../../shared/ui/tonerPart/TonerPart';
+import { sortTonersByDate } from '../lib/sortTonersByDate';
+
 
 const TonerReplace = () => {
 
@@ -17,6 +19,7 @@ const TonerReplace = () => {
         (state) => state.toners.tonersArray
     );
 
+    const sortedToners = sortTonersByDate(data)
 
     return ( <div className={cls.toners}>
         <div className={cls.box}>
@@ -25,7 +28,7 @@ const TonerReplace = () => {
                 <p className={cls.man}>Ответственный</p>
                 <p className={cls.date}>Дата</p>
             </div>
-        {data.map((item: any) => (
+        {sortedToners.map((item: any) => (
                 <TonerPart
                     color={item.toner.color}
                     counter={item.toner.counter}

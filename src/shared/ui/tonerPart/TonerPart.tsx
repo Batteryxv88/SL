@@ -1,4 +1,5 @@
 import cls from "./TonerPart.module.scss";
+import DeleteButton from '../../assets/icon/deleteButton1.svg'
 
 export type tonerPartProps = {
     color: string;
@@ -40,6 +41,9 @@ const TonerPart = (props: tonerPartProps) => {
                 <p>{month + "."}</p>
                 <p>{year}</p>
             </div>
+            <button className={cls.buttonDelete}>
+                <DeleteButton />
+            </button>
         </div>
     );
 };

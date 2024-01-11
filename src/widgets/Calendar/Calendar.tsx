@@ -4,9 +4,7 @@ import { useEffect } from "react";
 import { fetchUsedParts } from "../../app/providers/StoreProvider/Store/ReplacedPartSlice";
 import { fetchParts } from "../../app/providers/StoreProvider/Store/PartSlice";
 import ReplacedPart from "../../shared/ui/replacedPart/ReplacedPart";
-import { sortByDate } from "./lib/sortByDate";
-import { StringifyOptions } from "querystring";
-import { filteredDataBySection } from "./lib/filterBySection";
+import { filteredAndSortedData } from "./lib/filteredAndSortedData";
 
 const Calendar = () => {
     const data: any = useSelector<any>(
@@ -16,8 +14,7 @@ const Calendar = () => {
         (state) => state.filteredParts.filter
     );
 
-    const filteredData = filteredDataBySection(data, filterOption);
-    const sortedData = sortByDate(filteredData);
+    const filterAndSortData = filteredAndSortedData(data, filterOption)
 
     const dispatch = useDispatch<any>();
     useEffect(() => {
@@ -36,7 +33,7 @@ const Calendar = () => {
                 <p className={cls.res}>Ресурс</p>
                 <p className={cls.date}>Дата</p>
             </div>
-            {sortedData.map((item: any) => (
+            {filterAndSortData.map((item: any) => (
                 <ReplacedPart
                     name={item.part.partName}
                     number={item.part.partN}

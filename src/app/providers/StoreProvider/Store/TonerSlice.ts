@@ -12,6 +12,13 @@ export const addToner = createAsyncThunk(
     }
 )
 
+export const deleteToner = createAsyncThunk(
+    'toners/deleteToner',
+    async() => {
+        
+    }
+)
+
 export const fetchToners = createAsyncThunk(
     'toners/fetchToners',
     async () => {
