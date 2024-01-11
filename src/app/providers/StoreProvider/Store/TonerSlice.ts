@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import db from "../../../config/fbConfig";
 
 
@@ -14,8 +14,14 @@ export const addToner = createAsyncThunk(
 
 export const deleteToner = createAsyncThunk(
     'toners/deleteToner',
-    async() => {
-        
+    async(id: any) => {
+        const toners = await getDocs(collection(db, 'Toners'))
+        for (var snap of toners.docs){
+            if(snap.id === id){
+                await deleteDoc(doc(db, 'Toners', snap.id))
+            }
+        }
+        return id;
     }
 )
 
@@ -52,6 +58,9 @@ const tonerSlice = createSlice({
         })
         .addCase(fetchToners.fulfilled, (state, action)=> {
             state.tonersArray = action.payload
+        })
+        .addCase(deleteToner.fulfilled, (state, action)=> {
+            state.tonersArray = state.tonersArray.filter((toner)=> toner.id !== action.payload)
         })
     }
 })

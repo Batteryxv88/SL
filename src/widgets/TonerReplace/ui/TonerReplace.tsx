@@ -27,6 +27,7 @@ const TonerReplace = () => {
                 <p className={cls.counter}>Счетчик</p>
                 <p className={cls.man}>Ответственный</p>
                 <p className={cls.date}>Дата</p>
+                <p className={cls.delete}>Удалить</p>
             </div>
         {sortedToners.map((item: any) => (
                 <TonerPart
@@ -34,6 +35,7 @@ const TonerReplace = () => {
                     counter={item.toner.counter}
                     man={item.toner.man}
                     date={item.toner.date}
+                    id={item.id}
                     key={item.id}
                 />
             ))}
