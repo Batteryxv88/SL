@@ -73,56 +73,24 @@ const AddReplacedPart = () => {
     ];
 
 
+    const [error, setError] = useState<boolean>(false);
+
     const handleAddPart = (e: any) => {
 
-        // const currentPart = stockData.filter((item: any) => {
-        //     if (sameColorParts.includes(partN)) {
-        //         return item.part.partN === partN.slice(0, -1);
-        //     }
-        //     return item.part.partN === partN;
-        // });
 
-        // const newQuantity = currentPart[0].part.quantity - quantity;
-        // const newName = currentPart[0].part.partName;
-        // const section = partsFilter(partN);
-        // const newServiceLife = serviceLife;
-
-        // const partU = {
-        //     partN: partN,
-        //     quantity: quantity,
-        //     date: date,
-        //     section: section,
-        //     man: man,
-        //     partName: newName,
-        // };
-
-        // const updatedStockPart = {
-        //     id: currentPart[0].id,
-        //     part: {
-        //         quantity: newQuantity,
-        //     },
-        // };
-
-        // const idForUpdate = findIdByPartNAndLatestDate(
-        //     replacedPartsdata,
-        //     partN
-        // );
-
-        // const updatedPart = {
-        //     id: idForUpdate,
-        //     part: {
-        //         serviceLife: newServiceLife,
-        //     },
-        // };
-
-        // dispatch(updateUsedPart(updatedPart));
-        // dispatch(updateStock(updatedStockPart));
-        // dispatch(addUsedPart(partU));
-
-        // setPartN("");
-        // setServiceLife("");
-        // setQuantity(0);
-        // setMan("");
+        const partExists = stockData.some(
+            (item: any) => item.part.partN === e.partN
+        );
+    
+        if (!partExists) {
+            // Устанавливаем сообщение об ошибке
+            setError(true);
+            reset();
+            return;
+        }
+    
+        // Если деталь найдена, сбрасываем ошибку
+        setError(false);
 
 
 
@@ -171,11 +139,6 @@ const AddReplacedPart = () => {
         dispatch(addUsedPart(partU));
 
         reset();
-
-        // setPartN("");
-        // setServiceLife(0);
-        // setQuantity(0);
-        // setMan("");
     };
 
     return (
@@ -257,6 +220,7 @@ const AddReplacedPart = () => {
                     (errors?.serviceLife && (
                         <p>{errors?.serviceLife.message}</p>
                     ))}
+                    {error? <p>Деталь не найдена в базе</p> : ''}
             </div>
         </>
     );
