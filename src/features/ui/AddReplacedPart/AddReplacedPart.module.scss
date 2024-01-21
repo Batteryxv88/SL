@@ -18,13 +18,13 @@
 
 .input {
     width: 150px;
+    height: 24px;
     font-size: 15px;
     line-height: 22px;
     background-color: white;
     border: 1px solid #f8e9a1;
     //border: none;
     border-radius: 5px;
-
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -59,6 +59,7 @@ input[type="number"] {
     background-color: var(--color-dark-blue);
     color: white;
     cursor: pointer;
+    margin-top: 21px;
 }
 
 .errMessage {

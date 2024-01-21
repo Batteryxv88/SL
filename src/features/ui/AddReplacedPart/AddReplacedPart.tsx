@@ -5,14 +5,9 @@ import {
     addUsedPart,
     updateUsedPart,
 } from "../../../app/providers/StoreProvider/Store/ReplacedPartSlice";
-import {
-    fetchParts,
-    updateStock,
-} from "../../../app/providers/StoreProvider/Store/PartSlice";
+import { updateStock } from "../../../app/providers/StoreProvider/Store/PartSlice";
 import { partsFilter } from "../../lib/partsFilter/partsFilter";
 import { findIdByPartNAndLatestDate } from "../../lib/findIdByPartNandDate/findByNumberAndDate";
-import { doc, updateDoc } from "firebase/firestore";
-import db from "../../../app/config/fbConfig";
 import { useForm } from "react-hook-form";
 
 const AddReplacedPart = () => {
@@ -23,12 +18,8 @@ const AddReplacedPart = () => {
 
     const dispatch = useDispatch<any>();
 
-    const [partN, setPartN] = useState<string>("");
-    const [serviceLife, setServiceLife] = useState<number>();
     const [quantity, setQuantity] = useState<number>(0);
     const [date, setDate] = useState<any>("");
-    const [man, setMan] = useState<string>("");
-    const [partName, setPartName] = useState<string>();
 
     useEffect(() => {
         fetch("https://worldtimeapi.org/api/timezone/Europe/Moscow")
@@ -39,7 +30,7 @@ const AddReplacedPart = () => {
             .catch((err) => {
                 console.log("Ошибка. Запрос не выполнен: ", err);
             });
-    }, [man, quantity]);
+    }, [quantity]);
 
     type FormValues = {
         partN: string;
@@ -52,6 +43,7 @@ const AddReplacedPart = () => {
         register,
         formState: { errors },
         handleSubmit,
+        setValue,
         reset,
     } = useForm<FormValues>({
         mode: "onChange",
@@ -72,42 +64,47 @@ const AddReplacedPart = () => {
         "A50UR70244K",
     ];
 
+    const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = Number(e.target.value);
+        setQuantity(value);
+        setValue("quantity", value, { shouldValidate: true });
+    };
 
     const [error, setError] = useState<boolean>(false);
 
     const handleAddPart = (e: any) => {
-
+        const cleanedPartN = e.partN.trim().toUpperCase();
 
         const partExists = stockData.some(
-            (item: any) => item.part.partN === e.partN
+            (item: any) => item.part.partN === cleanedPartN
         );
-    
+
         if (!partExists) {
             // Устанавливаем сообщение об ошибке
             setError(true);
             reset();
+            setTimeout(() => {
+                setError(false);
+            }, 3000);
             return;
         }
-    
+
         // Если деталь найдена, сбрасываем ошибку
         setError(false);
 
-
-
-         const currentPart = stockData.filter((item: any) => {
-            if (sameColorParts.includes(e.partN)) {
-                return item.part.partN === e.partN.slice(0, -1);
+        const currentPart = stockData.filter((item: any) => {
+            if (sameColorParts.includes(cleanedPartN)) {
+                return item.part.partN === cleanedPartN.slice(0, -1);
             }
-            return item.part.partN === e.partN;
+            return item.part.partN === cleanedPartN;
         });
 
         const newQuantity = currentPart[0].part.quantity - Number(e.quantity);
         const newName = currentPart[0].part.partName;
-        const section = partsFilter(e.partN);
-        const newServiceLife = serviceLife;
+        const section = partsFilter(cleanedPartN);
 
         const partU = {
-            partN: e.partN,
+            partN: cleanedPartN,
             quantity: Number(e.quantity),
             date: date,
             section: section,
@@ -124,7 +121,7 @@ const AddReplacedPart = () => {
 
         const idForUpdate = findIdByPartNAndLatestDate(
             replacedPartsdata,
-            e.partN
+            cleanedPartN
         );
 
         const updatedPart = {
@@ -158,8 +155,6 @@ const AddReplacedPart = () => {
                             },
                         })}
                         className={cls.input}
-                        // onChange={(e) => setPartN(e.target.value.trim())}
-                        // value={partN}
                     ></input>
                 </div>
                 <div className={cls.box}>
@@ -173,8 +168,6 @@ const AddReplacedPart = () => {
                             },
                         })}
                         className={cls.input}
-                        // onChange={(e) => setServiceLife(e.target.value)}
-                        // value={serviceLife}
                         type="number"
                     ></input>
                 </div>
@@ -190,8 +183,7 @@ const AddReplacedPart = () => {
                         })}
                         className={cls.inputQty}
                         type="number"
-                        // onChange={(e: any) => setQuantity(e.target.value)}
-                        // value={quantity}
+                        onChange={handleQuantityChange}
                     ></input>
                 </div>
                 <div className={cls.box}>
@@ -201,8 +193,6 @@ const AddReplacedPart = () => {
                             required: "Обязательное поле",
                         })}
                         className={cls.input}
-                        // onChange={(e: any) => setMan(e.target.value)}
-                        // value={man}
                     >
                         <option value={"Алексей"}>Алексей</option>
                         <option value={"Максим"}>Максим</option>
@@ -220,7 +210,7 @@ const AddReplacedPart = () => {
                     (errors?.serviceLife && (
                         <p>{errors?.serviceLife.message}</p>
                     ))}
-                    {error? <p>Деталь не найдена в базе</p> : ''}
+                {error ? <p>Деталь не найдена в базе</p> : ""}
             </div>
         </>
     );
