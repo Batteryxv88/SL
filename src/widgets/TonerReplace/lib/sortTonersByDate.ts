@@ -14,7 +14,7 @@ interface Toner {
     if (!records || records.length === 0) {
       return [];
     }
-  
+    
     // Создаем копию массива перед сортировкой
     const recordsCopy = [...records];
   

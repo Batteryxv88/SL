@@ -6,9 +6,9 @@ export type replacedPartProps = {
     name: string;
     number: string;
     qty: number;
-    date: any;
     man: string;
-    life?: number;
+    date: any;
+    life: number;
 };
 
 const ReplacedPart = (props: replacedPartProps) => {

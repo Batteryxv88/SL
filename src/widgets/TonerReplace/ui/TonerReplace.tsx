@@ -1,25 +1,25 @@
-import { useDispatch, useSelector } from 'react-redux';
 import cls from './TonerReplace.module.scss'
 import { fetchToners } from '../../../app/providers/StoreProvider/Store/TonerSlice';
 import { useEffect } from 'react';
-import { AppDispatch } from '../../../app/providers/StoreProvider/Store';
 import TonerPart from '../../../shared/ui/tonerPart/TonerPart';
 import { sortTonersByDate } from '../lib/sortTonersByDate';
+import { useAppDispatch, useAppSelector } from '../../../app/providers/StoreProvider/Store/hooks';
 
 
 const TonerReplace = () => {
 
-    const dispatch = useDispatch<AppDispatch>();
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         dispatch(fetchToners());
       }, [dispatch]);
 
-    const data: any = useSelector<any>(
+    const data = useAppSelector(
         (state) => state.toners.tonersArray
     );
 
     const sortedToners = sortTonersByDate(data)
+
 
     return ( <div className={cls.toners}>
         <div className={cls.box}>
@@ -29,7 +29,7 @@ const TonerReplace = () => {
                 <p className={cls.date}>Дата</p>
                 <p className={cls.delete}>Удалить</p>
             </div>
-        {sortedToners.map((item: any) => (
+        {sortedToners.map((item) => (
                 <TonerPart
                     color={item.toner.color}
                     counter={item.toner.counter}

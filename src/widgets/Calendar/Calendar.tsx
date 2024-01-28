@@ -1,27 +1,26 @@
 import cls from "./Calendar.module.scss";
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchUsedParts } from "../../app/providers/StoreProvider/Store/ReplacedPartSlice";
+import { UsedPartsArray, fetchUsedParts } from "../../app/providers/StoreProvider/Store/ReplacedPartSlice";
 import { fetchParts } from "../../app/providers/StoreProvider/Store/PartSlice";
 import ReplacedPart from "../../shared/ui/replacedPart/ReplacedPart";
 import { filteredAndSortedData } from "./lib/filteredAndSortedData";
+import { useAppDispatch, useAppSelector } from "../../app/providers/StoreProvider/Store/hooks";
 
 const Calendar = () => {
-    const data: any = useSelector<any>(
+    const data = useAppSelector(
         (state) => state.replacedParts.usedPartsArray
     );
-    const filterOption: any = useSelector<any>(
+    const filterOption = useAppSelector(
         (state) => state.filteredParts.filter
     );
 
     const filterAndSortData = filteredAndSortedData(data, filterOption)
 
-    const dispatch = useDispatch<any>();
+    const dispatch = useAppDispatch();
     useEffect(() => {
         dispatch(fetchParts());
         dispatch(fetchUsedParts());
     }, [dispatch]);
-
 
     return (
         <div className={cls.calendar}>
@@ -33,7 +32,7 @@ const Calendar = () => {
                 <p className={cls.res}>Ресурс</p>
                 <p className={cls.date}>Дата</p>
             </div>
-            {filterAndSortData.map((item: any) => (
+            {filterAndSortData.map((item: UsedPartsArray) => (
                 <ReplacedPart
                     name={item.part.partName}
                     number={item.part.partN}

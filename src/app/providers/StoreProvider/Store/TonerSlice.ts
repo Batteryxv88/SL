@@ -37,10 +37,16 @@ export const fetchToners = createAsyncThunk(
     }
 )
 
-export type TonerArray = {
+export type Toner = {
     color?: string;
     man?: string;
     counter?: number;
+    date?: string;
+}
+
+export type TonerArray = {
+    id: string;
+    toner: Toner
 }
 
 const tonerSlice = createSlice({

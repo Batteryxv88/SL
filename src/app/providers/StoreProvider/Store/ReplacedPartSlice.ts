@@ -2,6 +2,21 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { addDoc, collection, getDocs, updateDoc, doc } from 'firebase/firestore';
 import db from '../../../config/fbConfig';
 
+export type UsedParts = {
+    date: string;
+    man: string;
+    partN: string;
+    partName: string;
+    quantity: number;
+    section: string;
+    serviceLife?: number;
+}
+
+export type UsedPartsArray = {
+    id: string;
+    part: UsedParts
+}
+
 export const addUsedPart = createAsyncThunk(
     'usedParts/addUsedPart',
     async (part: any) => {

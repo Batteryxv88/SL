@@ -1,11 +1,11 @@
 import cls from "./TonerPart.module.scss";
 import DeleteButton from '../../assets/icon/deleteButton1.svg'
-import { useDispatch } from "react-redux";
 import { deleteToner } from "../../../app/providers/StoreProvider/Store/TonerSlice";
+import { useAppDispatch } from "../../../app/providers/StoreProvider/Store/hooks";
 
 export type tonerPartProps = {
     color: string;
-    counter: number;
+    counter: string;
     date: any;
     man: string;
     id: string;
@@ -19,7 +19,7 @@ const TonerPart = (props: tonerPartProps) => {
     const day = newDate.toLocaleString("ru-RU", { day: "2-digit" });
     const year = newDate.getFullYear();
 
-    const dispatch = useDispatch<any>()
+    const dispatch = useAppDispatch()
 
     const handleDelete = (id: string) => {
         dispatch(deleteToner(id))
