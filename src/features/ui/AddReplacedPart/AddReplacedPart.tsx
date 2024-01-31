@@ -75,9 +75,18 @@ const AddReplacedPart = () => {
     const handleAddPart = (e: any) => {
         const cleanedPartN = e.partN.trim().toUpperCase();
 
+        const currentPart = stockData.filter((item: any) => {
+            if (sameColorParts.includes(cleanedPartN)) {
+                return item.part.partN === cleanedPartN.slice(0, -1);
+            }
+            return item.part.partN === cleanedPartN;
+        });
+
         const partExists = stockData.some(
-            (item: any) => item.part.partN === cleanedPartN
+            (item: any) => item.part.partN === currentPart[0].part.partN
         );
+
+        console.log(partExists)
 
         if (!partExists) {
             // Устанавливаем сообщение об ошибке
@@ -91,13 +100,6 @@ const AddReplacedPart = () => {
 
         // Если деталь найдена, сбрасываем ошибку
         setError(false);
-
-        const currentPart = stockData.filter((item: any) => {
-            if (sameColorParts.includes(cleanedPartN)) {
-                return item.part.partN === cleanedPartN.slice(0, -1);
-            }
-            return item.part.partN === cleanedPartN;
-        });
 
         const newQuantity = currentPart[0].part.quantity - Number(e.quantity);
         const newName = currentPart[0].part.partName;
@@ -115,7 +117,7 @@ const AddReplacedPart = () => {
         const updatedStockPart = {
             id: currentPart[0].id,
             part: {
-                quantity: newQuantity,
+                quantity: newQuantity >= 0? newQuantity: 0,
             },
         };
 

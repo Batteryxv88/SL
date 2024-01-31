@@ -10,6 +10,18 @@
     align-items: center;
 }
 
+.partRed {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    color: red;
+    border-bottom: 1px solid #24305e;
+    justify-content: space-between;
+    padding-right: 5px;
+    align-items: center;
+}
+
 .name {
     width: 45%;
     //border: 1px solid red;
@@ -23,6 +35,13 @@
     width: 10%;
     display: flex;
     justify-content: flex-end;
+}
+
+.qtyRed {
+    width: 10%;
+    display: flex;
+    justify-content: flex-end;
+    color: red;
 }
 
 .button {

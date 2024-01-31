@@ -59,7 +59,7 @@ const Part = (props: PartProps) => {
                     </button>
                 </form>
             ) : (
-                <p className={cls.qty}>{qty}</p>
+                <p className={qty <= 0 ? cls.qtyRed: cls.qty}>{qty}</p>
             )}
             {onEdit ? (
                 ""
