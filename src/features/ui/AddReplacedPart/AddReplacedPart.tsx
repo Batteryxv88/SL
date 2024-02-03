@@ -9,14 +9,18 @@ import { updateStock } from "../../../app/providers/StoreProvider/Store/PartSlic
 import { partsFilter } from "../../lib/partsFilter/partsFilter";
 import { findIdByPartNAndLatestDate } from "../../lib/findIdByPartNandDate/findByNumberAndDate";
 import { useForm } from "react-hook-form";
+import { useAppDispatch, useAppSelector } from "../../../app/providers/StoreProvider/Store/hooks";
 
 const AddReplacedPart = () => {
     const stockData: any = useSelector<any>((state) => state.parts.partsArray);
     const replacedPartsdata: any = useSelector<any>(
         (state) => state.replacedParts.usedPartsArray
     );
+    const machineState = useAppSelector((state) => state.machines.machine);
 
-    const dispatch = useDispatch<any>();
+    console.log(replacedPartsdata)
+
+    const dispatch = useAppDispatch();
 
     const [quantity, setQuantity] = useState<number>(0);
     const [date, setDate] = useState<any>("");
@@ -74,6 +78,7 @@ const AddReplacedPart = () => {
 
     const handleAddPart = (e: any) => {
         const cleanedPartN = e.partN.trim().toUpperCase();
+        
 
         const currentPart = stockData.filter((item: any) => {
             if (sameColorParts.includes(cleanedPartN)) {
@@ -86,7 +91,7 @@ const AddReplacedPart = () => {
             (item: any) => item.part.partN === currentPart[0].part.partN
         );
 
-        console.log(partExists)
+        
 
         if (!partExists) {
             // Устанавливаем сообщение об ошибке
@@ -112,6 +117,7 @@ const AddReplacedPart = () => {
             section: section,
             man: e.man,
             partName: newName,
+            machine: machineState
         };
 
         const updatedStockPart = {
@@ -123,7 +129,7 @@ const AddReplacedPart = () => {
 
         const idForUpdate = findIdByPartNAndLatestDate(
             replacedPartsdata,
-            cleanedPartN
+            cleanedPartN, machineState
         );
 
         const updatedPart = {
@@ -147,7 +153,7 @@ const AddReplacedPart = () => {
                 onSubmit={handleSubmit(handleAddPart)}
             >
                 <div className={cls.box}>
-                    <label className={cls.label}>Парт номер</label>
+                    <label className={cls.label}>Артикул</label>
                     <input
                         {...register("partN", {
                             required: "Обязательное поле",

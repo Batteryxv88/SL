@@ -3,26 +3,3 @@
     height: auto;
     background-color: #f76c6c;
 }
-
-.ul {
-    margin: 40px 0 0 25px;
-    color: white;
-}
-
-.li {
-    margin-top: 15px;
-    list-style-type: none;
-    cursor: pointer;
-    transition: ease-in .1s;
-    //font-size: 18px;
-    
-}
-
-.li:hover {
-    margin-left: 20px;
-    transition: ease-in .1s;
-}
-
-.li:first-of-type:hover {
-    margin-left: 0px;
-}

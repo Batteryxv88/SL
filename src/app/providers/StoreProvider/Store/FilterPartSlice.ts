@@ -3,11 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 const filterPartSlice = createSlice({
     name: 'FilterPartSlice',
     initialState: {
-        filter: "All"
+        filter: {
+            section: "All"
+        }
     },
     reducers: {
         changeFilter(state, action) {
-            state.filter = action.payload
+            state.filter.section = action.payload
         }
     }
 })

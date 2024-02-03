@@ -34,7 +34,7 @@ const AddPart = () => {
     return (
         <form className={cls.form} onSubmit={handleAddPart}>
             <div className={cls.box}>
-                <label className={cls.label}>Парт номер</label>
+                <label className={cls.label}>Артикул</label>
                 <input
                     className={cls.input}
                     onChange={(e) => setPartN(e.target.value)}

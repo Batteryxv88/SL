@@ -5,16 +5,21 @@ import { fetchParts } from "../../app/providers/StoreProvider/Store/PartSlice";
 import ReplacedPart from "../../shared/ui/replacedPart/ReplacedPart";
 import { filteredAndSortedData } from "./lib/filteredAndSortedData";
 import { useAppDispatch, useAppSelector } from "../../app/providers/StoreProvider/Store/hooks";
+import { filterByMachine } from "./lib/filterByMachine";
 
 const Calendar = () => {
     const data = useAppSelector(
         (state) => state.replacedParts.usedPartsArray
     );
     const filterOption = useAppSelector(
-        (state) => state.filteredParts.filter
+        (state) => state.filteredParts.filter.section
     );
 
-    const filterAndSortData = filteredAndSortedData(data, filterOption)
+    const machineState = useAppSelector((state) => state.machines.machine);
+
+    const filteredDataByMachine = filterByMachine(data, machineState)
+
+    const filterAndSortData = filteredAndSortedData(filteredDataByMachine, filterOption)
 
     const dispatch = useAppDispatch();
     useEffect(() => {
@@ -24,6 +29,7 @@ const Calendar = () => {
 
     return (
         <div className={cls.calendar}>
+            <h2 className={cls.h2}>{machineState}</h2>
             <div className={cls.box}>
                 <p className={cls.name}>Наименование</p>
                 <p className={cls.number}>Парт номер</p>

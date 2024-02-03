@@ -1,0 +1,32 @@
+.calendar {
+  width: 120%;
+  margin: 0px 0 5px 5px;
+  padding: 10px;
+}
+
+.box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  background-color: var(--color-very-light-blue);
+  height: 40px;
+  border-radius: 6px;
+}
+
+.number {
+  margin-left: 100px;
+}
+
+.date {
+  margin-right: 25px;
+}
+
+.res {
+  margin-right: 45px;
+}
+
+.qty {
+  margin-right: 10px;
+}/*# sourceMappingURL=Calendar.module.css.map */

@@ -1,7 +1,6 @@
-export const filteredAndSortedData = (array: any, filter: string) => {
+export const filterByMachine = (array: any, filter: string) => {
     // Фильтрация данных
-    const filteredData = (filter === "All") ? array : array.filter
-    ((item: any) => item.part.section === filter);
+    const filteredData = array.filter((item: any) => item.part.machine === filter);
 
     // Сортировка данных
     if (filteredData.length === 0) {

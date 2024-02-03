@@ -3,6 +3,8 @@ import partsReducer from './PartSlice'
 import replacedPartsReducer from './ReplacedPartSlice'
 import FilterPartSlice from "./FilterPartSlice";
 import TonerSlice from "./TonerSlice";
+import ChangePageSlice from "./ChangePageSlice"
+import ChangeMachineSlice from "./ChangeMachineSlice";
 
 
 const store = configureStore({
@@ -10,7 +12,9 @@ const store = configureStore({
         parts: partsReducer,
         replacedParts: replacedPartsReducer,
         filteredParts: FilterPartSlice,
-        toners: TonerSlice
+        toners: TonerSlice,
+        pages: ChangePageSlice,
+        machines: ChangeMachineSlice,
         
     }
 })

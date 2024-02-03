@@ -1,0 +1,66 @@
+.tonerPart {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #24305e;
+}
+
+.dateBox {
+  display: flex;
+  flex-direction: row;
+}
+
+.colorBox {
+  width: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.colorM {
+  border-radius: 9px;
+  width: 18px;
+  height: 18px;
+  background-color: magenta;
+}
+
+.colorC {
+  border-radius: 8px;
+  width: 16px;
+  height: 16px;
+  background-color: cyan;
+}
+
+.colorY {
+  border-radius: 9px;
+  width: 18px;
+  height: 18px;
+  background-color: yellow;
+}
+
+.colorK {
+  border-radius: 9px;
+  width: 18px;
+  height: 18px;
+  background-color: black;
+}
+
+.counter {
+  width: 120px;
+  text-align: center;
+}
+
+.man {
+  width: 100px;
+  text-align: center;
+}
+
+.buttonDelete {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}/*# sourceMappingURL=TonerPart.module.css.map */

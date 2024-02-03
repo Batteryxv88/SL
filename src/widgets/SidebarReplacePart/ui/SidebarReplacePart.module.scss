@@ -1,0 +1,68 @@
+.ul {
+    margin: 40px 0 0 25px;
+    color: white;
+}
+
+.li {
+    margin-top: 15px;
+    list-style-type: none;
+    cursor: pointer;
+    transition: ease-in .1s;
+    //font-size: 18px;
+
+}
+
+.li:hover {
+    margin-left: 20px;
+    transition: ease-in .1s;
+}
+
+.li:first-of-type:hover {
+    margin-left: 0px;
+}
+
+.machineWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 36px;
+    margin-bottom: 20px;
+
+}
+
+.button {
+    border: 1px solid var(--color-dark-blue);
+    background-color: white;
+    width: 130px;
+    color: var(--color-dark-blue);
+    border-radius: 4px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.activeButton {
+    border: 1px solid var(--color-dark-blue);
+    background-color: white;
+    width: 130px;
+    color: var(--color-dark-blue);
+    border-radius: 4px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    background-color: var(--color-blue);
+    color: white;
+    margin-top: 20px;
+}
+
+
+
+.button:hover {
+    background-color: rgb(221, 221, 221);
+    color: var(--color-dark-blue);
+}

@@ -1,0 +1,11 @@
+.button {
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0 5px 0 5px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  margin: 0 20px 0 20px;
+  cursor: pointer;
+}/*# sourceMappingURL=Button.module.css.map */

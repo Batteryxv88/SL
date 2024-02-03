@@ -1,0 +1,29 @@
+.toners {
+  width: 120%;
+  margin: 0px 0 5px 5px;
+  padding: 10px;
+}
+
+.box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  background-color: var(--color-very-light-blue);
+  height: 40px;
+  border-radius: 6px;
+}
+
+.color {
+  margin-left: 10px;
+  margin-right: 30px;
+}
+
+.counter {
+  margin-right: 30px;
+}
+
+.delete {
+  margin-right: 10px;
+}/*# sourceMappingURL=TonerReplace.module.css.map */

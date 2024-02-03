@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+input,
+button,
+textarea,
+select {
+  margin: 0;
+  font: inherit;
+}
+
+@font-face {
+  font-family: "rrr";
+  src: url("/src/app/styles/fonts/Rubik/Rubik-Black.woff2");
+}
+:root {
+  --font-family-main: "Verdana";
+  --font-size-m: 16px;
+  --font-line-m: 24px;
+  --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
+  --font-size-l: 24px;
+  --font-line-l: 32px;
+  --font-size-xl: 32px;
+  --font-line-xl: 40px;
+  --navbar-height: 50px;
+  --sidebar-width: 300px;
+  --sidebar-width-collapsed: 80px;
+  --modal-z-index: 10;
+  --overlay-color: rgba(0 0 0 / 60%);
+  --color-very-light-blue: #d1dfe8;
+  --color-light-blue: #a8d0e6;
+  --color-blue: #374785;
+  --color-dark-blue: #24305e;
+  --color-coral: #f76c6c;
+  --color-yellow: #f8e9a1;
+}
+
+body {
+  font: var(--font-m);
+  color: var(--primary-color);
+  height: 100%;
+}
+
+.app {
+  height: 100%;
+  background-color: #A8D0E6;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.content-page {
+  display: flex;
+}
+
+.page-wrapper {
+  flex-grow: 1;
+  padding: 20px;
+}/*# sourceMappingURL=index.css.map */
