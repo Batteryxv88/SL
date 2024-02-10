@@ -1,33 +1,3 @@
-.ul {
-    margin: 40px 0 0 25px;
-    color: white;
-}
-
-.li {
-    margin-top: 15px;
-    list-style-type: none;
-    cursor: pointer;
-    transition: ease-in .1s;
-
-}
-
-.liActive {
-    margin-top: 15px;
-    list-style-type: none;
-    cursor: pointer;
-    transition: ease-in .1s;
-    color: var(--color-dark-blue);
-}
-
-.li:hover {
-    margin-left: 20px;
-    transition: ease-in .1s;
-}
-
-.li:first-of-type:hover {
-    margin-left: 0px;
-}
-
 .machineWrapper {
     display: flex;
     flex-direction: column;

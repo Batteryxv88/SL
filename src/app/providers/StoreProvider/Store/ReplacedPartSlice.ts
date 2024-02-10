@@ -10,6 +10,7 @@ export type UsedParts = {
     quantity: number;
     section: string;
     serviceLife?: number;
+    percent: number
 }
 
 export type UsedPartsArray = {

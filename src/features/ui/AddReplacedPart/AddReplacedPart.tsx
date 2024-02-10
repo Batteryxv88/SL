@@ -10,6 +10,7 @@ import { partsFilter } from "../../lib/partsFilter/partsFilter";
 import { findIdByPartNAndLatestDate } from "../../lib/findIdByPartNandDate/findByNumberAndDate";
 import { useForm } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "../../../app/providers/StoreProvider/Store/hooks";
+import { lifePercent } from "../../../shared/lib/calculatePercentOfLife";
 
 const AddReplacedPart = () => {
     const stockData: any = useSelector<any>((state) => state.parts.partsArray);
@@ -76,6 +77,8 @@ const AddReplacedPart = () => {
 
     const [error, setError] = useState<boolean>(false);
 
+    
+
     const handleAddPart = (e: any) => {
         const cleanedPartN = e.partN.trim().toUpperCase();
         
@@ -110,6 +113,9 @@ const AddReplacedPart = () => {
         const newName = currentPart[0].part.partName;
         const section = partsFilter(cleanedPartN);
 
+        // Находим отработанный ресурс детали в процентах
+        const percent = lifePercent(cleanedPartN, stockData, e.serviceLife);
+
         const partU = {
             partN: cleanedPartN,
             quantity: Number(e.quantity),
@@ -136,6 +142,7 @@ const AddReplacedPart = () => {
             id: idForUpdate,
             part: {
                 serviceLife: e.serviceLife,
+                percent: percent
             },
         };
 
@@ -144,7 +151,12 @@ const AddReplacedPart = () => {
         dispatch(addUsedPart(partU));
 
         reset();
+
+        
+        console.log(percent)
     };
+
+    
 
     return (
         <>

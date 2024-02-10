@@ -46,6 +46,7 @@ const Calendar = () => {
                     man={item.part.man}
                     date={item.part.date}
                     life={item.part.serviceLife}
+                    percent={item.part.percent}
                     key={item.id}
                 />
             ))}

@@ -1,0 +1,82 @@
+.report {
+    padding: 20px;
+}
+
+.partWrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.partNumber {
+    margin-right: 20px;
+}
+
+.partName {
+    margin-right: 20px;
+}
+
+.title {
+    margin-bottom: 20px;
+}
+
+.tonersTitle {
+    margin-top: 20px;
+}
+
+.partsTitle {
+    
+}
+
+.tonersWrapper {
+    margin-bottom: 20px;
+}
+
+.period {
+    margin-bottom: 20px;
+}
+
+.colorWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.colorCircleC {
+    width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    background-color: cyan;
+    margin-right: 10px;
+}
+
+.colorCircleM {
+    width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    background-color: magenta;
+    margin-right: 10px;
+}
+
+.colorCircleY {
+    width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    background-color: yellow;
+    margin-right: 10px;
+}
+
+.colorCircleK {
+    width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    background-color: black;
+    margin-right: 10px;
+}
+
+.colorTitle {
+    margin-right: 10px;
+}
+
+.man {
+    margin-right: 20px;
+}

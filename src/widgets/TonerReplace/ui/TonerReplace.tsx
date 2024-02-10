@@ -2,26 +2,30 @@ import cls from './TonerReplace.module.scss'
 import { fetchToners } from '../../../app/providers/StoreProvider/Store/TonerSlice';
 import { useEffect } from 'react';
 import TonerPart from '../../../shared/ui/tonerPart/TonerPart';
-import { sortTonersByDate } from '../lib/sortTonersByDate';
+import { sortAndFilterToners } from '../lib/sortTonersByDate';
 import { useAppDispatch, useAppSelector } from '../../../app/providers/StoreProvider/Store/hooks';
+import { filterByMachine } from '../../Calendar/lib/filterByMachine';
 
 
 const TonerReplace = () => {
 
     const dispatch = useAppDispatch();
+    const machineTonerState = useAppSelector((state) => state.machines.tonerMachine);
 
     useEffect(() => {
         dispatch(fetchToners());
-      }, [dispatch]);
+    }, [dispatch]);
 
     const data = useAppSelector(
         (state) => state.toners.tonersArray
     );
 
-    const sortedToners = sortTonersByDate(data)
+    
+    const sortedToners = sortAndFilterToners(data, machineTonerState)
 
 
     return ( <div className={cls.toners}>
+        <h2 className={cls.h2}>{machineTonerState}</h2>
         <div className={cls.box}>
                 <p className={cls.color}>Цвет</p>
                 <p className={cls.counter}>Счетчик</p>

@@ -7,6 +7,7 @@ import Sidebar from "../widgets/Sidebar/ui/Sidebar";
 import { TonerPage } from "../pages/TonerPage";
 import Favicon from "react-favicon";
 import Fvicon from '../../public/favicon.svg'
+import { ReportPage } from "../pages/ReportPage";
 
 const App = () => {
     return (
@@ -21,6 +22,7 @@ const App = () => {
                         <Route path={"/toner"} element={<TonerPage />} />
                         <Route path={"/schedule"} element={<SchedulePage />} />
                         <Route path={"/"} element={<MainPage />} />
+                        <Route path={"/report"} element={<ReportPage />} />
                     </Routes>
                 </Suspense>
             </div>

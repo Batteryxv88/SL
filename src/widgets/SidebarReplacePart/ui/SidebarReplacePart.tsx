@@ -7,6 +7,7 @@ import { changeMachine } from "../../../app/providers/StoreProvider/Store/Change
 const SidebarReplacePart = () => {
     const dispatch = useAppDispatch();
     const machineState = useAppSelector((state) => state.machines.machine);
+    const filterState = useAppSelector((state) => state.filteredParts.filter.section)
 
     return (
         <div>
@@ -17,19 +18,19 @@ const SidebarReplacePart = () => {
 
             <ul className={cls.ul}>
                 <li
-                    className={cls.li}
+                    className={filterState === 'All'? cls.liActive: cls.li}
                     onClick={() => dispatch(changeFilter("All"))}
                 >
                     All
                 </li>
                 <li
-                    className={cls.li}
+                    className={filterState === 'External section'? cls.liActive: cls.li}
                     onClick={() => dispatch(changeFilter("External section"))}
                 >
                     External section
                 </li>
                 <li
-                    className={cls.li}
+                    className={filterState === 'Photo conductor section'? cls.liActive: cls.li}
                     onClick={() =>
                         dispatch(changeFilter("Photo conductor section"))
                     }
@@ -37,19 +38,19 @@ const SidebarReplacePart = () => {
                     Photo conductor section
                 </li>
                 <li
-                    className={cls.li}
+                    className={filterState === 'Charging section'? cls.liActive: cls.li}
                     onClick={() => dispatch(changeFilter("Charging section"))}
                 >
                     Charging section
                 </li>
                 <li
-                    className={cls.li}
+                    className={filterState === 'Developing section'? cls.liActive: cls.li}
                     onClick={() => dispatch(changeFilter("Developing section"))}
                 >
                     Developing section
                 </li>
                 <li
-                    className={cls.li}
+                    className={filterState === 'Intermediate transfer section'? cls.liActive: cls.li}
                     onClick={() =>
                         dispatch(changeFilter("Intermediate transfer section"))
                     }
@@ -57,13 +58,13 @@ const SidebarReplacePart = () => {
                     Intermediate transfer section
                 </li>
                 <li
-                    className={cls.li}
+                    className={filterState === 'Fusing section'? cls.liActive: cls.li}
                     onClick={() => dispatch(changeFilter("Fusing section"))}
                 >
                     Fusing section
                 </li>
                 <li
-                    className={cls.li}
+                    className={filterState === 'Toner collection section'? cls.liActive: cls.li}
                     onClick={() =>
                         dispatch(changeFilter("Toner collection section"))
                     }
@@ -71,13 +72,13 @@ const SidebarReplacePart = () => {
                     Toner collection section
                 </li>
                 <li
-                    className={cls.li}
+                    className={filterState === 'Paper feed section'? cls.liActive: cls.li}
                     onClick={() => dispatch(changeFilter("Paper feed section"))}
                 >
                     Paper feed section
                 </li>
                 <li
-                    className={cls.li}
+                    className={filterState === 'Paper exit section'? cls.liActive: cls.li}
                     onClick={() => dispatch(changeFilter("Paper exit section"))}
                 >
                     Paper exit section

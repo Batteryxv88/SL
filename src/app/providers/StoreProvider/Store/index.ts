@@ -5,6 +5,7 @@ import FilterPartSlice from "./FilterPartSlice";
 import TonerSlice from "./TonerSlice";
 import ChangePageSlice from "./ChangePageSlice"
 import ChangeMachineSlice from "./ChangeMachineSlice";
+import ReportSlice from "./ReportSlice";
 
 
 const store = configureStore({
@@ -15,6 +16,7 @@ const store = configureStore({
         toners: TonerSlice,
         pages: ChangePageSlice,
         machines: ChangeMachineSlice,
+        report: ReportSlice
         
     }
 })

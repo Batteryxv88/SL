@@ -3,11 +3,14 @@ import cls from "./AddToner.module.scss";
 import { useDispatch } from "react-redux";
 import { addToner } from "../../../app/providers/StoreProvider/Store/TonerSlice";
 import { useForm } from "react-hook-form";
+import { useAppSelector } from "../../../app/providers/StoreProvider/Store/hooks";
 
 const AddToner = () => {
     const [date, setDate] = useState<any>("");
 
     const dispatch = useDispatch<any>();
+
+    const machineTonerState = useAppSelector((state) => state.machines.tonerMachine);
 
     useEffect(() => {
         fetch("https://worldtimeapi.org/api/timezone/Europe/Moscow")
@@ -41,6 +44,7 @@ const AddToner = () => {
             man: e.man,
             counter: Number(e.counter),
             date: date,
+            machine: machineTonerState
         };
 
         dispatch(addToner(newToner));
