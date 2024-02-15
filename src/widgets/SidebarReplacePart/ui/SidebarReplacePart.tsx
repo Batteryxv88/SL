@@ -1,7 +1,6 @@
 import cls from "./SidebarReplacePart.module.scss";
 import { useAppDispatch, useAppSelector } from "../../../app/providers/StoreProvider/Store/hooks";
 import { changeFilter } from "../../../app/providers/StoreProvider/Store/FilterPartSlice";
-import Button from "../../../shared/ui/Button/Button";
 import { changeMachine } from "../../../app/providers/StoreProvider/Store/ChangeMachineSlice";
 
 const SidebarReplacePart = () => {

@@ -1,14 +1,9 @@
 import cls from "./Part.module.scss";
 import EditIcon from "../../assets/icon/editIcon.svg";
 import CheckMark from "../../assets/icon/checkMark.svg";
-import { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
-import { updateUsedPart } from "../../../app/providers/StoreProvider/Store/ReplacedPartSlice";
-import {
-    fetchParts,
-    updateStock,
-} from "../../../app/providers/StoreProvider/Store/PartSlice";
-import { useInView } from 'react-intersection-observer';
+import { useState } from "react";
+import { updateStock } from "../../../app/providers/StoreProvider/Store/PartSlice";
+import { useAppDispatch } from "../../../app/providers/StoreProvider/Store/hooks";
 
 export type PartProps = {
     name: string;
@@ -22,10 +17,9 @@ const Part = (props: PartProps) => {
     const [newQuantity, setNewQuantity] = useState<string | number>("");
     const [clickOutside, setClickOutside] = useState<boolean>(false);
 
-    const dispatch = useDispatch<any>();
+    const dispatch = useAppDispatch();
 
     const { name, number, qty, id } = props;
-
 
     const submitFormHandler = (e: React.FormEvent) => {
         e.preventDefault();
@@ -59,7 +53,7 @@ const Part = (props: PartProps) => {
                     </button>
                 </form>
             ) : (
-                <p className={qty <= 0 ? cls.qtyRed: cls.qty}>{qty}</p>
+                <p className={qty <= 0 ? cls.qtyRed : cls.qty}>{qty}</p>
             )}
             {onEdit ? (
                 ""

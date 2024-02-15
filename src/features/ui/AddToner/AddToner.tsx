@@ -10,7 +10,9 @@ const AddToner = () => {
 
     const dispatch = useDispatch<any>();
 
+    
     const machineTonerState = useAppSelector((state) => state.machines.tonerMachine);
+
 
     useEffect(() => {
         fetch("https://worldtimeapi.org/api/timezone/Europe/Moscow")
@@ -38,6 +40,7 @@ const AddToner = () => {
         mode: "onChange",
     });
 
+    //учитываем замену нового тонера
     const handleAddToner = (e: any) => {
         const newToner = {
             color: e.color,

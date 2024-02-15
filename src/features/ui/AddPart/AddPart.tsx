@@ -1,10 +1,10 @@
 import { useState } from "react";
 import cls from "./AddPart.module.scss";
-import { useDispatch } from "react-redux";
 import { addPartToFirestore } from "../../../app/providers/StoreProvider/Store/PartSlice";
+import { useAppDispatch } from "../../../app/providers/StoreProvider/Store/hooks";
 
 const AddPart = () => {
-    const dispatch = useDispatch<any>();
+    const dispatch = useAppDispatch();
 
     const [partN, setPartN] = useState<string>("");
     const [partName, setPartName] = useState<string>("");

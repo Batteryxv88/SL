@@ -1,5 +1,5 @@
 import { changePage } from "../../../app/providers/StoreProvider/Store/ChangePageSlice";
-import { useAppDispatch, useAppSelector } from "../../../app/providers/StoreProvider/Store/hooks";
+import { useAppDispatch } from "../../../app/providers/StoreProvider/Store/hooks";
 import AddReplacedPart from "../../../features/ui/AddReplacedPart/AddReplacedPart";
 import Calendar from "../../../widgets/Calendar/Calendar";
 

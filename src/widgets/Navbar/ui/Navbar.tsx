@@ -1,16 +1,8 @@
 import { Link } from "react-router-dom";
 import cls from "./Navbar.module.scss";
 import Button from "../../../shared/ui/Button/Button";
-import { useAppDispatch } from "../../../app/providers/StoreProvider/Store/hooks";
-import { changePage } from "../../../app/providers/StoreProvider/Store/ChangePageSlice";
-
-type NavbarProps = {
-    children: React.ReactNode; // 👈️ type children
-};
 
 const Navbar = () => {
-
-const dispatch = useAppDispatch()
 
     return (
         <div className={cls.navbar}>

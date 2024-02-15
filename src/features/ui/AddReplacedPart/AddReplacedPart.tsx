@@ -152,8 +152,7 @@ const AddReplacedPart = () => {
 
         reset();
 
-        
-        console.log(percent)
+        console.log(idForUpdate)
     };
 
     

@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import TonerPart from '../../../shared/ui/tonerPart/TonerPart';
 import { sortAndFilterToners } from '../lib/sortTonersByDate';
 import { useAppDispatch, useAppSelector } from '../../../app/providers/StoreProvider/Store/hooks';
-import { filterByMachine } from '../../Calendar/lib/filterByMachine';
 
 
 const TonerReplace = () => {

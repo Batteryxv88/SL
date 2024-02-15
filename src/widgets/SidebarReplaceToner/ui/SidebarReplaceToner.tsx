@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from "../../../app/providers/StoreProvider/Store/hooks";
 import cls from './SidebarReplaceToner.module.scss'
-import { changeMachine, changeTonerMachine } from "../../../app/providers/StoreProvider/Store/ChangeMachineSlice";
+import { changeTonerMachine } from "../../../app/providers/StoreProvider/Store/ChangeMachineSlice";
 
 const SidebarReplaceToner = () => {
 

@@ -1,7 +1,4 @@
 import cls from "./ReplacedPart.module.scss";
-import { useSelector } from "react-redux";
-import { lifePercent } from "../../lib/calculatePercentOfLife";
-import { useAppSelector } from "../../../app/providers/StoreProvider/Store/hooks";
 
 export type replacedPartProps = {
     name: string;
@@ -21,19 +18,22 @@ const ReplacedPart = (props: replacedPartProps) => {
     const day = newDate.toLocaleString("ru-RU", { day: "2-digit" });
     const year = newDate.getFullYear();
 
-    const partsData = useAppSelector((state) => state.parts.partsArray);
-
-    //const percent = lifePercent(number, partsData, life);
-
-
     return (
         <div className={cls.replacedPart}>
             <p className={cls.name}>{name}</p>
             <p className={cls.number}>{number}</p>
             <p className={cls.man}>{man}</p>
             <p className={cls.qty}>{qty}</p>
-            <p className={percent < 100 ? cls.percentRed : !percent ? cls.percentRed :  cls.percentGreen}>
-                {percent? percent + "%": '0 %'}
+            <p
+                className={
+                    percent < 100
+                        ? cls.percentRed
+                        : !percent
+                        ? cls.percentRed
+                        : cls.percentGreen
+                }
+            >
+                {percent ? percent + "%" : "0 %"}
             </p>
             <div className={cls.date}>
                 <p>{day + "."}</p>

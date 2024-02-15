@@ -29,7 +29,7 @@
 }
 
 .wrapper {
-    //width: 240px;
+    height: 40px;
     margin-top: 20px;
 }
 
@@ -63,4 +63,10 @@
     border-radius: 4px;
     color: white;
     margin-top: 40px;
+}
+
+.error {
+    color: red;
+    text-align: center;
+    margin-left: 35px;
 }
