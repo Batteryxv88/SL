@@ -8,6 +8,13 @@
     justify-content: space-between;
     padding-right: 5px;
     align-items: center;
+    border-top: 1px solid transparent;
+}
+
+.partActive {
+    //border-bottom: 1px solid red;
+    background: rgb(255,0,0);
+    background: linear-gradient(90deg, rgba(255,0,0,0) 30%, rgba(255,0,0,0.44861694677871145) 100%);
 }
 
 .partRed {

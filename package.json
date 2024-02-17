@@ -43,6 +43,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
+    "classnames": "^2.5.1",
     "firebase": "^10.7.1",
     "react": "^18.2.0",
     "react-csv": "^2.2.2",

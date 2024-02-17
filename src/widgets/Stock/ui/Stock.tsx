@@ -1,10 +1,11 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import cls from "./Stock.module.scss";
 import { fetchParts } from "../../../app/providers/StoreProvider/Store/PartSlice";
 import Part from "../../../shared/ui/Part/Part";
-import { AppDispatch } from "../../../app/providers/StoreProvider/Store";
-
+import {
+    useAppDispatch,
+    useAppSelector,
+} from "../../../app/providers/StoreProvider/Store/hooks";
 
 type Part = {
     partN: string;
@@ -20,10 +21,8 @@ type PartData = {
 };
 
 const Stock = () => {
-    const dispatch = useDispatch<AppDispatch>();
-    const partsData: PartData[] = useSelector<any, PartData[]>(
-        (state) => state.parts.partsArray
-    );
+    const dispatch = useAppDispatch();
+    const partsData = useAppSelector((state) => state.parts.partsArray);
 
     useEffect(() => {
         dispatch(fetchParts());
@@ -53,7 +52,6 @@ const Stock = () => {
             </>
         );
     };
-
 
     return (
         <div className={cls.stock}>

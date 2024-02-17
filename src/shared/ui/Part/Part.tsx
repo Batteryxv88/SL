@@ -4,6 +4,7 @@ import CheckMark from "../../assets/icon/checkMark.svg";
 import { useState } from "react";
 import { updateStock } from "../../../app/providers/StoreProvider/Store/PartSlice";
 import { useAppDispatch } from "../../../app/providers/StoreProvider/Store/hooks";
+import classNames from "classnames";
 
 export type PartProps = {
     name: string;
@@ -37,7 +38,7 @@ const Part = (props: PartProps) => {
     };
 
     return (
-        <div className={cls.part} onClick={() => setClickOutside(true)}>
+        <div className={qty <= 0 ? classNames(cls.part, cls.partActive): cls.part} onClick={() => setClickOutside(true)}>
             <p className={cls.name}>{name}</p>
             <p className={cls.number}>{number}</p>
             {onEdit ? (
@@ -53,7 +54,7 @@ const Part = (props: PartProps) => {
                     </button>
                 </form>
             ) : (
-                <p className={qty <= 0 ? cls.qtyRed : cls.qty}>{qty}</p>
+                <p className={cls.qty}>{qty}</p>
             )}
             {onEdit ? (
                 ""
