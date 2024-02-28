@@ -68,6 +68,7 @@ const Stock = () => {
             {renderSection("Paper feed section")}
             {renderSection("Paper exit section")}
             {renderSection("RW-101")}
+            {renderSection("Other")}
         </div>
     );
 };

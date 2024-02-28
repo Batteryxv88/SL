@@ -5,6 +5,7 @@ import "./app/styles/index.scss";
 import { Provider } from "react-redux";
 import store from "./app/providers/StoreProvider/Store";
 
+
 render(
     <Provider store={store}>
         <HashRouter>

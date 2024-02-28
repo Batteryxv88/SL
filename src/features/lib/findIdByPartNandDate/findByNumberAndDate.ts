@@ -91,23 +91,82 @@ interface Part {
 //   return sameColorParts.includes(partN) ? partN.slice(0, -1) : partN;
 // }
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+// export function findIdByPartNAndLatestDate(arr: ArrayItem[], partN: string, machine: string): string | null {
+//   // Создаем регулярное выражение для сравнения номера
+//   const regex = sameColorParts.includes(partN) ? new RegExp(`^${partN.slice(0, -1)}.*$`) : new RegExp(`^${partN}$`);
+
+//   // Фильтруем массив по номеру partN и машине
+//   const filteredByPartNAndMachine = arr.filter((item) => {
+//       return regex.test(item.part.partN) && item.part.machine === machine;
+//   });
+
+//   // Если нет объектов с указанным номером partN и машиной, возвращаем null
+//   if (filteredByPartNAndMachine.length === 0) {
+//       return null;
+//   }
+
+//   // Сортируем отфильтрованный массив по убыванию даты
+//   const sortedByDate = filteredByPartNAndMachine.sort(
+//       (a, b) => new Date(b.part.date).getTime() - new Date(a.part.date).getTime()
+//   );
+
+//   // Получаем id с самой поздней датой
+//   const idWithLatestDate = sortedByDate[0].id;
+
+//   return idWithLatestDate;
+// }
+
+
+// export function findIdByPartNAndLatestDate(arr: ArrayItem[], partN: string, machine: string): string | null {
+//   // Определяем, является ли номер детали из массива sameColorParts
+//   const isSameColorPart = sameColorParts.includes(partN);
+
+//   // Фильтруем массив по номеру partN и машине
+//   const filteredByPartNAndMachine = arr.filter((item) => {
+//       if (isSameColorPart) {
+//           return item.part.partN.startsWith(partN.slice(0, -1)) && item.part.machine === machine;
+//       }
+//       return item.part.partN === partN && item.part.machine === machine;
+//   });
+
+//   // Если нет объектов с указанным номером partN и машиной, возвращаем null
+//   if (filteredByPartNAndMachine.length === 0) {
+//       return null;
+//   }
+
+//   // Сортируем отфильтрованный массив по убыванию даты
+//   const sortedByDate = filteredByPartNAndMachine.sort(
+//       (a, b) => new Date(b.part.date).getTime() - new Date(a.part.date).getTime()
+//   );
+
+//   // Получаем id с самой поздней датой
+//   const idWithLatestDate = sortedByDate[0].id;
+
+//   return idWithLatestDate;
+
+
 export function findIdByPartNAndLatestDate(arr: ArrayItem[], partN: string, machine: string): string | null {
-  // Создаем регулярное выражение для сравнения номера
-  const regex = sameColorParts.includes(partN) ? new RegExp(`^${partN.slice(0, -1)}.*$`) : new RegExp(`^${partN}$`);
+  // Определяем, является ли номер детали из массива sameColorParts
+  const isSameColorPart = sameColorParts.includes(partN);
 
   // Фильтруем массив по номеру partN и машине
   const filteredByPartNAndMachine = arr.filter((item) => {
-      return regex.test(item.part.partN) && item.part.machine === machine;
+    if (isSameColorPart) {
+      return item.part.partN.startsWith(partN) && item.part.machine === machine;
+    }
+    return item.part.partN === partN && item.part.machine === machine;
   });
 
   // Если нет объектов с указанным номером partN и машиной, возвращаем null
   if (filteredByPartNAndMachine.length === 0) {
-      return null;
+    return null;
   }
 
   // Сортируем отфильтрованный массив по убыванию даты
   const sortedByDate = filteredByPartNAndMachine.sort(
-      (a, b) => new Date(b.part.date).getTime() - new Date(a.part.date).getTime()
+    (a, b) => new Date(b.part.date).getTime() - new Date(a.part.date).getTime()
   );
 
   // Получаем id с самой поздней датой

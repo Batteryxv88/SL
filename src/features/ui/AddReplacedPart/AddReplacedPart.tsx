@@ -26,16 +26,16 @@ const AddReplacedPart = () => {
     const [quantity, setQuantity] = useState<number>(0);
     const [date, setDate] = useState<any>("");
 
-    useEffect(() => {
-        fetch("https://worldtimeapi.org/api/timezone/Europe/Moscow")
-            .then((res) => {
-                return res.json();
-            })
-            .then((date) => setDate(date.datetime))
-            .catch((err) => {
-                console.log("Ошибка. Запрос не выполнен: ", err);
-            });
-    }, [quantity]);
+    // useEffect(() => {
+    //     fetch("https://worldtimeapi.org/api/timezone/Europe/Moscow")
+    //         .then((res) => {
+    //             return res.json();
+    //         })
+    //         .then((date) => setDate(date.datetime))
+    //         .catch((err) => {
+    //             console.log("Ошибка. Запрос не выполнен: ", err);
+    //         });
+    // }, [quantity]);
 
     type FormValues = {
         partN: string;
@@ -70,6 +70,8 @@ const AddReplacedPart = () => {
     ];
 
     const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+
+
         const value = Number(e.target.value);
         setQuantity(value);
         setValue("quantity", value, { shouldValidate: true });
@@ -77,11 +79,23 @@ const AddReplacedPart = () => {
 
     const [error, setError] = useState<boolean>(false);
 
+    const handleSetDate = () => {
+        fetch("https://worldtimeapi.org/api/timezone/Europe/Moscow")
+            .then((res) => {
+                return res.json();
+            })
+            .then((date) => setDate(date.datetime))
+            .catch((err) => {
+                console.log("Ошибка. Запрос не выполнен: ", err);
+            });
+    }
+
     
 
     const handleAddPart = (e: any) => {
+
+
         const cleanedPartN = e.partN.trim().toUpperCase();
-        
 
         const currentPart = stockData.filter((item: any) => {
             if (sameColorParts.includes(cleanedPartN)) {
@@ -188,6 +202,7 @@ const AddReplacedPart = () => {
                         })}
                         className={cls.input}
                         type="number"
+                        onChange={handleSetDate}
                     ></input>
                 </div>
                 <div className={cls.box}>
