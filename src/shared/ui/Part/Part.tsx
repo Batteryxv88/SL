@@ -35,6 +35,7 @@ const Part = (props: PartProps) => {
         dispatch(updateStock(updatedPart));
         setNewQuantity("");
         setOnEdit(false);
+
     };
 
     return (

@@ -6,7 +6,7 @@ const Navbar = () => {
 
     return (
         <div className={cls.navbar}>
-            <Link className={cls.button} to={"/"}><Button name={'ГЛАВНАЯ'}  /></Link>
+            <Link className={cls.button} to={"/"}><Button name={'СКЛАД'}  /></Link>
             <Link className={cls.button} to={"/schedule"}><Button name={'ЗАМЕНА ДЕТАЛЕЙ'}  /></Link>
             <Link className={cls.button} to={"/toner"}> <Button name={'ЗАМЕНА ТОНЕРА'}  /> </Link >
             <Link className={cls.button} to={"/report"}> <Button name={'ОТЧЕТ'}  /> </Link >

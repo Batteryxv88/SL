@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { addDoc, collection, deleteDoc, doc, getDocs } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from "firebase/firestore";
 import db from "../../../config/fbConfig";
 
 
@@ -37,6 +37,8 @@ export const fetchToners = createAsyncThunk(
     }
 )
 
+
+
 export type Toner = {
     color?: string;
     man?: string;
@@ -68,6 +70,7 @@ const tonerSlice = createSlice({
         .addCase(deleteToner.fulfilled, (state, action)=> {
             state.tonersArray = state.tonersArray.filter((toner)=> toner.id !== action.payload)
         })
+        
     }
 })
 

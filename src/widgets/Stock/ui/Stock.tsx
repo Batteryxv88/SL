@@ -56,7 +56,7 @@ const Stock = () => {
     return (
         <div className={cls.stock}>
             <div className={cls.titleBox}>
-                <h6>СКЛАД</h6>
+                <h6>ДЕТАЛИ</h6>
             </div>
             {renderSection("External section")}
             {renderSection("Photo conductor section")}

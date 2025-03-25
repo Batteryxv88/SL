@@ -79,15 +79,43 @@ const AddReplacedPart = () => {
 
     const [error, setError] = useState<boolean>(false);
 
+    // const handleSetDate = () => {
+    //     fetch("https://worldtimeapi.org/api/timezone/Europe/Moscow")
+    //         .then((res) => {
+    //             return res.json();
+    //         })
+    //         .then((date) => setDate(date.datetime))
+    //         .catch((err) => {
+    //             console.log("Ошибка. Запрос не выполнен: ", err);
+    //         });
+    // }
+
     const handleSetDate = () => {
-        fetch("https://worldtimeapi.org/api/timezone/Europe/Moscow")
-            .then((res) => {
-                return res.json();
-            })
-            .then((date) => setDate(date.datetime))
-            .catch((err) => {
-                console.log("Ошибка. Запрос не выполнен: ", err);
-            });
+        const currentDate = new Date();
+
+        function formatDate(date:any) {
+            const pad = (num:any) => String(num).padStart(2, '0');
+            const year = date.getFullYear();
+            const month = pad(date.getMonth() + 1); // Месяцы в JS начинаются с 0
+            const day = pad(date.getDate());
+            const hours = pad(date.getHours());
+            const minutes = pad(date.getMinutes());
+            const seconds = pad(date.getSeconds());
+            const milliseconds = String(date.getMilliseconds()).padStart(3, '0');
+        
+            // Получаем смещение по времени в минутах и конвертируем в часы:минуты
+            const timezoneOffset = -date.getTimezoneOffset();
+            const timezoneHours = pad(Math.floor(timezoneOffset / 60));
+            const timezoneMinutes = pad(Math.abs(timezoneOffset % 60));
+            const timezoneSign = timezoneOffset >= 0 ? "+" : "-";
+            
+            // Формируем строку
+            return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milliseconds}${timezoneSign}${timezoneHours}:${timezoneMinutes}`;
+        }
+
+        const formattedDate = formatDate(currentDate);
+
+        setDate(formattedDate)
     }
 
     
@@ -165,8 +193,6 @@ const AddReplacedPart = () => {
         dispatch(addUsedPart(partU));
 
         reset();
-
-        console.log(idForUpdate)
     };
 
     

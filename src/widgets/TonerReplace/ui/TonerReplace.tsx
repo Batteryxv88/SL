@@ -21,6 +21,7 @@ const TonerReplace = () => {
 
     
     const sortedToners = sortAndFilterToners(data, machineTonerState)
+    console.log(sortedToners)
 
 
     return ( <div className={cls.toners}>

@@ -1,18 +1,20 @@
 import { changePage } from "../../../app/providers/StoreProvider/Store/ChangePageSlice";
-import { useAppDispatch } from "../../../app/providers/StoreProvider/Store/hooks";
+import { useAppDispatch, useAppSelector } from "../../../app/providers/StoreProvider/Store/hooks";
 import AddPart from "../../../features/ui/AddPart/AddPart";
 import Stock from "../../../widgets/Stock/ui/Stock";
+import TonersStorage from "../../../widgets/TonersStorage/ui/TonersStorage";
 import cls from "./MainPage.module.scss";
 
 const MainPage = () => {
     const dispatch = useAppDispatch();
+    const storageState = useAppSelector((state) => state.machines.storage);
 
     dispatch(changePage("main"));
 
     return (
         <div className={cls.MainPage}>
-            <AddPart />
-            <Stock />
+            {storageState === "Детали"? <AddPart />: ''}
+            {storageState === "Детали"? <Stock />: <TonersStorage />}
         </div>
     );
 };

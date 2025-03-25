@@ -79,13 +79,6 @@ const partSlice = createSlice({
             state.partsArray = action.payload
         })
         .addCase(updateStock.fulfilled, (state, action)=> {
-            // console.log('updateStock.fulfilled', action.payload)
-            // const {id, part} = action.payload
-            // const partIndex = state.partsArray.findIndex((part: any)=> part.id === id);
-            // if(partIndex !== -1) {
-            //     state.partsArray[partIndex] = {id: id, part}
-            // }
-
             const { id, part } = action.payload;
             const partIndex = state.partsArray.findIndex((part: any) => part.id === id);
             if (partIndex !== -1) {

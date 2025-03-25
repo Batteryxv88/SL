@@ -4,8 +4,23 @@ import cls from "./Report.module.scss";
 
 const Report = () => {
     const report = useAppSelector((state) => state.report.report);
+
+   
+    function order(words: any){
+        const arr = words.split(" ")
+        const ttt = arr.map((item: any) => {return item.split('').map((item: any) => {return Number(item) || item})})
+        function extractNumber(arr: any) {
+            const number = arr.find((item: any) => typeof item === 'number');
+            return number || 0; // Если число не найдено, возвращаем 0
+        }
+       
+        const sortedArray = ttt.sort((a: any, b: any) => extractNumber(a) - extractNumber(b));
+        return sortedArray.map((item: any) => item.join('')).join(" ")
+        
+    }
     
-console.log(report)
+        
+        console.log(order("4of Fo1r pe6ople g3ood th5e the2"))
 
     return (
         <div className={cls.report}>
@@ -41,17 +56,19 @@ console.log(report)
                 </div>
             ) : (
                 ""
-            )}{report.slice(1).map((item:any) => (
+            )}
+            {report.slice(1).map((item: any) => (
                 <ReplacedPart
-                name={item.partName} 
-                qty={item.quantity}
-                date={item.date}
-                man={item.man}
-                number={item.partN}
-                percent={item.percent}
-                life={item.life} />
+                    name={item.partName}
+                    qty={item.quantity}
+                    date={item.date}
+                    man={item.man}
+                    number={item.partN}
+                    percent={item.percent}
+                    life={item.life}
+                />
             ))}
-            
+
             {/* {report.map((item) => (
                 <div className={cls.partWrapper}>
                     <p className={cls.partNumber}>{item.partN}</p>
