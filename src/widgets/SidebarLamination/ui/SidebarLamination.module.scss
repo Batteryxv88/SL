@@ -1,0 +1,34 @@
+.SidebarLamination {
+    padding: 20px;
+    color: black;
+    height: 100%;
+    overflow-y: auto;
+
+    .wrapper {
+        padding: 20px;
+        background: #f8a3a3;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        border-radius: 10px;
+    }
+
+    .title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        line-height: 1.4;
+    }
+
+    .text {
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 15px;
+        opacity: 0.9;
+        transition: opacity 0.3s ease;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
