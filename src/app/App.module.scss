@@ -1,0 +1,42 @@
+.app {
+    min-height: 100vh;
+    background: #121212;
+    color: rgba(255, 255, 255, 0.87);
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 4.4fr;
+    background: #121212;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at top right, rgba(187, 134, 252, 0.05), transparent 50%);
+        pointer-events: none;
+    }
+}
+
+// Стили для Suspense fallback
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 16px;
+    letter-spacing: 0.5px;
+} 
+
+.pages {
+    width: auto;
+    
+}

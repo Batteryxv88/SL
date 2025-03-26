@@ -3,65 +3,103 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #24305e;
+    padding: 10px 24px;
+    background: #1E1E1E;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.2s ease;
+
+    &:hover {
+        background: #2A2A2A;
+    }
 }
 
 .dateBox {
     display: flex;
     flex-direction: row;
+    gap: 4px;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 14px;
+    min-width: 120px;
+    justify-content: center;
 }
 
 .colorBox {
-    width: 40px;
+    width: 80px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
 
+.colorName {
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 14px;
+    font-weight: 500;
+}
+
 .colorM {
-    border-radius: 9px;
-    width: 18px;
-    height: 18px;
-    background-color: magenta;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #E91E63;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .colorC {
-    border-radius: 9px;
-    width: 18px;
-    height: 18px;
-    background-color: cyan;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #00BCD4;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .colorY {
-    border-radius: 9px;
-    width: 18px;
-    height: 18px;
-    background-color: yellow;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #FFC107;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .colorK {
-    border-radius: 9px;
-    width: 18px;
-    height: 18px;
-    background-color: black;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #212121;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.12);
 }
-
 
 .counter {
     width: 120px;
     text-align: center;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 14px;
 }
 
 .man {
-    width: 100px;
-    text-align: center;  
+    width: 120px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 14px;
 }
 
 .buttonDelete {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     background-color: transparent;
     border: none;
     cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.08);
+    }
 }

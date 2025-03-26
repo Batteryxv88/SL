@@ -1,40 +1,135 @@
 .replacedPart {
-    border-bottom: 1px solid black;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    background: #1E1E1E;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.2s ease;
+    margin-bottom: 8px;
+
+    &:nth-child(odd) {
+        background: #1E1E1E;
+    }
+
+    &:nth-child(even) {
+        background: #2A2A2A;
+    }
+
+    &:hover {
+        background: #333333;
+        border-color: rgba(255, 255, 255, 0.12);
+    }
 }
 
 .date {
     display: flex;
-    flex-direction: row;
+    align-items: center;
     justify-content: center;
-    width: 100px;
+    width: 120px;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 14px;
 }
 
 .name {
     width: 200px;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .number {
     width: 120px;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 14px;
 }
 
 .man {
-    width: 100px;
+    width: 120px;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 14px;
 }
 
 .qty {
-    width: 25px;
-}
-
-.percentRed {
-    width: 50px;
-    background-color: var(--color-coral);
+    width: 40px;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 14px;
     text-align: center;
 }
 
+.percentRed {
+    width: 60px;
+    padding: 4px 8px;
+    background: rgba(207, 102, 121, 0.12);
+    color: #CF6679;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 4px;
+}
+
 .percentGreen {
-    width: 50px;
-    background-color: #14a76c;
+    width: 60px;
+    padding: 4px 8px;
+    background: rgba(20, 167, 108, 0.12);
+    color: #14A76C;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.button {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 4px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.87);
+    }
+
+    &:active {
+        background: rgba(255, 255, 255, 0.12);
+    }
+}
+
+.buttonDelete {
+    color: #CF6679;
+
+    &:hover {
+        background: rgba(207, 102, 121, 0.12);
+        color: #CF6679;
+    }
+
+    &:active {
+        background: rgba(207, 102, 121, 0.24);
+    }
+}
+
+.buttonEdit {
+    color: #BB86FC;
+
+    &:hover {
+        background: rgba(187, 134, 252, 0.12);
+        color: #BB86FC;
+    }
+
+    &:active {
+        background: rgba(187, 134, 252, 0.24);
+    }
 }

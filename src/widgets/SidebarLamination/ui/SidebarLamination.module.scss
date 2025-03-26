@@ -1,34 +1,38 @@
 .SidebarLamination {
-    padding: 20px;
-    color: black;
+    
+    color: rgba(255, 255, 255, 0.87);
     height: 100%;
     overflow-y: auto;
 
     .wrapper {
-        padding: 20px;
-        background: #f8a3a3;
+        padding: 24px;
+        background: #1E1E1E;
         display: flex;
         flex-direction: column;
-        gap: 10px;
-        border-radius: 10px;
+        gap: 16px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
     }
 
     .title {
-        font-size: 18px;
-        font-weight: 600;
-        margin-bottom: 20px;
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 24px;
         line-height: 1.4;
+        color: rgba(255, 255, 255, 0.87);
+        letter-spacing: 0.15px;
     }
 
     .text {
         font-size: 14px;
         line-height: 1.6;
-        margin-bottom: 15px;
-        opacity: 0.9;
-        transition: opacity 0.3s ease;
+        margin-bottom: 16px;
+        color: rgba(255, 255, 255, 0.6);
+        transition: color 0.2s ease;
 
         &:hover {
-            opacity: 1;
+            color: rgba(255, 255, 255, 0.87);
         }
     }
 }

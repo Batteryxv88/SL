@@ -1,22 +1,73 @@
 .navbar {
     display: flex;
     width: 100%;
-    height: 70px;
-    background-color: #f76c6c;
+    height: 64px;
+    background: #1E1E1E;
     align-items: center;
-    //background-color: #24305e;
+    padding: 0 24px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 1000;
 
-    //background: #24305E;
-    background: -moz-linear-gradient(-45deg, #24305E 0%, #374785 100%);
-    background: -webkit-linear-gradient(-45deg, #24305E 0%, #374785 100%);
-    background: linear-gradient(135deg, #24305E 0%, #374785 100%);
-
-    font-size: 14px;
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.08);
+    }
 }
 
 .button {
-    margin: 0;
-    color: #FFFFFF;
-    text-shadow: 0 0 10px #FFFFFF;
+    margin: 0 8px;
+    color: rgba(255, 255, 255, 0.87);
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+    font-size: 14px;
+    letter-spacing: 0.1px;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.08);
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+    
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 1);
+    }
+    
+    &:active {
+        background-color: rgba(255, 255, 255, 0.12);
+    }
 
+    &.active {
+        background-color: rgba(255, 255, 255, 0.12);
+        color: rgba(255, 255, 255, 1);
+        
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 2px;
+            background: #BB86FC;
+            border-radius: 2px;
+        }
+    }
 }

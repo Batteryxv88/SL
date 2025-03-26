@@ -5,78 +5,72 @@ import cls from "./Report.module.scss";
 const Report = () => {
     const report = useAppSelector((state) => state.report.report);
 
-   
-    function order(words: any){
-        const arr = words.split(" ")
-        const ttt = arr.map((item: any) => {return item.split('').map((item: any) => {return Number(item) || item})})
-        function extractNumber(arr: any) {
-            const number = arr.find((item: any) => typeof item === 'number');
-            return number || 0; // Если число не найдено, возвращаем 0
-        }
-       
-        const sortedArray = ttt.sort((a: any, b: any) => extractNumber(a) - extractNumber(b));
-        return sortedArray.map((item: any) => item.join('')).join(" ")
-        
+    if (!report || report.length === 0) {
+        return (
+            <div className={cls.report}>
+                <div className={cls.empty}>
+                    Нет данных для отображения
+                </div>
+            </div>
+        );
     }
-    
-        
-        console.log(order("4of Fo1r pe6ople g3ood th5e the2"))
 
     return (
         <div className={cls.report}>
-            {report.length > 0 ? (
-                <div>
-                    <h2 className={cls.title}>{report[0].machine}</h2>
-                    <span>Период:</span>
-                    <p className={cls.period}>{report[0].period}</p>
-                    <div className={cls.tonersWrapper}>
-                        <span className={cls.tonersTitle}>Тонеры:</span>
+            <div className={cls.header}>
+                <h2 className={cls.title}>{report[0].machine}</h2>
+                <span className={cls.period}>{report[0].period}</span>
+            </div>
+
+            <div className={cls.tonersWrapper}>
+                <span className={cls.tonersTitle}>Тонеры:</span>
+                <div className={cls.tonersGrid}>
+                    <div className={cls.tonerItem}>
                         <div className={cls.colorWrapper}>
-                            <p className={cls.colorTitle}>{"C"}</p>
+                            <span className={cls.colorTitle}>C</span>
                             <div className={cls.colorCircleC}></div>
-                            <p>{" - " + report[0].tonerC}</p>
-                        </div>
-                        <div className={cls.colorWrapper}>
-                            <p className={cls.colorTitle}>{"M"}</p>
-                            <div className={cls.colorCircleM}></div>
-                            <p>{" - " + report[0].tonerM}</p>
-                        </div>
-                        <div className={cls.colorWrapper}>
-                            <p className={cls.colorTitle}>{"Y"}</p>
-                            <div className={cls.colorCircleY}></div>
-                            <p>{" - " + report[0].tonerY}</p>
-                        </div>
-                        <div className={cls.colorWrapper}>
-                            <p className={cls.colorTitle}>{"K"}</p>
-                            <div className={cls.colorCircleK}></div>
-                            <p>{" - " + report[0].tonerK}</p>
+                            <span className={cls.tonerValue}>{report[0].tonerC}</span>
                         </div>
                     </div>
-                    <span className={cls.partsTitle}>Детали:</span>
+                    <div className={cls.tonerItem}>
+                        <div className={cls.colorWrapper}>
+                            <span className={cls.colorTitle}>M</span>
+                            <div className={cls.colorCircleM}></div>
+                            <span className={cls.tonerValue}>{report[0].tonerM}</span>
+                        </div>
+                    </div>
+                    <div className={cls.tonerItem}>
+                        <div className={cls.colorWrapper}>
+                            <span className={cls.colorTitle}>Y</span>
+                            <div className={cls.colorCircleY}></div>
+                            <span className={cls.tonerValue}>{report[0].tonerY}</span>
+                        </div>
+                    </div>
+                    <div className={cls.tonerItem}>
+                        <div className={cls.colorWrapper}>
+                            <span className={cls.colorTitle}>K</span>
+                            <div className={cls.colorCircleK}></div>
+                            <span className={cls.tonerValue}>{report[0].tonerK}</span>
+                        </div>
+                    </div>
                 </div>
-            ) : (
-                ""
-            )}
-            {report.slice(1).map((item: any) => (
-                <ReplacedPart
-                    name={item.partName}
-                    qty={item.quantity}
-                    date={item.date}
-                    man={item.man}
-                    number={item.partN}
-                    percent={item.percent}
-                    life={item.life}
-                />
-            ))}
+            </div>
 
-            {/* {report.map((item) => (
-                <div className={cls.partWrapper}>
-                    <p className={cls.partNumber}>{item.partN}</p>
-                    <p className={cls.partName}>{item.partName}</p>
-                    <p className={cls.man}>{item.man}</p>
-                    <p className={cls.qty}>{item.quantity}</p>
-                </div>
-            ))} */}
+            <div className={cls.partsSection}>
+                <span className={cls.partsTitle}>Детали:</span>
+                {report.slice(1).map((item: any, index: number) => (
+                    <ReplacedPart
+                        key={index}
+                        name={item.partName}
+                        qty={item.quantity}
+                        date={item.date}
+                        man={item.man}
+                        number={item.partN}
+                        percent={item.percent}
+                        life={item.life}
+                    />
+                ))}
+            </div>
         </div>
     );
 };

@@ -2,44 +2,127 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 36px;
-    margin-bottom: 20px;
-
+    margin-bottom: 24px;
+    gap: 16px;
 }
 
 .button {
-    border: 1px solid var(--color-dark-blue);
-    background-color: white;
-    width: 130px;
-    color: var(--color-dark-blue);
-    border-radius: 4px;
+    width: 100%;
+    max-width: 200px;
+    height: 40px;
+    padding: 0 16px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    background: #2A2A2A;
+    color: rgba(255, 255, 255, 0.87);
     cursor: pointer;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-    margin-top: 20px;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.1px;
+
+    &:hover {
+        background: #333333;
+        border-color: rgba(255, 255, 255, 0.24);
+    }
+
+    &:active {
+        background: #3A3A3A;
+    }
 }
 
 .activeButton {
-    border: 1px solid var(--color-dark-blue);
-    background-color: white;
-    width: 130px;
-    color: var(--color-dark-blue);
-    border-radius: 4px;
+    width: 100%;
+    max-width: 200px;
+    height: 40px;
+    padding: 0 16px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    border: 1px solid #BB86FC;
+    border-radius: 8px;
+    background: rgba(187, 134, 252, 0.12);
+    color: #BB86FC;
     cursor: pointer;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-    background-color: var(--color-blue);
-    color: white;
-    margin-top: 20px;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.1px;
+
+    &:hover {
+        background: rgba(187, 134, 252, 0.16);
+        border-color: #C397FC;
+    }
+
+    &:active {
+        background: rgba(187, 134, 252, 0.24);
+    }
 }
 
+.SidebarReplaceToner {
+    padding: 24px;
+    color: rgba(255, 255, 255, 0.87);
+    height: 100%;
+    overflow-y: auto;
 
+    .wrapper {
+        padding: 24px;
+        background: #1E1E1E;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
+    }
 
-.button:hover {
-    background-color: rgb(221, 221, 221);
-    color: var(--color-dark-blue);
+    .title {
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 24px;
+        line-height: 1.4;
+        color: rgba(255, 255, 255, 0.87);
+        letter-spacing: 0.15px;
+    }
+
+    .text {
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 16px;
+        color: rgba(255, 255, 255, 0.6);
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: rgba(255, 255, 255, 0.87);
+        }
+    }
+
+    .printerList {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .printerItem {
+        padding: 12px 16px;
+        background: #2A2A2A;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.87);
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+            background: #333333;
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        &.active {
+            background: rgba(187, 134, 252, 0.12);
+            border-color: #BB86FC;
+            color: #BB86FC;
+        }
+    }
 }

@@ -14,21 +14,8 @@ const AddToner = () => {
         (state) => state.tonersStorage.tonersStorageArr
     );
     
-
-    
     const machineTonerState = useAppSelector((state) => state.machines.tonerMachine);
 
-
-    // useEffect(() => {
-    //     fetch("https://worldtimeapi.org/api/timezone/Europe/Moscow")
-    //         .then((res) => {
-    //             return res.json();
-    //         })
-    //         .then((date) => setDate(date.datetime))
-    //         .catch((err) => {
-    //             console.log("Ошибка. Запрос не выполнен: ", err);
-    //         });
-    // }, [dispatch]);
 
     useEffect(() => {
         const currentDate = new Date();
@@ -151,7 +138,7 @@ const AddToner = () => {
                                 message: "Минимум 5 символов",
                             },
                         })}
-                        className={!errors.counter ? cls.input : cls.error}
+                        className={cls.input}
                         type="number"
                     ></input>
                 </div>
@@ -159,10 +146,12 @@ const AddToner = () => {
                     Добавить
                 </button>
             </form>
-            <div className={cls.errMessage}>
-                {(errors?.counter && <p>{errors?.counter.message}</p>) ||
-                    (errors?.man && <p>{errors?.man.message}</p>) ||
-                    (errors?.color && <p>{errors?.color.message}</p>)}
+            <div className={cls.errorContainer}>
+                <div className={`${cls.errMessage} ${Object.keys(errors).length > 0 ? cls.visible : ''}`}>
+                    {(errors?.counter && <p>{errors?.counter.message}</p>) ||
+                        (errors?.man && <p>{errors?.man.message}</p>) ||
+                        (errors?.color && <p>{errors?.color.message}</p>)}
+                </div>
             </div>
         </>
     );

@@ -6,7 +6,6 @@ const SidebarLamination = () => {
 
     return (
         <div className={cls.SidebarLamination}>
-            <div className={cls.wrapper}>
                 <h2 className={cls.title}>Как правильно измерить толщину слоя ламинации в рулоне</h2>
                 <p className={cls.text}>
                 1. Измеряйте расстояние от внешнего диаметра картонной втулки до края слоя ламинации.
@@ -24,7 +23,6 @@ const SidebarLamination = () => {
             <p className={cls.text}>
                 5. Если можете определить десятые доли миллиметра на глаз – используйте их.
                 </p>
-            </div>
         </div>
     );
 };

@@ -9,16 +9,17 @@ import Favicon from "react-favicon";
 import Fvicon from '../../public/favicon.svg'
 import { ReportPage } from "../pages/ReportPage";
 import { LaminatePageAsync } from "../pages/LaminatePage/ui/LaminatePage.async";
+import cls from './App.module.scss';
 
 const App = () => {
     return (
-        <div className="app">
-            
+        <div className={cls.app}>
             <Favicon url={Fvicon} />
             <Navbar />
-            <div className="container">
+            <div className={cls.container}>
                 <Sidebar />
-                <Suspense fallback={<div>Loading...</div>}>
+                <div className={cls.pages}>
+                <Suspense fallback={<div className={cls.loading}>Loading...</div>}>
                     <Routes>
                         <Route path={"/toner"} element={<TonerPage />} />
                         <Route path={"/schedule"} element={<SchedulePage />} />
@@ -27,6 +28,8 @@ const App = () => {
                         <Route path={"/laminate"} element={<LaminatePageAsync />} />
                     </Routes>
                 </Suspense>
+                </div>
+                
             </div>
         </div>
     );
