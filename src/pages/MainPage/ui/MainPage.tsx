@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../../app/providers/StoreProv
 import AddPart from "../../../features/ui/AddPart/AddPart";
 import Stock from "../../../widgets/Stock/ui/Stock";
 import TonersStorage from "../../../widgets/TonersStorage/ui/TonersStorage";
+import LaminatePage from "../../LaminatePage/ui/LaminatePage";
 import cls from "./MainPage.module.scss";
 
 const MainPage = () => {
@@ -13,8 +14,10 @@ const MainPage = () => {
 
     return (
         <div className={cls.MainPage}>
-            {storageState === "Детали"? <AddPart />: ''}
-            {storageState === "Детали"? <Stock />: <TonersStorage />}
+            {storageState === "Детали" ? <AddPart /> : ''}
+            {storageState === "Детали" ? <Stock /> : 
+             storageState === "Тонеры" ? <TonersStorage /> :
+             storageState === "Ламинация" ? <LaminatePage /> : null}
         </div>
     );
 };

@@ -10,6 +10,7 @@ const Navbar = () => {
             <Link className={cls.button} to={"/schedule"}><Button name={'ЗАМЕНА ДЕТАЛЕЙ'}  /></Link>
             <Link className={cls.button} to={"/toner"}> <Button name={'ЗАМЕНА ТОНЕРА'}  /> </Link >
             <Link className={cls.button} to={"/report"}> <Button name={'ОТЧЕТ'}  /> </Link >
+            <Link className={cls.button} to={"/laminate"}> <Button name={'РАСЧЕТ ЛАМИНАЦИИ'}  /> </Link >
         </div>
     );
 };

@@ -8,6 +8,7 @@ import { TonerPage } from "../pages/TonerPage";
 import Favicon from "react-favicon";
 import Fvicon from '../../public/favicon.svg'
 import { ReportPage } from "../pages/ReportPage";
+import { LaminatePageAsync } from "../pages/LaminatePage/ui/LaminatePage.async";
 
 const App = () => {
     return (
@@ -23,6 +24,7 @@ const App = () => {
                         <Route path={"/schedule"} element={<SchedulePage />} />
                         <Route path={"/"} element={<MainPage />} />
                         <Route path={"/report"} element={<ReportPage />} />
+                        <Route path={"/laminate"} element={<LaminatePageAsync />} />
                     </Routes>
                 </Suspense>
             </div>
