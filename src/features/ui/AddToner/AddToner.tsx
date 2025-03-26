@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import cls from "./AddToner.module.scss";
 import { useDispatch } from "react-redux";
 import { addToner } from "../../../app/providers/StoreProvider/Store/TonerSlice";
@@ -6,7 +6,40 @@ import { useForm } from "react-hook-form";
 import { useAppSelector } from "../../../app/providers/StoreProvider/Store/hooks";
 import { fetchTonersStorage, updateToner } from "../../../app/providers/StoreProvider/Store/TonersStorageSlice";
 
+const Modal = ({ isOpen, onClose, children }: { isOpen: boolean; onClose: () => void; children: React.ReactNode }) => {
+    const modalRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+                onClose();
+            }
+        };
+
+        if (isOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isOpen, onClose]);
+
+    if (!isOpen) return null;
+
+    return (
+        <div className={cls.modalOverlay}>
+            <div className={cls.modalContent} ref={modalRef}>
+                <h2 className={cls.modalTitle}>Замена тонера</h2>
+                <button className={cls.closeButton} onClick={onClose}>×</button>
+                {children}
+            </div>
+        </div>
+    );
+};
+
 const AddToner = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [date, setDate] = useState<any>("");
 
     const dispatch = useDispatch<any>();
@@ -15,7 +48,6 @@ const AddToner = () => {
     );
     
     const machineTonerState = useAppSelector((state) => state.machines.tonerMachine);
-
 
     useEffect(() => {
         const currentDate = new Date();
@@ -52,7 +84,7 @@ const AddToner = () => {
     type FormValues = {
         color: string;
         man: string;
-        counter: number;
+        counter: string | number;
     };
 
     const {
@@ -62,7 +94,17 @@ const AddToner = () => {
         reset,
     } = useForm<FormValues>({
         mode: "onChange",
+        defaultValues: {
+            color: "C",
+            man: "Алексей",
+            counter: ""
+        }
     });
+
+    const handleCloseModal = () => {
+        reset();
+        setIsModalOpen(false);
+    };
 
     //учитываем замену нового тонера
     const handleAddToner = (e: any) => {
@@ -93,66 +135,76 @@ const AddToner = () => {
         dispatch(addToner(newToner));
 
         reset();
+        setIsModalOpen(false);
     };
 
     return (
         <>
-            <form
-                className={cls.addToner}
-                onSubmit={handleSubmit(handleAddToner)}
+            <button 
+                className={cls.openModalButton} 
+                onClick={() => setIsModalOpen(true)}
             >
-                <div className={cls.box}>
-                    <label>Цвет</label>
-                    <select
-                        {...register("color", {
-                            required: "Обязательное поле",
-                        })}
-                        className={cls.input}
-                    >
-                        <option value={"C"}>C</option>
-                        <option value={"M"}>M</option>
-                        <option value={"Y"}>Y</option>
-                        <option value={"K"}>K</option>
-                    </select>
+                Заменить тонер
+            </button>
+
+            <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+                <form
+                    className={cls.addToner}
+                    onSubmit={handleSubmit(handleAddToner)}
+                >
+                    <div className={cls.box}>
+                        <label>Цвет</label>
+                        <select
+                            {...register("color", {
+                                required: "Обязательное поле",
+                            })}
+                            className={cls.input}
+                        >
+                            <option value={"C"}>C</option>
+                            <option value={"M"}>M</option>
+                            <option value={"Y"}>Y</option>
+                            <option value={"K"}>K</option>
+                        </select>
+                    </div>
+                    <div className={cls.box}>
+                        <label className={cls.label}>Ответственный</label>
+                        <select
+                            {...register("man", {
+                                required: "Обязательное поле",
+                            })}
+                            className={cls.input}
+                        >
+                            <option value={"Алексей"}>Алексей</option>
+                            <option value={"Максим"}>Максим</option>
+                            <option value={"Сергей"}>Сергей</option>
+                        </select>
+                    </div>
+                    <div className={cls.box}>
+                        <label className={cls.label}>Счетчик</label>
+                        <input
+                            {...register("counter", {
+                                required: "Обязательное поле",
+                                minLength: {
+                                    value: 5,
+                                    message: "Минимум 5 символов",
+                                },
+                            })}
+                            className={cls.input}
+                            type="number"
+                        ></input>
+                    </div>
+                    <button className={cls.button} type="submit">
+                        Добавить
+                    </button>
+                </form>
+                <div className={cls.errorContainer}>
+                    <div className={`${cls.errMessage} ${Object.keys(errors).length > 0 ? cls.visible : ''}`}>
+                        {(errors?.counter && <p>{errors?.counter.message}</p>) ||
+                            (errors?.man && <p>{errors?.man.message}</p>) ||
+                            (errors?.color && <p>{errors?.color.message}</p>)}
+                    </div>
                 </div>
-                <div className={cls.box}>
-                    <label className={cls.label}>Ответственный</label>
-                    <select
-                        {...register("man", {
-                            required: "Обязательное поле",
-                        })}
-                        className={cls.input}
-                    >
-                        <option value={"Алексей"}>Алексей</option>
-                        <option value={"Максим"}>Максим</option>
-                        <option value={"Сергей"}>Сергей</option>
-                    </select>
-                </div>
-                <div className={cls.box}>
-                    <label className={cls.label}>Счетчик</label>
-                    <input
-                        {...register("counter", {
-                            required: "Обязательное поле",
-                            minLength: {
-                                value: 5,
-                                message: "Минимум 5 символов",
-                            },
-                        })}
-                        className={cls.input}
-                        type="number"
-                    ></input>
-                </div>
-                <button className={cls.button} type="submit">
-                    Добавить
-                </button>
-            </form>
-            <div className={cls.errorContainer}>
-                <div className={`${cls.errMessage} ${Object.keys(errors).length > 0 ? cls.visible : ''}`}>
-                    {(errors?.counter && <p>{errors?.counter.message}</p>) ||
-                        (errors?.man && <p>{errors?.man.message}</p>) ||
-                        (errors?.color && <p>{errors?.color.message}</p>)}
-                </div>
-            </div>
+            </Modal>
         </>
     );
 };

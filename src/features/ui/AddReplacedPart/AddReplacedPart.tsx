@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import cls from "./AddReplacedPart.module.scss";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
     addUsedPart,
     updateUsedPart,
@@ -12,7 +12,40 @@ import { useForm } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "../../../app/providers/StoreProvider/Store/hooks";
 import { lifePercent } from "../../../shared/lib/calculatePercentOfLife";
 
+const Modal = ({ isOpen, onClose, children }: { isOpen: boolean; onClose: () => void; children: React.ReactNode }) => {
+    const modalRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+                onClose();
+            }
+        };
+
+        if (isOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isOpen, onClose]);
+
+    if (!isOpen) return null;
+
+    return (
+        <div className={cls.modalOverlay}>
+            <div className={cls.modalContent} ref={modalRef}>
+                <h2 className={cls.modalTitle}>Замена детали</h2>
+                <button className={cls.closeButton} onClick={onClose}>×</button>
+                {children}
+            </div>
+        </div>
+    );
+};
+
 const AddReplacedPart = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const stockData: any = useSelector<any>((state) => state.parts.partsArray);
     const replacedPartsdata: any = useSelector<any>(
         (state) => state.replacedParts.usedPartsArray
@@ -52,6 +85,12 @@ const AddReplacedPart = () => {
         reset,
     } = useForm<FormValues>({
         mode: "onChange",
+        defaultValues: {
+            partN: "",
+            serviceLife: 0,
+            quantity: 0,
+            man: "Алексей"
+        }
     });
 
     const sameColorParts = [
@@ -195,83 +234,94 @@ const AddReplacedPart = () => {
         reset();
     };
 
-    
+    const handleCloseModal = () => {
+        reset();
+        setIsModalOpen(false);
+    };
 
     return (
         <>
-            <form
-                className={cls.addReplacedPart}
-                onSubmit={handleSubmit(handleAddPart)}
+            <button 
+                className={cls.openModalButton} 
+                onClick={() => setIsModalOpen(true)}
             >
-                <div className={cls.box}>
-                    <label className={cls.label}>Артикул</label>
-                    <input
-                        {...register("partN", {
-                            required: "Обязательное поле",
-                            minLength: {
-                                value: 5,
-                                message: "Минимум 5 символов",
-                            },
-                        })}
-                        className={cls.input}
-                    ></input>
+                Заменить деталь
+            </button>
+
+            <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+                <form
+                    className={cls.addReplacedPart}
+                    onSubmit={handleSubmit(handleAddPart)}
+                >
+                    <div className={cls.box}>
+                        <label className={cls.label}>Артикул</label>
+                        <input
+                            {...register("partN", {
+                                required: "Обязательное поле",
+                                minLength: {
+                                    value: 5,
+                                    message: "Минимум 5 символов",
+                                },
+                            })}
+                            className={cls.input}
+                        ></input>
+                    </div>
+                    <div className={cls.box}>
+                        <label className={cls.label}>Пройденный ресурс</label>
+                        <input
+                            {...register("serviceLife", {
+                                required: "Обязательное поле",
+                                minLength: {
+                                    value: 3,
+                                    message: "Минимум 3 символа",
+                                },
+                            })}
+                            className={cls.input}
+                            type="number"
+                            onChange={handleSetDate}
+                        ></input>
+                    </div>
+                    <div className={cls.box}>
+                        <label className={cls.label}>Кол-во</label>
+                        <input
+                            {...register("quantity", {
+                                required: "Обязательное поле",
+                                minLength: {
+                                    value: 1,
+                                    message: "Минимум 1 символ",
+                                },
+                            })}
+                            className={cls.inputQty}
+                            type="number"
+                            onChange={handleQuantityChange}
+                        ></input>
+                    </div>
+                    <div className={cls.box}>
+                        <label className={cls.label}>Ответственный</label>
+                        <select
+                            {...register("man", {
+                                required: "Обязательное поле",
+                            })}
+                            className={cls.input}
+                        >
+                            <option value={"Алексей"}>Алексей</option>
+                            <option value={"Максим"}>Максим</option>
+                            <option value={"Сергей"}>Сергей</option>
+                        </select>
+                    </div>
+                    <button className={cls.button} type="submit">
+                        Добавить
+                    </button>
+                </form>
+                <div className={cls.errorContainer}>
+                    <div className={`${cls.errMessage} ${Object.keys(errors).length > 0 ? cls.visible : ''}`}>
+                        {(errors?.partN && <p>{errors?.partN.message}</p>) ||
+                            (errors?.serviceLife && <p>{errors?.serviceLife.message}</p>) ||
+                            (errors?.quantity && <p>{errors?.quantity.message}</p>) ||
+                            (errors?.man && <p>{errors?.man.message}</p>)}
+                    </div>
                 </div>
-                <div className={cls.box}>
-                    <label className={cls.label}>Пройденный ресурс</label>
-                    <input
-                        {...register("serviceLife", {
-                            required: "Обязательное поле",
-                            minLength: {
-                                value: 3,
-                                message: "Минимум 3 символа",
-                            },
-                        })}
-                        className={cls.input}
-                        type="number"
-                        onChange={handleSetDate}
-                    ></input>
-                </div>
-                <div className={cls.box}>
-                    <label className={cls.label}>Кол-во</label>
-                    <input
-                        {...register("quantity", {
-                            required: "Обязательное поле",
-                            minLength: {
-                                value: 1,
-                                message: "Минимум 1 символ",
-                            },
-                        })}
-                        className={cls.inputQty}
-                        type="number"
-                        onChange={handleQuantityChange}
-                    ></input>
-                </div>
-                <div className={cls.box}>
-                    <label className={cls.label}>Ответственный</label>
-                    <select
-                        {...register("man", {
-                            required: "Обязательное поле",
-                        })}
-                        className={cls.input}
-                    >
-                        <option value={"Алексей"}>Алексей</option>
-                        <option value={"Максим"}>Максим</option>
-                        <option value={"Сергей"}>Сергей</option>
-                    </select>
-                </div>
-                <button className={cls.button} type="submit">
-                    Добавить
-                </button>
-            </form>
-            <div className={cls.errMessage}>
-                {(errors?.partN && <p>{errors?.partN.message}</p>) ||
-                    (errors?.man && <p>{errors?.man.message}</p>) ||
-                    (errors?.quantity && <p>{errors?.quantity.message}</p>) ||
-                    (errors?.serviceLife && (
-                        <p>{errors?.serviceLife.message}</p>
-                    ))}
-                {error ? <p>Деталь не найдена в базе</p> : ""}
-            </div>
+            </Modal>
         </>
     );
 };
