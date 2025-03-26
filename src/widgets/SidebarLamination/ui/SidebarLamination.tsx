@@ -2,6 +2,7 @@ import cls from "./SidebarLamination.module.scss";
 
 
 const SidebarLamination = () => {
+    
 
     return (
         <div className={cls.SidebarLamination}>

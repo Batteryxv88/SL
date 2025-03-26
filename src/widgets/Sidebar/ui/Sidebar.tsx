@@ -9,6 +9,7 @@ import GenerateAReport from "../../../features/ui/GenerateAReport/GenerateARepor
 import { ChangeButton } from "../../ChangeButton";
 import { changeTonerMachine } from "../../../app/providers/StoreProvider/Store/ChangeMachineSlice";
 import { changeStorage } from "../../../app/providers/StoreProvider/Store/ChangeMachineSlice";
+import { SidebarLamination } from "../../SidebarLamination";
 
 const Sidebar = () => {
     const pageState = useAppSelector((state) => state.pages.page);
@@ -17,11 +18,12 @@ const Sidebar = () => {
 
     const dispatchStorage = () => dispatch(changeStorage("Детали"));
     const dispatchToners = () => dispatch(changeStorage("Тонеры"));
-    //console.log(machineState);
 
     return (
         <div className={cls.sidebar}>
-            {pageState === "schedule" ? (
+            {pageState === "laminate" ? (
+                <SidebarLamination />
+            ) : pageState === "schedule" ? (
                 <SidebarReplacePart />
             ) : pageState === "toner" ? (
                 <SidebarReplaceToner />
