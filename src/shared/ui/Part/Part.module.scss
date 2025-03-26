@@ -1,84 +1,177 @@
 .part {
-    width: 100%;
     display: flex;
-    flex-direction: row;
-    font-size: 14px;
-    color: #24305e;
-    border-bottom: 1px solid #24305e;
-    justify-content: space-between;
-    padding-right: 5px;
     align-items: center;
-    border-top: 1px solid transparent;
+    padding: 5px;
+    background: #1E1E1E;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.2s ease;
+
+    &:nth-child(odd) {
+        background: #1E1E1E;
+    }
+
+    &:nth-child(even) {
+        background: #2A2A2A;
+    }
+
+    &:hover {
+        background: #333333;
+        border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    &.zeroQuantity {
+        background: rgba(207, 102, 121, 0.12);
+        border-color: rgba(207, 102, 121, 0.24);
+
+        &:hover {
+            background: rgba(207, 102, 121, 0.16);
+            border-color: rgba(207, 102, 121, 0.32);
+        }
+
+        .name, .number {
+            color: #CF6679;
+        }
+    }
 }
 
 .partActive {
-    //border-bottom: 1px solid red;
-    background: rgb(255,0,0);
-    background: linear-gradient(90deg, rgba(255,0,0,0) 30%, rgba(255,0,0,0.44861694677871145) 100%);
+    background: rgba(207, 102, 121, 0.12);
+    border-color: rgba(207, 102, 121, 0.24);
+
+    &:hover {
+        background: rgba(207, 102, 121, 0.16);
+        border-color: rgba(207, 102, 121, 0.32);
+    }
 }
 
 .partRed {
-    width: 100%;
     display: flex;
-    flex-direction: row;
-    font-size: 14px;
-    color: red;
-    border-bottom: 1px solid #24305e;
-    justify-content: space-between;
-    padding-right: 5px;
     align-items: center;
+    padding: 5px;
+    background: rgba(207, 102, 121, 0.12);
+    border-radius: 8px;
+    border: 1px solid rgba(207, 102, 121, 0.24);
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: rgba(207, 102, 121, 0.16);
+        border-color: rgba(207, 102, 121, 0.32);
+    }
 }
 
 .name {
-    width: 45%;
-    //border: 1px solid red;
+    width: 200px;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .number {
-    width: 45%;
+    width: 120px;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 14px;
 }
 
 .qty {
-    width: 10%;
-    display: flex;
-    justify-content: flex-end;
+    width: 40px;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 14px;
+    text-align: center;
 }
 
 .qtyRed {
-    width: 10%;
-    display: flex;
-    justify-content: flex-end;
-    color: red;
+    width: 40px;
+    color: #CF6679;
+    font-size: 14px;
+    text-align: center;
 }
 
 .button {
-    width: 20px;
-    height: 20px;
-    background-color: transparent;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
+    border-radius: 4px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
     cursor: pointer;
-    margin-left: 20px;
+    margin-left: 16px;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.87);
+    }
+
+    &:active {
+        background: rgba(255, 255, 255, 0.12);
+    }
 }
 
 .buttonDone {
-    width: 20px;
-    height: 20px;
-    background-color: transparent;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
+    border-radius: 4px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
     cursor: pointer;
     margin-left: 8px;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.87);
+    }
+
+    &:active {
+        background: rgba(255, 255, 255, 0.12);
+    }
 }
 
 .form {
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 .input {
-    height: 22px;
-    width: 40px;
-    background-color: transparent;
-    border: 1px solid var(--color-dark-blue);
-    border-radius: 3px;
+    width: 80px;
+    height: 32px;
+    padding: 0 12px;
+    font-size: 14px;
+    line-height: 20px;
+    background: #2A2A2A;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+    color: rgba(255, 255, 255, 0.87);
     text-align: center;
+    transition: all 0.2s ease;
+
+    &:focus {
+        outline: none;
+        border-color: #BB86FC;
+        background: #2A2A2A;
+    }
+
+    &:hover {
+        border-color: rgba(255, 255, 255, 0.24);
+    }
+
+    &[type="number"] {
+        color: rgba(255, 255, 255, 0.87);
+        -moz-appearance: textfield;
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    }
 }

@@ -39,7 +39,7 @@ const Part = (props: PartProps) => {
     };
 
     return (
-        <div className={qty <= 0 ? classNames(cls.part, cls.partActive): cls.part} onClick={() => setClickOutside(true)}>
+        <div className={classNames(cls.part, { [cls.zeroQuantity]: qty <= 0 })} onClick={() => setClickOutside(true)}>
             <p className={cls.name}>{name}</p>
             <p className={cls.number}>{number}</p>
             {onEdit ? (
