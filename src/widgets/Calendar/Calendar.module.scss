@@ -1,37 +1,43 @@
 .calendar {
     width: 100%;
-    padding: 38px;
+    padding: 0px 38px 38px 38px;
     display: flex;
     flex-direction: column;
     gap: 2px;
-}
-
-.h2 {
-    color: rgba(255, 255, 255, 0.87);
-    font-size: 24px;
-    font-weight: 500;
-    margin-bottom: 24px;
-    letter-spacing: 0.15px;
-    text-align: center;
 }
 
 .box {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    padding: 16px 24px;
-    background: #1E1E1E;
+    justify-content: space-around;
+    padding: 10px 24px;
+    background: linear-gradient(to right, rgba(98, 218, 251, 0.08), rgba(98, 218, 251, 0.02));
     border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
-    transition: all 0.2s ease;
-
-    &:hover {
-        background: #2A2A2A;
-        border-color: rgba(255, 255, 255, 0.12);
-    }
+    border: 1px solid rgba(98, 218, 251, 0.15);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2),
+                inset 0 0 0 1px rgba(98, 218, 251, 0.05);
+    margin-bottom: 14px;
 }
+
+.h2 {
+        
+         background: linear-gradient(to right,
+            rgba(98, 218, 251, 0.9),
+             rgba(98, 218, 251, 0.7)
+         );
+         -webkit-background-clip: text;
+        background-clip: text;
+         color: transparent;
+          font-size: 20px;
+          font-weight: 500;
+          margin-bottom: 24px;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          text-align: end;
+          padding-right: 24px;
+          font-family: monospace;
+      }
 
 .name {
     color: rgba(255, 255, 255, 0.6);

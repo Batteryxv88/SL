@@ -1,18 +1,40 @@
 .tonerPart {
+    // display: flex;
+    // flex-direction: row;
+    // justify-content: space-between;
+    // align-items: center;
+    // padding: 4px 24px;
+    // background: #1E1E1E;
+    // border-radius: 8px;
+    // //margin-bottom: 8px;
+    // border: 1px solid rgba(255, 255, 255, 0.08);
+    // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
+    // transition: background-color 0.2s ease;
+
+    // &:hover {
+    //     background: #2A2A2A;
+    // }
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     align-items: center;
-    padding: 10px 24px;
+    justify-content: space-around;
+    padding: 4px;
     background: #1E1E1E;
     border-radius: 8px;
-    margin-bottom: 8px;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
-    transition: background-color 0.2s ease;
+    transition: all 0.2s ease;
+    
+
+    &:nth-child(odd) {
+        background: #1E1E1E;
+    }
+
+    &:nth-child(even) {
+        background: #2A2A2A;
+    }
 
     &:hover {
-        background: #2A2A2A;
+        background: #333333;
+        border-color: rgba(255, 255, 255, 0.12);
     }
 }
 

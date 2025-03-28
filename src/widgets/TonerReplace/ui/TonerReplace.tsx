@@ -24,8 +24,9 @@ const TonerReplace = () => {
     console.log(sortedToners)
 
 
+
     return ( <div className={cls.toners}>
-        <h2 className={cls.h2}>{machineTonerState}</h2>
+        <h2 className={cls.h2}>{machineTonerState === "C71cf" ? "Konica_Minolta_C71cf" : "Konica_Minolta_label_190"}</h2>
         <div className={cls.box}>
                 <p className={cls.color}>Цвет</p>
                 <p className={cls.counter}>Счетчик</p>

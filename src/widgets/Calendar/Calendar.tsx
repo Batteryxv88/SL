@@ -27,9 +27,10 @@ const Calendar = () => {
         dispatch(fetchUsedParts());
     }, [dispatch]);
 
+
     return (
         <div className={cls.calendar}>
-            <h2 className={cls.h2}>{machineState}</h2>
+            <h2 className={cls.h2}>{machineState === "C71cf" ? "Konica_Minolta_C71cf" : "Konica_Minolta_label_190"}</h2>
             <div className={cls.box}>
                 <p className={cls.name}>Наименование</p>
                 <p className={cls.number}>Парт номер</p>
