@@ -37,6 +37,7 @@ const Stock = () => {
             return null; // или другая обработка, если данных нет
         }
 
+
         return (
             <>
                 <h3 className={cls.title}>{section}</h3>
@@ -56,7 +57,13 @@ const Stock = () => {
     return (
         <div className={cls.stock}>
             <div className={cls.titleBox}>
-                <h6>ДЕТАЛИ</h6>
+                <p className={cls.name}>Наименование</p>
+                <p className={cls.number}>Парт номер</p>
+                
+                    <p className={cls.quantity}>Кол-во</p>
+                    <p className={cls.edit}>Редактировать</p>
+                
+
             </div>
             {renderSection("External section")}
             {renderSection("Photo conductor section")}

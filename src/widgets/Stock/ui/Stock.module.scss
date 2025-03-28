@@ -58,6 +58,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2),
                 inset 0 0 0 1px rgba(98, 218, 251, 0.05);
     margin-bottom: 14px;
+    font-size: 14px;
 }
 
 .section {
@@ -73,3 +74,20 @@
         border-color: rgba(255, 255, 255, 0.12);
     }
 }
+
+.name {
+    width: 325px;
+}
+
+.number {
+    width: 120px;
+}
+
+.quantity {
+    width: 80px;
+}
+
+.edit {
+    width: 120px;
+}
+

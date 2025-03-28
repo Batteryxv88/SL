@@ -1,6 +1,6 @@
 import cls from "./Part.module.scss";
-import EditIcon from "../../assets/icon/editIcon.svg";
-import CheckMark from "../../assets/icon/checkMark.svg";
+import CheckIcon from "../../assets/icons/check-circle.svg";
+import EditPenIcon from "../../assets/icons/edit-pen.svg";
 import { useState } from "react";
 import { updateStock } from "../../../app/providers/StoreProvider/Store/PartSlice";
 import { useAppDispatch } from "../../../app/providers/StoreProvider/Store/hooks";
@@ -43,7 +43,7 @@ const Part = (props: PartProps) => {
             <p className={cls.name}>{name}</p>
             <p className={cls.number}>{number}</p>
             {onEdit ? (
-                <form onSubmit={submitFormHandler} className={cls.form}>
+                <form onSubmit={submitFormHandler} className={cls.qtyBox}>
                     <input
                         type="number"
                         onChange={(e) => setNewQuantity(e.target.value)}
@@ -51,18 +51,17 @@ const Part = (props: PartProps) => {
                         className={cls.input}
                     ></input>
                     <button type="submit" className={cls.buttonDone}>
-                        <CheckMark />
+                        <CheckIcon />
                     </button>
                 </form>
             ) : (
-                <p className={cls.qty}>{qty}</p>
-            )}
-            {onEdit ? (
-                ""
-            ) : (
-                <button className={cls.button} onClick={() => setOnEdit(true)}>
-                    <EditIcon></EditIcon>
-                </button>
+                <div className={cls.qtyBox}>
+                    <p className={cls.qty}>{qty}</p>
+                    <EditPenIcon 
+                            className={cls.editIcon} 
+                            onClick={() => setOnEdit(true)}
+                        />
+                </div>
             )}
         </div>
     );
