@@ -1,19 +1,4 @@
 .tonerPart {
-    // display: flex;
-    // flex-direction: row;
-    // justify-content: space-between;
-    // align-items: center;
-    // padding: 4px 24px;
-    // background: #1E1E1E;
-    // border-radius: 8px;
-    // //margin-bottom: 8px;
-    // border: 1px solid rgba(255, 255, 255, 0.08);
-    // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
-    // transition: background-color 0.2s ease;
-
-    // &:hover {
-    //     background: #2A2A2A;
-    // }
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -22,6 +7,7 @@
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     transition: all 0.2s ease;
+    font-size: 14px;
     
 
     &:nth-child(odd) {
@@ -43,7 +29,7 @@
     flex-direction: row;
     gap: 4px;
     color: rgba(255, 255, 255, 0.87);
-    font-size: 14px;
+    //font-size: 14px;
     min-width: 120px;
     justify-content: center;
 }
@@ -58,8 +44,9 @@
 
 .colorName {
     color: rgba(255, 255, 255, 0.87);
-    font-size: 14px;
+    //font-size: 14px;
     font-weight: 500;
+    padding: 3px 0 3px 0;
 }
 
 .colorM {
@@ -99,14 +86,14 @@
     width: 120px;
     text-align: center;
     color: rgba(255, 255, 255, 0.87);
-    font-size: 14px;
+    //font-size: 14px;
 }
 
 .man {
     width: 120px;
     text-align: center;
     color: rgba(255, 255, 255, 0.87);
-    font-size: 14px;
+    //font-size: 14px;
 }
 
 .buttonDelete {

@@ -1,11 +1,29 @@
 .part {
+    // display: flex;
+    // align-items: center;
+    // padding: 5px;
+    // background: #1E1E1E;
+    // border-radius: 8px;
+    // border: 1px solid rgba(255, 255, 255, 0.08);
+    // transition: all 0.2s ease;
+
+    // &:nth-child(odd) {
+    //     background: #1E1E1E;
+    // }
+
+    // &:nth-child(even) {
+    //     background: #2A2A2A;
+    // }
     display: flex;
     align-items: center;
-    padding: 5px;
+    justify-content: space-around;
+    padding: 4px;
     background: #1E1E1E;
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     transition: all 0.2s ease;
+    font-size: 14px;
+    
 
     &:nth-child(odd) {
         background: #1E1E1E;
@@ -13,6 +31,11 @@
 
     &:nth-child(even) {
         background: #2A2A2A;
+    }
+
+    &:hover {
+        background: #333333;
+        border-color: rgba(255, 255, 255, 0.12);
     }
 
     &:hover {
@@ -61,7 +84,7 @@
 }
 
 .name {
-    width: 200px;
+    width: 325px;
     color: rgba(255, 255, 255, 0.87);
     font-size: 14px;
     font-weight: 500;
@@ -71,6 +94,7 @@
     width: 120px;
     color: rgba(255, 255, 255, 0.87);
     font-size: 14px;
+    padding: 3px 0 3px 0;
 }
 
 .qty {
@@ -88,8 +112,8 @@
 }
 
 .button {
-    width: 32px;
-    height: 32px;
+    //width: 32px;
+    //height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
