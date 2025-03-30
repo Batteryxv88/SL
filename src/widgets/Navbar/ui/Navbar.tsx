@@ -35,7 +35,7 @@ const Navbar = () => {
                 className={`${cls.button} ${location.pathname === "/laminate" ? cls.active : ""}`} 
                 to={"/laminate"}
             >
-                <Button name={'РАСЧЕТ ЛАМИНАЦИИ'} />
+                <Button name={'КАЛЬКУЛЯТОР'} />
             </Link>
         </div>
     );
