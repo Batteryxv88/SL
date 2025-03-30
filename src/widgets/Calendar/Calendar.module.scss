@@ -10,8 +10,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
-    padding: 10px 0 10px 0;
+    justify-content: space-between;
+    padding: 10px 50px 10px 50px;
     background: linear-gradient(to right, rgba(98, 218, 251, 0.08), rgba(98, 218, 251, 0.02));
     border-radius: 8px;
     border: 1px solid rgba(98, 218, 251, 0.15);
@@ -83,5 +83,5 @@
     font-size: 14px;
     font-weight: 500;
     min-width: 120px;
-    text-align: center;
+    text-align: end;
 }

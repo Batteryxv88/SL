@@ -24,6 +24,7 @@ const ReplacedPart = (props: replacedPartProps) => {
             <p className={cls.number}>{number}</p>
             <p className={cls.man}>{man}</p>
             <p className={cls.qty}>{qty}</p>
+            <div className={cls.percent}>
             <p
                 className={
                     percent < 100
@@ -35,6 +36,8 @@ const ReplacedPart = (props: replacedPartProps) => {
             >
                 {percent ? percent + "%" : "0 %"}
             </p>
+            </div>
+            
             <div className={cls.date}>
                 <p>{day + "."}</p>
                 <p>{month + "."}</p>

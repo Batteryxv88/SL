@@ -1,8 +1,8 @@
 .replacedPart {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    padding: 4px;
+    justify-content: space-between;
+    padding: 4px 50px 4px 50px;
     background: #1E1E1E;
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -26,7 +26,7 @@
 .date {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     width: 120px;
     color: rgba(255, 255, 255, 0.87);
     font-size: 14px;
@@ -43,16 +43,18 @@
     width: 120px;
     color: rgba(255, 255, 255, 0.87);
     font-size: 14px;
+    text-align: center;
 }
 
 .man {
     width: 120px;
     color: rgba(255, 255, 255, 0.87);
     font-size: 14px;
+    text-align: center;
 }
 
 .qty {
-    width: 40px;
+    width: 80px;
     color: rgba(255, 255, 255, 0.87);
     font-size: 14px;
     text-align: center;
@@ -133,4 +135,11 @@
     &:active {
         background: rgba(187, 134, 252, 0.24);
     }
+}
+
+.percent {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
