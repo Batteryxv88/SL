@@ -50,9 +50,12 @@ const TonerPart = (props: tonerPartProps) => {
                 <p>{month + "."}</p>
                 <p>{year}</p>
             </div>
+            <div className={cls.deleteBox}>
             <button onClick={() => handleDelete(id)} className={cls.buttonDelete}>
                 <DeleteButton />
             </button>
+            </div>
+            
         </div>
     );
 };

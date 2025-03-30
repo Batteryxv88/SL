@@ -1,8 +1,8 @@
 .tonerPart {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    padding: 4px;
+    justify-content: space-between;
+    padding: 4px 50px 4px 50px;
     background: #1E1E1E;
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -90,7 +90,7 @@
 }
 
 .man {
-    width: 120px;
+    width: 130px;
     text-align: center;
     color: rgba(255, 255, 255, 0.87);
     //font-size: 14px;
@@ -111,4 +111,11 @@
     &:hover {
         background-color: rgba(255, 255, 255, 0.08);
     }
+}
+
+.deleteBox {
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }

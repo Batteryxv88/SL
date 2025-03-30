@@ -10,8 +10,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
-    padding: 10px 24px;
+    justify-content: space-between;
+    padding: 10px 50px 10px 50px;
     background: linear-gradient(to right, rgba(98, 218, 251, 0.08), rgba(98, 218, 251, 0.02));
     border-radius: 8px;
     border: 1px solid rgba(98, 218, 251, 0.15);
@@ -36,7 +36,7 @@
 .man {
     color: rgba(255, 255, 255, 0.6);
     font-weight: 500;
-    min-width: 120px;
+    width: 130px;
     text-align: center;
 }
 
