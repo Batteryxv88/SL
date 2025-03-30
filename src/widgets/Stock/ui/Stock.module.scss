@@ -1,6 +1,6 @@
 .stock {
     width: 100%;
-    padding: 38px;
+    padding: 0 38px 0 38px;
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -16,42 +16,27 @@
 }
 
 .title {
-    color: rgba(255, 255, 255, 0.6);
+    //color: rgba(255, 255, 255, 0.6);
     font-size: 14px;
     font-weight: 500;
-    margin-bottom: 16px;
+    margin-top: 10px;
+    margin-bottom: 4px;
+    //margin-left: 25px;
     letter-spacing: 0.15px;
+    background: linear-gradient(to right,
+       rgba(98, 218, 251, 0.9),
+        rgba(98, 218, 251, 0.7)
+    );
+    background-clip: text;
+    color: transparent;
 }
 
 .titleBox {
-    // display: flex;
-    // flex-direction: row;
-    // align-items: center;
-    // justify-content: space-between;
-    // padding: 16px 24px;
-    // background: #1E1E1E;
-    // border-radius: 8px;
-    // border: 1px solid rgba(255, 255, 255, 0.08);
-    // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
-    // transition: all 0.2s ease;
-
-    // &:hover {
-    //     background: #2A2A2A;
-    //     border-color: rgba(255, 255, 255, 0.12);
-    // }
-
-    // h6 {
-    //     color: rgba(255, 255, 255, 0.6);
-    //     font-size: 14px;
-    //     font-weight: 500;
-    //     letter-spacing: 0.15px;
-    //     text-transform: uppercase;
-    // }
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
-    padding: 10px 24px;
+    justify-content: space-between;
+    padding: 10px 50px 10px 50px;
     background: linear-gradient(to right, rgba(98, 218, 251, 0.08), rgba(98, 218, 251, 0.02));
     border-radius: 8px;
     border: 1px solid rgba(98, 218, 251, 0.15);
@@ -89,5 +74,33 @@
 
 .edit {
     width: 120px;
+    text-align: end;
 }
+
+.quantityBox {
+    width: 240px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.h2 {
+        
+    background: linear-gradient(to right,
+       rgba(98, 218, 251, 0.9),
+        rgba(98, 218, 251, 0.7)
+    );
+    -webkit-background-clip: text;
+   background-clip: text;
+    color: transparent;
+     font-size: 20px;
+     font-weight: 500;
+     margin-bottom: 24px;
+     letter-spacing: 1px;
+     text-transform: uppercase;
+     text-align: end;
+     padding-right: 24px;
+     font-family: monospace;
+ }
 

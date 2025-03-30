@@ -1,23 +1,8 @@
 .part {
-    // display: flex;
-    // align-items: center;
-    // padding: 5px;
-    // background: #1E1E1E;
-    // border-radius: 8px;
-    // border: 1px solid rgba(255, 255, 255, 0.08);
-    // transition: all 0.2s ease;
-
-    // &:nth-child(odd) {
-    //     background: #1E1E1E;
-    // }
-
-    // &:nth-child(even) {
-    //     background: #2A2A2A;
-    // }
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    padding: 4px;
+    justify-content: space-between;
+    padding: 4px 50px 4px 50px;
     background: #1E1E1E;
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -136,8 +121,8 @@
 }
 
 .buttonDone {
-    width: 32px;
-    height: 32px;
+    width: 20px;
+    height: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -167,7 +152,7 @@
 
 .input {
     width: 80px;
-    height: 32px;
+    height: 30px;
     padding: 0 12px;
     font-size: 14px;
     line-height: 20px;

@@ -56,14 +56,14 @@ const Stock = () => {
 
     return (
         <div className={cls.stock}>
+            <h2 className={cls.h2}>Склад</h2>
             <div className={cls.titleBox}>
                 <p className={cls.name}>Наименование</p>
                 <p className={cls.number}>Парт номер</p>
-                
+                <div className={cls.quantityBox}>
                     <p className={cls.quantity}>Кол-во</p>
                     <p className={cls.edit}>Редактировать</p>
-                
-
+                </div>
             </div>
             {renderSection("External section")}
             {renderSection("Photo conductor section")}
