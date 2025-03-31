@@ -229,4 +229,8 @@
     align-items: center;
     justify-content: space-between;
     width: 240px;
+    gap: 8px;
+    min-width: 240px;
+    //justify-content: flex-end;
+    //padding-right: 16px;
 }
