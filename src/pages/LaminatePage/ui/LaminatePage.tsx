@@ -189,6 +189,7 @@ const LaminatePage = () => {
                     </div>
                 )}
             </div>
+            
         </div>
     );
 };
