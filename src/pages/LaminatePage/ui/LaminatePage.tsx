@@ -106,7 +106,7 @@ const LaminatePage = () => {
     return (
         <div className={cls.LaminatePage}>
             <div className={cls.calculator}>
-                <h2 className={cls.title}>Калькулятор метража ламинации</h2>
+                <h2 className={cls.title}>Расчет метража ламинации</h2>
                 <div className={cls.inputWrapper}>
                     <input
                         type="number"
@@ -150,7 +150,7 @@ const LaminatePage = () => {
             </div>
 
             <div className={cls.calculator}>
-                <h2 className={cls.title}>Калькулятор метража материала</h2>
+                <h2 className={cls.title}>Расчет метража материала</h2>
                 <div className={cls.inputWrapper}>
                     <input
                         type="number"
