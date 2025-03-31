@@ -41,6 +41,16 @@
     background: rgba(255, 255, 255, 0.05);
     color: rgba(255, 255, 255, 0.87);
 
+    &[type="number"] {
+        -moz-appearance: textfield;
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    }
+
     &:focus {
         border-color: #BB86FC;
         background: rgba(255, 255, 255, 0.08);
