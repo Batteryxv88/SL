@@ -59,17 +59,6 @@ const AddReplacedPart = () => {
     const [quantity, setQuantity] = useState<number>(0);
     const [date, setDate] = useState<any>("");
 
-    // useEffect(() => {
-    //     fetch("https://worldtimeapi.org/api/timezone/Europe/Moscow")
-    //         .then((res) => {
-    //             return res.json();
-    //         })
-    //         .then((date) => setDate(date.datetime))
-    //         .catch((err) => {
-    //             console.log("Ошибка. Запрос не выполнен: ", err);
-    //         });
-    // }, [quantity]);
-
     type FormValues = {
         partN: string;
         serviceLife: number;
@@ -118,16 +107,6 @@ const AddReplacedPart = () => {
 
     const [error, setError] = useState<boolean>(false);
 
-    // const handleSetDate = () => {
-    //     fetch("https://worldtimeapi.org/api/timezone/Europe/Moscow")
-    //         .then((res) => {
-    //             return res.json();
-    //         })
-    //         .then((date) => setDate(date.datetime))
-    //         .catch((err) => {
-    //             console.log("Ошибка. Запрос не выполнен: ", err);
-    //         });
-    // }
 
     const handleSetDate = () => {
         const currentDate = new Date();

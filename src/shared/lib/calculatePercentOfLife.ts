@@ -18,9 +18,7 @@ export const lifePercent = (partNumber: any, array: any, life: any): number => {
     if (array.length <= 0 || !life) {
         return 0;
     } else {
-        // const LifeOfPart = array.filter((item: any) => {
-        //     return item.part.partN === partNumber;
-        // });
+        
 
         const LifeOfPart = array.filter((item: any) => {
             if (sameColorParts.includes(partNumber)) {
