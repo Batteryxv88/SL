@@ -1,7 +1,7 @@
 import cls from './TonerStockItem.module.scss';
 import EditIcon from "../../../shared/assets/icon/editIcon.svg";
 import CheckMark from "../../assets/icon/checkMark.svg";
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useAppDispatch } from '../../../app/providers/StoreProvider/Store/hooks';
 import { updateToner } from '../../../app/providers/StoreProvider/Store/TonersStorageSlice';
 
@@ -13,10 +13,27 @@ type TonerStockItemTypes = {
 }
 
 const TonerStockItem = ({color, qty, id}: TonerStockItemTypes) => {
-
     const [onEdit, setOnEdit] = useState<boolean>(false);
     const [newQuantity, setNewQuantity] = useState<string | number>("");
     const dispatch = useAppDispatch();
+    const tonerBoxRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (tonerBoxRef.current && !tonerBoxRef.current.contains(event.target as Node)) {
+                setOnEdit(false);
+                setNewQuantity("");
+            }
+        };
+
+        if (onEdit) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [onEdit]);
 
     const submitFormHandler = (e: React.FormEvent) => {
         e.preventDefault();
@@ -34,7 +51,7 @@ const TonerStockItem = ({color, qty, id}: TonerStockItemTypes) => {
     };
 
     return (
-        <div className={cls.tonerBox}>
+        <div className={cls.tonerBox} ref={tonerBoxRef}>
             <div className={cls.cBox}>
                 <p className={cls.title}>{color}</p>
                 <div
@@ -65,14 +82,12 @@ const TonerStockItem = ({color, qty, id}: TonerStockItemTypes) => {
                     </button>
                 </form>
             ) : (
-                <p className={cls.qty}>{qty}</p>
-            )}
-            {onEdit ? (
-                ""
-            ) : (
-                <button className={cls.button} onClick={() => setOnEdit(true)}>
-                    <EditIcon className={cls.editIcon}></EditIcon>
-                </button>
+                <div className={cls.qtyBox}>
+                    <p className={cls.qty}>{qty}</p>
+                    <button className={cls.button} onClick={() => setOnEdit(true)}>
+                        <EditIcon className={cls.editIcon} />
+                    </button>
+                </div>
             )}
         </div>
     );
