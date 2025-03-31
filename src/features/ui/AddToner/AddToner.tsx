@@ -40,42 +40,12 @@ const Modal = ({ isOpen, onClose, children }: { isOpen: boolean; onClose: () => 
 
 const AddToner = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [date, setDate] = useState<any>("");
-
     const dispatch = useDispatch<any>();
     const tonersArr = useAppSelector(
         (state) => state.tonersStorage.tonersStorageArr
     );
     
     const machineTonerState = useAppSelector((state) => state.machines.tonerMachine);
-
-    useEffect(() => {
-        const currentDate = new Date();
-
-        function formatDate(date:any) {
-            const pad = (num:any) => String(num).padStart(2, '0');
-            const year = date.getFullYear();
-            const month = pad(date.getMonth() + 1); // Месяцы в JS начинаются с 0
-            const day = pad(date.getDate());
-            const hours = pad(date.getHours());
-            const minutes = pad(date.getMinutes());
-            const seconds = pad(date.getSeconds());
-            const milliseconds = String(date.getMilliseconds()).padStart(3, '0');
-        
-            // Получаем смещение по времени в минутах и конвертируем в часы:минуты
-            const timezoneOffset = -date.getTimezoneOffset();
-            const timezoneHours = pad(Math.floor(timezoneOffset / 60));
-            const timezoneMinutes = pad(Math.abs(timezoneOffset % 60));
-            const timezoneSign = timezoneOffset >= 0 ? "+" : "-";
-            
-            // Формируем строку
-            return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milliseconds}${timezoneSign}${timezoneHours}:${timezoneMinutes}`;
-        }
-
-        const formattedDate = formatDate(currentDate);
-
-        setDate(formattedDate)
-    }, [dispatch]);
 
     useEffect(() => {
         dispatch(fetchTonersStorage());
@@ -106,13 +76,34 @@ const AddToner = () => {
         setIsModalOpen(false);
     };
 
+    function formatDate(date: Date) {
+        const pad = (num: number) => String(num).padStart(2, '0');
+        const year = date.getFullYear();
+        const month = pad(date.getMonth() + 1);
+        const day = pad(date.getDate());
+        const hours = pad(date.getHours());
+        const minutes = pad(date.getMinutes());
+        const seconds = pad(date.getSeconds());
+        const milliseconds = String(date.getMilliseconds()).padStart(3, '0');
+    
+        const timezoneOffset = -date.getTimezoneOffset();
+        const timezoneHours = pad(Math.floor(timezoneOffset / 60));
+        const timezoneMinutes = pad(Math.abs(timezoneOffset % 60));
+        const timezoneSign = timezoneOffset >= 0 ? "+" : "-";
+        
+        return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milliseconds}${timezoneSign}${timezoneHours}:${timezoneMinutes}`;
+    }
+
     //учитываем замену нового тонера
     const handleAddToner = (e: any) => {
+        const currentDate = new Date();
+        const formattedDate = formatDate(currentDate);
+
         const newToner = {
             color: e.color,
             man: e.man,
             counter: Number(e.counter),
-            date: date,
+            date: formattedDate,
             machine: machineTonerState
         };
 

@@ -63,6 +63,7 @@ const tonerSlice = createSlice({
         builder
         .addCase(addToner.fulfilled, (state, action)=> {
             state.tonersArray.push(action.payload);
+            state.tonersArray.sort((a, b) => new Date(b.toner.date).getTime() - new Date(a.toner.date).getTime());
         })
         .addCase(fetchToners.fulfilled, (state, action)=> {
             state.tonersArray = action.payload
