@@ -2,7 +2,7 @@ import { useState, KeyboardEvent } from 'react';
 import { changePage } from "../../../app/providers/StoreProvider/Store/ChangePageSlice";
 import { useAppDispatch } from "../../../app/providers/StoreProvider/Store/hooks";
 import cls from './LaminatePage.module.scss';
-
+import RotationPage from '../../RotationPage/ui/RotationPage';
 type MaterialType = 'FA' | 'FH' | 'PA' | 'PH' | 'Clear' | 'Metall' | 'Verge';
 
 const MATERIAL_THICKNESS: Record<MaterialType, number> = {
@@ -189,7 +189,7 @@ const LaminatePage = () => {
                     </div>
                 )}
             </div>
-            
+            <RotationPage />
         </div>
     );
 };
