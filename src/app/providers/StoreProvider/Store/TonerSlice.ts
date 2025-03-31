@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from "firebase/firestore";
-import db from "../../../config/fbConfig";
+import { db } from '../../../../services/firebase';
 
 
 export const addToner = createAsyncThunk(

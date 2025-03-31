@@ -7,8 +7,9 @@
 }
 
 .container {
-    display: grid;
-    grid-template-columns: 1fr 4.4fr;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
     background: #121212;
     position: relative;
     overflow: hidden;
@@ -25,6 +26,12 @@
     }
 }
 
+.content {
+    display: grid;
+    grid-template-columns: 1fr 4.4fr;
+    flex: 1;
+}
+
 // Стили для Suspense fallback
 .loading {
     display: flex;
@@ -38,5 +45,5 @@
 
 .pages {
     width: auto;
-    
+    padding: 20px;
 }

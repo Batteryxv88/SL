@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { addDoc, collection, getDocs, updateDoc } from 'firebase/firestore';
-import db from '../../../config/fbConfig';
+import { db } from '../../../../services/firebase';
 import { doc } from 'firebase/firestore';
 
 export const addPartToFirestore = createAsyncThunk(

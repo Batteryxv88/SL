@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { addDoc, collection, getDocs, updateDoc, doc, deleteDoc } from 'firebase/firestore';
-import db from '../../../config/fbConfig';
+import { db } from '../../../../services/firebase';
 
 export type UsedParts = {
     date: string;
