@@ -1,5 +1,6 @@
 import cls from "./TonerPart.module.scss";
-import DeleteButton from '../../assets/icon/deleteButton1.svg'
+import DeleteButton from '../../assets/icon/delete-bin.svg'
+import DeleteBin from '../../assets/icons/delete-bin.svg'
 import { deleteToner } from "../../../app/providers/StoreProvider/Store/TonerSlice";
 import { useAppDispatch } from "../../../app/providers/StoreProvider/Store/hooks";
 
@@ -51,9 +52,9 @@ const TonerPart = (props: tonerPartProps) => {
                 <p>{year}</p>
             </div>
             <div className={cls.deleteBox}>
-            <button onClick={() => handleDelete(id)} className={cls.buttonDelete}>
-                <DeleteButton />
-            </button>
+                <button onClick={() => handleDelete(id)} className={cls.buttonDelete}>
+                    <DeleteButton className={cls.deleteIcon} />
+                </button>
             </div>
             
         </div>
