@@ -20,7 +20,7 @@ const TonersStorage = () => {
     return (
         <div className={cls.tonerStorage}>
             <div className={cls.titleBox}>
-                <h6>Тонеры</h6>
+                <h2>Склад тонеров</h2>
             </div>
             <div className={cls.tonersGrid}>
                 {tonersArr.length > 0

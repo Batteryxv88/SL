@@ -1,6 +1,6 @@
 .tonerStorage {
     width: 100%;
-    padding: 24px;
+    padding: 38px;
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -8,23 +8,30 @@
 
 .titleBox {
     display: flex;
-    justify-content: center;
+    flex-direction: row;
     align-items: center;
-    width: 100%;
-    height: 48px;
-    background: #2A2A2A;
-    color: rgba(255, 255, 255, 0.87);
+    justify-content: center;
+    padding: 10px 50px 10px 50px;
+    background: linear-gradient(to right, rgba(98, 218, 251, 0.08), rgba(98, 218, 251, 0.02));
     border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
-    margin-bottom: 8px;
+    border: 1px solid rgba(98, 218, 251, 0.15);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2),
+                inset 0 0 0 1px rgba(98, 218, 251, 0.05);
+    margin-bottom: 14px;
+    font-size: 14px;
 
-    h6 {
-        font-size: 20px;
-        font-weight: 500;
-        letter-spacing: 0.15px;
-        text-transform: uppercase;
-        color: #BB86FC;
+    h2 {
+    
+    
+    
+     font-size: 20px;
+     font-weight: 500;
+     //margin-bottom: 24px;
+     letter-spacing: 1px;
+     text-transform: uppercase;
+     text-align: end;
+     font-family: monospace;
+     align-items: center;
     }
 }
 
