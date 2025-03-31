@@ -160,8 +160,6 @@ const AddReplacedPart = () => {
     
 
     const handleAddPart = (e: any) => {
-
-
         const cleanedPartN = e.partN.trim().toUpperCase();
 
         const currentPart = stockData.filter((item: any) => {
@@ -175,10 +173,7 @@ const AddReplacedPart = () => {
             (item: any) => item.part.partN === currentPart[0].part.partN
         );
 
-        
-
         if (!partExists) {
-            // Устанавливаем сообщение об ошибке
             setError(true);
             reset();
             setTimeout(() => {
@@ -187,14 +182,12 @@ const AddReplacedPart = () => {
             return;
         }
 
-        // Если деталь найдена, сбрасываем ошибку
         setError(false);
 
         const newQuantity = currentPart[0].part.quantity - Number(e.quantity);
         const newName = currentPart[0].part.partName;
         const section = partsFilter(cleanedPartN);
 
-        // Находим отработанный ресурс детали в процентах
         const percent = lifePercent(cleanedPartN, stockData, e.serviceLife);
 
         const partU = {
@@ -232,6 +225,7 @@ const AddReplacedPart = () => {
         dispatch(addUsedPart(partU));
 
         reset();
+        setIsModalOpen(false);
     };
 
     const handleCloseModal = () => {
