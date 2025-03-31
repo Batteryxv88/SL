@@ -38,9 +38,11 @@ const Calendar = () => {
                 <p className={cls.qty}>Кол-во</p>
                 <p className={cls.res}>Ресурс</p>
                 <p className={cls.date}>Дата</p>
+                <p className={cls.delete}>Удалить</p>
             </div>
             {filterAndSortData.map((item: UsedPartsArray) => (
                 <ReplacedPart
+                    id={item.id}
                     name={item.part.partName}
                     number={item.part.partN}
                     qty={item.part.quantity}

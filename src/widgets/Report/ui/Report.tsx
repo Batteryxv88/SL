@@ -61,6 +61,7 @@ const Report = () => {
                 {report.slice(1).map((item: any, index: number) => (
                     <ReplacedPart
                         key={index}
+                        id={item.id || `report-${index}`}
                         name={item.partName}
                         qty={item.quantity}
                         date={item.date}

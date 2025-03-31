@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { addDoc, collection, getDocs, updateDoc, doc } from 'firebase/firestore';
+import { addDoc, collection, getDocs, updateDoc, doc, deleteDoc } from 'firebase/firestore';
 import db from '../../../config/fbConfig';
 
 export type UsedParts = {
@@ -53,6 +53,20 @@ export const updateUsedPart = createAsyncThunk(
     }
 )
 
+export const deleteUsedPart = createAsyncThunk(
+    'usedParts/deleteUsedPart',
+    async (id: string) => {
+        const parts = await getDocs(collection(db, 'UsedParts'))
+        for(var snap of parts.docs){
+            if(snap.id === id){
+                const partRef = doc(db, 'UsedParts', snap.id);
+                await deleteDoc(partRef);
+            }
+        }
+        return id;
+    }
+)
+
 const partSlice = createSlice({
     name: 'UsedParts',
     initialState: {
@@ -83,7 +97,9 @@ const partSlice = createSlice({
                 };
             }
         })
-       
+        .addCase(deleteUsedPart.fulfilled, (state, action) => {
+            state.usedPartsArray = state.usedPartsArray.filter(part => part.id !== action.payload);
+        })
     }
 })
 
