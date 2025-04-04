@@ -17,7 +17,8 @@ const RotationFormTable = () => {
                 <p className={cls.namesColumns}>Ручьи</p>
                 <p className={cls.namesRows}>Ряды</p>
                 <p className={cls.namesShape}>Форма</p>
-                <p className={cls.namesSizeToDie}>Размер к ручью</p>
+                <p className={cls.namesSizeToDie}>
+                    <span className={cls.span}>W</span> к ручью</p>
                 <p className={cls.namesLabel}>Метка</p>
                 <p className={cls.namesHeightWithout1mm}>
                     <span className={cls.span}>H</span> без 1мм</p>

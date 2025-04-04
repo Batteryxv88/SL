@@ -44,12 +44,12 @@ const RotationSizePart = (props: RotationSizePartProps) => {
                 <span>×</span>
                 <p className={cls.name}>{width}</p>
             </div>
-            <p className={cls.name}>{columns}</p>
-            <p className={cls.name}>{rows}</p>
+            <p className={cls.nameColumns}>{columns}</p>
+            <p className={cls.nameRows}>{rows}</p>
             <div className={cls.nameShape}>
                 {getShapeIcon()}
             </div>
-            <p className={cls.name}>{size_for_column}</p>
+            <p className={cls.namesSizeToDie}>{size_for_column}</p>
             <p className={cls.namesLabel}>{mark}</p>
             <p className={cls.heightWithout1mm}>{height_without1}</p>
             <p className={cls.nameMaterial}>{material}</p>
