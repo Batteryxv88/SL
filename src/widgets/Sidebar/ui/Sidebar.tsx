@@ -10,18 +10,23 @@ import { ChangeButton } from "../../ChangeButton";
 import { changeTonerMachine } from "../../../app/providers/StoreProvider/Store/ChangeMachineSlice";
 import { changeStorage } from "../../../app/providers/StoreProvider/Store/ChangeMachineSlice";
 import { SidebarLamination } from "../../SidebarLamination";
+import SidebarRotation from "../../SidebarRotation/ui/SidebarRotation";
 
 const Sidebar = () => {
     const pageState = useAppSelector((state) => state.pages.page);
     const dispatch = useAppDispatch();
     const machineState = useAppSelector((state) => state.machines.storage);
 
+    console.log(pageState);
+
     const dispatchStorage = () => dispatch(changeStorage("Детали"));
     const dispatchToners = () => dispatch(changeStorage("Тонеры"));
 
     return (
         <div className={cls.sidebar}>
-            {pageState === "laminate" ? (
+            {pageState === "rotation" ? (
+                <SidebarRotation />
+            ) : pageState === "laminate" ? (
                 <SidebarLamination />
             ) : pageState === "schedule" ? (
                 <SidebarReplacePart />

@@ -52,11 +52,20 @@ const Navbar: React.FC = () => {
                 >
                     <Button name={'КАЛЬКУЛЯТОР'} />
                 </Link>
+                <Link 
+                    className={`${cls.button} ${location.pathname === "/rotation" ? cls.active : ""}`} 
+                    to={"/rotation"}
+                >
+                    <Button name={'РОТАЦИЯ'} />
+                </Link>
             </div>
             {user && (
                 <div className={cls.userInfo}>
+                    <div className={cls.userInfoContent}>
                     <span className={cls.name}>{user.displayName}</span>
                     <span className={cls.email}>{user.email}</span>
+                    </div>
+                    
                     <button onClick={handleLogout} className={cls.logoutButton}>
                         Выйти
                     </button>

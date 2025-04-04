@@ -1,3 +1,3 @@
 import { lazy } from 'react';
 
-export const RotationPage = lazy(() => import('./RotationPage'));
+export const RotationPageAsync = lazy(() => import('./RotationPage'));

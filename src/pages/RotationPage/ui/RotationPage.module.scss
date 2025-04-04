@@ -3,10 +3,12 @@
     flex-direction: column;
     gap: 20px;
     padding: 20px;
+    width: 100%;
 }
 
 .selectContainer {
     margin-bottom: 20px;
+    width: 100%;
 }
 
 .select {
@@ -36,18 +38,29 @@
     background: #1E1E1E;
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    width: fit-content;
+    width: 100%;
 }
 
-.grid-cell {
+.gridCell {
     background: #2A2A2A;
-    border-radius: 5px;
     border: 2px solid #BB86FC;
-    min-height: 50px;
     transition: all 0.2s ease;
 
     &:hover {
         background: #333333;
         border-color: #C397FC;
     }
+}
+
+.gridBox {
+    
+    //height: 717px;
+    width: 30vw;
+    
+    // height: 717px;
+    aspect-ratio: 426 / 717;
+    border: 1px solid white;
+    border-radius: 10px;
+    //overflow: hidden;
+    //margin: 0 auto;
 }

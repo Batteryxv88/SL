@@ -189,7 +189,6 @@ const LaminatePage = () => {
                     </div>
                 )}
             </div>
-            <RotationPage />
         </div>
     );
 };

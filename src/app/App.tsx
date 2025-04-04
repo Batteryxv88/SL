@@ -13,7 +13,7 @@ import { AuthForm } from "../components/AuthForm";
 import { AuthProvider } from "../contexts/AuthContext";
 import { ProtectedRoute } from "../components/ProtectedRoute";
 import cls from './App.module.scss';
-
+import { RotationPageAsync } from "../pages/RotationPage/ui/RotationPage.async";
 const App = () => {
   const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
 
@@ -47,6 +47,7 @@ const App = () => {
                           <Route path="/" element={<MainPage />} />
                           <Route path="/report" element={<ReportPage />} />
                           <Route path="/laminate" element={<LaminatePageAsync />} />
+                          <Route path="/rotation" element={<RotationPageAsync />} />
                         </Routes>
                       </Suspense>
                     </div>
