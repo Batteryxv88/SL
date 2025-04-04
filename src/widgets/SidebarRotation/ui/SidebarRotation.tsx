@@ -8,7 +8,10 @@ const SidebarRotation = () => {
                 <input type="text" placeholder="Поиск" />
                 
             </div>
-            <button>Таблица</button>
+            <button className={cls.tableButton}>Таблица</button>
+            <button className={cls.addFormButton}>
+                Добавить форму
+            </button>
         </div>
     )
 }   

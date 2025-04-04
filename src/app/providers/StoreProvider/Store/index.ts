@@ -7,7 +7,8 @@ import ChangePageSlice from "./ChangePageSlice"
 import ChangeMachineSlice from "./ChangeMachineSlice";
 import ReportSlice from "./ReportSlice";
 import TonersStorageSlice from "./TonersStorageSlice";
-
+import ChangeRotationModuleSlice from "./ChangeRotationModule";
+import RotationFormsSlice from "./RotationFormsSlice";
 
 const store = configureStore({
     reducer: {
@@ -18,8 +19,9 @@ const store = configureStore({
         pages: ChangePageSlice,
         machines: ChangeMachineSlice,
         report: ReportSlice,
-        tonersStorage: TonersStorageSlice
-        
+        tonersStorage: TonersStorageSlice,
+        rotationModule: ChangeRotationModuleSlice,
+        rotationForms: RotationFormsSlice,
     }
 })
 
