@@ -6,9 +6,9 @@ const data = [
         height: 25,
         width: 25,
         columns: 8,
-        shape: "прямоугольник",
+        shape: "квадрат",
         size_for_column: 12,
-        mark: "метка 5х5 с обеих сторон",
+        mark: "5х5 L R",
         height_without1: 231,
         material: "бумага",
         rows: 8,
@@ -22,7 +22,7 @@ const data = [
         columns: 10,
         shape: "прямоугольник",
         size_for_column: 12,
-        mark: "метка 5х5 с обеих сторон",
+        mark: "5х5 L R",
         height_without1: 275,
         material: "плёнка",
         rows: 4,
@@ -34,9 +34,9 @@ const data = [
         height: 45,
         width: 16,
         columns: 12,
-        shape: "прямоугольник",
+        shape: "круг",
         size_for_column: 16,
-        mark: "метка 5х5 с обеих сторон",
+        mark: "5х5 L",
         height_without1: 342,
         material: "плёнка",
         rows: 7,
@@ -48,9 +48,23 @@ const data = [
         height: 210,
         width: 148,
         rows: 2,
-        shape: "прямоугольник",
+        shape: "овал",
         size_for_column: 148,
-        mark: "метка 5х5 с обеих сторон",
+        mark: "5х5 R",
+        height_without1: 427,
+        material: "плёнка",
+        columns: 2,
+        comment: "",
+        number: 84367
+    }, 
+    {
+        id: 4,
+        height: 210,
+        width: 148,
+        rows: 2,
+        shape: "фигурная",
+        size_for_column: 148,
+        mark: "5х5 L R",
         height_without1: 427,
         material: "плёнка",
         columns: 2,
@@ -66,7 +80,7 @@ const RotationFormsSlice = createSlice({
     initialState: {
         rotationForms: data
     },
-    
+
     reducers: {
         setRotationForms(state, action) {
             state.rotationForms = action.payload

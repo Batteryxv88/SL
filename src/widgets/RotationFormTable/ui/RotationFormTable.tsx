@@ -1,12 +1,18 @@
 import cls from './RotationFormTable.module.scss';
+import { useAppSelector } from '../../../app/providers/StoreProvider/Store/hooks';
+import RotationSizePart from '../../../shared/ui/RotationSizePart/RotationSizePart';
+import { RootState } from '../../../app/providers/StoreProvider/Store';
 
 const RotationFormTable = () => {
+
+    const rotationForm = useAppSelector((state: RootState) => state.rotationForms.rotationForms);
+
     return (
         <div className={cls.rotationFormTable}>
             <div className={cls.nameContainer}>
                 <div className={cls.namesSizes}>
-                    <p className={cls.namesSizesItem}>Высота</p>
-                    <p className={cls.namesSizesItem}>Ширина</p>
+                    <p className={cls.namesSizesItem}>H</p>
+                    <p className={cls.namesSizesItem}>W</p>
                 </div>
                 <p className={cls.namesColumns}>Ручьи</p>
                 <p className={cls.namesRows}>Ряды</p>
@@ -17,7 +23,11 @@ const RotationFormTable = () => {
                 <p className={cls.namesMaterial}>Мастериал</p>
                 <p className={cls.namesComment}>Комментарий</p>
                 <p className={cls.namesOrder}>Заказ</p>
+                <p className={cls.namesDelete}>Ред.</p>
             </div>
+            {rotationForm.map(item => (
+                <RotationSizePart key={item.id} {...item} />    
+            ))}
         </div>
     )
 }

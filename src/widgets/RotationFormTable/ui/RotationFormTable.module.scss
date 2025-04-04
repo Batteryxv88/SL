@@ -1,6 +1,9 @@
 .rotationFormTable {
     width: 100%;
     padding: 38px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
 .nameContainer {
@@ -21,7 +24,7 @@
 }
 
 .namesSizes {
-    width: 120px;
+    width: 70px;
     display: flex;
     flex-direction: row;
     align-items: center;

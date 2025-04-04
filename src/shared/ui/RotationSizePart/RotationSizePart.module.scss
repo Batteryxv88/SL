@@ -1,0 +1,72 @@
+.RotationSizePart {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 4px 50px 4px 50px;
+    background: #1E1E1E;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.2s ease;
+    
+    
+
+    &:nth-child(odd) {
+        background: #1E1E1E;
+    }
+
+    &:nth-child(even) {
+        background: #2A2A2A;
+    }
+
+    &:hover {
+        background: #2A2A2A;
+        border-color: rgba(255, 255, 255, 0.12);
+    }
+}
+
+.sizesContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 70px;
+}
+
+.name {
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 12px;
+    font-weight: 500;
+    //min-width: 40px;
+    text-align: center;
+}
+
+.nameShape {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    color: #BB86FC;
+}
+
+.editContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.editPenIcon {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    stroke: rgba(255, 255, 255, 0.6);
+    transition: all 0.2s ease;
+    
+    &:hover {
+        stroke: #BB86FC;
+        transform: scale(1.1);
+    }
+}
+
