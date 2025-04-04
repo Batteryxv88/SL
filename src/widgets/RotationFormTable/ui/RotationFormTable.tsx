@@ -24,7 +24,7 @@ const RotationFormTable = () => {
                 <p className={cls.namesMaterial}>Мастериал</p>
                 <p className={cls.namesComment}>Комментарий</p>
                 <p className={cls.namesOrder}>Заказ</p>
-                <p className={cls.namesDelete}>Ред.</p>
+                <p className={cls.namesEdit}>Ред.</p>
             </div>
             {rotationForm.map(item => (
                 <RotationSizePart key={item.id} {...item} />

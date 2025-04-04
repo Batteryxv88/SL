@@ -52,6 +52,7 @@
 }
 
 .editContainer {
+    width: 27px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -82,6 +83,16 @@
 
 .nameMaterial {
     width: 68px;
+    text-align: center;
+}
+
+.namesOrder {
+    width: 40px;
+    text-align: center;
+}
+
+.namesLabel {
+    width: 48px;
     text-align: center;
 }
 
