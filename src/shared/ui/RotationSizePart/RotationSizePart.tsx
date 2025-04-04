@@ -51,9 +51,9 @@ const RotationSizePart = (props: RotationSizePartProps) => {
             </div>
             <p className={cls.name}>{size_for_column}</p>
             <p className={cls.name}>{mark}</p>
-            <p className={cls.name}>{height_without1}</p>
-            <p className={cls.name}>{material}</p>
-            <p className={cls.name}>{comment}</p>
+            <p className={cls.heightWithout1mm}>{height_without1}</p>
+            <p className={cls.nameMaterial}>{material}</p>
+            <p className={cls.nameComment}>{comment}</p>
             <p className={cls.name}>{number}</p>
             <div className={cls.editContainer}>
                 <EditPenIcon 
