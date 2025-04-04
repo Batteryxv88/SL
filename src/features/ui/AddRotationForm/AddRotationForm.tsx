@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import cls from "./AddRotationForm.module.scss";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
-import { setRotationForms } from "../../../app/providers/StoreProvider/Store/RotationFormsSlice";
+import { addForm } from "../../../app/providers/StoreProvider/Store/RotationFormsSlice";
 
 interface AddRotationFormProps {
     isOpen: boolean;
@@ -85,15 +85,30 @@ const AddRotationForm = ({ isOpen, onClose }: AddRotationFormProps) => {
         onClose();
     };
 
-    const handleAddForm = (data: FormValues) => {
-        const newForm = {
-            id: Date.now(),
-            ...data
-        };
+    const handleAddForm = async (data: FormValues) => {
+        try {
+            const formData = {
+                height: Number(data.height),
+                width: Number(data.width),
+                rows: Number(data.rows),
+                shape: data.shape,
+                size_for_column: Number(data.size_for_column),
+                mark: data.mark,
+                height_without1: Number(data.height_without1),
+                material: data.material,
+                columns: Number(data.columns),
+                comment: data.comment,
+                number: Number(data.number),
+                createdAt: new Date().toISOString()
+            };
 
-        dispatch(setRotationForms(newForm));
-        reset();
-        onClose();
+            await dispatch(addForm(formData));
+            reset();
+            onClose();
+        } catch (error) {
+            console.error('Error adding form:', error);
+            // Здесь можно добавить обработку ошибок, например, показать уведомление
+        }
     };
 
     return (

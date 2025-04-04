@@ -1,11 +1,25 @@
+import { useEffect } from 'react';
 import cls from './RotationFormTable.module.scss';
-import { useAppSelector } from '../../../app/providers/StoreProvider/Store/hooks';
+import { useAppDispatch, useAppSelector } from '../../../app/providers/StoreProvider/Store/hooks';
 import RotationSizePart from '../../../shared/ui/RotationSizePart/RotationSizePart';
 import { RootState } from '../../../app/providers/StoreProvider/Store';
+import { fetchForms } from '../../../app/providers/StoreProvider/Store/RotationFormsSlice';
 
 const RotationFormTable = () => {
+    const dispatch = useAppDispatch();
+    const { rotationForms, loading, error } = useAppSelector((state) => state.rotationForms);
 
-    const rotationForm = useAppSelector((state: RootState) => state.rotationForms.rotationForms);
+    useEffect(() => {
+        dispatch(fetchForms());
+    }, [dispatch]);
+
+    if (loading) {
+        return <div>Загрузка...</div>;
+    }
+
+    if (error) {
+        return <div>Ошибка: {error}</div>;
+    }
 
     return (
         <div className={cls.rotationFormTable}>
@@ -27,7 +41,7 @@ const RotationFormTable = () => {
                 <p className={cls.namesOrder}>Заказ</p>
                 <p className={cls.namesEdit}>Ред.</p>
             </div>
-            {rotationForm.map(item => (
+            {rotationForms.map(item => (
                 <RotationSizePart key={item.id} {...item} />
             ))}
         </div>
