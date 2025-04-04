@@ -12,7 +12,6 @@ interface RotationPageProps {
 }
 
 const RotationPage = ({ className }: RotationPageProps) => {
-
     const dispatch = useAppDispatch();
     dispatch(changePage('rotation'));
 

@@ -58,7 +58,7 @@ const data = [
         number: 84367
     }, 
     {
-        id: 4,
+        id: 5,
         height: 210,
         width: 148,
         rows: 2,
@@ -73,8 +73,6 @@ const data = [
     }
 ];
 
-
-
 const RotationFormsSlice = createSlice({
     name: 'RotationFormsSlice',
     initialState: {
@@ -83,7 +81,7 @@ const RotationFormsSlice = createSlice({
 
     reducers: {
         setRotationForms(state, action) {
-            state.rotationForms = action.payload
+            state.rotationForms = [...state.rotationForms, action.payload];
         }
     }
 })
