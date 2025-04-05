@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, getDocs, doc, updateDoc } from "firebase/firestore";
 import { db } from '../../../../services/firebase';
 
 // Асинхронное действие для получения форм
@@ -23,6 +23,19 @@ export const addForm = createAsyncThunk(
         return {
             id: docRef.id,
             ...form
+        };
+    }
+);
+
+// Асинхронное действие для обновления формы
+export const updateForm = createAsyncThunk(
+    'forms/updateForm',
+    async ({ id, updatedData }: { id: string, updatedData: any }) => {
+        const formRef = doc(db, 'Forms', id);
+        await updateDoc(formRef, updatedData);
+        return {
+            id,
+            ...updatedData
         };
     }
 );
@@ -53,6 +66,16 @@ const RotationFormsSlice = createSlice({
             // Обработка addForm
             .addCase(addForm.fulfilled, (state, action) => {
                 state.rotationForms.push(action.payload);
+            })
+            // Обработка updateForm
+            .addCase(updateForm.fulfilled, (state, action) => {
+                const index = state.rotationForms.findIndex((form: any) => form.id === action.payload.id);
+                if (index !== -1) {
+                    state.rotationForms[index] = {
+                        ...state.rotationForms[index],
+                        ...action.payload
+                    };
+                }
             });
     }
 });
