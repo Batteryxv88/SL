@@ -28,9 +28,12 @@ const RotationFormPreview = () => {
     const FORM_WIDTH_MM = 284;
     const FORM_HEIGHT_MM = 478;
     
-    // Вычисляем полную ширину и высоту всей сетки в мм
-    const gridFullWidthMM = selectedItem.columns * selectedItem.width;
-    const gridFullHeightMM = selectedItem.rows * selectedItem.height;
+    // Междуэтикеточное расстояние в мм
+    const GAP_SIZE_MM = 3;
+    
+    // Вычисляем полную ширину и высоту всей сетки в мм, с учетом междуэтикеточных расстояний
+    const gridFullWidthMM = (selectedItem.columns * selectedItem.width) + (GAP_SIZE_MM * (selectedItem.columns - 1));
+    const gridFullHeightMM = (selectedItem.rows * selectedItem.height) + (GAP_SIZE_MM * (selectedItem.rows - 1));
     
     // Проверяем, превышает ли сетка доступный размер формы
     const isOverflowWidth = gridFullWidthMM > FORM_WIDTH_MM;
@@ -44,15 +47,28 @@ const RotationFormPreview = () => {
     // Для случаев, когда масштаб меньше 1, предупреждаем пользователя
     const showScaleWarning = scale < 1;
     
-    // Рассчитываем размер отступа между ячейками (меньше для больших сеток)
-    const gapSizeMM = Math.min(3, Math.max(1, 5 - (selectedItem.columns + selectedItem.rows) / 10));
-    const gapSizePercent = Math.max(0.5, (gapSizeMM / Math.max(FORM_WIDTH_MM, FORM_HEIGHT_MM)) * 100);
+    // Используем фиксированное значение отступа в 3мм
+    const gapSizeMM = GAP_SIZE_MM;
+    // Преобразуем его в проценты от размера формы для CSS
+    const gapSizePercent = (gapSizeMM / Math.max(FORM_WIDTH_MM, FORM_HEIGHT_MM)) * 100 * scale;
     
     // Общая ширина и высота сетки с учетом масштаба
     const totalGridWidthPercent = Math.min(95, (gridFullWidthMM / FORM_WIDTH_MM) * 100 * scale);
     const totalGridHeightPercent = Math.min(95, (gridFullHeightMM / FORM_HEIGHT_MM) * 100 * scale);
     
-    // Функция для отображения ячейки с информацией
+    // Стили для сетки с учетом реальных размеров и отступов
+    const gridStyle = {
+        display: 'grid',
+        gridTemplateColumns: `repeat(${selectedItem.columns}, 1fr)`,
+        gridTemplateRows: `repeat(${selectedItem.rows}, 1fr)`,
+        gap: `${gapSizePercent}%`,
+        width: `${totalGridWidthPercent}%`,
+        height: `${totalGridHeightPercent}%`,
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+    };
+    
+    // Функция для отображения ячейки с информацией с точным отражением междуэтикеточных расстояний
     const calculateWidthAndHeight = (content?: string | number, isSmallText = false) => {
         return (
             <div
@@ -74,25 +90,12 @@ const RotationFormPreview = () => {
                     whiteSpace: 'pre-wrap',
                     wordBreak: 'break-word',
                     padding: isSmallText ? '2px' : '0',
+                    boxSizing: 'border-box',
                 }}
             >
                 {content}
             </div>
         );
-    };
-    
-    // Стили для сетки с учетом реальных размеров и отступов
-    const gridStyle = {
-        display: 'grid',
-        gridTemplateColumns: `repeat(${selectedItem.columns}, 1fr)`,
-        gridTemplateRows: `repeat(${selectedItem.rows}, 1fr)`,
-        gap: `${gapSizePercent}%`,
-        width: `${totalGridWidthPercent}%`,
-        height: `${totalGridHeightPercent}%`,
-        alignItems: 'flex-start',
-        justifyContent: 'center',
-        //margin: 'auto',
-        //position: 'relative' as const,
     };
     
     return (
@@ -139,6 +142,10 @@ const RotationFormPreview = () => {
                         <div className={cls.formDetailItem}>
                             <span className={cls.label}>Размер сетки:</span>
                             <span className={cls.value}>{gridFullWidthMM} × {gridFullHeightMM} мм</span>
+                        </div>
+                        <div className={cls.formDetailItem}>
+                            <span className={cls.label}>Междуэтикеточное расстояние:</span>
+                            <span className={cls.value}>{GAP_SIZE_MM} мм</span>
                         </div>
                         {showScaleWarning && (
                             <div className={cls.formDetailItem} style={{ borderLeft: '3px solid orange' }}>
