@@ -43,6 +43,7 @@ const Modal = ({ isOpen, onClose, children }: { isOpen: boolean; onClose: () => 
 
 const AddRotationForm = ({ isOpen, onClose }: AddRotationFormProps) => {
     const dispatch = useDispatch<any>();
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     type FormValues = {
         height: number;
@@ -86,7 +87,10 @@ const AddRotationForm = ({ isOpen, onClose }: AddRotationFormProps) => {
     };
 
     const handleAddForm = async (data: FormValues) => {
+        if (isSubmitting) return;
+        
         try {
+            setIsSubmitting(true);
             const formData = {
                 height: Number(data.height),
                 width: Number(data.width),
@@ -107,7 +111,8 @@ const AddRotationForm = ({ isOpen, onClose }: AddRotationFormProps) => {
             onClose();
         } catch (error) {
             console.error('Error adding form:', error);
-            // Здесь можно добавить обработку ошибок, например, показать уведомление
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -236,8 +241,12 @@ const AddRotationForm = ({ isOpen, onClose }: AddRotationFormProps) => {
                         className={cls.input}
                     />
                 </div>
-                <button type="submit" className={cls.submitButton}>
-                    Добавить
+                <button 
+                    type="submit" 
+                    className={cls.submitButton}
+                    disabled={isSubmitting}
+                >
+                    {isSubmitting ? 'Добавление...' : 'Добавить'}
                 </button>
             </form>
         </Modal>

@@ -20,6 +20,8 @@ type RotationSizePartProps = {
 const RotationSizePart = (props: RotationSizePartProps) => {
     const { id, height, width, rows, shape, size_for_column, mark, height_without1, material, columns, comment, number } = props;
     
+    console.log(id)
+
     const getShapeIcon = () => {
         switch (shape.toLowerCase()) {
             case 'прямоугольник':

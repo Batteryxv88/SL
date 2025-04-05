@@ -90,6 +90,12 @@ select.input {
     &:active {
         background: #B77EFC;
     }
+
+    &:disabled {
+        background: rgba(187, 134, 252, 0.5);
+        cursor: not-allowed;
+        box-shadow: none;
+    }
 }
 
 .error {
