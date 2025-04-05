@@ -24,12 +24,41 @@ const RotationFormPreview = () => {
         return <div>Элемент не найден</div>;
     }
     
+    // Реальные размеры формы в мм
+    const FORM_WIDTH_MM = 284;
+    const FORM_HEIGHT_MM = 478;
+    
+    // Вычисляем полную ширину и высоту всей сетки в мм
+    const gridFullWidthMM = selectedItem.columns * selectedItem.width;
+    const gridFullHeightMM = selectedItem.rows * selectedItem.height;
+    
+    // Проверяем, превышает ли сетка доступный размер формы
+    const isOverflowWidth = gridFullWidthMM > FORM_WIDTH_MM;
+    const isOverflowHeight = gridFullHeightMM > FORM_HEIGHT_MM;
+    
+    // Вычисляем масштаб, если сетка не помещается в форму
+    const scaleX = isOverflowWidth ? FORM_WIDTH_MM / gridFullWidthMM : 1;
+    const scaleY = isOverflowHeight ? FORM_HEIGHT_MM / gridFullHeightMM : 1;
+    const scale = Math.min(scaleX, scaleY);
+    
+    // Для случаев, когда масштаб меньше 1, предупреждаем пользователя
+    const showScaleWarning = scale < 1;
+    
+    // Рассчитываем размер отступа между ячейками (меньше для больших сеток)
+    const gapSizeMM = Math.min(3, Math.max(1, 5 - (selectedItem.columns + selectedItem.rows) / 10));
+    const gapSizePercent = Math.max(0.5, (gapSizeMM / Math.max(FORM_WIDTH_MM, FORM_HEIGHT_MM)) * 100);
+    
+    // Общая ширина и высота сетки с учетом масштаба
+    const totalGridWidthPercent = Math.min(95, (gridFullWidthMM / FORM_WIDTH_MM) * 100 * scale);
+    const totalGridHeightPercent = Math.min(95, (gridFullHeightMM / FORM_HEIGHT_MM) * 100 * scale);
+    
+    // Функция для отображения ячейки с информацией
     const calculateWidthAndHeight = (content?: string | number, isSmallText = false) => {
         return (
             <div
                 style={{
                     width: '100%',
-                    aspectRatio: `${selectedItem.width} / ${selectedItem.height}`,
+                    height: '100%',
                     border: '2px solid #BB86FC',
                     borderRadius: '3px',
                     background: '#2A2A2A',
@@ -51,11 +80,19 @@ const RotationFormPreview = () => {
             </div>
         );
     };
-
-    // Стили для сетки
+    
+    // Стили для сетки с учетом реальных размеров и отступов
     const gridStyle = {
+        display: 'grid',
         gridTemplateColumns: `repeat(${selectedItem.columns}, 1fr)`,
-        gridTemplateRows: `repeat(${selectedItem.rows}, 1fr)`
+        gridTemplateRows: `repeat(${selectedItem.rows}, 1fr)`,
+        gap: `${gapSizePercent}%`,
+        width: `${totalGridWidthPercent}%`,
+        height: `${totalGridHeightPercent}%`,
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        //margin: 'auto',
+        //position: 'relative' as const,
     };
     
     return (
@@ -80,15 +117,11 @@ const RotationFormPreview = () => {
                     
                     <div className={cls.formDetails}>
                         <div className={cls.formDetailItem}>
-                            <span className={cls.label}>Ширина:</span>
-                            <span className={cls.value}>{selectedItem.width}</span>
+                            <span className={cls.label}>Размер этикетки:</span>
+                            <span className={cls.value}>{selectedItem.width} × {selectedItem.height} мм</span>
                         </div>
                         <div className={cls.formDetailItem}>
-                            <span className={cls.label}>Высота:</span>
-                            <span className={cls.value}>{selectedItem.height}</span>
-                        </div>
-                        <div className={cls.formDetailItem}>
-                            <span className={cls.label}>Ручьи:</span>
+                            <span className={cls.label}>Ручьи (колонки):</span>
                             <span className={cls.value}>{selectedItem.columns}</span>
                         </div>
                         <div className={cls.formDetailItem}>
@@ -99,6 +132,20 @@ const RotationFormPreview = () => {
                             <span className={cls.label}>Всего мест:</span>
                             <span className={cls.value}>{selectedItem.columns * selectedItem.rows}</span>
                         </div>
+                        <div className={cls.formDetailItem}>
+                            <span className={cls.label}>Размер формы:</span>
+                            <span className={cls.value}>{FORM_WIDTH_MM} × {FORM_HEIGHT_MM} мм</span>
+                        </div>
+                        <div className={cls.formDetailItem}>
+                            <span className={cls.label}>Размер сетки:</span>
+                            <span className={cls.value}>{gridFullWidthMM} × {gridFullHeightMM} мм</span>
+                        </div>
+                        {showScaleWarning && (
+                            <div className={cls.formDetailItem} style={{ borderLeft: '3px solid orange' }}>
+                                <span className={cls.label}>Масштаб (сетка не помещается):</span>
+                                <span className={cls.value}>{Math.round(scale * 100)}%</span>
+                            </div>
+                        )}
                     </div>
                 </div>
                 
@@ -115,7 +162,14 @@ const RotationFormPreview = () => {
                                     const isBottomRight = rowIndex === selectedItem.rows - 1 && colIndex === selectedItem.columns - 1;
 
                                     return (
-                                        <div key={`${rowIndex}-${colIndex}`} style={{ width: '100%', height: '100%' }}>
+                                        <div 
+                                            key={`${rowIndex}-${colIndex}`} 
+                                            style={{ 
+                                                width: '100%', 
+                                                height: '100%',
+                                                aspectRatio: `${selectedItem.width} / ${selectedItem.height}`
+                                            }}
+                                        >
                                             {isTopRow
                                                 ? calculateWidthAndHeight(colIndex + 1) // Номера столбцов
                                                 : isLeftColumn
