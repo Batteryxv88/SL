@@ -2,7 +2,7 @@ import cls from './RotationSizePart.module.scss';
 import { RectangleIcon, SquareIcon, CircleIcon, OvalIcon, CustomShapeIcon } from '../../assets/icons/shapes';
 import EditPenIcon from '../../assets/icons/edit-pen.svg';
 import CheckIcon from '../../assets/icons/check-icon.svg';
-import { useState, CSSProperties, useEffect } from 'react';
+import { useState, CSSProperties, useEffect, useRef } from 'react';
 import { useAppDispatch } from '../../../app/providers/StoreProvider/Store/hooks';
 import { updateForm } from '../../../app/providers/StoreProvider/Store/RotationFormsSlice';
 import { setSelectedFormId } from '../../../app/providers/StoreProvider/Store/SelectedFormSlice';
@@ -69,6 +69,29 @@ const RotationSizePart = (props: RotationSizePartProps) => {
     const [editedColumns, setEditedColumns] = useState(columns);
     const [editedComment, setEditedComment] = useState(comment);
     const [editedNumber, setEditedNumber] = useState(number);
+
+    // Добавляем рефы для проверки обрезания текста
+    const commentRef = useRef<HTMLParagraphElement>(null);
+    const [isCommentTruncated, setIsCommentTruncated] = useState(false);
+    
+    // Проверяем, обрезан ли текст при монтировании и изменении comment
+    useEffect(() => {
+        const checkIfCommentIsTruncated = () => {
+            if (commentRef.current) {
+                setIsCommentTruncated(
+                    commentRef.current.scrollWidth > commentRef.current.clientWidth
+                );
+            }
+        };
+        
+        checkIfCommentIsTruncated();
+        
+        // Добавляем проверку при изменении размера окна
+        window.addEventListener('resize', checkIfCommentIsTruncated);
+        return () => {
+            window.removeEventListener('resize', checkIfCommentIsTruncated);
+        };
+    }, [comment]);
 
     const getShapeIcon = () => {
         switch (shape.toLowerCase()) {
@@ -349,7 +372,20 @@ const RotationSizePart = (props: RotationSizePartProps) => {
                     />
                 </div>
             ) : (
-                <p className={cls.nameComment}>{comment}</p>
+                <div className={cls.nameCommentWrapper}>
+                    <p 
+                        ref={commentRef} 
+                        className={cls.nameComment} 
+                        title=""  /* Убираем стандартный тултип */
+                    >
+                        {comment}
+                    </p>
+                    {isCommentTruncated && (
+                        <div className={cls.commentTooltip}>
+                            {comment}
+                        </div>
+                    )}
+                </div>
             )}
 
             {isEditing ? (

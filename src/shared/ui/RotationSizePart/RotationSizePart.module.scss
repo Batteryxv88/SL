@@ -85,6 +85,50 @@
 .nameComment {
     width: 190px;
     text-align: center;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.commentTooltip {
+    display: none;
+    position: absolute;
+    background: #333;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 4px;
+    z-index: 10;
+    top: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: normal;
+    width: max-content;
+    max-width: 300px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    font-size: 12px;
+    text-align: left;
+    border: 1px solid rgba(98, 218, 251, 0.15);
+    
+    
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent transparent #333 transparent;
+    }
+}
+
+.nameCommentWrapper {
+    position: relative;
+    
+    &:hover .commentTooltip {
+        display: block;
+    }
 }
 
 .heightWithout1mm {
