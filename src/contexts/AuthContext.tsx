@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { User, onAuthStateChanged } from 'firebase/auth';
-import { getCurrentUser } from '../services/auth';
+import { getCurrentUser, logout } from '../services/auth';
 import { auth } from '../services/firebase';
 import { UserData, getUserData } from '../services/users';
 
@@ -19,6 +19,9 @@ const AuthContext = createContext<AuthContextType>({
 });
 
 export const useAuth = () => useContext(AuthContext);
+
+// Время автоматического выхода в миллисекундах (12 часов)
+const AUTO_LOGOUT_TIME = 12 * 60 * 60 * 1000;
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
@@ -42,6 +45,31 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     return () => unsubscribe();
   }, []);
+
+  // Эффект для автоматического выхода через 30 секунд
+  useEffect(() => {
+    let autoLogoutTimer: NodeJS.Timeout | null = null;
+    
+    if (user) {
+      console.log('Автоматический выход будет выполнен через 30 секунд');
+      autoLogoutTimer = setTimeout(async () => {
+        console.log('Выполняем автоматический выход');
+        try {
+          await logout();
+          console.log('Автоматический выход выполнен успешно');
+        } catch (error) {
+          console.error('Ошибка при автоматическом выходе:', error);
+        }
+      }, AUTO_LOGOUT_TIME);
+    }
+    
+    // Очищаем таймер при размонтировании компонента или смене пользователя
+    return () => {
+      if (autoLogoutTimer) {
+        clearTimeout(autoLogoutTimer);
+      }
+    };
+  }, [user]);
 
   return (
     <AuthContext.Provider value={{ user, userData, loading, setUser }}>
