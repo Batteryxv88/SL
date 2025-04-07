@@ -34,10 +34,10 @@ type RotationSizePartProps = {
 
 const RotationSizePart = (props: RotationSizePartProps) => {
     const { id, height, width, rows, shape, size_for_column, mark, height_without1, material, columns, comment, number } = props;
-    
+
     const dispatch = useAppDispatch();
     const [isEditing, setIsEditing] = useState(false);
-    
+
     // Обновляем глобальное состояние редактирования при изменении локального
     useEffect(() => {
         if (isEditing) {
@@ -48,7 +48,7 @@ const RotationSizePart = (props: RotationSizePartProps) => {
                 isAnyFormBeingEdited = false;
             }, 0);
         }
-        
+
         // Очищаем состояние при размонтировании
         return () => {
             if (isEditing) {
@@ -56,7 +56,7 @@ const RotationSizePart = (props: RotationSizePartProps) => {
             }
         };
     }, [isEditing]);
-    
+
     // Состояния для редактируемых полей
     const [editedHeight, setEditedHeight] = useState(height);
     const [editedWidth, setEditedWidth] = useState(width);
@@ -86,7 +86,7 @@ const RotationSizePart = (props: RotationSizePartProps) => {
                 return <RectangleIcon />;
         }
     };
-    
+
     const handleSaveChanges = () => {
         const updatedData = {
             height: editedHeight,
@@ -101,13 +101,13 @@ const RotationSizePart = (props: RotationSizePartProps) => {
             comment: editedComment,
             number: editedNumber
         };
-        
+
         dispatch(updateForm({ id: id.toString(), updatedData }));
         setIsEditing(false);
         // При сохранении сбрасываем глобальное состояние
         isAnyFormBeingEdited = false;
     };
-    
+
     // Обработчик клика для просмотра формы
     const handleRowClick = () => {
         // Проверяем, что никакая форма не редактируется в данный момент
@@ -116,7 +116,7 @@ const RotationSizePart = (props: RotationSizePartProps) => {
             dispatch(changeRotationModule('preview'));
         }
     };
-    
+
     // Общий стиль для полей ввода
     const inputStyle: CSSProperties = {
         width: '100%',
@@ -160,7 +160,7 @@ const RotationSizePart = (props: RotationSizePartProps) => {
         ...inputStyle,
         width: '40px'
     });
-    
+
     const getSelectMaterialStyle = (): CSSProperties => ({
         ...inputStyle,
         width: '68px',
@@ -171,7 +171,7 @@ const RotationSizePart = (props: RotationSizePartProps) => {
         backgroundSize: '8px',
         paddingRight: '14px'
     });
-    
+
     const getSelectMarkStyle = (): CSSProperties => ({
         ...inputStyle,
         width: '48px',
@@ -182,7 +182,7 @@ const RotationSizePart = (props: RotationSizePartProps) => {
         backgroundSize: '8px',
         paddingRight: '14px'
     });
-    
+
     const getSelectShapeStyle = (): CSSProperties => ({
         ...inputStyle,
         width: '42px',
@@ -193,7 +193,7 @@ const RotationSizePart = (props: RotationSizePartProps) => {
         backgroundSize: '8px',
         paddingRight: '14px'
     });
-    
+
     // Добавляем стиль для полей ввода размеров
     const getSizeInputStyle = (): CSSProperties => ({
         ...inputStyle,
@@ -201,70 +201,72 @@ const RotationSizePart = (props: RotationSizePartProps) => {
     });
 
     return (
-        <div 
+        <div
             className={cls.RotationSizePart}
             onClick={handleRowClick}
-            style={{ 
+            style={{
                 cursor: isEditing || isAnyFormBeingEdited ? 'default' : 'pointer',
                 // Добавляем визуальную индикацию, если форма не может быть открыта для просмотра
-                opacity: isAnyFormBeingEdited && !isEditing ? 0.7 : 1 
+                opacity: isAnyFormBeingEdited && !isEditing ? 0.7 : 1
             }}
         >
             <div className={cls.sizesContainer}>
                 {isEditing ? (
                     <>
-                        <input 
-                            type="number" 
-                            value={editedHeight} 
-                            onChange={(e) => setEditedHeight(Number(e.target.value))} 
+                        <input
+                            type="number"
+                            value={editedWidth}
+                            onChange={(e) => setEditedWidth(Number(e.target.value))}
                             style={getSizeInputStyle()}
                         />
                         <span>×</span>
-                        <input 
-                            type="number" 
-                            value={editedWidth} 
-                            onChange={(e) => setEditedWidth(Number(e.target.value))} 
+                        <input
+                            type="number"
+                            value={editedHeight}
+                            onChange={(e) => setEditedHeight(Number(e.target.value))}
                             style={getSizeInputStyle()}
                         />
                     </>
                 ) : (
                     <>
-                        <p className={cls.name}>{height}</p>
-                        <span>×</span>
                         <p className={cls.name}>{width}</p>
+                        <span>×</span>
+                        <p className={cls.name}>{height}</p>
+                        
+                        
                     </>
                 )}
             </div>
             {isEditing ? (
                 <div className={cls.nameColumns}>
-                    <input 
-                        type="number" 
-                        value={editedColumns} 
-                        onChange={(e) => setEditedColumns(Number(e.target.value))} 
+                    <input
+                        type="number"
+                        value={editedColumns}
+                        onChange={(e) => setEditedColumns(Number(e.target.value))}
                         style={getColumnInputStyle()}
                     />
                 </div>
             ) : (
                 <p className={cls.nameColumns}>{columns}</p>
             )}
-            
+
             {isEditing ? (
                 <div className={cls.nameRows}>
-                    <input 
-                        type="number" 
-                        value={editedRows} 
-                        onChange={(e) => setEditedRows(Number(e.target.value))} 
+                    <input
+                        type="number"
+                        value={editedRows}
+                        onChange={(e) => setEditedRows(Number(e.target.value))}
                         style={getRowInputStyle()}
                     />
                 </div>
             ) : (
                 <p className={cls.nameRows}>{rows}</p>
             )}
-            
+
             {isEditing ? (
                 <div className={cls.nameShape}>
-                    <select 
-                        value={editedShape} 
+                    <select
+                        value={editedShape}
                         onChange={(e) => setEditedShape(e.target.value)}
                         style={getSelectShapeStyle()}
                     >
@@ -278,24 +280,24 @@ const RotationSizePart = (props: RotationSizePartProps) => {
                     {getShapeIcon()}
                 </div>
             )}
-            
+
             {isEditing ? (
                 <div className={cls.namesSizeToDie}>
-                    <input 
-                        type="number" 
-                        value={editedSizeForColumn} 
-                        onChange={(e) => setEditedSizeForColumn(Number(e.target.value))} 
+                    <input
+                        type="number"
+                        value={editedSizeForColumn}
+                        onChange={(e) => setEditedSizeForColumn(Number(e.target.value))}
                         style={getSizeForColumnInputStyle()}
                     />
                 </div>
             ) : (
                 <p className={cls.namesSizeToDie}>{size_for_column}</p>
             )}
-            
+
             {isEditing ? (
                 <div className={cls.namesLabel}>
-                    <select 
-                        value={editedMark} 
+                    <select
+                        value={editedMark}
                         onChange={(e) => setEditedMark(e.target.value)}
                         style={getSelectMarkStyle()}
                     >
@@ -307,24 +309,24 @@ const RotationSizePart = (props: RotationSizePartProps) => {
             ) : (
                 <p className={cls.namesLabel}>{mark}</p>
             )}
-            
+
             {isEditing ? (
                 <div className={cls.heightWithout1mm}>
-                    <input 
-                        type="number" 
-                        value={editedHeightWithout1} 
-                        onChange={(e) => setEditedHeightWithout1(Number(e.target.value))} 
+                    <input
+                        type="number"
+                        value={editedHeightWithout1}
+                        onChange={(e) => setEditedHeightWithout1(Number(e.target.value))}
                         style={getHeightWithout1InputStyle()}
                     />
                 </div>
             ) : (
                 <p className={cls.heightWithout1mm}>{height_without1}</p>
             )}
-            
+
             {isEditing ? (
                 <div className={cls.nameMaterial}>
-                    <select 
-                        value={editedMaterial} 
+                    <select
+                        value={editedMaterial}
                         onChange={(e) => setEditedMaterial(e.target.value)}
                         style={getSelectMaterialStyle()}
                     >
@@ -336,36 +338,36 @@ const RotationSizePart = (props: RotationSizePartProps) => {
             ) : (
                 <p className={cls.nameMaterial}>{material}</p>
             )}
-            
+
             {isEditing ? (
                 <div className={cls.nameComment}>
-                    <input 
-                        type="text" 
-                        value={editedComment} 
-                        onChange={(e) => setEditedComment(e.target.value)} 
+                    <input
+                        type="text"
+                        value={editedComment}
+                        onChange={(e) => setEditedComment(e.target.value)}
                         style={getCommentInputStyle()}
                     />
                 </div>
             ) : (
                 <p className={cls.nameComment}>{comment}</p>
             )}
-            
+
             {isEditing ? (
                 <div className={cls.namesOrder}>
-                    <input 
-                        type="number" 
-                        value={editedNumber} 
-                        onChange={(e) => setEditedNumber(Number(e.target.value))} 
+                    <input
+                        type="number"
+                        value={editedNumber}
+                        onChange={(e) => setEditedNumber(Number(e.target.value))}
                         style={getOrderInputStyle()}
                     />
                 </div>
             ) : (
                 <p className={cls.namesOrder}>{number}</p>
             )}
-            
+
             <div className={cls.editContainer}>
                 {isEditing ? (
-                    <CheckIcon 
+                    <CheckIcon
                         className={cls.editPenIcon}
                         onClick={(e) => {
                             e.stopPropagation();
@@ -373,7 +375,7 @@ const RotationSizePart = (props: RotationSizePartProps) => {
                         }}
                     />
                 ) : (
-                    <EditPenIcon 
+                    <EditPenIcon
                         className={cls.editPenIcon}
                         onClick={(e) => {
                             e.stopPropagation();

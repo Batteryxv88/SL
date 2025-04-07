@@ -21,6 +21,16 @@ const RotationFormTable = () => {
         return <div>Ошибка: {error}</div>;
     }
 
+    // Сортируем формы сначала по ширине, а при равной ширине - по высоте
+    const sortedForms = [...rotationForms].sort((a, b) => {
+        // Если ширина разная, сортируем по ширине
+        if (a.width !== b.width) {
+            return a.width - b.width;
+        }
+        // Если ширина одинаковая, сортируем по высоте
+        return a.height - b.height;
+    });
+
     return (
         <div className={cls.rotationFormTable}>
             <div className={cls.nameContainer}>
@@ -41,7 +51,7 @@ const RotationFormTable = () => {
                 <p className={cls.namesOrder}>Заказ</p>
                 <p className={cls.namesEdit}>Ред.</p>
             </div>
-            {rotationForms.map(item => (
+            {sortedForms.map(item => (
                 <RotationSizePart key={item.id} {...item} />
             ))}
         </div>
