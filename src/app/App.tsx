@@ -1,7 +1,7 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 import { MainPage } from "../pages/MainPage";
 import { SchedulePage } from "../pages/SchedulePage";
-import { Suspense, useState } from "react";
+import { Suspense } from "react";
 import { Navbar } from "../widgets/Navbar";
 import Sidebar from "../widgets/Sidebar/ui/Sidebar";
 import { TonerPage } from "../pages/TonerPage";
@@ -12,11 +12,12 @@ import { LaminatePageAsync } from "../pages/LaminatePage/ui/LaminatePage.async";
 import { AuthForm } from "../components/AuthForm";
 import { AuthProvider } from "../contexts/AuthContext";
 import { ProtectedRoute } from "../components/ProtectedRoute";
+import { RoleBasedRoute } from "../components/RoleBasedRoute";
 import cls from './App.module.scss';
 import { RotationPageAsync } from "../pages/RotationPage/ui/RotationPage.async";
-const App = () => {
-  const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
+import { AdminPage } from "../pages/AdminPage";
 
+const App = () => {
   return (
     <AuthProvider>
       <div className={cls.app}>
@@ -24,12 +25,7 @@ const App = () => {
         <Routes>
           <Route 
             path="/login" 
-            element={
-              <AuthForm 
-                mode={authMode} 
-                onModeChange={setAuthMode} 
-              />
-            } 
+            element={<AuthForm />} 
           />
           <Route 
             path="/*"
@@ -48,6 +44,14 @@ const App = () => {
                           <Route path="/report" element={<ReportPage />} />
                           <Route path="/laminate" element={<LaminatePageAsync />} />
                           <Route path="/rotation" element={<RotationPageAsync />} />
+                          <Route 
+                            path="/admin" 
+                            element={
+                              <RoleBasedRoute allowedRoles={['администратор']}>
+                                <AdminPage />
+                              </RoleBasedRoute>
+                            } 
+                          />
                         </Routes>
                       </Suspense>
                     </div>

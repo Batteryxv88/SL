@@ -8,7 +8,7 @@ import { logout } from "../../../services/auth";
 const Navbar: React.FC = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { user } = useAuth();
+    const { user, userData } = useAuth();
 
     const handleLogout = async () => {
         try {
@@ -18,6 +18,9 @@ const Navbar: React.FC = () => {
             console.error('Logout error:', error);
         }
     };
+
+    // Проверяем, является ли текущий пользователь администратором
+    const isAdmin = userData?.role === 'администратор';
 
     return (
         <div className={cls.navbar}>
@@ -58,12 +61,22 @@ const Navbar: React.FC = () => {
                 >
                     <Button name={'РОТАЦИЯ'} />
                 </Link>
+                {/* Отображаем кнопку админ-панели только для администраторов */}
+                {isAdmin && (
+                    <Link 
+                        className={`${cls.button} ${location.pathname === "/admin" ? cls.active : ""}`} 
+                        to={"/admin"}
+                    >
+                        <Button name={'АДМИНИСТРИРОВАНИЕ'} />
+                    </Link>
+                )}
             </div>
             {user && (
                 <div className={cls.userInfo}>
                     <div className={cls.userInfoContent}>
                     <span className={cls.name}>{user.displayName}</span>
                     <span className={cls.email}>{user.email}</span>
+                    {userData && <span className={cls.role}>Роль: {userData.role}</span>}
                     </div>
                     
                     <button onClick={handleLogout} className={cls.logoutButton}>

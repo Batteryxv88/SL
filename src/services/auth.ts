@@ -1,17 +1,51 @@
 import { 
   signInWithEmailAndPassword, 
-  createUserWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
   User,
-  AuthError,
-  updateProfile
+  AuthError
 } from 'firebase/auth';
 import { FirebaseError } from 'firebase/app';
 import { auth } from './firebase';
+import { checkUserExists, getUserRole } from './users';
+
+// Функция для проверки, активирована ли проверка наличия пользователя
+export const isUserCheckActive = (): boolean => {
+  return localStorage.getItem('userCheckActive') === 'true';
+};
+
+// Функция для активации проверки наличия пользователя
+export const activateUserCheck = (): void => {
+  localStorage.setItem('userCheckActive', 'true');
+};
+
+// Массив разрешенных ролей пользователей
+const allowedRoles = [
+  'администратор',
+  'руководитель',
+  'печатник',
+  'резчик',
+  'менеджер',
+  'дизайнер'
+];
 
 export const login = async (email: string, password: string) => {
   try {
+    // Проверяем, активирована ли проверка наличия пользователя
+    if (isUserCheckActive()) {
+      // Проверяем, есть ли пользователь в нашей коллекции пользователей
+      const userExists = await checkUserExists(email);
+      if (!userExists) {
+        throw new Error('Пользователь с таким email не найден. Пожалуйста, обратитесь к администратору.');
+      }
+      
+      // Проверяем роль пользователя
+      const userRole = await getUserRole(email);
+      if (!userRole || !allowedRoles.includes(userRole)) {
+        throw new Error('У вас нет доступа к системе. Пожалуйста, обратитесь к администратору.');
+      }
+    }
+
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     return userCredential.user;
   } catch (error) {
@@ -24,28 +58,11 @@ export const login = async (email: string, password: string) => {
       throw new Error(errorMessage);
     }
     
-    throw new Error('Произошла ошибка при входе. Пожалуйста, попробуйте еще раз.');
-  }
-};
-
-export const register = async (email: string, password: string, name: string) => {
-  try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    await updateProfile(userCredential.user, {
-      displayName: name
-    });
-    return userCredential.user;
-  } catch (error) {
-    console.error('Registration error details:', error);
-    
-    if (error instanceof FirebaseError) {
-      const errorMessage = getErrorMessage(error.code);
-      console.log('Firebase error code:', error.code);
-      console.log('Translated error message:', errorMessage);
-      throw new Error(errorMessage);
+    if (error instanceof Error) {
+      throw error;
     }
     
-    throw new Error('Произошла ошибка при регистрации. Пожалуйста, попробуйте еще раз.');
+    throw new Error('Произошла ошибка при входе. Пожалуйста, попробуйте еще раз.');
   }
 };
 
@@ -54,10 +71,7 @@ export const logout = async () => {
     await signOut(auth);
   } catch (error) {
     console.error('Logout error:', error);
-    if (error instanceof FirebaseError) {
-      throw new Error(getErrorMessage(error.code));
-    }
-    throw new Error('Произошла ошибка при выходе. Пожалуйста, попробуйте еще раз.');
+    throw error;
   }
 };
 
@@ -74,27 +88,35 @@ export const getCurrentUser = (): Promise<User | null> => {
   });
 };
 
-// Функция для получения понятных сообщений об ошибках
+// Преобразуем коды ошибок Firebase в удобочитаемые сообщения
 const getErrorMessage = (errorCode: string): string => {
   switch (errorCode) {
-    case 'auth/email-already-in-use':
-      return 'Этот email уже зарегистрирован. Пожалуйста, используйте другой email или войдите в существующий аккаунт.';
-    case 'auth/invalid-email':
-      return 'Некорректный формат email. Пожалуйста, проверьте правильность введенного email.';
-    case 'auth/operation-not-allowed':
-      return 'Операция не разрешена. Пожалуйста, обратитесь к администратору.';
-    case 'auth/weak-password':
-      return 'Пароль слишком слабый. Пароль должен содержать минимум 6 символов.';
-    case 'auth/user-disabled':
-      return 'Этот аккаунт был отключен. Пожалуйста, обратитесь к администратору.';
     case 'auth/user-not-found':
-      return 'Пользователь с таким email не найден. Пожалуйста, проверьте email или зарегистрируйтесь.';
+      return 'Пользователь с таким email не найден.';
     case 'auth/wrong-password':
-      return 'Неверный пароль. Пожалуйста, проверьте правильность введенного пароля.';
-    case 'auth/too-many-requests':
-      return 'Слишком много попыток входа. Пожалуйста, подождите несколько минут и попробуйте снова.';
+      return 'Неверный пароль.';
+    case 'auth/invalid-email':
+      return 'Неверный формат email.';
+    case 'auth/user-disabled':
+      return 'Этот аккаунт заблокирован.';
+    case 'auth/email-already-in-use':
+      return 'Этот email уже используется.';
+    case 'auth/weak-password':
+      return 'Слишком простой пароль. Пароль должен содержать минимум 6 символов.';
+    case 'auth/operation-not-allowed':
+      return 'Операция не разрешена.';
     case 'auth/network-request-failed':
-      return 'Ошибка сети. Пожалуйста, проверьте подключение к интернету.';
+      return 'Ошибка сети. Проверьте подключение к интернету.';
+    case 'auth/too-many-requests':
+      return 'Слишком много попыток входа. Пожалуйста, попробуйте позже.';
+    case 'auth/internal-error':
+      return 'Внутренняя ошибка. Пожалуйста, попробуйте еще раз.';
+    case 'auth/popup-closed-by-user':
+      return 'Операция отменена пользователем.';
+    case 'auth/requires-recent-login':
+      return 'Для выполнения этой операции требуется повторный вход.';
+    case 'auth/unauthorized-domain':
+      return 'Неавторизованный домен. Обратитесь к администратору.';
     case 'auth/configuration-not-found':
       return 'Ошибка конфигурации Firebase. Пожалуйста, обратитесь к администратору.';
     case 'auth/invalid-credential':
@@ -123,12 +145,6 @@ const getErrorMessage = (errorCode: string): string => {
       return 'Учетные данные были отклонены.';
     case 'auth/timeout':
       return 'Превышено время ожидания. Пожалуйста, попробуйте еще раз.';
-    case 'auth/unauthorized-domain':
-      return 'Этот домен не авторизован для OAuth-операций.';
-    case 'auth/unsupported-persistence-type':
-      return 'Неподдерживаемый тип сохранения состояния.';
-    case 'auth/used-email-from-another-provider':
-      return 'Этот email уже используется другим провайдером.';
     default:
       return 'Произошла ошибка при авторизации. Пожалуйста, попробуйте еще раз.';
   }

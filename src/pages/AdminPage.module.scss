@@ -1,0 +1,209 @@
+.adminPage {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #121212;
+
+  .pageTitle {
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    color: rgba(255, 255, 255, 0.87);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 16px;
+  }
+
+  .sectionTitle {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.87);
+  }
+
+  .userForm {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+  }
+
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    label {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
+    }
+  }
+
+  .input, .select {
+    padding: 10px;
+    background-color: #1e1e1e;
+    color: rgba(255, 255, 255, 0.87);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.2s;
+
+    &:focus {
+      border-color: #bb86fc;
+      outline: none;
+    }
+  }
+
+  .submitButton {
+    margin-top: 10px;
+    padding: 12px;
+    background-color: #bb86fc;
+    color: #121212;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #c397fc;
+    }
+
+    &:disabled {
+      background-color: rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.38);
+      cursor: not-allowed;
+    }
+  }
+
+  .status {
+    margin: 20px 0;
+    padding: 12px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-left: 4px solid #bb86fc;
+    color: rgba(255, 255, 255, 0.87);
+  }
+
+  .currentUser, .settings, .newUserSection, .usersSection {
+    margin-bottom: 40px;
+    padding: 24px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .activeStatus {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: rgba(3, 218, 198, 0.1);
+    border-radius: 4px;
+    border-left: 4px solid #03dac6;
+
+    p {
+      margin: 0;
+      
+      &:first-child {
+        font-weight: 500;
+        margin-bottom: 5px;
+      }
+      
+      &:last-child {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 14px;
+      }
+    }
+  }
+
+  .actionButton {
+    margin-top: 15px;
+    padding: 12px;
+    background-color: #03dac6;
+    color: #121212;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #04e9d1;
+    }
+
+    &:disabled {
+      background-color: rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.38);
+      cursor: not-allowed;
+    }
+  }
+
+  .activateButton {
+    margin-top: 15px;
+    padding: 12px;
+    background-color: #cf6679;
+    color: #121212;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #df7a8c;
+    }
+
+    &:disabled {
+      background-color: rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.38);
+      cursor: not-allowed;
+    }
+  }
+
+  .note {
+    margin-top: 10px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+  }
+
+  .tableWrapper {
+    overflow-x: auto;
+  }
+
+  .usersTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    th {
+      background-color: rgba(255, 255, 255, 0.05);
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.87);
+      position: sticky;
+      top: 0;
+    }
+
+    tr:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    td {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+
+  .noUsers {
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+  }
+} 

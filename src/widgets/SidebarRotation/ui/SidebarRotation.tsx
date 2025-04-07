@@ -6,6 +6,7 @@ import { RootState } from '../../../app/providers/StoreProvider/Store';
 import { fetchForms } from '../../../app/providers/StoreProvider/Store/RotationFormsSlice';
 import { changeRotationModule } from '../../../app/providers/StoreProvider/Store/ChangeRotationModule';
 import { setSelectedFormId } from '../../../app/providers/StoreProvider/Store/SelectedFormSlice';
+import SidebarRotationSkeleton from './SidebarRotationSkeleton';
 
 const SidebarRotation = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,10 +20,13 @@ const SidebarRotation = () => {
     const { rotationForms, loading } = useAppSelector((state: RootState) => state.rotationForms);
 
     useEffect(() => {
-        dispatch(fetchForms());
-    }, [dispatch]);
+        // Загружаем данные только если их еще нет в хранилище
+        if (rotationForms.length === 0 && !loading) {
+            dispatch(fetchForms());
+        }
+    }, [dispatch, rotationForms.length, loading]);
 
-    // Фильтруем формы на основе запроса поиска (по ширине или высоте), затем сортируем
+    // Фильтруем формы на основе запроса поиска (по ширине или высоте)
     const filteredForms = rotationForms
         .filter(form => {
             const query = searchQuery.trim();
@@ -103,7 +107,7 @@ const SidebarRotation = () => {
                     {isDropdownOpen && (
                         <div className={cls.searchDropdown} ref={dropdownRef}>
                             {loading ? (
-                                <div className={cls.searchDropdownItem}>Загрузка...</div>
+                                <SidebarRotationSkeleton />
                             ) : filteredForms.length > 0 ? (
                                 filteredForms.map(form => (
                                     <div 

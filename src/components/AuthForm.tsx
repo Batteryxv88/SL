@@ -1,18 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { login, register } from '../services/auth';
+import { login } from '../services/auth';
 import { useAuth } from '../contexts/AuthContext';
 import styles from './AuthForm.module.scss';
 
-interface AuthFormProps {
-  mode: 'login' | 'register';
-  onModeChange: (mode: 'login' | 'register') => void;
-}
-
-export const AuthForm: React.FC<AuthFormProps> = ({ mode, onModeChange }) => {
+export const AuthForm: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -24,15 +18,9 @@ export const AuthForm: React.FC<AuthFormProps> = ({ mode, onModeChange }) => {
     setLoading(true);
 
     try {
-      if (mode === 'login') {
-        console.log('Attempting to login with:', { email });
-        await login(email, password);
-        console.log('Login successful');
-      } else {
-        console.log('Attempting to register with:', { email, name });
-        await register(email, password, name);
-        console.log('Registration successful');
-      }
+      console.log('Attempting to login with:', { email });
+      await login(email, password);
+      console.log('Login successful');
       navigate('/');
     } catch (err: any) {
       console.error('Auth error:', err);
@@ -45,33 +33,11 @@ export const AuthForm: React.FC<AuthFormProps> = ({ mode, onModeChange }) => {
     }
   };
 
-  const handleModeSwitch = () => {
-    setError('');
-    setEmail('');
-    setPassword('');
-    setName('');
-    onModeChange(mode === 'login' ? 'register' : 'login');
-  };
-
   return (
     <div className={styles.authContainer}>
       <form onSubmit={handleSubmit} className={styles.authForm}>
-        <h2>{mode === 'login' ? 'Вход' : 'Регистрация'}</h2>
+        <h2>Вход в систему</h2>
         
-        {mode === 'register' && (
-          <div className={styles.formGroup}>
-            <label htmlFor="name">Имя</label>
-            <input
-              type="text"
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-              disabled={loading}
-            />
-          </div>
-        )}
-
         {error && (
           <div className={styles.errorMessage}>
             {error}
@@ -110,16 +76,7 @@ export const AuthForm: React.FC<AuthFormProps> = ({ mode, onModeChange }) => {
           className={styles.submitButton}
           disabled={loading}
         >
-          {loading ? 'Загрузка...' : mode === 'login' ? 'Войти' : 'Зарегистрироваться'}
-        </button>
-
-        <button
-          type="button"
-          className={styles.switchButton}
-          onClick={handleModeSwitch}
-          disabled={loading}
-        >
-          {mode === 'login' ? 'Создать аккаунт' : 'Уже есть аккаунт? Войти'}
+          {loading ? 'Загрузка...' : 'Войти'}
         </button>
       </form>
     </div>

@@ -1,0 +1,47 @@
+.accessDenied {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 2rem;
+  color: rgba(255, 255, 255, 0.87);
+  
+  .content {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    padding: 2rem;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .title {
+    color: #cf6679;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .message {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .button {
+    display: inline-block;
+    background-color: #bb86fc;
+    color: #121212;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    
+    &:hover {
+      background-color: #c397fc;
+    }
+  }
+} 
