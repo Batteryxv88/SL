@@ -38,10 +38,31 @@ const App = () => {
                     <div className={cls.pages}>
                       <Suspense fallback={<div className={cls.loading}>Loading...</div>}>
                         <Routes>
-                          <Route path="/toner" element={<TonerPage />} />
-                          <Route path="/schedule" element={<SchedulePage />} />
+                        <Route 
+                            path="/toner" 
+                            element={
+                              <RoleBasedRoute allowedRoles={['администратор', 'руководитель', 'печатник']}>
+                                <TonerPage />
+                              </RoleBasedRoute>
+                            } 
+                          />
+                          <Route 
+                            path="/schedule" 
+                            element={
+                              <RoleBasedRoute allowedRoles={['администратор', 'руководитель', 'печатник']}>
+                                <SchedulePage />
+                              </RoleBasedRoute>
+                            } 
+                          />
                           <Route path="/" element={<MainPage />} />
-                          <Route path="/report" element={<ReportPage />} />
+                          <Route 
+                            path="/report" 
+                            element={
+                              <RoleBasedRoute allowedRoles={['администратор', 'руководитель']}>
+                                <ReportPage />
+                              </RoleBasedRoute>
+                            } 
+                          />
                           <Route path="/laminate" element={<LaminatePageAsync />} />
                           <Route path="/rotation" element={<RotationPageAsync />} />
                           <Route 

@@ -21,50 +21,56 @@ const Navbar: React.FC = () => {
 
     // Проверяем, является ли текущий пользователь администратором
     const isAdmin = userData?.role === 'администратор';
+    const isDirector = userData?.role === 'руководитель';
+    const isPrinter = userData?.role === 'печатник';
 
     return (
         <div className={cls.navbar}>
             <div className={cls.navLinks}>
-                <Link 
-                    className={`${cls.button} ${location.pathname === "/" ? cls.active : ""}`} 
+                <Link
+                    className={`${cls.button} ${location.pathname === "/" ? cls.active : ""}`}
                     to={"/"}
                 >
                     <Button name={'СКЛАД'} />
                 </Link>
-                <Link 
-                    className={`${cls.button} ${location.pathname === "/schedule" ? cls.active : ""}`} 
+                {(isDirector || isAdmin || isPrinter) && (
+                <Link
+                    className={`${cls.button} ${location.pathname === "/schedule" ? cls.active : ""}`}
                     to={"/schedule"}
                 >
                     <Button name={'ЗАМЕНА ДЕТАЛЕЙ'} />
                 </Link>
-                <Link 
-                    className={`${cls.button} ${location.pathname === "/toner" ? cls.active : ""}`} 
+                )}
+                {(isDirector || isAdmin || isPrinter) && (<Link
+                    className={`${cls.button} ${location.pathname === "/toner" ? cls.active : ""}`}
                     to={"/toner"}
                 >
                     <Button name={'ЗАМЕНА ТОНЕРА'} />
-                </Link>
-                <Link 
-                    className={`${cls.button} ${location.pathname === "/report" ? cls.active : ""}`} 
-                    to={"/report"}
-                >
-                    <Button name={'ОТЧЕТ'} />
-                </Link>
-                <Link 
-                    className={`${cls.button} ${location.pathname === "/laminate" ? cls.active : ""}`} 
+                </Link>)}
+                {(isDirector || isAdmin) && (
+                    <Link
+                        className={`${cls.button} ${location.pathname === "/report" ? cls.active : ""}`}
+                        to={"/report"}
+                    >
+                        <Button name={'ОТЧЕТ'} />
+                    </Link>
+                )}
+                <Link
+                    className={`${cls.button} ${location.pathname === "/laminate" ? cls.active : ""}`}
                     to={"/laminate"}
                 >
                     <Button name={'КАЛЬКУЛЯТОР'} />
                 </Link>
-                <Link 
-                    className={`${cls.button} ${location.pathname === "/rotation" ? cls.active : ""}`} 
+                <Link
+                    className={`${cls.button} ${location.pathname === "/rotation" ? cls.active : ""}`}
                     to={"/rotation"}
                 >
                     <Button name={'РОТАЦИЯ'} />
                 </Link>
                 {/* Отображаем кнопку админ-панели только для администраторов */}
                 {isAdmin && (
-                    <Link 
-                        className={`${cls.button} ${location.pathname === "/admin" ? cls.active : ""}`} 
+                    <Link
+                        className={`${cls.button} ${location.pathname === "/admin" ? cls.active : ""}`}
                         to={"/admin"}
                     >
                         <Button name={'АДМИНИСТРИРОВАНИЕ'} />
@@ -74,11 +80,10 @@ const Navbar: React.FC = () => {
             {user && (
                 <div className={cls.userInfo}>
                     <div className={cls.userInfoContent}>
-                    <span className={cls.name}>{user.displayName}</span>
-                    <span className={cls.email}>{user.email}</span>
-                    {userData && <span className={cls.role}>Роль: {userData.role}</span>}
+                        <span className={cls.name}>{user.displayName}</span>
+                        {userData && <span className={cls.role}>{userData.role}</span>}
                     </div>
-                    
+
                     <button onClick={handleLogout} className={cls.logoutButton}>
                         Выйти
                     </button>
