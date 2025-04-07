@@ -35,8 +35,8 @@ const RotationFormTable = () => {
         <div className={cls.rotationFormTable}>
             <div className={cls.nameContainer}>
                 <div className={cls.namesSizes}>
-                    <p className={cls.span}>H</p>
                     <p className={cls.span}>W</p>
+                    <p className={cls.span}>H</p>
                 </div>
                 <p className={cls.namesColumns}>Ручьи</p>
                 <p className={cls.namesRows}>Ряды</p>

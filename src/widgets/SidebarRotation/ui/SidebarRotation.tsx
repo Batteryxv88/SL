@@ -22,16 +22,25 @@ const SidebarRotation = () => {
         dispatch(fetchForms());
     }, [dispatch]);
 
-    // Фильтруем формы на основе запроса поиска (по ширине или высоте)
-    const filteredForms = rotationForms.filter(form => {
-        const query = searchQuery.trim();
-        if (!query) return false;
-        
-        const searchNumber = parseInt(query);
-        if (isNaN(searchNumber)) return false;
+    // Фильтруем формы на основе запроса поиска (по ширине или высоте), затем сортируем
+    const filteredForms = rotationForms
+        .filter(form => {
+            const query = searchQuery.trim();
+            if (!query) return false;
+            
+            const searchNumber = parseInt(query);
+            if (isNaN(searchNumber)) return false;
 
-        return form.width === searchNumber || form.height === searchNumber;
-    });
+            return form.width === searchNumber || form.height === searchNumber;
+        })
+        .sort((a, b) => {
+            // Если ширина разная, сортируем по ширине
+            if (a.width !== b.width) {
+                return a.width - b.width;
+            }
+            // Если ширина одинаковая, сортируем по высоте
+            return a.height - b.height;
+        });
 
     // Обработчик ввода в поле поиска
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
