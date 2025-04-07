@@ -2,9 +2,15 @@ import cls from './RotationSizePart.module.scss';
 import { RectangleIcon, SquareIcon, CircleIcon, OvalIcon, CustomShapeIcon } from '../../assets/icons/shapes';
 import EditPenIcon from '../../assets/icons/edit-pen.svg';
 import CheckIcon from '../../assets/icons/check-icon.svg';
-import { useState, CSSProperties } from 'react';
+import { useState, CSSProperties, useEffect } from 'react';
 import { useAppDispatch } from '../../../app/providers/StoreProvider/Store/hooks';
 import { updateForm } from '../../../app/providers/StoreProvider/Store/RotationFormsSlice';
+import { setSelectedFormId } from '../../../app/providers/StoreProvider/Store/SelectedFormSlice';
+import { changeRotationModule } from '../../../app/providers/StoreProvider/Store/ChangeRotationModule';
+
+// Глобальная переменная для отслеживания состояния редактирования
+// Она не сбрасывается при перерендере компонентов
+let isAnyFormBeingEdited = false;
 
 // Списки для выпадающих меню
 const SHAPES = ['Прямоугольник', 'Квадрат', 'Круг', 'Овал', 'Фигурная'];
@@ -31,6 +37,25 @@ const RotationSizePart = (props: RotationSizePartProps) => {
     
     const dispatch = useAppDispatch();
     const [isEditing, setIsEditing] = useState(false);
+    
+    // Обновляем глобальное состояние редактирования при изменении локального
+    useEffect(() => {
+        if (isEditing) {
+            isAnyFormBeingEdited = true;
+        } else if (!isEditing) {
+            // Проверяем, нет ли других редактируемых форм
+            setTimeout(() => {
+                isAnyFormBeingEdited = false;
+            }, 0);
+        }
+        
+        // Очищаем состояние при размонтировании
+        return () => {
+            if (isEditing) {
+                isAnyFormBeingEdited = false;
+            }
+        };
+    }, [isEditing]);
     
     // Состояния для редактируемых полей
     const [editedHeight, setEditedHeight] = useState(height);
@@ -79,6 +104,17 @@ const RotationSizePart = (props: RotationSizePartProps) => {
         
         dispatch(updateForm({ id: id.toString(), updatedData }));
         setIsEditing(false);
+        // При сохранении сбрасываем глобальное состояние
+        isAnyFormBeingEdited = false;
+    };
+    
+    // Обработчик клика для просмотра формы
+    const handleRowClick = () => {
+        // Проверяем, что никакая форма не редактируется в данный момент
+        if (!isEditing && !isAnyFormBeingEdited) {
+            dispatch(setSelectedFormId(id.toString()));
+            dispatch(changeRotationModule('preview'));
+        }
     };
     
     // Общий стиль для полей ввода
@@ -165,7 +201,15 @@ const RotationSizePart = (props: RotationSizePartProps) => {
     });
 
     return (
-        <div className={cls.RotationSizePart}>
+        <div 
+            className={cls.RotationSizePart}
+            onClick={handleRowClick}
+            style={{ 
+                cursor: isEditing || isAnyFormBeingEdited ? 'default' : 'pointer',
+                // Добавляем визуальную индикацию, если форма не может быть открыта для просмотра
+                opacity: isAnyFormBeingEdited && !isEditing ? 0.7 : 1 
+            }}
+        >
             <div className={cls.sizesContainer}>
                 {isEditing ? (
                     <>
@@ -323,12 +367,21 @@ const RotationSizePart = (props: RotationSizePartProps) => {
                 {isEditing ? (
                     <CheckIcon 
                         className={cls.editPenIcon}
-                        onClick={handleSaveChanges}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            handleSaveChanges();
+                        }}
                     />
                 ) : (
                     <EditPenIcon 
                         className={cls.editPenIcon}
-                        onClick={() => setIsEditing(true)}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            // Разрешаем редактирование только если никакая другая форма не редактируется
+                            if (!isAnyFormBeingEdited) {
+                                setIsEditing(true);
+                            }
+                        }}
                     />
                 )}
             </div>
