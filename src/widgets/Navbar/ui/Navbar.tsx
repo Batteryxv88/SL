@@ -4,8 +4,10 @@ import cls from "./Navbar.module.scss";
 import Button from "../../../shared/ui/Button/Button";
 import { useAuth } from "../../../contexts/AuthContext";
 import { logout } from "../../../services/auth";
+import { useAppSelector } from '../../../app/providers/StoreProvider/Store/hooks';
 
 const Navbar: React.FC = () => {
+    const pageState = useAppSelector((state) => state.pages.page);
     const location = useLocation();
     const navigate = useNavigate();
     const { user, userData } = useAuth();
@@ -56,8 +58,8 @@ const Navbar: React.FC = () => {
                     </Link>
                 )}
                 <Link
-                    className={`${cls.button} ${location.pathname === "/laminate" ? cls.active : ""}`}
-                    to={"/laminate"}
+                    className={`${cls.button} ${location.pathname === "/calculator" ? cls.active : ""}`}
+                    to={"/calculator"}
                 >
                     <Button name={'КАЛЬКУЛЯТОР'} />
                 </Link>

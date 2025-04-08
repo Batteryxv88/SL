@@ -17,16 +17,20 @@ const Sidebar = () => {
     const dispatch = useAppDispatch();
     const machineState = useAppSelector((state) => state.machines.storage);
 
+    console.log(machineState);
     console.log(pageState);
 
     const dispatchStorage = () => dispatch(changeStorage("Детали"));
     const dispatchToners = () => dispatch(changeStorage("Тонеры"));
+    const dispatchPaper = () => dispatch(changeStorage("Бумага"));
+    const dispatchLaminationStock = () => dispatch(changeStorage("ламинация"));
+    const dispatchHolders = () => dispatch(changeStorage("Держатели / Лезвия"));
 
     return (
         <div className={cls.sidebar}>
             {pageState === "rotation" ? (
                 <SidebarRotation />
-            ) : pageState === "laminate" ? (
+            ) : pageState === "calculator" ? (
                 <SidebarLamination />
             ) : pageState === "schedule" ? (
                 <SidebarReplacePart />
@@ -38,10 +42,13 @@ const Sidebar = () => {
                 <ChangeButton
                     dispatch1={dispatchStorage}
                     dispatch2={dispatchToners}
+                    dispatch3={dispatchPaper}
+                    dispatch4={dispatchLaminationStock}
+                    dispatch5={dispatchHolders}
                     name1="Детали"
                     name2="Тонеры"
                     name3="Бумага"
-                    name4="Ламинация"
+                    name4="ламинация"
                     name5="Держатели / Лезвия"
                     selector={machineState}
                 />

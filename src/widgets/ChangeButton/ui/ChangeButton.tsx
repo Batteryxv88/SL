@@ -12,12 +12,14 @@ type ChangeButtonType = {
     name5: string;
     dispatch1: () => void;
     dispatch2: () => void;
-    //dispatch3: () => void;
+    dispatch3: () => void;
+    dispatch4: () => void;
+    dispatch5: () => void;
     selector: string;
 };
 
 const ChangeButton = (props: ChangeButtonType) => {
-    const { name1, name2, name3, name4, name5, dispatch1, dispatch2, selector } = props;
+    const { name1, name2, name3, name4, name5, dispatch1, dispatch2, dispatch3, dispatch4, dispatch5, selector } = props;
     //const dispatch = useAppDispatch();
     //console.log(selector)
 
@@ -41,7 +43,7 @@ const ChangeButton = (props: ChangeButtonType) => {
                     {name2}
                 </button>
                 <button
-                    // onClick={dispatch2}
+                    onClick={dispatch3}
                     className={
                         selector === name3 ? cls.activeButton : cls.button
                     }
@@ -49,7 +51,7 @@ const ChangeButton = (props: ChangeButtonType) => {
                     {name3}
                 </button>
                 <button
-                    // onClick={dispatch2}
+                    onClick={dispatch4}
                     className={
                         selector === name4 ? cls.activeButton : cls.button
                     }
@@ -57,7 +59,7 @@ const ChangeButton = (props: ChangeButtonType) => {
                     {name4}
                 </button>
                 <button
-                    // onClick={dispatch2}
+                    onClick={dispatch5}
                     className={
                         selector === name5 ? cls.activeButton : cls.button
                     }

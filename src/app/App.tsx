@@ -8,7 +8,7 @@ import { TonerPage } from "../pages/TonerPage";
 import Favicon from "react-favicon";
 import Fvicon from '../../public/favicon.svg'
 import { ReportPage } from "../pages/ReportPage";
-import { LaminatePageAsync } from "../pages/LaminatePage/ui/LaminatePage.async";
+import { CalculatorPageAsync } from "../pages/CalculatorPage/ui/CalculatorPage.async";
 import { AuthForm } from "../components/AuthForm";
 import { AuthProvider } from "../contexts/AuthContext";
 import { ProtectedRoute } from "../components/ProtectedRoute";
@@ -63,7 +63,7 @@ const App = () => {
                               </RoleBasedRoute>
                             } 
                           />
-                          <Route path="/laminate" element={<LaminatePageAsync />} />
+                          <Route path="/calculator" element={<CalculatorPageAsync />} />
                           <Route path="/rotation" element={<RotationPageAsync />} />
                           <Route 
                             path="/admin" 

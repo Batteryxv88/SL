@@ -1,8 +1,8 @@
 import { useState, KeyboardEvent } from 'react';
 import { changePage } from "../../../app/providers/StoreProvider/Store/ChangePageSlice";
 import { useAppDispatch } from "../../../app/providers/StoreProvider/Store/hooks";
-import cls from './LaminatePage.module.scss';
-import RotationPage from '../../RotationPage/ui/RotationPage';
+import cls from './CalculatorPage.module.scss';
+//import RotationPage from '../../RotationPage/ui/RotationPage';
 type MaterialType = 'FA' | 'FH' | 'PA' | 'PH' | 'Clear' | 'Metall' | 'Verge';
 
 const MATERIAL_THICKNESS: Record<MaterialType, number> = {
@@ -15,9 +15,9 @@ const MATERIAL_THICKNESS: Record<MaterialType, number> = {
     'Verge': 0.1837
 };
 
-const LaminatePage = () => {
+const CalculatorPage = () => {
     const dispatch = useAppDispatch();
-    dispatch(changePage('laminate'));
+    dispatch(changePage('calculator'));
 
     // First calculator states
     const [thickness, setThickness] = useState<string>('');
@@ -104,7 +104,7 @@ const LaminatePage = () => {
     };
 
     return (
-        <div className={cls.LaminatePage}>
+        <div className={cls.CalculatorPage}>
             <div className={cls.calculator}>
                 <h2 className={cls.title}>Расчет метража ламинации</h2>
                 <div className={cls.inputWrapper}>
@@ -193,4 +193,4 @@ const LaminatePage = () => {
     );
 };
 
-export default LaminatePage; 
+export default CalculatorPage; 
