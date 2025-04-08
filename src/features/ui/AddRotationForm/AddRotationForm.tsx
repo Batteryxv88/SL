@@ -216,8 +216,11 @@ const AddRotationForm = ({ isOpen, onClose }: AddRotationFormProps) => {
                     >
                         <option value="" disabled className={cls.placeholder}>Размер, расположение</option>
                         <option value="5х5 L R">5х5 L R</option>
-                        <option value="5х5 L">5х5 L</option>
                         <option value="5х5 R">5х5 R</option>
+                        <option value="5х5 L">4х4 L R</option>
+                        <option value="5х5 L">4х4 R</option>
+                        <option value="5х5 L">3х3 L R</option>
+                        <option value="5х5 L">3х3 R</option>
                     </select>
                 </div>
                 <div className={cls.box}>
