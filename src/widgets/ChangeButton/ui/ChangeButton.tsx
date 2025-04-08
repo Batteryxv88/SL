@@ -7,13 +7,17 @@ type ActionType = typeof action;
 type ChangeButtonType = {
     name1: string;
     name2: string;
+    name3: string;
+    name4: string;
+    name5: string;
     dispatch1: () => void;
     dispatch2: () => void;
+    //dispatch3: () => void;
     selector: string;
 };
 
 const ChangeButton = (props: ChangeButtonType) => {
-    const { name1, name2, dispatch1, dispatch2, selector } = props;
+    const { name1, name2, name3, name4, name5, dispatch1, dispatch2, selector } = props;
     //const dispatch = useAppDispatch();
     //console.log(selector)
 
@@ -35,6 +39,30 @@ const ChangeButton = (props: ChangeButtonType) => {
                     }
                 >
                     {name2}
+                </button>
+                <button
+                    // onClick={dispatch2}
+                    className={
+                        selector === name3 ? cls.activeButton : cls.button
+                    }
+                >
+                    {name3}
+                </button>
+                <button
+                    // onClick={dispatch2}
+                    className={
+                        selector === name4 ? cls.activeButton : cls.button
+                    }
+                >
+                    {name4}
+                </button>
+                <button
+                    // onClick={dispatch2}
+                    className={
+                        selector === name5 ? cls.activeButton : cls.button
+                    }
+                >
+                    {name5}
                 </button>
             </div>
         </>

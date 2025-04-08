@@ -40,6 +40,9 @@ const Sidebar = () => {
                     dispatch2={dispatchToners}
                     name1="Детали"
                     name2="Тонеры"
+                    name3="Бумага"
+                    name4="Ламинация"
+                    name5="Держатели / Лезвия"
                     selector={machineState}
                 />
             ) : (
