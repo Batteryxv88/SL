@@ -3,8 +3,8 @@ import { useAppDispatch, useAppSelector } from "../../../app/providers/StoreProv
 import AddPart from "../../../features/ui/AddPart/AddPart";
 import Stock from "../../../widgets/Stock/ui/Stock";
 import TonersStorage from "../../../widgets/TonersStorage/ui/TonersStorage";
-import { CalculatorPageAsync } from "../../CalculatorPage/ui/CalculatorPage.async";
 import PaperStockPage from "../../PaperStockPage/ui/PaperStockPage";
+import LaminationStockPage from "../../LaminationStockPage/ui/LaminationStockPage";
 import cls from "./MainPage.module.scss";
 
 const MainPage = () => {
@@ -18,7 +18,8 @@ const MainPage = () => {
             {storageState === "Детали" ? <AddPart /> : ''}
             {storageState === "Детали" ? <Stock /> : 
              storageState === "Тонеры" ? <TonersStorage />: 
-             storageState === "Бумага" ? <PaperStockPage /> : null}
+             storageState === "Бумага" ? <PaperStockPage /> :
+             storageState === "Ламинация" ? <LaminationStockPage /> : null}
         </div>
     );
 };
