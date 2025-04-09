@@ -23,7 +23,7 @@ const Sidebar = () => {
     const dispatchStorage = () => dispatch(changeStorage("Детали"));
     const dispatchToners = () => dispatch(changeStorage("Тонеры"));
     const dispatchPaper = () => dispatch(changeStorage("Бумага"));
-    const dispatchLaminationStock = () => dispatch(changeStorage("ламинация"));
+    const dispatchLaminationStock = () => dispatch(changeStorage("Ламинация"));
     const dispatchHolders = () => dispatch(changeStorage("Держатели / Лезвия"));
 
     return (
@@ -48,7 +48,7 @@ const Sidebar = () => {
                     name1="Детали"
                     name2="Тонеры"
                     name3="Бумага"
-                    name4="ламинация"
+                    name4="Ламинация"
                     name5="Держатели / Лезвия"
                     selector={machineState}
                 />

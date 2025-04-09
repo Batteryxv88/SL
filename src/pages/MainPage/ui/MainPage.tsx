@@ -4,6 +4,7 @@ import AddPart from "../../../features/ui/AddPart/AddPart";
 import Stock from "../../../widgets/Stock/ui/Stock";
 import TonersStorage from "../../../widgets/TonersStorage/ui/TonersStorage";
 import { CalculatorPageAsync } from "../../CalculatorPage/ui/CalculatorPage.async";
+import PaperStockPage from "../../PaperStockPage/ui/PaperStockPage";
 import cls from "./MainPage.module.scss";
 
 const MainPage = () => {
@@ -16,8 +17,8 @@ const MainPage = () => {
         <div className={cls.MainPage}>
             {storageState === "Детали" ? <AddPart /> : ''}
             {storageState === "Детали" ? <Stock /> : 
-             storageState === "Тонеры" ? <TonersStorage /> :
-             storageState === "Ламинация" ? <CalculatorPageAsync /> : null}
+             storageState === "Тонеры" ? <TonersStorage />: 
+             storageState === "Бумага" ? <PaperStockPage /> : null}
         </div>
     );
 };
