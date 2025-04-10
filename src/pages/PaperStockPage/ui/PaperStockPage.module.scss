@@ -1,0 +1,58 @@
+.PaperStockPage {
+    padding: 38px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.paperBox__title {
+    padding: 10px 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+}
+
+.paperBox__subtitle {
+    font-size: 14px;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.paperBox__data {
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.container {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.paperBox {
+    border: 1px solid #fff;
+    display: flex;
+    flex-direction: column;
+    //max-width: 130px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
