@@ -15,23 +15,35 @@
 }
 
 .paperBox__title {
-    padding: 10px 0;
-    font-size: 24px;
+    padding-bottom: 10px;
+    font-size: 20px;
+    line-height: 20px;
     font-weight: 600;
     color: #fff;
     text-align: center;
 }
 
 .paperBox__subtitle {
-    font-size: 14px;
+    font-size: 11px;
+    line-height: 11px;
     font-weight: 400;
     color: #fff;
     text-align: center;
-    padding: 10px 0;
+    //width: 130px;
+    // max-width: 130px;
+    // min-width: 100px;
+    overflow-wrap: break-word;
+}
+
+.paperBox__icon {
+    min-width: 100px;
+    width: 80%;
+    height: 80%;
 }
 
 .paperBox__data {
     font-size: 16px;
+    line-height: 16px;
     font-weight: 400;
     color: #fff;
     text-align: center;
@@ -41,18 +53,24 @@
 .container {
     display: grid;
     gap: 20px;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
     width: 100%;
     justify-content: center;
     align-items: center;
 }
 
 .paperBox {
-    border: 1px solid #fff;
-    display: flex;
-    flex-direction: column;
-    //max-width: 130px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
+    border: 1px solid #fff;
+    border-radius: 20px;
+}
+
+.descriptionBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
