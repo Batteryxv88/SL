@@ -1,6 +1,6 @@
 import cls from "./PaperStockPage.module.scss";
 import Roll from "../../../shared/assets/icons/roll.svg"
-
+import EditPenIcon from "../../../shared/assets/icons/edit-pen.svg"
 
 const PaperStockPage = () => {
     return (
@@ -12,7 +12,10 @@ const PaperStockPage = () => {
                     <div className={cls.descriptionBox}>
                         <h3 className={cls.paperBox__title}>FA</h3>
                         <h4 className={cls.paperBox__subtitle}>Пленка акрил</h4>
-                        <data className={cls.paperBox__data}>46</data>
+                        <div className={cls.editBox}>
+                            <data className={cls.editBox__data}>46</data>
+                            <EditPenIcon className={cls.editIcon} />
+                        </div>
                     </div>
                 </div>
                 <div className={cls.paperBox}>
@@ -20,7 +23,10 @@ const PaperStockPage = () => {
                     <div className={cls.descriptionBox}>
                         <h3 className={cls.paperBox__title}>FH</h3>
                         <h4 className={cls.paperBox__subtitle}>Пленка каучук</h4>
-                        <data className={cls.paperBox__data}>46</data>
+                        <div className={cls.editBox}>
+                            <data className={cls.editBox__data}>46</data>
+                            <EditPenIcon className={cls.editIcon} />
+                        </div>
                     </div>
                 </div>
                 <div className={cls.paperBox}>
@@ -28,7 +34,10 @@ const PaperStockPage = () => {
                     <div className={cls.descriptionBox}>
                         <h3 className={cls.paperBox__title}>PA</h3>
                         <h4 className={cls.paperBox__subtitle}>Бумага акрил</h4>
-                        <data className={cls.paperBox__data}>46</data>
+                        <div className={cls.editBox}>
+                            <data className={cls.editBox__data}>46</data>
+                            <EditPenIcon className={cls.editIcon} />
+                        </div>
                     </div>
                 </div>
                 <div className={cls.paperBox}>
@@ -36,15 +45,21 @@ const PaperStockPage = () => {
                     <div className={cls.descriptionBox}>
                         <h3 className={cls.paperBox__title}>PH</h3>
                         <h4 className={cls.paperBox__subtitle}>Бумага каучук</h4>
-                        <data className={cls.paperBox__data}>46</data>
+                        <div className={cls.editBox}>
+                            <data className={cls.editBox__data}>46</data>
+                            <EditPenIcon className={cls.editIcon} />
+                        </div>
                     </div>
                 </div>
                 <div className={cls.paperBox}>
-                <Roll className={cls.paperBox__icon} />
+                    <Roll className={cls.paperBox__icon} />
                     <div className={cls.descriptionBox}>
                         <h3 className={cls.paperBox__title}>Clear</h3>
                         <h4 className={cls.paperBox__subtitle}>Пленка прозрачная</h4>
-                        <data className={cls.paperBox__data}>46</data>
+                        <div className={cls.editBox}>
+                            <data className={cls.editBox__data}>46</data>
+                            <EditPenIcon className={cls.editIcon} />
+                        </div>
                     </div>
                 </div>
                 <div className={cls.paperBox}>
@@ -52,7 +67,10 @@ const PaperStockPage = () => {
                     <div className={cls.descriptionBox}>
                         <h3 className={cls.paperBox__title}>Metall</h3>
                         <h4 className={cls.paperBox__subtitle}>Пленка металлизированная</h4>
-                        <data className={cls.paperBox__data}>46</data>
+                        <div className={cls.editBox}>
+                            <data className={cls.editBox__data}>46</data>
+                            <EditPenIcon className={cls.editIcon} />
+                        </div>
                     </div>
                 </div>
                 <div className={cls.paperBox}>
@@ -60,7 +78,10 @@ const PaperStockPage = () => {
                     <div className={cls.descriptionBox}>
                         <h3 className={cls.paperBox__title}>Verge</h3>
                         <h4 className={cls.paperBox__subtitle}>Бумага тиснёная</h4>
-                        <data className={cls.paperBox__data}>46</data>
+                        <div className={cls.editBox}>
+                            <data className={cls.editBox__data}>46</data>
+                            <EditPenIcon className={cls.editIcon} />
+                        </div>
                     </div>
                 </div>
             </div>
