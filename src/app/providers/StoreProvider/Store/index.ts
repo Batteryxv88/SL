@@ -10,6 +10,7 @@ import TonersStorageSlice from "./TonersStorageSlice";
 import ChangeRotationModuleSlice from "./ChangeRotationModule";
 import RotationFormsSlice from "./RotationFormsSlice";
 import SelectedFormSlice from "./SelectedFormSlice";
+import materialsReducer from './MaterialsSlice';
 
 const store = configureStore({
     reducer: {
@@ -24,6 +25,7 @@ const store = configureStore({
         rotationModule: ChangeRotationModuleSlice,
         rotationForms: RotationFormsSlice,
         selectedForm: SelectedFormSlice,
+        materials: materialsReducer,
     }
 })
 
