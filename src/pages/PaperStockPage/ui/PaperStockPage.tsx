@@ -5,6 +5,7 @@ import CheckIcon from "../../../shared/assets/icons/check-icon.svg"
 import { useMaterials } from "../../../app/providers/StoreProvider/Store/hooks";
 import { useState, useEffect, useRef } from "react";
 import { updateMaterialQty } from "../../../services/materials";
+import classNames from "classnames";
 
 const PaperStockPage = () => {
     const { materials, isLoading } = useMaterials();
@@ -16,6 +17,16 @@ const PaperStockPage = () => {
     const getMaterialQty = (type: string) => {
         const material = materials.find(m => m.type.toLowerCase() === type.toLowerCase());
         return material ? material.qty : 0;
+    };
+
+    const getIconClass = (qty: number) => {
+        if (qty <= 3) {
+            return cls.low;
+        } else if (qty <= 6) {
+            return cls.medium;
+        } else {
+            return cls.high;
+        }
     };
 
     // Обработчик клика вне блока
@@ -82,12 +93,14 @@ const PaperStockPage = () => {
 
     const renderMaterialBox = (type: string, title: string, subtitle: string) => {
         const isEditing = editingMaterial === type;
+        const qty = getMaterialQty(type);
+        const iconClass = getIconClass(qty);
 
         return (
-            <div className={cls.paperBox}>
+            <div className={classNames(cls.paperBox, iconClass)}>
                 <Roll className={cls.paperBox__icon} />
                 <div className={cls.descriptionBox}>
-                    <h3 className={cls.paperBox__title}>{title}</h3>
+                    <h3 className={classNames(cls.paperBox__title, iconClass)}>{title}</h3>
                     <h4 className={cls.paperBox__subtitle}>{subtitle}</h4>
                     <div className={cls.editBox}>
                         {isEditing ? (
@@ -100,7 +113,7 @@ const PaperStockPage = () => {
                                 autoFocus
                             />
                         ) : (
-                            <data className={cls.editBox__data}>{getMaterialQty(type)}</data>
+                            <data className={cls.editBox__data}>{qty}</data>
                         )}
                         {isEditing ? (
                             <CheckIcon 

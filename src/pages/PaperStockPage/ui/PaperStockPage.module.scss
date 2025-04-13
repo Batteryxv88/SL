@@ -34,13 +34,36 @@
     &:hover {
         background: #2A2A2A;
         border-color: rgba(255, 255, 255, 0.12);
+        
     }
+
+    &.low {
+        background: rgba(207, 102, 121, 0.12);
+        border-color: rgba(207, 102, 121, 0.24);
+
+        &:hover {
+            background: rgba(207, 102, 121, 0.16);
+            border-color: rgba(207, 102, 121, 0.32);
+        }
+    }
+
+    &.medium {
+        color: #FFC107;
+    }
+
+    &.high {
+        color: #14A76C;
+    }
+
+    
 }
 
 .paperBox__icon {
     min-width: 80px;
     width: 80%;
     height: 80%;
+    transition: all 0.2s ease;
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .descriptionBox {
@@ -128,4 +151,8 @@
         stroke: #BB86FC;
         transform: scale(1.1);
     }
+}
+
+.paperBox.low .paperBox__title {
+    color: #CF6679;
 }
