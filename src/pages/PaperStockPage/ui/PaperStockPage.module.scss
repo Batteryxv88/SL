@@ -1,61 +1,12 @@
 .PaperStockPage {
-    padding: 38px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    padding: 24px;
 }
 
 .title {
     font-size: 24px;
-    font-weight: 600;
-    color: #fff;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.paperBox__title {
-    padding-bottom: 10px;
-    font-size: 18px;
-    line-height: 18px;
-    font-weight: 600;
-    color: #fff;
-    text-align: center;
-}
-
-.paperBox__subtitle {
-    font-size: 11px;
-    line-height: 11px;
-    font-weight: 400;
-    color: #fff;
-    text-align: center;
-    padding-bottom: 10px;
-    //width: 130px;
-    // max-width: 130px;
-    // min-width: 100px;
-    overflow-wrap: break-word;
-}
-
-.paperBox__icon {
-    min-width: 100px;
-    width: 80%;
-    height: 80%;
-}
-
-.editBox__data {
-    font-size: 18px;
-    line-height: 18px;
-    font-weight: 400;
-    color: #fff;
-    text-align: center;
-}
-
-.editBox {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.87);
+    margin-bottom: 24px;
 }
 
 .container {
@@ -68,7 +19,7 @@
 }
 
 .paperBox {
-    background-color: #2A2A2A;
+    background-color: #1E1E1E;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.08);
     padding: 10px;
@@ -76,7 +27,20 @@
     grid-template-columns: 1fr 2fr;
     justify-content: center;
     align-items: center;
-    border-radius: 25px;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+    height: 100%;
+
+    &:hover {
+        background: #2A2A2A;
+        border-color: rgba(255, 255, 255, 0.12);
+    }
+}
+
+.paperBox__icon {
+    min-width: 80px;
+    width: 80%;
+    height: 80%;
 }
 
 .descriptionBox {
@@ -86,4 +50,82 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+}
+
+.paperBox__title {
+    padding-bottom: 10px;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.87);
+    text-align: center;
+}
+
+.paperBox__subtitle {
+    font-size: 11px;
+    line-height: 11px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    padding-bottom: 10px;
+    overflow-wrap: break-word;
+}
+
+.editBox {
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    // gap: 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.editBox__data {
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.87);
+    text-align: center;
+
+    &[type="number"] {
+        background: #2A2A2A;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 4px;
+        padding: 4px 8px;
+        color: rgba(255, 255, 255, 0.87);
+        -moz-appearance: textfield;
+        width: 60px;
+
+        &:focus {
+            outline: none;
+            border-color: #BB86FC;
+            background: #2A2A2A;
+        }
+
+        &:hover {
+            border-color: rgba(255, 255, 255, 0.24);
+        }
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    }
+}
+
+.editIcon {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    stroke: rgba(255, 255, 255, 0.6);
+    transition: all 0.2s ease;
+    
+    &:hover {
+        stroke: #BB86FC;
+        transform: scale(1.1);
+    }
 }
