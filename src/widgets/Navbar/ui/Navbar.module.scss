@@ -11,6 +11,13 @@
 .navLinks {
     display: flex;
     gap: 1rem;
+    align-items: center;
+}
+
+.rightSection {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .button {
@@ -32,7 +39,6 @@
 
 .userInfo {
     display: flex;
-    
     align-items: center;
     gap: 1rem;
 
@@ -47,7 +53,7 @@
     }
 
     .role {
-        color: #bb86fc; // Фиолетовый цвет для выделения роли
+        color: #bb86fc;
         font-size: 0.8rem;
         font-weight: 500;
     }

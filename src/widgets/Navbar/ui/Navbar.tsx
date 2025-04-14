@@ -5,12 +5,17 @@ import Button from "../../../shared/ui/Button/Button";
 import { useAuth } from "../../../contexts/AuthContext";
 import { logout } from "../../../services/auth";
 import { useAppSelector } from '../../../app/providers/StoreProvider/Store/hooks';
+import StorageIcon from '../../../shared/ui/StorageIcon/StorageIcon';
+import InventoryReminder from '../../../shared/ui/InventoryReminder/InventoryReminder';
+import InventoryModal from '../../../shared/ui/InventoryModal/InventoryModal';
+import { useInventoryCheck } from '../../../shared/lib/hooks/useInventoryCheck';
 
 const Navbar: React.FC = () => {
     const pageState = useAppSelector((state) => state.pages.page);
     const location = useLocation();
     const navigate = useNavigate();
     const { user, userData } = useAuth();
+    useInventoryCheck();
 
     const handleLogout = async () => {
         try {
@@ -29,6 +34,7 @@ const Navbar: React.FC = () => {
     return (
         <div className={cls.navbar}>
             <div className={cls.navLinks}>
+                {/* <StorageIcon /> */}
                 <Link
                     className={`${cls.button} ${location.pathname === "/" ? cls.active : ""}`}
                     to={"/"}
@@ -78,19 +84,22 @@ const Navbar: React.FC = () => {
                         <Button name={'АДМИНИСТРИРОВАНИЕ'} />
                     </Link>
                 )}
+                <InventoryReminder />
             </div>
-            {user && (
-                <div className={cls.userInfo}>
-                    <div className={cls.userInfoContent}>
-                        <span className={cls.name}>{user.displayName}</span>
-                        {userData && <span className={cls.role}>{userData.role}</span>}
+            <div className={cls.rightSection}>
+                {user && (
+                    <div className={cls.userInfo}>
+                        <div className={cls.userInfoContent}>
+                            <span className={cls.name}>{user.displayName}</span>
+                            {userData && <span className={cls.role}>{userData.role}</span>}
+                        </div>
+                        <button onClick={handleLogout} className={cls.logoutButton}>
+                            Выйти
+                        </button>
                     </div>
-
-                    <button onClick={handleLogout} className={cls.logoutButton}>
-                        Выйти
-                    </button>
-                </div>
-            )}
+                )}
+            </div>
+            <InventoryModal />
         </div>
     );
 };

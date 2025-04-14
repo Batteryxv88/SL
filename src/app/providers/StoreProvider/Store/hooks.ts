@@ -1,11 +1,11 @@
 import { useDispatch, useSelector, TypedUseSelectorHook } from "react-redux";
-import type { RootState, AppDispatch } from ".";
+import type { RootState, AppDispatch } from "./index";
 import { useEffect } from 'react';
 import { subscribeToMaterials, subscribeLaminations } from '../../../../services/materials';
 import { setMaterials, setLoading, setError } from './MaterialsSlice';
 import { setLaminations, setLoading as setLaminationsLoading, setError as setLaminationsError } from './LaminationsSlice';
 
-export const useAppDispatch = () => useDispatch<AppDispatch>()
+export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 export const useMaterials = () => {
