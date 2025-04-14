@@ -2,6 +2,7 @@ import cls from "./LaminationStockPage.module.scss";
 import RollNarrow from "../../../shared/assets/icons/roll-narrow.svg"
 import EditPenIcon from "../../../shared/assets/icons/edit-pen.svg"
 import CheckIcon from "../../../shared/assets/icons/check-icon.svg"
+import CutIcon from "../../../shared/assets/icons/cut.svg"
 import { useLaminations } from "../../../app/providers/StoreProvider/Store/hooks";
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { updateLaminationQty } from "../../../services/materials";
@@ -111,6 +112,7 @@ const LaminationStockPage = () => {
             {laminations.map((lamination: Lamination) => (
                 <div key={lamination.id} className={classNames(cls.paperBox, getIconClass(lamination.qty))}>
                 <RollNarrow className={cls.paperBox__icon} />
+                
                 <div className={cls.descriptionBox}>
                     <h3 className={classNames(cls.paperBox__title, getIconClass(lamination.qty))}>{lamination.type}</h3>
                     <h4 className={cls.paperBox__subtitle}>{lamination.title}</h4>
