@@ -1,5 +1,6 @@
 import cls from "./PaperStockPage.module.scss";
 import Roll from "../../../shared/assets/icons/roll.svg"
+import RollNarrow from "../../../shared/assets/icons/roll-narrow.svg"
 import EditPenIcon from "../../../shared/assets/icons/edit-pen.svg"
 import CheckIcon from "../../../shared/assets/icons/check-icon.svg"
 import { useMaterials } from "../../../app/providers/StoreProvider/Store/hooks";
@@ -117,7 +118,7 @@ const PaperStockPage = () => {
                         )}
                         {isEditing ? (
                             <CheckIcon 
-                                className={cls.editIcon} 
+                                className={cls.checkIcon} 
                                 onClick={() => handleSave(type)}
                             />
                         ) : (

@@ -45,17 +45,7 @@
             background: rgba(207, 102, 121, 0.16);
             border-color: rgba(207, 102, 121, 0.32);
         }
-    }
-
-    &.medium {
-        color: #FFC107;
-    }
-
-    &.high {
-        color: #14A76C;
-    }
-
-    
+    }   
 }
 
 .paperBox__icon {
@@ -95,32 +85,31 @@
 }
 
 .editBox {
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
-    // gap: 8px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-content: center;
     align-items: center;
-    gap: 20px;
 }
 
 .editBox__data {
+    width: 40px;
+    height: 24px;
     font-size: 16px;
-    line-height: 16px;
+    line-height: 24px;
     font-weight: 400;
     color: rgba(255, 255, 255, 0.87);
     text-align: center;
+    text-justify: center;
+    margin: 0 auto;
 
     &[type="number"] {
         background: #2A2A2A;
         border: 1px solid rgba(255, 255, 255, 0.12);
         border-radius: 4px;
-        padding: 4px 8px;
+        padding: 2px 4px;
         color: rgba(255, 255, 255, 0.87);
         -moz-appearance: textfield;
-        width: 60px;
+        width: 40px;
 
         &:focus {
             outline: none;
@@ -146,11 +135,23 @@
     cursor: pointer;
     stroke: rgba(255, 255, 255, 0.6);
     transition: all 0.2s ease;
+    margin: 0 auto;
     
     &:hover {
         stroke: #BB86FC;
         transform: scale(1.1);
     }
+}
+
+.checkIcon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    stroke: rgba(255, 255, 255, 0.6);
+    transition: all 0.2s ease;
+    align-self: center;
+    justify-self: center;
+    margin: 0 auto;
 }
 
 .paperBox.low .paperBox__title {
