@@ -16,18 +16,6 @@ const initialState: MaterialsState = {
     error: null
 };
 
-export const fetchMaterials = createAsyncThunk(
-    'materials/fetchMaterials',
-    async () => {
-        const querySnapshot = await getDocs(collection(db, 'Materials'))
-        const parts = querySnapshot.docs.map((doc)=> ({
-            id: doc.id,
-            material: doc.data()
-        }))
-        return parts;
-    }
-)
-
 const materialsSlice = createSlice({
     name: 'materials',
     initialState,

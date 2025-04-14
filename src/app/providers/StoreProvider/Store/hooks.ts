@@ -1,8 +1,9 @@
 import { useDispatch, useSelector, TypedUseSelectorHook } from "react-redux";
 import type { RootState, AppDispatch } from ".";
 import { useEffect } from 'react';
-import { subscribeToMaterials } from '../../../../services/materials';
+import { subscribeToMaterials, subscribeLaminations } from '../../../../services/materials';
 import { setMaterials, setLoading, setError } from './MaterialsSlice';
+import { setLaminations, setLoading as setLaminationsLoading, setError as setLaminationsError } from './LaminationsSlice';
 
 export const useAppDispatch = () => useDispatch<AppDispatch>()
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
@@ -29,4 +30,28 @@ export const useMaterials = () => {
     }, [dispatch, materials.length]);
 
     return { materials, isLoading, error };
+};
+
+export const useLaminations = () => {
+    const dispatch = useAppDispatch();
+    const laminations = useAppSelector(state => state.laminations.laminations);
+    const isLoading = useAppSelector(state => state.laminations.isLoading);
+    const error = useAppSelector(state => state.laminations.error);
+
+    useEffect(() => {
+        if (laminations.length === 0) {
+            dispatch(setLoading(true));
+        }
+        
+        const unsubscribe = subscribeLaminations((laminationsData) => {
+            dispatch(setLaminations(laminationsData));
+            dispatch(setLoading(false));
+        });
+
+        return () => {
+            unsubscribe();
+        };
+    }, [dispatch, laminations.length]);
+
+    return { laminations, isLoading, error };
 };

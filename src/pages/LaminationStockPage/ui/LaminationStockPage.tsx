@@ -1,31 +1,137 @@
 import cls from "./LaminationStockPage.module.scss";
-
+import RollNarrow from "../../../shared/assets/icons/roll-narrow.svg"
+import EditPenIcon from "../../../shared/assets/icons/edit-pen.svg"
+import CheckIcon from "../../../shared/assets/icons/check-icon.svg"
+import { useLaminations } from "../../../app/providers/StoreProvider/Store/hooks";
+import { useState, useEffect, useRef } from "react";
+import { updateLaminationQty } from "../../../services/materials";
+import classNames from "classnames";
+import { Lamination } from "../../../services/laminations";
 const LaminationStockPage = () => {
+    const { laminations, isLoading } = useLaminations();
+    const [editingMaterial, setEditingMaterial] = useState<string | null>(null);
+    const [newQty, setNewQty] = useState<string>("");
+    const containerRef = useRef<HTMLDivElement>(null);
+    const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+    const getMaterialQty = (type: string) => {
+        const lamination = laminations.find(l => l.type.toLowerCase() === type.toLowerCase());
+        return lamination ? lamination.qty : 0;
+    };
+
+    console.log(laminations);
+
+    const getIconClass = (qty: number) => {
+        if (qty <= 3) {
+            return cls.low;
+        } else if (qty <= 6) {
+            return cls.medium;
+        } else {
+            return cls.high;
+        }
+    };
+
+    // Обработчик клика вне блока
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+                setEditingMaterial(null);
+                setNewQty("");
+            }
+        };
+
+        if (editingMaterial) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [editingMaterial]);
+
+    // Таймер для автоматического закрытия
+    useEffect(() => {
+        if (editingMaterial) {
+            if (timerRef.current) {
+                clearTimeout(timerRef.current);
+            }
+            
+            timerRef.current = setTimeout(() => {
+                setEditingMaterial(null);
+                setNewQty("");
+            }, 15000); // 15 секунд
+        }
+
+        return () => {
+            if (timerRef.current) {
+                clearTimeout(timerRef.current);
+            }
+        };
+    }, [editingMaterial]);
+
+    const handleEditClick = (id: string) => {
+        setEditingMaterial(id);
+        setNewQty(getMaterialQty(id).toString());
+    };
+
+    const handleSave = async (id: string) => {
+        const lamination = laminations.find(l => l.id === id);
+        if (lamination && newQty) {
+            await updateLaminationQty(lamination.id, parseInt(newQty));
+            setEditingMaterial(null);
+            setNewQty("");
+        }
+    };
+
+    const handleKeyPress = (e: React.KeyboardEvent, id: string) => {
+        if (e.key === 'Enter') {
+            handleSave(id);
+        }
+    };
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
     return (
-        <div className={cls.LaminationStockPage}>
-            <h2 className={cls.title}>Ламинация</h2>
+        <div className={cls.PaperStockPage} ref={containerRef}>
+            <h2 className={cls.title}>Бумага</h2>
             <div className={cls.container}>
-                <div className={cls.laminationBox}>
-                    <h3 className={cls.laminationBox__title}>Глянец</h3>
-                    <h4 className={cls.laminationBox__subtitle}>Пленка стандарт</h4>
-                    <div className={cls.image}></div>
-                    <data className={cls.laminationBox__data}>23</data>
+            {laminations.map((lamination: Lamination) => (
+                <div className={classNames(cls.paperBox, getIconClass(lamination.qty))}>
+                <RollNarrow className={cls.paperBox__icon} />
+                <div className={cls.descriptionBox}>
+                    <h3 className={classNames(cls.paperBox__title, getIconClass(lamination.qty))}>{lamination.type}</h3>
+                    <h4 className={cls.paperBox__subtitle}>{lamination.title}</h4>
+                    <h5 className={cls.paperBox__subtitle}>{lamination.sub_type}</h5>
+                    <div className={cls.editBox}>
+                        {editingMaterial === lamination.id ? (
+                            <input
+                                type="number"
+                                value={newQty}
+                                onChange={(e) => setNewQty(e.target.value)}
+                                onKeyPress={(e) => handleKeyPress(e, lamination.id)}
+                                className={cls.editBox__data}
+                                autoFocus
+                            />
+                        ) : (
+                            <data className={cls.editBox__data}>{lamination.qty}</data>
+                        )}
+                        {editingMaterial === lamination.id ? (
+                            <CheckIcon 
+                                className={cls.checkIcon} 
+                                onClick={() => handleSave(lamination.id)}
+                            />
+                        ) : (
+                            <EditPenIcon 
+                                className={cls.editIcon} 
+                                onClick={() => handleEditClick(lamination.id)}
+                            />
+                        )}
+                    </div>
                 </div>
-                <div className={cls.laminationBox}>
-                    <h3 className={cls.laminationBox__title}>Глянец тонкий</h3>
-                    <h4 className={cls.laminationBox__subtitle}>Пленка тонкая</h4>
-                    <data className={cls.laminationBox__data}>46</data>
-                </div>
-                <div className={cls.laminationBox}>
-                    <h3 className={cls.laminationBox__title}>Матт</h3>
-                    <h4 className={cls.laminationBox__subtitle}>Пленка матовая</h4>
-                    <data className={cls.laminationBox__data}>32</data>
-                </div>
-                <div className={cls.laminationBox}>
-                    <h3 className={cls.laminationBox__title}>Софт тач</h3>
-                    <h4 className={cls.laminationBox__subtitle}>Пленка бархатистая</h4>
-                    <data className={cls.laminationBox__data}>55</data>
-                </div>
+            </div>
+            ))}
             </div>
         </div>
     );

@@ -11,6 +11,8 @@ import ChangeRotationModuleSlice from "./ChangeRotationModule";
 import RotationFormsSlice from "./RotationFormsSlice";
 import SelectedFormSlice from "./SelectedFormSlice";
 import materialsReducer from './MaterialsSlice';
+import laminationsReducer from './LaminationsSlice';
+
 
 const store = configureStore({
     reducer: {
@@ -26,6 +28,7 @@ const store = configureStore({
         rotationForms: RotationFormsSlice,
         selectedForm: SelectedFormSlice,
         materials: materialsReducer,
+        laminations: laminationsReducer,
     }
 })
 

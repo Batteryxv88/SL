@@ -1,0 +1,159 @@
+.PaperStockPage {
+    padding: 24px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.87);
+    margin-bottom: 24px;
+}
+
+.container {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.paperBox {
+    background-color: #1E1E1E;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+    height: 100%;
+
+    &:hover {
+        background: #2A2A2A;
+        border-color: rgba(255, 255, 255, 0.12);
+        
+    }
+
+    &.low {
+        background: rgba(207, 102, 121, 0.12);
+        border-color: rgba(207, 102, 121, 0.24);
+
+        &:hover {
+            background: rgba(207, 102, 121, 0.16);
+            border-color: rgba(207, 102, 121, 0.32);
+        }
+    }   
+}
+
+.paperBox__icon {
+    min-width: 80px;
+    width: 80%;
+    height: 80%;
+    transition: all 0.2s ease;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.descriptionBox {
+    padding: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.paperBox__title {
+    padding-bottom: 10px;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.87);
+    text-align: center;
+}
+
+.paperBox__subtitle {
+    font-size: 11px;
+    line-height: 11px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    padding-bottom: 10px;
+    overflow-wrap: break-word;
+}
+
+.editBox {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+}
+
+.editBox__data {
+    width: 40px;
+    height: 24px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.87);
+    text-align: center;
+    text-justify: center;
+    margin: 0 auto;
+
+    &[type="number"] {
+        background: #2A2A2A;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 4px;
+        padding: 2px 4px;
+        color: rgba(255, 255, 255, 0.87);
+        -moz-appearance: textfield;
+        width: 40px;
+
+        &:focus {
+            outline: none;
+            border-color: #BB86FC;
+            background: #2A2A2A;
+        }
+
+        &:hover {
+            border-color: rgba(255, 255, 255, 0.24);
+        }
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    }
+}
+
+.editIcon {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    stroke: rgba(255, 255, 255, 0.6);
+    transition: all 0.2s ease;
+    margin: 0 auto;
+    
+    &:hover {
+        stroke: #BB86FC;
+        transform: scale(1.1);
+    }
+}
+
+.checkIcon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    stroke: rgba(255, 255, 255, 0.6);
+    transition: all 0.2s ease;
+    align-self: center;
+    justify-self: center;
+    margin: 0 auto;
+}
+
+.paperBox.low .paperBox__title {
+    color: #CF6679;
+}
