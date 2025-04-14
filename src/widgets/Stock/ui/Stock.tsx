@@ -56,7 +56,7 @@ const Stock = () => {
 
     return (
         <div className={cls.stock}>
-            <h2 className={cls.h2}>Склад</h2>
+            <h2 className={cls.h2}>Склад деталей Konica Minolta</h2>
             <div className={cls.titleBox}>
                 <p className={cls.name}>Наименование</p>
                 <p className={cls.number}>Парт номер</p>

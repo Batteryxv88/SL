@@ -19,9 +19,7 @@ const TonersStorage = () => {
 
     return (
         <div className={cls.tonerStorage}>
-            <div className={cls.titleBox}>
-                <h2>Склад тонеров</h2>
-            </div>
+                <h2 className={cls.title}>Склад тонеров</h2>
             <div className={cls.tonersGrid}>
                 {tonersArr.length > 0
                     ? tonersArr.map((item) => (

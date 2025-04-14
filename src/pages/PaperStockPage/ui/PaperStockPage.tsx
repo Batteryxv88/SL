@@ -135,7 +135,7 @@ const PaperStockPage = () => {
 
     return (
         <div className={cls.PaperStockPage} ref={containerRef}>
-            <h2 className={cls.title}>Бумага</h2>
+            <h2 className={cls.title}>Склад бумаги</h2>
             <div className={cls.container}>
                 {renderMaterialBox('FA', 'FA', 'Пленка акрил')}
                 {renderMaterialBox('FH', 'FH', 'Пленка каучук')}

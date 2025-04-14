@@ -106,7 +106,7 @@ const LaminationStockPage = () => {
 
     return (
         <div className={cls.PaperStockPage} ref={containerRef}>
-            <h2 className={cls.title}>Ламинация</h2>
+            <h2 className={cls.title}>Склад ламинации</h2>
             <div className={cls.container}>
             {laminations.map((lamination: Lamination) => (
                 <div key={lamination.id} className={classNames(cls.paperBox, getIconClass(lamination.qty))}>
