@@ -6,8 +6,7 @@
     padding-top: 20px;
     display: grid;
     gap: 20px;
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-    width: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
     justify-content: center;
     align-items: center;
     
@@ -33,25 +32,24 @@
 }
 
 .holder__icon {
-    min-width: 80px;
-    width: 80px;
-    height: 80px;
+    max-height: 90px;
+    max-width: 90px;
     transition: all 0.2s ease;
     color: rgba(255, 255, 255, 0.6);
 }
 
 .holder__title {
-    padding-bottom: 10px;
-    font-size: 18px;
-    line-height: 18px;
+    padding-bottom: 30px;
+    font-size: 16px;
+    line-height: 16px;
     font-weight: 600;
     color: rgba(255, 255, 255, 0.87);
     text-align: center;
 }
 
 .holder__sub_title {
-    font-size: 16px;
-    line-height: 16px;
+    font-size: 13px;
+    line-height: 13px;
     font-weight: 400;
     color: rgba(255, 255, 255, 0.6);
     text-align: center;
@@ -64,11 +62,10 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.08);
     padding: 10px;
-    display: flex;
-    flex-direction: column;
-    // display: grid;
-    // grid-template-columns: 1fr 2fr;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
     justify-content: center;
+    gap: 10px;
     align-items: center;
     border-radius: 20px;
     transition: all 0.2s ease;
@@ -91,20 +88,6 @@
     }
 }
 
-.holder__icon_box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-}
-
-.holder__info_box {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
-    justify-content: center;
-}
 
 .holder__info {
     display: flex;
@@ -121,8 +104,17 @@
 }
 
 .holder__edit_icon {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    stroke: rgba(255, 255, 255, 0.6);
+    transition: all 0.2s ease;
+    margin: 0 auto;
+    
+    &:hover {
+        stroke: #BB86FC;
+        transform: scale(1.1);
+    }
 }
 
 .holder__qty {
@@ -162,3 +154,21 @@
         }
     }
 }
+
+.info__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    //height: 100%;
+}
+
+.map__box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
