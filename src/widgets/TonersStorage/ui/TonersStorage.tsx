@@ -1,7 +1,7 @@
 import cls from "./TonersStorage.module.scss";
 import { useToners } from "../../../app/providers/StoreProvider/Store/hooks";
 import TonerStockItem from "../../../shared/ui/tonerStockItem/TonerStockItem";
-
+import LoadingPlug from "../../../shared/ui/LoadingPlug/LoadingPlug";
 const TonersStorage = () => {
     const { tonersArr } = useToners();
 
@@ -18,7 +18,7 @@ const TonersStorage = () => {
                               id={item.id}
                           />
                       ))
-                    : "Loading..."}
+                    : <LoadingPlug />}
             </div>
         </div>
     );

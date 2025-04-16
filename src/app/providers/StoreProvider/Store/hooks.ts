@@ -94,14 +94,19 @@ export const useToners = () => {
     const tonersArr = useAppSelector(state => state.tonersStorage.tonersStorageArr);
 
     useEffect(() => {
+        if (tonersArr.length === 0) {
+            dispatch(setLoading(true));
+        }
+
         const unsubscribe = TonerService((tonersData) => {
             dispatch(setTonersStorage(tonersData));
+            dispatch(setLoading(false));
         });
 
         return () => {
             unsubscribe();
         };
-    }, [dispatch]);
+    }, [dispatch, tonersArr.length]);
 
     return { tonersArr };
 };

@@ -15,7 +15,7 @@ export type UsedParts = {
 
 export type tonersStorageArr = {
     id: string;
-    part: UsedParts
+    part: UsedParts;
 }
 
 export const fetchTonersStorage = createAsyncThunk(
