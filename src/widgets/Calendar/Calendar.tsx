@@ -1,32 +1,20 @@
 import cls from "./Calendar.module.scss";
-import { useEffect } from "react";
-import { UsedPartsArray, fetchUsedParts } from "../../app/providers/StoreProvider/Store/ReplacedPartSlice";
-import { fetchParts } from "../../app/providers/StoreProvider/Store/PartSlice";
 import ReplacedPart from "../../shared/ui/replacedPart/ReplacedPart";
 import { filteredAndSortedData } from "./lib/filteredAndSortedData";
-import { useAppDispatch, useAppSelector } from "../../app/providers/StoreProvider/Store/hooks";
+import { useAppSelector } from "../../app/providers/StoreProvider/Store/hooks";
 import { filterByMachine } from "./lib/filterByMachine";
+import { useParts, useUsedParts } from "../../app/providers/StoreProvider/Store/hooks";
+import { UsedPartData } from "../../services/usedParts";
 
 const Calendar = () => {
-    const data = useAppSelector(
-        (state) => state.replacedParts.usedPartsArray
-    );
+    const { usedPartsArray } = useUsedParts();
     const filterOption = useAppSelector(
         (state) => state.filteredParts.filter.section
     );
-
     const machineState = useAppSelector((state) => state.machines.machine);
 
-    const filteredDataByMachine = filterByMachine(data, machineState)
-
-    const filterAndSortData = filteredAndSortedData(filteredDataByMachine, filterOption)
-
-    const dispatch = useAppDispatch();
-    useEffect(() => {
-        dispatch(fetchParts());
-        dispatch(fetchUsedParts());
-    }, [dispatch]);
-
+    const filteredDataByMachine = filterByMachine(usedPartsArray, machineState);
+    const filterAndSortData = filteredAndSortedData(filteredDataByMachine, filterOption);
 
     return (
         <div className={cls.calendar}>
@@ -40,7 +28,7 @@ const Calendar = () => {
                 <p className={cls.date}>Дата</p>
                 <p className={cls.delete}>Удалить</p>
             </div>
-            {filterAndSortData.map((item: UsedPartsArray) => (
+            {filterAndSortData.map((item: UsedPartData) => (
                 <ReplacedPart
                     id={item.id}
                     name={item.part.partName}

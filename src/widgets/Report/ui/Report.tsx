@@ -21,7 +21,6 @@ const Report = () => {
                 <h2 className={cls.title}>{report[0].machine}</h2>
                 <span className={cls.period}>{report[0].period}</span>
             </div>
-
             <div className={cls.tonersWrapper}>
                 <span className={cls.tonersTitle}>Тонеры:</span>
                 <div className={cls.tonersGrid}>

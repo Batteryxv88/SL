@@ -1,11 +1,6 @@
-import { useEffect } from "react";
 import cls from "./Stock.module.scss";
-import { fetchParts } from "../../../app/providers/StoreProvider/Store/PartSlice";
 import Part from "../../../shared/ui/Part/Part";
-import {
-    useAppDispatch,
-    useAppSelector,
-} from "../../../app/providers/StoreProvider/Store/hooks";
+import { useParts } from "../../../app/providers/StoreProvider/Store/hooks";
 
 type Part = {
     partN: string;
@@ -21,22 +16,16 @@ type PartData = {
 };
 
 const Stock = () => {
-    const dispatch = useAppDispatch();
-    const partsData = useAppSelector((state) => state.parts.partsArray);
-
-    useEffect(() => {
-        dispatch(fetchParts());
-    }, [dispatch]);
+    const { partsArray } = useParts();
 
     const renderSection = (section: string) => {
-        const filteredData = partsData.filter(
+        const filteredData = partsArray.filter(
             (item) => item.part.section === section
         );
 
         if (filteredData.length === 0) {
-            return null; // или другая обработка, если данных нет
+            return null;
         }
-
 
         return (
             <>

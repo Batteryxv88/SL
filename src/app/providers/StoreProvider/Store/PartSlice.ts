@@ -63,13 +63,15 @@ export const updateStock = createAsyncThunk(
 )
 
 const partSlice = createSlice({
-    name: 'Parts',
+    name: 'parts',
     initialState: {
         partsArray: [],
     },
     reducers: {
-
-    }, 
+        setParts: (state, action) => {
+            state.partsArray = action.payload;
+        }
+    },
     extraReducers: (builder) => {
         builder
         .addCase(addPartToFirestore.fulfilled, (state, action)=> {
@@ -95,4 +97,5 @@ const partSlice = createSlice({
     }
 })
 
+export const { setParts } = partSlice.actions;
 export default partSlice.reducer;

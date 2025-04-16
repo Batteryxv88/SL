@@ -7,6 +7,12 @@ import { setLaminations, setLoading as setLaminationsLoading, setError as setLam
 import { setHoldersAndKnifes, setLoading as setHoldersAndKnifesLoading, setError as setHoldersAndKnifesError } from "./HoldersAndKnifesSlice";
 import { HolderAndKnife } from "../../../../services/holdersAndKnifes";
 import { HolderAndKnifeService } from "../../../../services/holdersAndKnifes";
+import { TonerService } from '../../../../services/toners';
+import { setTonersStorage } from './TonersStorageSlice';
+import { PartService } from '../../../../services/parts';
+import { setParts } from './PartSlice';
+import { UsedPartService } from '../../../../services/usedParts';
+import { setUsedParts } from './ReplacedPartSlice';
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
@@ -81,4 +87,55 @@ export const useHoldersAndKnifes = () => {
     }, [dispatch, holdersAndKnifes.length]);
 
     return { holdersAndKnifes, isLoading, error };
+};
+
+export const useToners = () => {
+    const dispatch = useAppDispatch();
+    const tonersArr = useAppSelector(state => state.tonersStorage.tonersStorageArr);
+
+    useEffect(() => {
+        const unsubscribe = TonerService((tonersData) => {
+            dispatch(setTonersStorage(tonersData));
+        });
+
+        return () => {
+            unsubscribe();
+        };
+    }, [dispatch]);
+
+    return { tonersArr };
+};
+
+export const useParts = () => {
+    const dispatch = useAppDispatch();
+    const partsArray = useAppSelector(state => state.parts.partsArray);
+
+    useEffect(() => {
+        const unsubscribe = PartService((partsData) => {
+            dispatch(setParts(partsData));
+        });
+
+        return () => {
+            unsubscribe();
+        };
+    }, [dispatch]);
+
+    return { partsArray };
+};
+
+export const useUsedParts = () => {
+    const dispatch = useAppDispatch();
+    const usedPartsArray = useAppSelector(state => state.replacedParts.usedPartsArray);
+
+    useEffect(() => {
+        const unsubscribe = UsedPartService((partsData) => {
+            dispatch(setUsedParts(partsData));
+        });
+
+        return () => {
+            unsubscribe();
+        };
+    }, [dispatch]);
+
+    return { usedPartsArray };
 };

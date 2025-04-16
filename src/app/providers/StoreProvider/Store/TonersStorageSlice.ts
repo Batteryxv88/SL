@@ -69,7 +69,9 @@ const partSlice = createSlice({
         tonersStorageArr: [],
     },
     reducers: {
-
+        setTonersStorage: (state, action) => {
+            state.tonersStorageArr = action.payload;
+        }
     }, 
     extraReducers: (builder) => {
         builder
@@ -108,4 +110,5 @@ const partSlice = createSlice({
     }
 })
 
+export const { setTonersStorage } = partSlice.actions;
 export default partSlice.reducer;

@@ -1,24 +1,31 @@
 .PaperStockPage {
     padding: 38px;
+    opacity: 0;
+    animation: fadeIn 0.15s ease-in forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
 }
 
 .title {
     background: linear-gradient(to right,
-       rgba(98, 218, 251, 0.9),
-        rgba(98, 218, 251, 0.7)
-    );
+            rgba(98, 218, 251, 0.9),
+            rgba(98, 218, 251, 0.7));
     -webkit-background-clip: text;
-   background-clip: text;
+    background-clip: text;
     color: transparent;
-     font-size: 20px;
-     font-weight: 500;
-     margin-bottom: 24px;
-     letter-spacing: 1px;
-     text-transform: uppercase;
-     text-align: end;
-     font-family: monospace;
-     border-bottom: 1px solid rgba(98, 218, 251, 0.15);
-     padding-bottom: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: end;
+    font-family: monospace;
+    border-bottom: 1px solid rgba(98, 218, 251, 0.15);
+    padding-bottom: 5px;
 }
 
 .container {
@@ -47,7 +54,7 @@
     &:hover {
         background: #2A2A2A;
         border-color: rgba(255, 255, 255, 0.12);
-        
+
     }
 
     &.low {
@@ -58,7 +65,7 @@
             background: rgba(207, 102, 121, 0.16);
             border-color: rgba(207, 102, 121, 0.32);
         }
-    }   
+    }
 }
 
 .paperBox__icon {
@@ -149,7 +156,7 @@
     stroke: rgba(255, 255, 255, 0.6);
     transition: all 0.2s ease;
     margin: 0 auto;
-    
+
     &:hover {
         stroke: #BB86FC;
         transform: scale(1.1);

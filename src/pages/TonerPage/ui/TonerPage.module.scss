@@ -1,5 +1,12 @@
 .TonerPage {
     width:100%;
     padding: 38px;
-    
+    opacity: 0;
+    animation: fadeIn 0.15s ease-in forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
 }

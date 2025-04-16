@@ -67,14 +67,16 @@ export const deleteUsedPart = createAsyncThunk(
     }
 )
 
-const partSlice = createSlice({
-    name: 'UsedParts',
+const replacedPartSlice = createSlice({
+    name: 'replacedParts',
     initialState: {
         usedPartsArray: [],
     },
     reducers: {
-
-    }, 
+        setUsedParts: (state, action) => {
+            state.usedPartsArray = action.payload;
+        }
+    },
     extraReducers: (builder) => {
         builder
         .addCase(addUsedPart.fulfilled, (state, action)=> {
@@ -103,4 +105,5 @@ const partSlice = createSlice({
     }
 })
 
-export default partSlice.reducer;
+export const { setUsedParts } = replacedPartSlice.actions;
+export default replacedPartSlice.reducer;
