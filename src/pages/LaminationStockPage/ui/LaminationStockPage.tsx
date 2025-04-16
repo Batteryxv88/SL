@@ -7,6 +7,7 @@ import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { updateLaminationQty } from "../../../services/materials";
 import classNames from "classnames";
 import { Lamination } from "../../../services/laminations";
+import LoadingPlug from "../../../shared/ui/LoadingPlug/LoadingPlug";
 
 const LaminationStockPage = () => {
     const { laminations, isLoading, error } = useLaminations();
@@ -93,15 +94,11 @@ const LaminationStockPage = () => {
     }, [handleSave]);
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <LoadingPlug />;
     }
 
     if (error) {
         return <div>Error: {error}</div>;
-    }
-
-    if (!laminations.length) {
-        return <div>Loading...</div>;
     }
 
     return (
