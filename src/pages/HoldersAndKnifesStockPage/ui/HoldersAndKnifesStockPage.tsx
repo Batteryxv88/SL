@@ -35,30 +35,34 @@ const HoldersAndKnifesStockPage = () => {
         <div className={cls.HoldersAndKnifesStockPage}>
             <h2 className={cls.title}>Склад держателей и ножей</h2>
             <div className={cls.container}>
-                {holdersAndKnifes.map((holder) => ( holder.title === 'Держатель' && (
-                    <div className={cls.holder} key={holder.id}>
-                        <div className={cls.holder__icon}>
+                <div className={cls.holder}>
+                    <h3 className={cls.holder__title}>Держатели</h3>
+                    <div className={cls.holder__info_box}>
+                        <div className={cls.holder__icon_box}>
                             <Holder className={cls.holder__icon} />
                         </div>
-                        <div className={cls.holder__info}>
-                            <h3 className={cls.holder__title}>Держатели</h3>
-                            <p className={cls.holder__sub_title}>{holder.sub_title}</p>
-                            <p className={cls.holder__qty}>{holder.qty}</p>
-                        </div>
+                        {holdersAndKnifes.map((holder) => (holder.title === 'Держатель') && (
+                            <div className={cls.holder__info}>
+                                <p className={cls.holder__sub_title}>{holder.sub_title}</p>
+                                <p className={cls.holder__qty}>{holder.qty}</p>
+                            </div>
+                        ))}
                     </div>
-                )))}
-                {holdersAndKnifes.map((knife) => ( knife.title === 'Нож' && (
-                    <div className={cls.holder} key={knife.id}>
-                        <div className={cls.holder__icon}>
-                            <Knife className={cls.holder__icon} />
+                </div>
+                <div className={cls.holder}>
+                    <h3 className={cls.holder__title}>Ножи</h3>
+                    <div className={cls.holder__info_box}>
+                        <div className={cls.holder__icon_box}>
+                            <Holder className={cls.holder__icon} />
                         </div>
-                        <div className={cls.holder__info}>
-                            <h3 className={cls.holder__title}>Ножи</h3>
-                            <p className={cls.holder__sub_title}>{knife.sub_title}</p>
-                            <p className={cls.holder__qty}>{knife.qty}</p>
-                        </div>
+                        {holdersAndKnifes.map((knife) => (knife.title === 'Нож') && (
+                            <div className={cls.holder__info}>
+                                <p className={cls.holder__sub_title}>{knife.sub_title}</p>
+                                <p className={cls.holder__qty}>{knife.qty}</p>
+                            </div>
+                        ))}
                     </div>
-                )))}
+                </div>
             </div>
         </div>
     )
