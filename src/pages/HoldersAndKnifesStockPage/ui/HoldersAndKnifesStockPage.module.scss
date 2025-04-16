@@ -55,6 +55,7 @@
     text-align: center;
     padding-bottom: 10px;
     overflow-wrap: break-word;
+    margin: 0 auto;
 }
 
 .holder {
@@ -169,6 +170,13 @@
     grid-template-columns: 1fr 1fr;
     align-items: center;
     justify-content: center;
-    gap: 30px;
+    gap: 10px;
+}
+
+.holder__edit_icon_box {
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 

@@ -12,6 +12,7 @@ import RotationFormsSlice from "./RotationFormsSlice";
 import SelectedFormSlice from "./SelectedFormSlice";
 import materialsReducer from './MaterialsSlice';
 import laminationsReducer from './LaminationsSlice';
+import holdersAndKnifesReducer from './HoldersAndKnifesSlice';
 import inventoryCheckReducer from './InventoryCheckSlice';
 
 
@@ -31,6 +32,7 @@ const store = configureStore({
         materials: materialsReducer,
         laminations: laminationsReducer,
         inventoryCheck: inventoryCheckReducer,
+        holdersAndKnifes: holdersAndKnifesReducer,
     }
 })
 
