@@ -6,9 +6,10 @@
     padding-top: 20px;
     display: grid;
     gap: 20px;
-    grid-template-columns: max(230px, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .title {
@@ -196,5 +197,60 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+}
+
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 4px;
+}
+
+.skeletonTitle {
+    @extend .skeleton;
+    height: 32px;
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+.skeletonHolder {
+    @extend .skeleton;
+    height: 150px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.skeletonItem {
+    @extend .skeleton;
+    height: 40px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+
+
+.loadingDots {
+    display: inline-block;
+    width: 24px;
+    text-align: left;
+    color: #BB86FC;
+    animation: dots 1.5s infinite;
+}
+
+@keyframes dots {
+    0% { content: ''; }
+    25% { content: '.'; }
+    50% { content: '..'; }
+    75% { content: '...'; }
+    100% { content: ''; }
 }
 

@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { subscribeToMaterials, subscribeLaminations } from '../../../../services/materials';
 import { setMaterials, setLoading, setError } from './MaterialsSlice';
 import { setLaminations, setLoading as setLaminationsLoading, setError as setLaminationsError } from './LaminationsSlice';
-import { setHoldersAndKnifes } from "./HoldersAndKnifesSlice";
+import { setHoldersAndKnifes, setLoading as setHoldersAndKnifesLoading, setError as setHoldersAndKnifesError } from "./HoldersAndKnifesSlice";
 import { HolderAndKnife } from "../../../../services/holdersAndKnifes";
 import { HolderAndKnifeService } from "../../../../services/holdersAndKnifes";
 
@@ -67,12 +67,12 @@ export const useHoldersAndKnifes = () => {
 
     useEffect(() => {
         if (holdersAndKnifes.length === 0) {
-            dispatch(setLoading(true));
+            dispatch(setHoldersAndKnifesLoading(true));
         }
         
         const unsubscribe = HolderAndKnifeService((holdersAndKnifesData) => {
             dispatch(setHoldersAndKnifes(holdersAndKnifesData));
-            dispatch(setLoading(false));
+            dispatch(setHoldersAndKnifesLoading(false));
         });
 
         return () => {

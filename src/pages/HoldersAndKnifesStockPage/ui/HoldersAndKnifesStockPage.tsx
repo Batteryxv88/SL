@@ -6,7 +6,7 @@ import CheckIcon from '../../../shared/assets/icons/check-icon.svg';
 import { useHoldersAndKnifes } from '../../../app/providers/StoreProvider/Store/hooks';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { updateHolderAndKnifeQty } from '../../../services/holdersAndKnifes';
-
+import LoadingPlug from '../../../shared/ui/LoadingPlug/LoadingPlug';
 const HoldersAndKnifesStockPage = () => {
     const { holdersAndKnifes, isLoading, error } = useHoldersAndKnifes();
     const [editingMaterial, setEditingMaterial] = useState<string | null>(null);
@@ -76,15 +76,15 @@ const HoldersAndKnifesStockPage = () => {
         }
     }, [handleSave]);
 
+    
+
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <LoadingPlug />
     }
 
     if (error) {
         return <div>Error: {error}</div>;
     }
-
-    console.log(holdersAndKnifes);
 
     return (
         <div className={cls.HoldersAndKnifesStockPage} ref={containerRef}>
