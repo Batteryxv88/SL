@@ -1,7 +1,7 @@
 import cls from './HoldersAndKnifesStockPage.module.scss';
 import Holder from '../../../shared/assets/icons/holder.svg';
 import Knife from '../../../shared/assets/icons/knife.svg';
-
+import EditIcon from '../../../shared/assets/icons/edit-pen.svg';
 const HoldersAndKnifesStockPage = () => {
 
     const holdersAndKnifes = [
@@ -44,7 +44,10 @@ const HoldersAndKnifesStockPage = () => {
                         {holdersAndKnifes.map((holder) => (holder.title === 'Держатель') && (
                             <div className={cls.holder__info}>
                                 <p className={cls.holder__sub_title}>{holder.sub_title}</p>
-                                <p className={cls.holder__qty}>{holder.qty}</p>
+                                <div className={cls.holder__qty_box}>
+                                    <p className={cls.holder__qty}>{holder.qty}</p>
+                                    <EditIcon className={cls.holder__edit_icon} />
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -53,12 +56,15 @@ const HoldersAndKnifesStockPage = () => {
                     <h3 className={cls.holder__title}>Ножи</h3>
                     <div className={cls.holder__info_box}>
                         <div className={cls.holder__icon_box}>
-                            <Holder className={cls.holder__icon} />
+                            <Knife className={cls.holder__icon} />
                         </div>
                         {holdersAndKnifes.map((knife) => (knife.title === 'Нож') && (
                             <div className={cls.holder__info}>
                                 <p className={cls.holder__sub_title}>{knife.sub_title}</p>
-                                <p className={cls.holder__qty}>{knife.qty}</p>
+                                <div className={cls.holder__qty_box}>
+                                    <p className={cls.holder__qty}>{knife.qty}</p>
+                                    <EditIcon className={cls.holder__edit_icon} />
+                                </div>
                             </div>
                         ))}
                     </div>
