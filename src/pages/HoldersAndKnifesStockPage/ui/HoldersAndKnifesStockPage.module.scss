@@ -6,10 +6,9 @@
     padding-top: 20px;
     display: grid;
     gap: 20px;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    grid-template-columns: max(230px, 1fr);
     justify-content: center;
     align-items: center;
-    
 }
 
 .title {
@@ -102,6 +101,59 @@
     grid-template-columns: 1fr 1fr;
     justify-content: center;
     align-items: center;
+    gap: 10px;
+}
+
+.holder__qty {
+    width: 40px;
+    height: 24px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.87);
+    text-align: center;
+    text-justify: center;
+    margin: 0 auto;
+}
+
+.holder__qty_input {
+    width: 40px;
+    height: 24px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.87);
+    text-align: center;
+    text-justify: center;
+    margin: 0 auto;
+    background: #2A2A2A;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+    padding: 2px 4px;
+    -moz-appearance: textfield;
+
+    &:focus {
+        outline: none;
+        border-color: #BB86FC;
+        background: #2A2A2A;
+    }
+
+    &:hover {
+        border-color: rgba(255, 255, 255, 0.24);
+    }
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
+
+.holder__edit_icon_box {
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .holder__edit_icon {
@@ -118,42 +170,15 @@
     }
 }
 
-.holder__qty {
-    width: 40px;
+.checkIcon {
+    width: 24px;
     height: 24px;
-    font-size: 16px;
-    line-height: 24px;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.87);
-    text-align: center;
-    text-justify: center;
+    cursor: pointer;
+    stroke: rgba(255, 255, 255, 0.6);
+    transition: all 0.2s ease;
+    align-self: center;
+    justify-self: center;
     margin: 0 auto;
-
-    &[type="number"] {
-        background: #2A2A2A;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 4px;
-        padding: 2px 4px;
-        color: rgba(255, 255, 255, 0.87);
-        -moz-appearance: textfield;
-        width: 40px;
-
-        &:focus {
-            outline: none;
-            border-color: #BB86FC;
-            background: #2A2A2A;
-        }
-
-        &:hover {
-            border-color: rgba(255, 255, 255, 0.24);
-        }
-
-        &::-webkit-inner-spin-button,
-        &::-webkit-outer-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-    }
 }
 
 .info__container {
@@ -171,12 +196,5 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-}
-
-.holder__edit_icon_box {
-    width: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
