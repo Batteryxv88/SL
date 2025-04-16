@@ -5,6 +5,7 @@ import Stock from "../../../widgets/Stock/ui/Stock";
 import TonersStorage from "../../../widgets/TonersStorage/ui/TonersStorage";
 import PaperStockPage from "../../PaperStockPage/ui/PaperStockPage";
 import LaminationStockPage from "../../LaminationStockPage/ui/LaminationStockPage";
+import HoldersAndKnifesStockPage from "../../HoldersAndKnifesStockPage/ui/HoldersAndKnifesStockPage";
 import cls from "./MainPage.module.scss";
 
 const MainPage = () => {
@@ -19,7 +20,9 @@ const MainPage = () => {
             {storageState === "Детали" ? <Stock /> : 
              storageState === "Тонеры" ? <TonersStorage />: 
              storageState === "Бумага" ? <PaperStockPage /> :
-             storageState === "Ламинация" ? <LaminationStockPage /> : null}
+             storageState === "Ламинация" ? <LaminationStockPage /> : 
+             storageState === "Держатели / Лезвия" ? <HoldersAndKnifesStockPage /> :
+             null}
         </div>
     );
 };
