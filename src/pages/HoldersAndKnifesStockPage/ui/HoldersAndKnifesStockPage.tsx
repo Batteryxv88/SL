@@ -36,7 +36,7 @@ const HoldersAndKnifesStockPage = () => {
             <h2 className={cls.title}>Склад держателей и ножей</h2>
             <div className={cls.container}>
                 <div className={cls.holder}>
-                    <h3 className={cls.holder__title}>Держатели</h3>
+                <h3 className={cls.holder__title}>Держатели</h3>
                     <div className={cls.holder__info_box}>
                         <div className={cls.holder__icon_box}>
                             <Holder className={cls.holder__icon} />
