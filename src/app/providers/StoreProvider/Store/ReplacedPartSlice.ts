@@ -79,8 +79,12 @@ const replacedPartSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-        .addCase(addUsedPart.fulfilled, (state, action)=> {
-            state.usedPartsArray.push(action.payload);
+        .addCase(addUsedPart.fulfilled, (state, action) => {
+            // Предотвращаем дублирование при локальном добавлении и через подписку
+            const exists = state.usedPartsArray.some(item => item.id === action.payload.id);
+            if (!exists) {
+                state.usedPartsArray.push(action.payload);
+            }
         })
         .addCase(fetchUsedParts.fulfilled, (state, action)=> {
             state.usedPartsArray = action.payload

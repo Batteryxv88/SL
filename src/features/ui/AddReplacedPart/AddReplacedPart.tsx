@@ -11,6 +11,7 @@ import { findIdByPartNAndLatestDate } from "../../lib/findIdByPartNandDate/findB
 import { useForm } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "../../../app/providers/StoreProvider/Store/hooks";
 import { lifePercent } from "../../../shared/lib/calculatePercentOfLife";
+import { useAuth } from '../../../contexts/AuthContext';
 
 const Modal = ({ isOpen, onClose, children }: { isOpen: boolean; onClose: () => void; children: React.ReactNode }) => {
     const modalRef = useRef<HTMLDivElement>(null);
@@ -45,6 +46,7 @@ const Modal = ({ isOpen, onClose, children }: { isOpen: boolean; onClose: () => 
 };
 
 const AddReplacedPart = () => {
+    const { userData } = useAuth();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const stockData: any = useSelector<any>((state) => state.parts.partsArray);
     const replacedPartsdata: any = useSelector<any>(
@@ -63,7 +65,6 @@ const AddReplacedPart = () => {
         partN: string;
         serviceLife: number;
         quantity: number;
-        man: string;
     };
 
     const {
@@ -77,8 +78,7 @@ const AddReplacedPart = () => {
         defaultValues: {
             partN: "",
             serviceLife: 0,
-            quantity: 0,
-            man: "Алексей"
+            quantity: 0
         }
     });
 
@@ -98,15 +98,12 @@ const AddReplacedPart = () => {
     ];
 
     const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-
-
         const value = Number(e.target.value);
         setQuantity(value);
         setValue("quantity", value, { shouldValidate: true });
     };
 
     const [error, setError] = useState<boolean>(false);
-
 
     const handleSetDate = () => {
         const currentDate = new Date();
@@ -136,9 +133,8 @@ const AddReplacedPart = () => {
         setDate(formattedDate)
     }
 
-    
-
     const handleAddPart = (e: any) => {
+        const manName = userData?.displayName || '';
         const cleanedPartN = e.partN.trim().toUpperCase();
 
         const currentPart = stockData.filter((item: any) => {
@@ -174,7 +170,7 @@ const AddReplacedPart = () => {
             quantity: Number(e.quantity),
             date: date,
             section: section,
-            man: e.man,
+            man: manName,
             partName: newName,
             machine: machineState
         };
@@ -269,19 +265,6 @@ const AddReplacedPart = () => {
                             onChange={handleQuantityChange}
                         ></input>
                     </div>
-                    <div className={cls.box}>
-                        <label className={cls.label}>Ответственный</label>
-                        <select
-                            {...register("man", {
-                                required: "Обязательное поле",
-                            })}
-                            className={cls.input}
-                        >
-                            <option value={"Алексей"}>Алексей</option>
-                            <option value={"Максим"}>Максим</option>
-                            <option value={"Сергей"}>Сергей</option>
-                        </select>
-                    </div>
                     <button className={cls.button} type="submit">
                         Добавить
                     </button>
@@ -290,8 +273,7 @@ const AddReplacedPart = () => {
                     <div className={`${cls.errMessage} ${Object.keys(errors).length > 0 ? cls.visible : ''}`}>
                         {(errors?.partN && <p>{errors?.partN.message}</p>) ||
                             (errors?.serviceLife && <p>{errors?.serviceLife.message}</p>) ||
-                            (errors?.quantity && <p>{errors?.quantity.message}</p>) ||
-                            (errors?.man && <p>{errors?.man.message}</p>)}
+                            (errors?.quantity && <p>{errors?.quantity.message}</p>)}
                     </div>
                 </div>
             </Modal>
