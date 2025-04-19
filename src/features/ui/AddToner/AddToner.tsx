@@ -5,6 +5,7 @@ import { addToner } from "../../../app/providers/StoreProvider/Store/TonerSlice"
 import { useForm } from "react-hook-form";
 import { useAppSelector } from "../../../app/providers/StoreProvider/Store/hooks";
 import { fetchTonersStorage, updateToner } from "../../../app/providers/StoreProvider/Store/TonersStorageSlice";
+import { useAuth } from '../../../contexts/AuthContext';
 
 const Modal = ({ isOpen, onClose, children }: { isOpen: boolean; onClose: () => void; children: React.ReactNode }) => {
     const modalRef = useRef<HTMLDivElement>(null);
@@ -39,6 +40,7 @@ const Modal = ({ isOpen, onClose, children }: { isOpen: boolean; onClose: () => 
 };
 
 const AddToner = () => {
+    const { userData } = useAuth();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const dispatch = useDispatch<any>();
     const tonersArr = useAppSelector(
@@ -53,7 +55,6 @@ const AddToner = () => {
 
     type FormValues = {
         color: string;
-        man: string;
         counter: string | number;
     };
 
@@ -66,7 +67,6 @@ const AddToner = () => {
         mode: "onChange",
         defaultValues: {
             color: "C",
-            man: "Алексей",
             counter: ""
         }
     });
@@ -98,10 +98,10 @@ const AddToner = () => {
     const handleAddToner = (e: any) => {
         const currentDate = new Date();
         const formattedDate = formatDate(currentDate);
-
+        const manName = userData?.displayName || '';
         const newToner = {
             color: e.color,
-            man: e.man,
+            man: manName,
             counter: Number(e.counter),
             date: formattedDate,
             machine: machineTonerState
@@ -158,19 +158,6 @@ const AddToner = () => {
                         </select>
                     </div>
                     <div className={cls.box}>
-                        <label className={cls.label}>Ответственный</label>
-                        <select
-                            {...register("man", {
-                                required: "Обязательное поле",
-                            })}
-                            className={cls.input}
-                        >
-                            <option value={"Алексей"}>Алексей</option>
-                            <option value={"Максим"}>Максим</option>
-                            <option value={"Сергей"}>Сергей</option>
-                        </select>
-                    </div>
-                    <div className={cls.box}>
                         <label className={cls.label}>Счетчик</label>
                         <input
                             {...register("counter", {
@@ -191,7 +178,6 @@ const AddToner = () => {
                 <div className={cls.errorContainer}>
                     <div className={`${cls.errMessage} ${Object.keys(errors).length > 0 ? cls.visible : ''}`}>
                         {(errors?.counter && <p>{errors?.counter.message}</p>) ||
-                            (errors?.man && <p>{errors?.man.message}</p>) ||
                             (errors?.color && <p>{errors?.color.message}</p>)}
                     </div>
                 </div>
