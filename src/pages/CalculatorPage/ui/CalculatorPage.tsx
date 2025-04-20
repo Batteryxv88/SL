@@ -204,7 +204,7 @@ const CalculatorPage = () => {
                                 value={thickness}
                                 onChange={(e) => { setThickness(e.target.value); setError(null); }}
                                 onKeyPress={handleKeyPress}
-                                placeholder="Введите значение, мм"
+                                placeholder="Введите значение толщины слоя ламинации, мм"
                                 className={cls.input}
                             />
                         </div>
@@ -235,7 +235,7 @@ const CalculatorPage = () => {
                                 value={desiredLaminationLength}
                                 onChange={(e) => { setDesiredLaminationLength(e.target.value); setLaminationCalcError(null); }}
                                 onKeyPress={handleLaminationKeyPress}
-                                placeholder="Введите значение, м"
+                                placeholder="Введите значение длинны тиража, м"
                                 className={cls.input}
                             />
                         </div>
@@ -285,7 +285,7 @@ const CalculatorPage = () => {
                                 value={materialThickness}
                                 onChange={(e) => { setMaterialThickness(e.target.value); setMaterialError(null); }}
                                 onKeyPress={handleMaterialKeyPress}
-                                placeholder="Введите значение, мм"
+                                placeholder="Введите значение толщины слоя материала, мм"
                                 className={cls.input}
                             />
                         </div>
@@ -317,7 +317,7 @@ const CalculatorPage = () => {
                                 value={desiredLength}
                                 onChange={(e) => { setDesiredLength(e.target.value); setThicknessCalcError(null); }}
                                 onKeyPress={handleThicknessKeyPress}
-                                placeholder="Введите значение, м"
+                                placeholder="Введите значение длинны тиража, м"
                                 className={cls.input}
                             />
                         </div>
