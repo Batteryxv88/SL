@@ -59,6 +59,7 @@ const RotationFormTable = () => {
 
     return (
         <div className={cls.rotationFormTable}>
+            <h2 className={cls.title}>Таблица форм</h2>
             <div className={cls.nameContainer}>
                 <div className={cls.namesSizes}>
                     <p className={cls.span}>W</p>

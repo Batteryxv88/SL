@@ -100,7 +100,7 @@ const RotationFormPreview = () => {
     
     return (
         <div className={cls.gridContainer}>
-            <h2 className={cls.title}>Форма для ротации</h2>
+            <h2 className={cls.title}>Предварительный вид формы</h2>
             
             <div className={cls.content}>
                 <div className={cls.leftColumn}>
@@ -139,20 +139,6 @@ const RotationFormPreview = () => {
                             <span className={cls.label}>Размер формы:</span>
                             <span className={cls.value}>{FORM_WIDTH_MM} × {FORM_HEIGHT_MM} мм</span>
                         </div>
-                        <div className={cls.formDetailItem}>
-                            <span className={cls.label}>Размер сетки:</span>
-                            <span className={cls.value}>{gridFullWidthMM} × {gridFullHeightMM} мм</span>
-                        </div>
-                        <div className={cls.formDetailItem}>
-                            <span className={cls.label}>Междуэтикеточное расстояние:</span>
-                            <span className={cls.value}>{GAP_SIZE_MM} мм</span>
-                        </div>
-                        {showScaleWarning && (
-                            <div className={cls.formDetailItem} style={{ borderLeft: '3px solid orange' }}>
-                                <span className={cls.label}>Масштаб (сетка не помещается):</span>
-                                <span className={cls.value}>{Math.round(scale * 100)}%</span>
-                            </div>
-                        )}
                     </div>
                 </div>
                 
