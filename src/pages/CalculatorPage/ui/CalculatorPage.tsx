@@ -1,4 +1,4 @@
-import { useState, KeyboardEvent } from 'react';
+import { useState, useEffect, KeyboardEvent as ReactKeyboardEvent } from 'react';
 import { changePage } from "../../../app/providers/StoreProvider/Store/ChangePageSlice";
 import { useAppDispatch } from "../../../app/providers/StoreProvider/Store/hooks";
 import cls from './CalculatorPage.module.scss';
@@ -18,6 +18,25 @@ const MATERIAL_THICKNESS: Record<MaterialType, number> = {
 const CalculatorPage = () => {
     const dispatch = useAppDispatch();
     dispatch(changePage('calculator'));
+
+    // Test barcode scanner input: collect scanned code and log once when complete
+    useEffect(() => {
+        console.log('Barcode listener mounted');
+        let buffer = '';
+        const handleKey = (e: globalThis.KeyboardEvent) => {
+            if (e.key === 'Enter') {
+                if (buffer.length > 0) {
+                    console.log('Scanned barcode:', buffer);
+                    buffer = '';
+                }
+            } else if (e.key.length === 1) {
+                buffer += e.key;
+            }
+        };
+        window.addEventListener('keydown', handleKey);
+        return () => window.removeEventListener('keydown', handleKey);
+
+    }, []);
 
     // First calculator states
     const [thickness, setThickness] = useState<string>('');
@@ -96,13 +115,13 @@ const CalculatorPage = () => {
         setMaterialError(null);
     };
 
-    const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    const handleKeyPress = (e: ReactKeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
             handleCalculate();
         }
     };
 
-    const handleMaterialKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    const handleMaterialKeyPress = (e: ReactKeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
             handleMaterialCalculate();
         }
@@ -142,7 +161,7 @@ const CalculatorPage = () => {
         setThicknessCalcError(null);
     };
 
-    const handleThicknessKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    const handleThicknessKeyPress = (e: ReactKeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
             handleThicknessCalculate();
         }
@@ -175,7 +194,7 @@ const CalculatorPage = () => {
         setLaminationCalcError(null);
     };
 
-    const handleLaminationKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    const handleLaminationKeyPress = (e: ReactKeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
             handleLaminationThicknessCalculate();
         }

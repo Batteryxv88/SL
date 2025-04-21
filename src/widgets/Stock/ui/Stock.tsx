@@ -1,7 +1,8 @@
 import cls from "./Stock.module.scss";
 import Part from "../../../shared/ui/Part/Part";
 import { useParts } from "../../../app/providers/StoreProvider/Store/hooks";
-
+import AddPart from "../../../features/ui/AddPart/AddPart";
+import Button from "../../../shared/ui/Button/Button";
 type Part = {
     partN: string;
     section: string;
@@ -45,6 +46,10 @@ const Stock = () => {
 
     return (
         <div className={cls.stock}>
+            <div className={cls.buttonBox}>
+                <AddPart />
+            </div>
+
             <h2 className={cls.h2}>Склад деталей Konica Minolta</h2>
             <div className={cls.titleBox}>
                 <p className={cls.name}>Наименование</p>

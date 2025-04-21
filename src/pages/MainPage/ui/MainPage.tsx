@@ -16,7 +16,7 @@ const MainPage = () => {
 
     return (
         <div className={cls.MainPage}>
-            {storageState === "Детали" ? <AddPart /> : ''}
+            {/* {storageState === "Детали" ? <AddPart /> : ''} */}
             {storageState === "Детали" ? <Stock /> : 
              storageState === "Тонеры" ? <TonersStorage />: 
              storageState === "Бумага" ? <PaperStockPage /> :
