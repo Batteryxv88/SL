@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/providers/StoreProvider/Store/hooks';
-import { setShowReminder, setShowModal } from '../../../app/providers/StoreProvider/Store/InventoryCheckSlice';
+import { setShowReminder, setShowModal, setReminderPostponed } from '../../../app/providers/StoreProvider/Store/InventoryCheckSlice';
 import { getInventoryStatus, getStatusEmoji } from '../../../shared/lib/utils/inventoryCheck';
 import cls from './InventoryReminder.module.scss';
 import StorageIcon from '../../../shared/ui/StorageIcon/StorageIcon';
@@ -17,6 +17,7 @@ const InventoryReminder = () => {
     }, [status, dispatch]);
 
     const handleCheckNow = () => {
+        dispatch(setReminderPostponed(false));
         dispatch(setShowModal(true));
     };
 
