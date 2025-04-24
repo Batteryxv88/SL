@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { User, onAuthStateChanged } from 'firebase/auth';
+import { User, onAuthStateChanged, setPersistence, browserSessionPersistence } from 'firebase/auth';
 import { getCurrentUser, logout } from '../services/auth';
 import { auth } from '../services/firebase';
 import { UserData, getUserData } from '../services/users';
@@ -21,7 +21,9 @@ const AuthContext = createContext<AuthContextType>({
 export const useAuth = () => useContext(AuthContext);
 
 // Время автоматического выхода в миллисекундах (12 часов)
-const AUTO_LOGOUT_TIME = 12 * 60 * 60 * 1000;
+const AUTO_LOGOUT_TIME = 9 * 60 * 60 * 1000;
+//const AUTO_LOGOUT_TIME = 20000;
+
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
@@ -46,30 +48,50 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return () => unsubscribe();
   }, []);
 
-  // Эффект для автоматического выхода через 30 секунд
+  // Эффект для автоматического выхода через заданное время сессии (устойчив к перезагрузке)
   useEffect(() => {
     let autoLogoutTimer: NodeJS.Timeout | null = null;
-    
+
     if (user) {
-      console.log('Автоматический выход будет выполнен через 30 секунд');
-      autoLogoutTimer = setTimeout(async () => {
-        console.log('Выполняем автоматический выход');
-        try {
-          await logout();
-          console.log('Автоматический выход выполнен успешно');
-        } catch (error) {
-          console.error('Ошибка при автоматическом выходе:', error);
-        }
-      }, AUTO_LOGOUT_TIME);
+      // Получаем или устанавливаем время старта для авторазлогина в sessionStorage
+      const stored = sessionStorage.getItem('autoLogoutStartTime');
+      const startTime = stored ? parseInt(stored, 10) : Date.now();
+      if (!stored) {
+        sessionStorage.setItem('autoLogoutStartTime', startTime.toString());
+      }
+      const elapsed = Date.now() - startTime;
+      const remaining = AUTO_LOGOUT_TIME - elapsed;
+
+      if (remaining <= 0) {
+        // Время сессии истекло — сразу выходим
+        logout().catch((error) => console.error('Ошибка при автоматическом выходе:', error));
+      } else {
+        console.log(`Автоматический выход будет выполнен через ${remaining} мс`);
+        autoLogoutTimer = setTimeout(async () => {
+          console.log('Выполняем автоматический выход');
+          try {
+            await logout();
+            console.log('Автоматический выход выполнен успешно');
+          } catch (error) {
+            console.error('Ошибка при автоматическом выходе:', error);
+          }
+        }, remaining);
+      }
+    } else {
+      // Очищаем время старта при выходе
+      sessionStorage.removeItem('autoLogoutStartTime');
     }
-    
-    // Очищаем таймер при размонтировании компонента или смене пользователя
+
     return () => {
       if (autoLogoutTimer) {
         clearTimeout(autoLogoutTimer);
       }
     };
   }, [user]);
+
+  useEffect(() => {
+    setPersistence(auth, browserSessionPersistence);
+  }, []);
 
   return (
     <AuthContext.Provider value={{ user, userData, loading, setUser }}>
