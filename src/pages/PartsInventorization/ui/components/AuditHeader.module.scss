@@ -1,0 +1,45 @@
+.auditHeader {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px;
+    background: #1E1E1E;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.fieldGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    min-width: 200px;
+}
+
+.label {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.input {
+    height: 40px;
+    padding: 0 16px;
+    font-size: 14px;
+    background: #2A2A2A;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.87);
+    transition: all 0.2s ease;
+
+    &:focus {
+        outline: none;
+        border-color: #BB86FC;
+    }
+    &:hover {
+        border-color: rgba(255, 255, 255, 0.24);
+    }
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.38);
+    }
+}

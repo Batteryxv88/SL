@@ -89,6 +89,31 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     };
   }, [user]);
 
+  // Эффект для выхода в 22:00 по московскому времени (проверка каждые 30 минут)
+  useEffect(() => {
+    if (!user) return;
+    const checkLogoutByTime = async () => {
+      try {
+        // Получаем текущее московское время
+        const now = new Date();
+        const moscowTimeString = now.toLocaleString('en-US', { timeZone: 'Europe/Moscow' });
+        const moscowNow = new Date(moscowTimeString);
+        const hours = moscowNow.getHours();
+        if (hours >= 22) {
+          console.log('Время превышает 22:00 по МСК, выполняем выход');
+          await logout();
+        }
+      } catch (error) {
+        console.error('Ошибка при проверке времени для автологаута:', error);
+      }
+    };
+    // Сразу проверяем при инициализации
+    checkLogoutByTime();
+    // Запускаем проверку каждые 30 минут
+    const intervalId = setInterval(checkLogoutByTime, 30 * 60 * 1000);
+    return () => clearInterval(intervalId);
+  }, [user]);
+
   useEffect(() => {
     setPersistence(auth, browserSessionPersistence);
   }, []);

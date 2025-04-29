@@ -4,7 +4,7 @@ import CheckMark from "../../assets/icon/checkMark.svg";
 import { useState, useEffect, useRef } from 'react';
 import { useAppDispatch } from '../../../app/providers/StoreProvider/Store/hooks';
 import { updateToner } from '../../../app/providers/StoreProvider/Store/TonersStorageSlice';
-
+import EditPenIcon from "../../../shared/assets/icons/edit-pen.svg";
 
 type TonerStockItemTypes = {
     color: string;
@@ -85,7 +85,7 @@ const TonerStockItem = ({color, qty, id}: TonerStockItemTypes) => {
                 <div className={cls.qtyBox}>
                     <p className={cls.qty}>{qty}</p>
                     <button className={cls.button} onClick={() => setOnEdit(true)}>
-                        <EditIcon className={cls.editIcon} />
+                        <EditPenIcon className={cls.editIcon} />
                     </button>
                 </div>
             )}

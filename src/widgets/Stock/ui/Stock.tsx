@@ -46,10 +46,6 @@ const Stock = () => {
 
     return (
         <div className={cls.stock}>
-            <div className={cls.buttonBox}>
-                <AddPart />
-            </div>
-
             <h2 className={cls.h2}>Склад деталей Konica Minolta</h2>
             <div className={cls.titleBox}>
                 <p className={cls.name}>Наименование</p>

@@ -54,7 +54,7 @@ const PaperStockPage = () => {
             if (timerRef.current) {
                 clearTimeout(timerRef.current);
             }
-            
+
             timerRef.current = setTimeout(() => {
                 setEditingMaterial(null);
                 setNewQty("");
@@ -117,13 +117,13 @@ const PaperStockPage = () => {
                             <data className={cls.editBox__data}>{qty}</data>
                         )}
                         {isEditing ? (
-                            <CheckIcon 
-                                className={cls.checkIcon} 
+                            <CheckIcon
+                                className={cls.checkIcon}
                                 onClick={() => handleSave(type)}
                             />
                         ) : (
-                            <EditPenIcon 
-                                className={cls.editIcon} 
+                            <EditPenIcon
+                                className={cls.editIcon}
                                 onClick={() => handleEditClick(type)}
                             />
                         )}

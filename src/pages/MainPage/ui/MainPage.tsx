@@ -7,6 +7,8 @@ import PaperStockPage from "../../PaperStockPage/ui/PaperStockPage";
 import LaminationStockPage from "../../LaminationStockPage/ui/LaminationStockPage";
 import HoldersAndKnifesStockPage from "../../HoldersAndKnifesStockPage/ui/HoldersAndKnifesStockPage";
 import cls from "./MainPage.module.scss";
+import MainPageButtonsBar from "../../../widgets/MainPageButtonsBar/ui/MainPageButtonsBar";
+
 
 const MainPage = () => {
     const dispatch = useAppDispatch();
@@ -17,7 +19,7 @@ const MainPage = () => {
     return (
         <div className={cls.MainPage}>
             {/* {storageState === "Детали" ? <AddPart /> : ''} */}
-            {storageState === "Детали" ? <Stock /> : 
+            {storageState === "Детали" ? <><MainPageButtonsBar /><Stock /></> : 
              storageState === "Тонеры" ? <TonersStorage />: 
              storageState === "Бумага" ? <PaperStockPage /> :
              storageState === "Ламинация" ? <LaminationStockPage /> : 

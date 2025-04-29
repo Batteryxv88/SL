@@ -1,0 +1,71 @@
+.auditTable {
+  width: 100%;
+  border-collapse: collapse;
+  background: #1E1E1E;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.auditTable th,
+.auditTable td {
+  padding: 12px 16px;
+  color: rgba(255,255,255,0.87);
+  font-size: 14px;
+  text-align: left;
+}
+
+.auditTable thead th {
+  background: rgba(98,218,251,0.1);
+  font-weight: 500;
+}
+
+.auditTable tbody tr:nth-child(odd) {
+  background: #1A1A1A;
+}
+
+.auditTable tbody tr:hover {
+  background: #2A2A2A;
+}
+
+.input {
+  width: 80px;
+  height: 32px;
+  padding: 4px 8px;
+  background: #2A2A2A;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 4px;
+  color: rgba(255,255,255,0.87);
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #BB86FC;
+}
+
+.negative {
+  color: #CF6679;
+}
+
+.positive {
+  color: #8EF56B;
+}
+
+.buttonRestart {
+  height: 32px;
+  padding: 0 12px;
+  background: #BB86FC;
+  border: none;
+  border-radius: 4px;
+  color: rgba(0,0,0,0.87);
+  font-size: 12px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.buttonRestart:hover {
+  background: #C397FC;
+}

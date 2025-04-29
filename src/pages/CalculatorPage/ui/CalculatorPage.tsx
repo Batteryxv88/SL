@@ -2,7 +2,7 @@ import { useState, useEffect, KeyboardEvent as ReactKeyboardEvent } from 'react'
 import { changePage } from "../../../app/providers/StoreProvider/Store/ChangePageSlice";
 import { useAppDispatch } from "../../../app/providers/StoreProvider/Store/hooks";
 import cls from './CalculatorPage.module.scss';
-//import RotationPage from '../../RotationPage/ui/RotationPage';
+
 type MaterialType = 'FA' | 'FH' | 'PA' | 'PH' | 'Clear' | 'Metall' | 'Verge';
 
 const MATERIAL_THICKNESS: Record<MaterialType, number> = {
