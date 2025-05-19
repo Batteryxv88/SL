@@ -84,7 +84,7 @@ const Navbar: React.FC = () => {
                         <Button name={'АДМИНИСТРИРОВАНИЕ'} />
                     </Link>
                 )}
-                <InventoryReminder />
+                {(isAdmin || isPrinter) && <InventoryReminder />}
             </div>
             <div className={cls.rightSection}>
                 {user && (
@@ -99,7 +99,7 @@ const Navbar: React.FC = () => {
                     </div>
                 )}
             </div>
-            <InventoryModal />
+            {(isAdmin || isPrinter) && <InventoryModal />}
         </div>
     );
 };
