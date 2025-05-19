@@ -91,6 +91,22 @@ const SidebarRotation = () => {
 
     return (
         <div className={cls.sidebarRotation}>
+            <button 
+                className={cls.tableButton}
+                onClick={handleTableView}
+            >
+                Таблица
+            </button>
+            <button 
+                className={cls.addFormButton}
+                onClick={() => setIsModalOpen(true)}
+            >
+                Добавить форму
+            </button>
+            <AddRotationForm 
+                isOpen={isModalOpen} 
+                onClose={() => setIsModalOpen(false)} 
+            />
             <div className={cls.searchContainer}>
                 <span className={cls.searchTitle}>Введите размер для поиска формы</span>
                 <div className={cls.searchInputContainer}>
@@ -125,22 +141,7 @@ const SidebarRotation = () => {
                     )}
                 </div>
             </div>
-            <button 
-                className={cls.tableButton}
-                onClick={handleTableView}
-            >
-                Таблица
-            </button>
-            <button 
-                className={cls.addFormButton}
-                onClick={() => setIsModalOpen(true)}
-            >
-                Добавить форму
-            </button>
-            <AddRotationForm 
-                isOpen={isModalOpen} 
-                onClose={() => setIsModalOpen(false)} 
-            />
+            
         </div>
     )
 }   
