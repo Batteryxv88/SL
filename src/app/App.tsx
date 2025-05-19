@@ -23,11 +23,11 @@ const App = () => {
       <div className={cls.app}>
         <Favicon url={Fvicon} />
         <Routes>
-          <Route 
-            path="/login" 
-            element={<AuthForm />} 
+          <Route
+            path="/login"
+            element={<AuthForm />}
           />
-          <Route 
+          <Route
             path="/*"
             element={
               <ProtectedRoute>
@@ -38,40 +38,44 @@ const App = () => {
                     <div className={cls.pages}>
                       <Suspense fallback={<div className={cls.loading}>Loading...</div>}>
                         <Routes>
-                          <Route 
-                            path="/toner" 
+                          <Route
+                            path="/toner"
                             element={
                               <RoleBasedRoute allowedRoles={['администратор', 'руководитель', 'печатник']}>
                                 <TonerPage />
                               </RoleBasedRoute>
-                            } 
+                            }
                           />
-                          <Route 
-                            path="/schedule" 
+                          <Route
+                            path="/schedule"
                             element={
                               <RoleBasedRoute allowedRoles={['администратор', 'руководитель', 'печатник']}>
                                 <SchedulePage />
                               </RoleBasedRoute>
-                            } 
+                            }
                           />
                           <Route path="/" element={<MainPage />} />
-                          <Route 
-                            path="/report" 
+                          <Route
+                            path="/report"
                             element={
                               <RoleBasedRoute allowedRoles={['администратор', 'руководитель']}>
                                 <ReportPage />
                               </RoleBasedRoute>
-                            } 
+                            }
                           />
                           <Route path="/calculator" element={<CalculatorPageAsync />} />
-                          <Route path="/rotation" element={<RotationPageAsync />} />
-                          <Route 
-                            path="/admin" 
+                          <Route path="/rotation"
+                            element={<RoleBasedRoute
+                              allowedRoles={['администратор', 'руководитель', 'печатник', 'дизайнер', 'резчик', 'менеджер']}>
+                              <RotationPageAsync />
+                            </RoleBasedRoute>} />
+                          <Route
+                            path="/admin"
                             element={
                               <RoleBasedRoute allowedRoles={['администратор']}>
                                 <AdminPage />
                               </RoleBasedRoute>
-                            } 
+                            }
                           />
                         </Routes>
                       </Suspense>

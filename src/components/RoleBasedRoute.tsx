@@ -16,7 +16,8 @@ export const RoleBasedRoute: React.FC<RoleBasedRouteProps> = ({ children, allowe
 
   // Если данные о пользователе не загружены или его роль не входит в список разрешенных
   if (!userData || !allowedRoles.includes(userData.role)) {
-    return <AccessDenied />;
+    // return <AccessDenied />;
+    return null;
   }
 
   return <>{children}</>;

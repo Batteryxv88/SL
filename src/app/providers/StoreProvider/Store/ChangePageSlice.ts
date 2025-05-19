@@ -12,5 +12,7 @@ const ChangePageSlice = createSlice({
     }
 })
 
+
+
 export default ChangePageSlice.reducer
 export const {changePage} =ChangePageSlice.actions

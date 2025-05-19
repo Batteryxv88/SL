@@ -11,14 +11,13 @@ import { changeTonerMachine } from "../../../app/providers/StoreProvider/Store/C
 import { changeStorage } from "../../../app/providers/StoreProvider/Store/ChangeMachineSlice";
 import { SidebarLamination } from "../../SidebarLamination";
 import SidebarRotation from "../../SidebarRotation/ui/SidebarRotation";
+import { RoleBasedRoute } from "../../../components/RoleBasedRoute";
 
 const Sidebar = () => {
     const pageState = useAppSelector((state) => state.pages.page);
     const dispatch = useAppDispatch();
     const machineState = useAppSelector((state) => state.machines.storage);
 
-    console.log(machineState);
-    console.log(pageState);
 
     const dispatchStorage = () => dispatch(changeStorage("Детали"));
     const dispatchToners = () => dispatch(changeStorage("Тонеры"));
