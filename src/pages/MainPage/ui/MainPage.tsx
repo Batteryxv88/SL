@@ -11,6 +11,7 @@ import MainPageButtonsBar from "../../../widgets/MainPageButtonsBar/ui/MainPageB
 import { useAuth } from "../../../contexts/AuthContext";
 import { useEffect } from 'react';
 import { changeStorage } from "../../../app/providers/StoreProvider/Store/ChangeMachineSlice";
+import LoadingPlug from "../../../shared/ui/LoadingPlug/LoadingPlug";
 
 
 const MainPage = () => {
@@ -29,12 +30,15 @@ const MainPage = () => {
                 dispatch(changeStorage('Держатели / Лезвия'));
             } else if (userData.role === 'менеджер') {
                 dispatch(changeStorage('Бумага'));
-            }
+            } else dispatch(changeStorage('Детали'));
         }
     }, [loading, userData, dispatch]);
 
     dispatch(changePage("main"));
 
+    if (loading) {
+        return <LoadingPlug />;
+    }
 
     return (
         <div className={cls.MainPage}>

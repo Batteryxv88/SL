@@ -3,6 +3,7 @@ import { User, onAuthStateChanged, setPersistence, browserSessionPersistence } f
 import { getCurrentUser, logout } from '../services/auth';
 import { auth } from '../services/firebase';
 import { UserData, getUserData } from '../services/users';
+import LoadingPlug from '../shared/ui/LoadingPlug/LoadingPlug';
 
 interface AuthContextType {
   user: User | null;
@@ -32,6 +33,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      setLoading(true);
       setUser(user);
       
       if (user) {
@@ -120,7 +122,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   return (
     <AuthContext.Provider value={{ user, userData, loading, setUser }}>
-      {!loading && children}
+      {loading ? <LoadingPlug /> : children}
     </AuthContext.Provider>
   );
 }; 
