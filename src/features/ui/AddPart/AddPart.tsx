@@ -75,6 +75,21 @@ const AddPart = () => {
         setIsModalOpen(false);
     };
 
+    // Define section options list
+    const sectionOptions = [
+        "External section",
+        "Photo conductor section",
+        "Charging section",
+        "Developing section",
+        "Intermediate transfer section",
+        "Fusing section",
+        "Toner collection section",
+        "Paper feed section",
+        "Paper exit section",
+        "RW-101",
+        "Other",
+    ];
+
     return (
         <>
             <button 
@@ -131,16 +146,19 @@ const AddPart = () => {
                     </div>
                     <div className={cls.box}>
                         <label className={cls.label}>Секция</label>
-                        <input
+                        <select
                             {...register("section", {
                                 required: "Обязательное поле",
-                                minLength: {
-                                    value: 2,
-                                    message: "Минимум 2 символа",
-                                },
                             })}
                             className={cls.input}
-                        />
+                        >
+                            <option value="">Выберите секцию</option>
+                            {sectionOptions.map((section) => (
+                                <option key={section} value={section}>
+                                    {section}
+                                </option>
+                            ))}
+                        </select>
                     </div>
                     <div className={cls.box}>
                         <label className={cls.label}>Кол-во</label>
