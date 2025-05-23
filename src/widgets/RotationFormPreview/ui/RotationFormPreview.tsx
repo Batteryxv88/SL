@@ -28,6 +28,25 @@ const RotationFormPreview = () => {
     const selectedItem = rotationForms.find(item => item.id === selectedFormId) ||
                         (sortedForms.length > 0 ? sortedForms[0] : null);
 
+    // Add navigation logic for previous/next functionality
+    const currentIndex = sortedForms.findIndex(item => item.id === selectedFormId);
+    const prevForm = currentIndex > 0 ? sortedForms[currentIndex - 1] : null;
+    const nextForm = currentIndex >= 0 && currentIndex < sortedForms.length - 1 ? sortedForms[currentIndex + 1] : null;
+    const handlePrev = () => { if (prevForm) dispatch(setSelectedFormId(prevForm.id)); };
+    const handleNext = () => { if (nextForm) dispatch(setSelectedFormId(nextForm.id)); };
+
+    // SVG icons for navigation arrows
+    const arrowLeftIcon = (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="15 18 9 12 15 6" />
+        </svg>
+    );
+    const arrowRightIcon = (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="9 18 15 12 9 6" />
+        </svg>
+    );
+
     if (!selectedItem) {
         return <div>Элемент не найден</div>;
     }
@@ -113,7 +132,10 @@ const RotationFormPreview = () => {
             
             <div className={cls.content}>
                 <div className={cls.leftColumn}>
-                    <div className={cls.selectContainer}>
+                    <div className={`${cls.selectContainer} ${cls.navControls}`}>
+                        <button onClick={handlePrev} disabled={!prevForm} className={cls.navButton}>
+                            {arrowLeftIcon}
+                        </button>
                         <select
                             value={selectedFormId || ''}
                             onChange={(e) => dispatch(setSelectedFormId(e.target.value))}
@@ -125,6 +147,9 @@ const RotationFormPreview = () => {
                                 </option>
                             ))}
                         </select>
+                        <button onClick={handleNext} disabled={!nextForm} className={cls.navButton}>
+                            {arrowRightIcon}
+                        </button>
                     </div>
                     
                     <div className={cls.formDetails}>
