@@ -10,15 +10,23 @@ const RotationFormPreview = () => {
     const rotationForms = useSelector((state: RootState) => state.rotationForms.rotationForms);
     const selectedFormId = useSelector((state: RootState) => state.selectedForm.selectedFormId);
     
+    // Sort forms by width then height to match RotationFormTable
+    const sortedForms = [...rotationForms].sort((a, b) => {
+        if (a.width !== b.width) {
+            return a.width - b.width;
+        }
+        return a.height - b.height;
+    });
+
     // If no form is selected yet, default to the first one
     useEffect(() => {
-        if (!selectedFormId && rotationForms.length > 0) {
-            dispatch(setSelectedFormId(rotationForms[0].id));
+        if (!selectedFormId && sortedForms.length > 0) {
+            dispatch(setSelectedFormId(sortedForms[0].id));
         }
     }, [selectedFormId, rotationForms, dispatch]);
 
-    const selectedItem = rotationForms.find(item => item.id === selectedFormId) || 
-                        (rotationForms.length > 0 ? rotationForms[0] : null);
+    const selectedItem = rotationForms.find(item => item.id === selectedFormId) ||
+                        (sortedForms.length > 0 ? sortedForms[0] : null);
 
     if (!selectedItem) {
         return <div>Элемент не найден</div>;
@@ -55,6 +63,7 @@ const RotationFormPreview = () => {
     // Общая ширина и высота сетки с учетом масштаба
     const totalGridWidthPercent = Math.min(95, (gridFullWidthMM / FORM_WIDTH_MM) * 100 * scale);
     const totalGridHeightPercent = Math.min(95, (gridFullHeightMM / FORM_HEIGHT_MM) * 100 * scale);
+
     
     // Стили для сетки с учетом реальных размеров и отступов
     const gridStyle = {
@@ -62,8 +71,8 @@ const RotationFormPreview = () => {
         gridTemplateColumns: `repeat(${selectedItem.columns}, 1fr)`,
         gridTemplateRows: `repeat(${selectedItem.rows}, 1fr)`,
         gap: `${gapSizePercent}%`,
-        width: `${totalGridWidthPercent}%`,
-        height: `${totalGridHeightPercent}%`,
+        width: `${totalGridWidthPercent - 5}%`,
+        height: `${totalGridHeightPercent - 5}%`,
         alignItems: 'flex-start',
         justifyContent: 'center',
     };
@@ -110,7 +119,7 @@ const RotationFormPreview = () => {
                             onChange={(e) => dispatch(setSelectedFormId(e.target.value))}
                             className={cls.select}
                         >
-                            {rotationForms.map(item => (
+                            {sortedForms.map(item => (
                                 <option key={item.id} value={item.id}>
                                     {item.width}×{item.height}, Ручьи: {item.columns}, Ряды: {item.rows}
                                 </option>
