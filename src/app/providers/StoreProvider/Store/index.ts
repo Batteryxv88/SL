@@ -14,7 +14,7 @@ import materialsReducer from './MaterialsSlice';
 import laminationsReducer from './LaminationsSlice';
 import holdersAndKnifesReducer from './HoldersAndKnifesSlice';
 import inventoryCheckReducer from './InventoryCheckSlice';
-
+import ChangeManualSlice from "./ChangeManual";
 
 const store = configureStore({
     reducer: {
@@ -33,6 +33,7 @@ const store = configureStore({
         laminations: laminationsReducer,
         inventoryCheck: inventoryCheckReducer,
         holdersAndKnifes: holdersAndKnifesReducer,
+        manuals: ChangeManualSlice,
     }
 })
 

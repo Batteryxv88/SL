@@ -8,6 +8,7 @@ import { useState, useEffect, useRef } from "react";
 import { updateMaterialQty } from "../../../services/materials";
 import classNames from "classnames";
 import LoadingPlug from "../../../shared/ui/LoadingPlug/LoadingPlug";
+
 const PaperStockPage = () => {
     const { materials, isLoading } = useMaterials();
     const [editingMaterial, setEditingMaterial] = useState<string | null>(null);

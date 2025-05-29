@@ -16,6 +16,7 @@ import { RoleBasedRoute } from "../components/RoleBasedRoute";
 import cls from './App.module.scss';
 import { RotationPageAsync } from "../pages/RotationPage/ui/RotationPage.async";
 import { AdminPage } from "../pages/AdminPage";
+import { ManualsPageAsync } from "../pages/ManualsPage/ui/ManualsPage.async";
 
 const App = () => {
   return (
@@ -68,6 +69,11 @@ const App = () => {
                             element={<RoleBasedRoute
                               allowedRoles={['администратор', 'руководитель', 'печатник', 'дизайнер', 'резчик', 'менеджер']}>
                               <RotationPageAsync />
+                            </RoleBasedRoute>} />
+                          <Route path="/manuals"
+                            element={<RoleBasedRoute
+                              allowedRoles={['администратор', 'руководитель', 'печатник']}>
+                              <ManualsPageAsync />
                             </RoleBasedRoute>} />
                           <Route
                             path="/admin"

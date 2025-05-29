@@ -1,0 +1,95 @@
+import { changePage } from "../../../app/providers/StoreProvider/Store/ChangePageSlice";
+import { useAppDispatch, useAppSelector } from "../../../app/providers/StoreProvider/Store/hooks";
+import { useState, FormEvent, useEffect } from "react";
+import { Label_190 } from "../../../shared/lib/manuals/Label190";
+import { Label_400 } from "../../../shared/lib/manuals/Label400";   
+import cls from "./ManualsPage.module.scss";
+
+const ManualsPage = () => {
+    const dispatch = useAppDispatch();
+    dispatch(changePage('manuals'));
+    
+    const manualState = useAppSelector((state) => state.manuals.manual);
+    const [searchCode, setSearchCode] = useState("");
+    const [foundErrors, setFoundErrors] = useState<any[]>([]);
+    
+    // Сброс состояния поиска при смене машины
+    useEffect(() => {
+        setSearchCode("");
+        setFoundErrors([]);
+    }, [manualState]);
+    
+    // Выбираем нужный массив данных в зависимости от выбранной машины
+    const currentManualData = manualState === "label_190" ? Label_190 : Label_400;
+    
+    const handleSearch = (e: FormEvent) => {
+        e.preventDefault();
+        if (!searchCode.trim()) {
+            setFoundErrors([]);
+            return;
+        }
+        
+        // Ищем ошибки по коду (игнорируем первый элемент массива с моделью)
+        const results = currentManualData.slice(1).filter((item: any) => 
+            item.code && item.code.toLowerCase().includes(searchCode.toLowerCase())
+        );
+        setFoundErrors(results);
+    };
+
+    return (
+        <div className={cls.manualsPage}>
+            <div className={cls.manualsContainer}>
+                <div className={cls.findErrorForm}>
+                    <form onSubmit={handleSearch}>
+                        <input 
+                            type="text" 
+                            placeholder="Введите номер ошибки" 
+                            value={searchCode}
+                            onChange={(e) => setSearchCode(e.target.value)}
+                        />
+                        <button type="submit">Найти</button>
+                    </form>
+                </div>
+                <div className={cls.errorDescription}>
+                    <h1>Описание ошибки</h1>
+                    {foundErrors.length === 0 ? (
+                        <p className={cls.not_found}>
+                            {searchCode ? "Error code not found" : "Введите код ошибки для поиска"}
+                        </p>
+                    ) : (
+                        foundErrors.map((item: any) => (
+                            <div className={cls.error_code} key={item.code}>
+                                <h3 className={cls.title}>Code</h3>
+                                <p className={cls.des}>{item.code}</p>
+                                <h3 className={cls.title}>Classification</h3>
+                                <p className={cls.des}>{item.class}</p>
+                                <h3 className={cls.title}>Cause</h3>
+                                <p className={cls.des}>{item.cause}</p>
+                                <h3 className={cls.title}>Measures to take when alert occurs</h3>
+                                <p className={cls.des}>{item.measure}</p>
+                                <h3 className={cls.title}>Estimated abnormal parts</h3>
+                                <p className={cls.des}>{item.abnormal}</p>
+                                <h3 className={cls.title}>Correction</h3>
+                                <p className={cls.des}>{item.corr}</p>
+                                <h3 className={cls.title}>Note</h3>
+                                <p className={cls.des}>{item.note}</p>
+                                <h3 className={cls.title}>Solution</h3>
+                                <p className={cls.des}>{item.solution}</p>
+                                <h3 className={cls.title}>Faulty part isolation DIPSW</h3>
+                                <p className={cls.des}>{item.isolate}</p>
+                                {item.control && (
+                                    <>
+                                        <h3 className={cls.title}>Control</h3>
+                                        <p className={cls.des}>{item.control}</p>
+                                    </>
+                                )}
+                            </div>
+                        ))
+                    )}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default ManualsPage;

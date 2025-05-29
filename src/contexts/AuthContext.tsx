@@ -94,6 +94,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   // Эффект для выхода в 22:00 по московскому времени (проверка каждые 30 минут)
   useEffect(() => {
     if (!user) return;
+    
     const checkLogoutByTime = async () => {
       try {
         // Получаем текущее московское время
@@ -101,18 +102,40 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         const moscowTimeString = now.toLocaleString('en-US', { timeZone: 'Europe/Moscow' });
         const moscowNow = new Date(moscowTimeString);
         const hours = moscowNow.getHours();
-        if (hours >= 22) {
-          console.log('Время превышает 22:00 по МСК, выполняем выход');
+        const minutes = moscowNow.getMinutes();
+        
+        // Проверяем, был ли уже выполнен автоматический выход сегодня
+        const today = moscowNow.toDateString();
+        const lastAutoLogoutDate = localStorage.getItem('lastAutoLogoutDate');
+        
+        console.log(`Проверка времени: ${hours}:${minutes.toString().padStart(2, '0')} МСК, дата: ${today}, последний автовыход: ${lastAutoLogoutDate}`);
+        
+        // Выполняем автоматический выход только если:
+        // 1. Время 22:00 или позже
+        // 2. Автоматический выход еще не выполнялся сегодня
+        // 3. Время не позднее 23:59 (чтобы не выходить на следующий день)
+        if (hours === 22 && minutes >= 0 && lastAutoLogoutDate !== today) {
+          console.log('Время 22:00 по МСК, выполняем автоматический выход');
+          // Сохраняем дату последнего автоматического выхода
+          localStorage.setItem('lastAutoLogoutDate', today);
           await logout();
+        }
+        
+        // Очищаем запись о последнем автоматическом выходе в полночь
+        // чтобы система была готова к следующему дню
+        if (hours === 0 && minutes < 5 && lastAutoLogoutDate && lastAutoLogoutDate !== today) {
+          console.log('Полночь - очищаем запись о последнем автоматическом выходе');
+          localStorage.removeItem('lastAutoLogoutDate');
         }
       } catch (error) {
         console.error('Ошибка при проверке времени для автологаута:', error);
       }
     };
+    
     // Сразу проверяем при инициализации
     checkLogoutByTime();
-    // Запускаем проверку каждые 30 минут
-    const intervalId = setInterval(checkLogoutByTime, 30 * 60 * 1000);
+    // Запускаем проверку каждые 5 минут для более точного срабатывания
+    const intervalId = setInterval(checkLogoutByTime, 5 * 60 * 1000);
     return () => clearInterval(intervalId);
   }, [user]);
 

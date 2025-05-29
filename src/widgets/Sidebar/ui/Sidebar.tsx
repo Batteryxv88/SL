@@ -12,6 +12,9 @@ import { changeStorage } from "../../../app/providers/StoreProvider/Store/Change
 import { SidebarLamination } from "../../SidebarLamination";
 import SidebarRotation from "../../SidebarRotation/ui/SidebarRotation";
 import { RoleBasedRoute } from "../../../components/RoleBasedRoute";
+import { SidebarManuals } from "../../SidebarManuals";
+
+
 
 const Sidebar = () => {
     const pageState = useAppSelector((state) => state.pages.page);
@@ -37,6 +40,8 @@ const Sidebar = () => {
                 <SidebarReplaceToner />
             ) : pageState === "report" ? (
                 <GenerateAReport />
+            ) : pageState === "manuals" ? (
+                <SidebarManuals />
             ) : pageState === "main" ? (
                 <ChangeButton
                     dispatch1={dispatchStorage}

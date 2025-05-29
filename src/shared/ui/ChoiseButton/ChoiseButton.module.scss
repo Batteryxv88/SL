@@ -1,0 +1,53 @@
+.button {
+    width: 100%;
+    max-width: 200px;
+    height: 40px;
+    padding: 0 16px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    background: #2A2A2A;
+    color: rgba(255, 255, 255, 0.87);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.1px;
+
+    &:hover {
+        background: #333333;
+        border-color: rgba(255, 255, 255, 0.24);
+    }
+
+    &:active {
+        background: #3A3A3A;
+    }
+}
+
+.activeButton {
+    width: 100%;
+    max-width: 200px;
+    height: 40px;
+    padding: 0 16px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    border: 1px solid #BB86FC;
+    border-radius: 8px;
+    background: rgba(187, 134, 252, 0.12);
+    color: #BB86FC;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.1px;
+
+    &:hover {
+        background: rgba(187, 134, 252, 0.16);
+        border-color: #C397FC;
+    }
+
+    &:active {
+        background: rgba(187, 134, 252, 0.24);
+    }
+}

@@ -75,6 +75,12 @@ const Navbar: React.FC = () => {
                 >
                     <Button name={'РОТАЦИЯ'} />
                 </Link>
+                <Link
+                    className={`${cls.button} ${location.pathname === "/manuals" ? cls.active : ""}`}
+                    to={"/manuals"}
+                >
+                    <Button name={'СЕРВИС ИНСТРУКЦИИ'} />
+                </Link>
                 {/* Отображаем кнопку админ-панели только для администраторов */}
                 {isAdmin && (
                     <Link
