@@ -15,6 +15,25 @@ const MATERIAL_THICKNESS: Record<MaterialType, number> = {
     'Verge': 0.1837
 };
 
+const MATERIAL_WEIGHT_PER_METER: Record<MaterialType, number> = {
+    'FA': 0.039, // (39,6 - 0.6) / 1000 - вес материала без втулки
+    'FH': 0.039, // Нужно добавить данные для других материалов
+    'PA': 0.039, // Пример значения
+    'PH': 0.039,
+    'Clear': 0.039,
+    'Metall': 0.039,
+    'Verge': 0.039
+};
+
+// Вес втулки (константа)
+const CORE_WEIGHT = 0.6; // кг
+
+// Вес ламинации на метр (6 кг на 500 метров = 0.012 кг/м)
+const LAMINATION_WEIGHT_PER_METER = {
+    'matte': 0.0089, // 4,4 / 500
+    'glossy': 0.0091 // 4,55 / 500
+};
+
 const CalculatorPage = () => {
     const dispatch = useAppDispatch();
     dispatch(changePage('calculator'));
@@ -63,7 +82,21 @@ const CalculatorPage = () => {
     const [laminationCalcError, setLaminationCalcError] = useState<string | null>(null);
 
     // State to toggle between material length and thickness calculation modes
-    const [materialCalcMode, setMaterialCalcMode] = useState<'length' | 'thickness'>('length');
+    const [materialCalcMode, setMaterialCalcMode] = useState<'length' | 'thickness' | 'weight'>('length');
+
+    // Add states for weight calculation
+    const [weightCalcLength, setWeightCalcLength] = useState<string>('');
+    const [calculatedWeight, setCalculatedWeight] = useState<number | null>(null);
+    const [selectedMaterialForWeight, setSelectedMaterialForWeight] = useState<MaterialType | null>(null);
+    const [weightCalcError, setWeightCalcError] = useState<string | null>(null);
+
+    // Add states for tirage weight calculation
+    const [tirageLength, setTirageLength] = useState<string>('');
+    const [selectedMaterialForTirage, setSelectedMaterialForTirage] = useState<MaterialType | null>(null);
+    const [useLamination, setUseLamination] = useState<boolean>(false);
+    const [laminationTypeForTirage, setLaminationTypeForTirage] = useState<'matte' | 'glossy' | null>(null);
+    const [calculatedTirageWeight, setCalculatedTirageWeight] = useState<number | null>(null);
+    const [tirageWeightError, setTirageWeightError] = useState<string | null>(null);
 
     const calculateLength = (r: number, t: number) => {
         const d = 90.3; // fixed value
@@ -200,6 +233,85 @@ const CalculatorPage = () => {
         }
     };
 
+    const handleWeightCalculate = () => {
+        if (!selectedMaterialForWeight) {
+            setWeightCalcError('Выберите материал');
+            return;
+        }
+
+        const length = parseFloat(weightCalcLength);
+        if (isNaN(length)) {
+            setWeightCalcError('Введите корректное значение метража');
+            return;
+        }
+
+        const weightPerMeter = MATERIAL_WEIGHT_PER_METER[selectedMaterialForWeight];
+        const totalWeight = length * weightPerMeter;
+        setCalculatedWeight(totalWeight);
+        setWeightCalcError(null);
+    };
+
+    const handleWeightKeyPress = (e: ReactKeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            handleWeightCalculate();
+        }
+    };
+
+    const handleMaterialForWeightSelect = (material: MaterialType) => {
+        setSelectedMaterialForWeight(material);
+        setWeightCalcError(null);
+    };
+
+    const handleTirageWeightCalculate = () => {
+        if (!selectedMaterialForTirage) {
+            setTirageWeightError('Выберите материал');
+            return;
+        }
+
+        if (useLamination && !laminationTypeForTirage) {
+            setTirageWeightError('Выберите тип ламинации');
+            return;
+        }
+
+        const length = parseFloat(tirageLength);
+        if (isNaN(length)) {
+            setTirageWeightError('Введите корректное значение метража');
+            return;
+        }
+
+        // Вес материала (без втулки)
+        const materialWeightPerMeter = MATERIAL_WEIGHT_PER_METER[selectedMaterialForTirage];
+        const materialWeight = length * materialWeightPerMeter;
+
+        // Вес ламинации (если используется)
+        let laminationWeight = 0;
+        if (useLamination && laminationTypeForTirage) {
+            const laminationWeightPerMeter = LAMINATION_WEIGHT_PER_METER[laminationTypeForTirage];
+            laminationWeight = length * laminationWeightPerMeter;
+        }
+
+        // Общий вес = вес материала + вес ламинации + вес втулки (константа)
+        const totalWeight = materialWeight + laminationWeight + CORE_WEIGHT;
+        setCalculatedTirageWeight(totalWeight);
+        setTirageWeightError(null);
+    };
+
+    const handleTirageWeightKeyPress = (e: ReactKeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            handleTirageWeightCalculate();
+        }
+    };
+
+    const handleMaterialForTirageSelect = (material: MaterialType) => {
+        setSelectedMaterialForTirage(material);
+        setTirageWeightError(null);
+    };
+
+    const handleLaminationTypeForTirageSelect = (type: 'matte' | 'glossy') => {
+        setLaminationTypeForTirage(type);
+        setTirageWeightError(null);
+    };
+
     return (
         <div className={cls.CalculatorPage}>
             {/* Combined lamination calculators with mode toggle */}
@@ -279,7 +391,7 @@ const CalculatorPage = () => {
                     </>
                 )}
             </div>
-            {/* Combined material calculators with mode toggle */}
+            {/* Updated material calculator with weight mode */}
             <div className={cls.calculator}>
                 <h2 className={cls.title}>Расчет материала</h2>
                 <div className={cls.buttonsWrapper}>
@@ -295,8 +407,47 @@ const CalculatorPage = () => {
                     >
                         Толщина по метражу
                     </button>
+                    <button
+                        onClick={() => setMaterialCalcMode('weight')}
+                        className={`${cls.button} ${materialCalcMode === 'weight' ? cls.active : ''}`}
+                    >
+                        Вес по метражу
+                    </button>
                 </div>
-                {materialCalcMode === 'length' ? (
+
+                {materialCalcMode === 'weight' ? (
+                    <>
+                        <div className={cls.inputWrapper}>
+                            <input
+                                type="number"
+                                value={weightCalcLength}
+                                onChange={(e) => { setWeightCalcLength(e.target.value); setWeightCalcError(null); }}
+                                onKeyPress={handleWeightKeyPress}
+                                placeholder="Введите длину тиража, м"
+                                className={cls.input}
+                            />
+                        </div>
+                        <div className={cls.buttonsWrapper}>
+                            {Object.keys(MATERIAL_THICKNESS).map((material) => (
+                                <button
+                                    key={material}
+                                    onClick={() => handleMaterialForWeightSelect(material as MaterialType)}
+                                    className={`${cls.button} ${selectedMaterialForWeight === material ? cls.active : ''}`}
+                                >
+                                    {material}
+                                </button>
+                            ))}
+                        </div>
+                        <button onClick={handleWeightCalculate} className={cls.calculateButton}>Рассчитать</button>
+                        {weightCalcError && <div className={cls.error}>{weightCalcError}</div>}
+                        {calculatedWeight !== null && (
+                            <div className={cls.result}>
+                                <span>Результат:</span>
+                                <span>{calculatedWeight.toFixed(3)} кг</span>
+                            </div>
+                        )}
+                    </>
+                ) : materialCalcMode === 'length' ? (
                     <>                    
                         <div className={cls.inputWrapper}>
                             <input
@@ -360,6 +511,80 @@ const CalculatorPage = () => {
                             </div>
                         )}
                     </>
+                )}
+            </div>
+
+            {/* New tirage weight calculator */}
+            <div className={cls.calculator}>
+                <h2 className={cls.title}>Расчет веса тиража</h2>
+                
+                <div className={cls.inputWrapper}>
+                    <input
+                        type="number"
+                        value={tirageLength}
+                        onChange={(e) => { setTirageLength(e.target.value); setTirageWeightError(null); }}
+                        onKeyPress={handleTirageWeightKeyPress}
+                        placeholder="Введите метраж тиража, м"
+                        className={cls.input}
+                    />
+                </div>
+
+                <div className={cls.buttonsWrapper}>
+                    {Object.keys(MATERIAL_THICKNESS).map((material) => (
+                        <button
+                            key={material}
+                            onClick={() => handleMaterialForTirageSelect(material as MaterialType)}
+                            className={`${cls.button} ${selectedMaterialForTirage === material ? cls.active : ''}`}
+                        >
+                            {material}
+                        </button>
+                    ))}
+                </div>
+
+                <div className={cls.inputWrapper}>
+                    <label className={cls.checkboxLabel}>
+                        <input
+                            type="checkbox"
+                            checked={useLamination}
+                            onChange={(e) => {
+                                setUseLamination(e.target.checked);
+                                if (!e.target.checked) {
+                                    setLaminationTypeForTirage(null);
+                                }
+                                setTirageWeightError(null);
+                            }}
+                            className={cls.checkbox}
+                        />
+                        Использовать ламинацию
+                    </label>
+                </div>
+
+                {useLamination && (
+                    <div className={cls.buttonsWrapper}>
+                        <button
+                            onClick={() => handleLaminationTypeForTirageSelect('matte')}
+                            className={`${cls.button} ${laminationTypeForTirage === 'matte' ? cls.active : ''}`}
+                        >
+                            Матовая ламинация
+                        </button>
+                        <button
+                            onClick={() => handleLaminationTypeForTirageSelect('glossy')}
+                            className={`${cls.button} ${laminationTypeForTirage === 'glossy' ? cls.active : ''}`}
+                        >
+                            Глянцевая ламинация
+                        </button>
+                    </div>
+                )}
+
+                <button onClick={handleTirageWeightCalculate} className={cls.calculateButton}>Рассчитать</button>
+                
+                {tirageWeightError && <div className={cls.error}>{tirageWeightError}</div>}
+                
+                {calculatedTirageWeight !== null && (
+                    <div className={cls.result}>
+                        <span>Результат:</span>
+                        <span>{calculatedTirageWeight.toFixed(3)} кг</span>
+                    </div>
                 )}
             </div>
         </div>

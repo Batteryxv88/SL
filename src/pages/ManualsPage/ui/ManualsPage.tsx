@@ -2,35 +2,36 @@ import { changePage } from "../../../app/providers/StoreProvider/Store/ChangePag
 import { useAppDispatch, useAppSelector } from "../../../app/providers/StoreProvider/Store/hooks";
 import { useState, FormEvent, useEffect } from "react";
 import { Label_190 } from "../../../shared/lib/manuals/Label190";
-import { Label_400 } from "../../../shared/lib/manuals/Label400";   
+import { Label_400 } from "../../../shared/lib/manuals/Label400";
 import cls from "./ManualsPage.module.scss";
+import MachineSvg from "../../../shared/assets/machine.svg";
 
 const ManualsPage = () => {
     const dispatch = useAppDispatch();
     dispatch(changePage('manuals'));
-    
+
     const manualState = useAppSelector((state) => state.manuals.manual);
     const [searchCode, setSearchCode] = useState("");
     const [foundErrors, setFoundErrors] = useState<any[]>([]);
-    
+
     // Сброс состояния поиска при смене машины
     useEffect(() => {
         setSearchCode("");
         setFoundErrors([]);
     }, [manualState]);
-    
+
     // Выбираем нужный массив данных в зависимости от выбранной машины
     const currentManualData = manualState === "label_190" ? Label_190 : Label_400;
-    
+
     const handleSearch = (e: FormEvent) => {
         e.preventDefault();
         if (!searchCode.trim()) {
             setFoundErrors([]);
             return;
         }
-        
+
         // Ищем ошибки по коду (игнорируем первый элемент массива с моделью)
-        const results = currentManualData.slice(1).filter((item: any) => 
+        const results = currentManualData.slice(1).filter((item: any) =>
             item.code && item.code.toLowerCase().includes(searchCode.toLowerCase())
         );
         setFoundErrors(results);
@@ -41,9 +42,9 @@ const ManualsPage = () => {
             <div className={cls.manualsContainer}>
                 <div className={cls.findErrorForm}>
                     <form onSubmit={handleSearch}>
-                        <input 
-                            type="text" 
-                            placeholder="Введите номер ошибки" 
+                        <input
+                            type="text"
+                            placeholder="Введите номер ошибки"
                             value={searchCode}
                             onChange={(e) => setSearchCode(e.target.value)}
                         />
@@ -83,6 +84,9 @@ const ManualsPage = () => {
                                         <p className={cls.des}>{item.control}</p>
                                     </>
                                 )}
+                                <div className={cls.machine}>
+                                    <MachineSvg />
+                                </div>
                             </div>
                         ))
                     )}

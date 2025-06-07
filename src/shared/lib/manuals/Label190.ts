@@ -10,7 +10,8 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Deactivate the sub power switch and unplug the power plug. Restart the main body after 10 seconds. 2. Check the connection status of the PRCB connector, and repair it when there is any abnormality. 3. Check the connection status of the CDB connector, and repair it when there is any abnormality. 4. Replace PRCB. 5. Replace CDB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": ""
   },
   {
     "code": "C-0101",
@@ -22,7 +23,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connector connection and the wiring among the motor, the PRCB, and the DCPS2. Then repair it when there is any abnormality. 2. Check the I/O drive of the motor and the coupling of the gear, and repair it when there is any abnormality. (Wiring diagram: Main body (2/4):3O) 3. Replace M11. 4. Replace PRCB. 5. Replace DCPS2.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": ""
   },
   {
     "code": "C-0233",
@@ -34,7 +36,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the front door is closed properly, and repair it when there is any abnormality. 2. Check the conveyance section, and repair it when there is any abnormality. 3. Check the drive gear system in the conveyance section, and repair it when there is any abnormality. 4. Check the connector connection and the wiring between CDB and the motor the sensor, and repair it when there is any abnormality. 5. Check the connector connection and the wiring between PRCB and CDB, and repair it when there is any abnormality. 6. Check the I/O drive of the motor and the coupling of the gear, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (1/4): 16-L) 7. Check I/O and the operation of the sensor, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (1/4): 11-P) 8. Replace PS16. 9. Replace M36. 10. Replace CDB. 11. Replace PRCB. 12. Replace M36 and CDB at the same time.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "2"
   },
   {
     "code": "C-0234",
@@ -46,7 +49,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the front door is closed properly, and repair it when there is any abnormality. 2. Check the conveyance section, and repair it when there is any abnormality. 3. Check the drive gear system in the conveyance section, and repair it when there is any abnormality. 4. Check the connector connection and the wiring among the motor, the sensor and the CDB, and repair it when there is any abnormality. 5. Check the connector connection and the wiring between CDB and PRCB, and repair it when there is any abnormality. 6. Check the I/O drive of the motor and the coupling of the gear, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 16-L) 7. Check I/O and the operation of the sensor, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 11-P) 8. Replace PS17. 9. Replace M37. 10. Replace CDB. 11. Replace PRCB. 12. Replace M37 and CDB at the same time.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "2"
   },
   {
     "code": "C-0238",
@@ -58,7 +62,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the fusing unit is properly set and repair it if any abnormality. 2. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it if any abnormality. 3. Check the connector connection and the wiring on PRCB, and repair it if any abnormality. 4. Replace the fusing unit. 5. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "4, 5"
   },
   {
     "code": "C-0301",
@@ -70,7 +75,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connector connection and the wiring between PRCB and the fun, and repair it when there is any abnormality. 2. Rotate the fan or I/O manually, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (1/4): 20-F) 3. Replace FM22. 4. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": "Кулер циклон фильтра"
   },
   {
     "code": "C-0302",
@@ -82,7 +89,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connector connection and the wiring between PRCB and the fan, and repair it when there is any abnormality. 2. Rotate the fan or I/O manually, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (1/4):22-L) 3. Replace FM23. 4. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "4",
+    "additional": "Кулер выходной секции"
   },
   {
     "code": "C-0304",
@@ -94,7 +103,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connector connection and the wiring between PRCB and the fan, and repair it when there is any abnormality. 2. Rotate the fan or I/O manually, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (1/4): 20-L) 3. Replace FM19. 4. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": ""
   },
   {
     "code": "C-0323",
@@ -106,7 +116,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connector connection and the wiring between PRCB and the fun, and repair it when there is any abnormality. 2. Rotate the fan manually or using I/O, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (1/4): 19-L) 3. Replace FM20. 4. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": ""
   },
   {
     "code": "C-0324",
@@ -118,7 +129,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connector connection and the wiring between PRCB and the fun, and repair it when there is any abnormality. 2. Rotate the fan manually or using I/O, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (1/4): 19-L) 3. Replace FM21. 4. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": ""
   },
   {
     "code": "C-0373",
@@ -130,7 +142,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connector connection and the wiring between PRCB and the fan, and repair it when there is any abnormality. 2. Rotate the fan by I/O or manually, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (1/4): 21-L) 3. Replace FM24 and PRCB at a time",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "4",
+    "additional": "Кулер выходной секции"
   },
   {
     "code": "C-0374",
@@ -142,7 +156,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connector connection and the wiring between PRCB and the fan, and repair it when there is any abnormality. 2. Rotate the fan by I/O or manually, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (1/4): 21-L) 3. Replace FM25. 4. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "4",
+    "additional": "Кулер выходной секции"
   },
   {
     "code": "C-2001",
@@ -154,7 +170,8 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Deactivate the sub power switch and unplug the power plug. Restart the main body after 10 seconds. 2. Check the connector connection and the wiring between PRCB and the motor, and repair it when there is any abnormality. 3. Check the I/O drive of the motor and the coupling of the gear, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4):15-O, 16-O) 4. Replace M1 or M2. 5. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": ""
   },
   {
     "code": "C-2004",
@@ -166,7 +183,8 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Deactivate the sub power switch and unplug the power plug. Restart the main body after 10 seconds. 2. Check the connector connection and the wiring between PRCB and the motor, and repair it when there is any abnormality. 3. Check the I/O drive of the motor and the coupling of the gear, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4):15-O, 16-O) 4. Replace M1 or M2. 5. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": ""
   },
   {
     "code": "C-2201",
@@ -178,7 +196,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connector connection and the wiring between PRCB and the motor, and repair it when there is any abnormality. 2. Check the I/O drive of the motor and the coupling of the gear, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4):16-B) 3. Replace M8 and PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "10"
   },
   {
     "code": "C-2202",
@@ -190,7 +209,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connector connection and the wiring between PRCB and the motor, and repair it when there is any abnormality. 2. Check the I/O drive of the motor and the coupling of the gear, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4):16-B) 3. Replace M7 and PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "10"
   },
   {
     "code": "C-2203",
@@ -202,7 +222,8 @@ export const Label_190 = [
     "note": "",
     "solution": "1. Check the connector connection and the wiring between PRCB and the motor, and repair it when there is any abnormality. 2. Check the I/O drive of the motor and the coupling of the gear, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4):15-B) 3. Replace M6 and PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "10"
   },
   {
     "code": "C-2204",
@@ -214,7 +235,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connector connection and the wiring between PRCB and the motor, and repair it when there is any abnormality. 2. Check the I/O drive of the motor and the coupling of the gear, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4):15-B) 3. Replace M5 and PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "10"
   },
   {
     "code": "C-2211",
@@ -226,7 +248,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the drum unit and repair or replace it when there is any abnormality 2. Check the connector connection and the wiring between PRCB, and the motor and the sensor, and repair it when there is any abnormality. 3. Check the I/O drive of the motor and the coupling of the gear, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4): 15-O) 4. Check the connector connection and the wiring between DCPS2 and PRCB, and repair it when there is any abnormality. 5. Check the skew, the status of the slit, damage, dust of the drum encoder. Repair or replace it when there is any abnormality. 6. Replace PS52 and PS53. 7. Replace M1. 8. Replace PRCB. 9. Replace DCPS2.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "9"
   },
   {
     "code": "C-2212",
@@ -238,7 +261,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the drum unit and repair or replace it when there is any abnormality 2. Check the connector connection and the wiring between PRCB, and the motor and the sensor, and repair it when there is any abnormality. 3. Check the I/O drive of the motor and the coupling of the gear, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4): 16-O) 4. Check the connector connection and the wiring between DCPS2 and PRCB, and repair it when there is any abnormality. 5. Check the skew, the status of the slit, damage, dust of the drum encoder. Repair or replace it when there is any abnormality. 6. Replace PS54 and PS55. 7. Replace M2. 8. Replace PRCB. 9. Replace DCPS2.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "9"
   },
   {
     "code": "C-2213",
@@ -250,7 +274,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the drum unit and repair or replace it when there is any abnormality 2. Check the connector connection and the wiring between PRCB, and the motor and the sensor, and repair it when there is any abnormality. 3. Check the I/O drive of the motor and the coupling of the gear, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4): 17-O) 4. Check the connector connection and the wiring between DCPS2 and PRCB, and repair it when there is any abnormality. 5. Check the skew, the status of the slit, damage, dust of the drum encoder. Repair or replace it when there is any abnormality. 6. Replace PS56 and PS57. 7. Replace M3. 8. Replace PRCB. 9. Replace DCPS2.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "9"
   },
   {
     "code": "C-2214",
@@ -262,7 +287,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the drum unit and repair or replace it when there is any abnormality 2. Check the connector connection and the wiring between PRCB, and the motor and the sensor, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between DDB and the motor, DDB and the PRCB and repair it when there is any abnormality. 4. Check the I/O drive of the motor and the coupling of the gear, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4): 17-O) 5. Check the connector connection and the wiring between DCPS2 and PRCB, and repair it when there is any abnormality. 6. Check the skew, the status of the slit, damage, dust of the drum encoder. Repair or replace it when there is any abnormality. 7. Replace EN58, EN59. 8. Replace M4. 9. Replace PRCB. 10. Replace DCPS2.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "9"
   },
   {
     "code": "C-2220",
@@ -274,7 +300,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the intermediate transfer unit and repair and replace it when there is any abnormality. 2. Check the connector connection and the wiring between PRCB, the motor and sensor, and repair it when there is any abnormality. 3. Check the I/O drive of the motor and the coupling of the gear, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4):21-D) 4. Check the connector connection and the wiring between DCPS2 and PRCB, and repair it when there is any abnormality. 5. Check the skew, the status of the slit, damage, dust of the intermediate transfer belt encoder. Repair or replace it when there is any abnormality. 6. Replace M9. 7. Replace PS49. 8. Replace DCPS2. 9. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "7"
   },
   {
     "code": "C-2221",
@@ -284,9 +311,10 @@ export const Label_190 = [
     "abnormal": "• DC power supply/1 (DCPS1) • Printer control board (PRCB) • 1st transfer pressure release motor (M10) • 1st transfer pressure sensor/1 (PS50) • 1st transfer pressure sensor/2 (PS51)",
     "corr": "",
     "note": "• The message \"Please call service\" is displayed on the panel.",
-    "solution": "1. Check the 1st transfer fusing pressure release section, and clean or repair it when there is any abnormality. 2. Check the connector connection and the wiring between PRCB and the sensor, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between DCPS1 and the motor, and repair it when there is any abnormality.",
+    "solution": "1. Check the 1st transfer pressure release section, and clean or repair it when there is any abnormality. 2. Check the connector connection and the wiring between PRCB and the sensor, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between DCPS1 and the motor, and repair it when there is any abnormality.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "7" 
   },
   {
     "code": "C-2222",
@@ -298,7 +326,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the toner bottle door is closed properly, and repair it when there is any abnormality. 2. Check the I/O drive of the motor and the coupling of the gear, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4):12-D) 3. Check the connector connection and the wiring between DCPS2 and the motor, and repair it when there is any abnormality. 4. Check the connector connection and the wiring between DCPS2 and PRCB, and repair it when there is any abnormality. 5. Replace M15. 6. Replace PRCB. 7. Replace DCPS2.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "14"
   },
   {
     "code": "C-2223",
@@ -310,7 +339,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the drum unit, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between PRCB and the motor, and repair it when there is any abnormality. 3. Check the I/O drive of the motor and the coupling of the gear, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4):15-O, 16-O, 17-O) 4. Replace M1, M2, M3 or M4. 5. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "9"
   },
   {
     "code": "C-2224",
@@ -322,7 +352,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the toner supply section, and repair it when there is any abnormality. 2. Check the I/O drive of the motor and the coupling of the gear, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4): 4-B) 3. Replace M13. 4. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "1"
   },
   {
     "code": "C-2225",
@@ -334,7 +365,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the toner supply section, and repair it when there is any abnormality. 2. Check the I/O drive of the motor and the coupling of the gear, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4): 5-B) 3. Replace M14. 4. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "1"
   },
   {
     "code": "C-2302",
@@ -346,7 +378,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connector connection and the wiring between PRCB and the fun, and repair it when there is any abnormality. 2. Rotate the fan or I/O manually, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (1/4): 10-E) 3. Replace FM6. 4. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": ""
   },
   {
     "code": "C-2303",
@@ -358,7 +391,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connector connection and the wiring between PRCB and the fun, and repair it when there is any abnormality. 2. Rotate the fan or I/O manually, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (1/4): 14-L) 3. Replace FM17. 4. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": ""
   },
   {
     "code": "C-2304",
@@ -370,7 +404,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connector connection and the wiring between PRCB and the fun, and repair it when there is any abnormality. 2. Rotate the fan or I/O manually, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4):2-B) 3. Replace FM26 and PRCB at a time.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": ""
   },
   {
     "code": "C-2305",
@@ -382,7 +417,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connector connection and the wiring between PRCB and the fun, and repair it when there is any abnormality. 2. Rotate the fan or I/O manually, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4):3-B) 3. Replace FM27. 4. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": ""
   },
   {
     "code": "C-2306",
@@ -394,7 +430,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connector connection and the wiring between PRCB and the fun, and repair it when there is any abnormality. 2. Rotate the fan or I/O manually, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (1/4): 10-E) 3. Replace FM7. 4. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": ""
   },
   {
     "code": "C-2307",
@@ -406,7 +443,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connector connection and the wiring between PRCB and the fan, and repair it when there is any abnormality. 2. Rotate the fan by I/O or manually, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4): 3-B) 3. Replace FM28. 4. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": ""
   },
   {
     "code": "C-2401",
@@ -418,7 +456,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check the EL section, and clean or repair it when there is any abnormality. (Wiring diagram: Main body (2/4):17-B) 3. Check the connector connection and the wiring between PRCB and EL, and repair it when there is any abnormality. 4. Replace EL. 5. Replace PRCB. 6. Replace EL and PRCB at a time.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": "Светодиодная лампа засветки барабана"
   },
   {
     "code": "C-2402",
@@ -430,7 +470,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": "Светодиодная лампа засветки барабана"
   },
   {
     "code": "C-2403",
@@ -442,7 +484,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check the EL section, and clean or repair it when there is any abnormality. (Wiring diagram: Main body (2/4):18-B) 3. Check the connector connection and the wiring between PRCB and EL, and repair it when there is any abnormality. 4. Replace EL. 5. Replace PRCB. 6. Replace EL and PRCB at a time.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": "Светодиодная лампа засветки барабана"
   },
   {
     "code": "C-2404",
@@ -454,7 +498,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check the EL section, and clean or repair it when there is any abnormality. (Wiring diagram: Main body (2/4):18-B) 3. Check the connector connection and the wiring between PRCB and EL, and repair it when there is any abnormality. 4. Replace EL. 5. Replace PRCB. 6. Replace EL and PRCB at a time.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": "Светодиодная лампа засветки барабана"
   },
   {
     "code": "C-2431",
@@ -466,7 +512,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "10",
+    "additional": "Низкая плотность тонера в блоке проявки. Возможные варианты: 1. Старый девелопер, 2. Плохой тонер, 3. Вышел из строя блок проявки, 4. Не передается вращение на блок проявки"
   },
   {
     "code": "C-2432",
@@ -478,7 +526,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check TCRS, and clean or repair it when there is a sensor dirt or any abnormality. (Wiring diagram: Main body (2/4):19-B) 3. Check the developing section, and clean or repair it if there is a sensor dirt or any abnormality. 4. Check the connector connection and the wiring between PRCB and TCRS, and repair it when there is any abnormality. 5. Check the connector connection and the wiring between PRCB and the developing motor, and repair it when there is any abnormality. 6. Rotate the developing motor by I/O, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4): 16-B) 7. Replace TCRS. 8. Replace M7. 9. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "10",
+    "additional": "Низкая плотность тонера в блоке проявки. Возможные варианты: 1. Старый девелопер, 2. Плохой тонер, 3. Вышел из строя блок проявки, 4. Не передается вращение на блок проявки"
   },
   {
     "code": "C-2433",
@@ -490,7 +540,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check TCRS, and clean or repair it when there is a sensor dirt or any abnormality. (Wiring diagram: Main body (2/4):20-B) 3. Check the developing section, and clean or repair it if there is a sensor dirt or any abnormality. 4. Check the connector connection and the wiring between PRCB and TCRS, and repair it when there is any abnormality. 5. Check the connector connection and the wiring between PRCB and the developing motor, and repair it when there is any abnormality. 6. Rotate the developing motor by I/O, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4): 15-B) 7. Replace TCRS. 8. Replace M6. 9. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "10",
+    "additional": "Низкая плотность тонера в блоке проявки. Возможные варианты: 1. Старый девелопер, 2. Плохой тонер, 3. Вышел из строя блок проявки, 4. Не передается вращение на блок проявки"
   },
   {
     "code": "C-2434",
@@ -502,7 +554,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check TCRS, and clean or repair it when there is a sensor dirt or any abnormality. (Wiring diagram: Main body (2/4):20-B) 3. Check the developing section, and clean or repair it if there is a sensor dirt or any abnormality. 4. Check the connector connection and the wiring between PRCB and TCRS, and repair it when there is any abnormality. 5. Check the connector connection and the wiring between PRCB and the developing motor, and repair it when there is any abnormality. 6. Rotate the developing motor by I/O, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4): 15-B) 7. Replace TCRS. 8. Replace M5. 9. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "10",
+    "additional": "Низкая плотность тонера в блоке проявки. Возможные варианты: 1. Старый девелопер, 2. Плохой тонер, 3. Вышел из строя блок проявки, 4. Не передается вращение на блок проявки"
   },
   {
     "code": "C-2441",
@@ -514,7 +568,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check TCRS, and clean or repair it when there is a sensor dirt or any abnormality. (Wiring diagram: Main body (2/4):19-B) 3. Check the developing section, and clean or repair it if there is a sensor dirt or any abnormality. 4. Check the connector connection and the wiring between PRCB and TCRS, and repair it when there is any abnormality. 5. Check the connector connection and the wiring between PRCB and the developing motor, and repair it when there is any abnormality. 6. Rotate the developing motor by I/O, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4): 16-B) 7. Replace TCRS. 8. Replace M8. 9. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "10",
+    "additional": "Высокая плотность тонера в блоке проявки. Возможные варианты: 1. Старый девелопер, 2. Плохой тонер, 3. Вышел из строя блок проявки"
   },
   {
     "code": "C-2442",
@@ -526,7 +582,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check TCRS, and clean or repair it when there is a sensor dirt or any abnormality. (Wiring diagram: Main body (2/4):19-B) 3. Check the developing section, and clean or repair it if there is a sensor dirt or any abnormality. 4. Check the connector connection and the wiring between PRCB and TCRS, and repair it when there is any abnormality.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "10",
+    "additional": "Высокая плотность тонера в блоке проявки. Возможные варианты: 1. Старый девелопер, 2. Плохой тонер, 3. Вышел из строя блок проявки"
   },
   {
     "code": "C-2443",
@@ -538,7 +596,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check TCRS, and clean or repair it when there is a sensor dirt or any abnormality. (Wiring diagram: Main body (2/4):20-B) 3. Check the developing section, and clean or repair it if there is a sensor dirt or any abnormality. 4. Check the connector connection and the wiring between PRCB and TCRS, and repair it when there is any abnormality. 5. Check the connector connection and the wiring between PRCB and the developing motor, and repair it when there is any abnormality. 6. Rotate the developing motor by I/O, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4): 15-B) 7. Replace TCRS. 8. Replace M6. 9. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "10",
+    "additional": "Высокая плотность тонера в блоке проявки. Возможные варианты: 1. Старый девелопер, 2. Плохой тонер, 3. Вышел из строя блок проявки"
   },
   {
     "code": "C-2444",
@@ -550,7 +610,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check TCRS, and clean or repair it when there is a sensor dirt or any abnormality. (Wiring diagram: Main body (2/4):20-B) 3. Check the developing section, and clean or repair it if there is a sensor dirt or any abnormality. 4. Check the connector connection and the wiring between PRCB and TCRS, and repair it when there is any abnormality. 5. Check the connector connection and the wiring between PRCB and the developing motor, and repair it when there is any abnormality. 6. Rotate the developing motor by I/O, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4): 15-B) 7. Replace TCRS. 8. Replace M5. 9. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "10",
+    "additional": "Высокая плотность тонера в блоке проявки. Возможные варианты: 1. Старый девелопер, 2. Плохой тонер, 3. Вышел из строя блок проявки"
   },
   {
     "code": "C-2451",
@@ -562,7 +624,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check TCRS, and clean or repair it when there is a sensor dirt or any abnormality. (Wiring diagram: Main body (2/4):19-B) 3. Check the developing section, and clean or repair it if there is a sensor dirt or any abnormality. 4. Check the connector connection and the wiring between PRCB and TCRS, and repair it when there is any abnormality. 5. Check the connector connection and the wiring between PRCB and the developing motor, and repair it when there is any abnormality. 6. Rotate the developing motor by I/O, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4): 16-B) 7. Replace TCRS. 8. Replace M8. 9. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "10",
+    "additional": "Возможные варианты: 1. Старый девелопер, 2. Плохой тонер"
   },
   {
     "code": "C-2452",
@@ -574,7 +638,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check TCRS, and clean or repair it when there is a sensor dirt or any abnormality. (Wiring diagram: Main body (2/4):19-B) 3. Check the developing section, and clean or repair it if there is a sensor dirt or any abnormality. 4. Check the connector connection and the wiring between PRCB and TCRS, and repair it when there is any abnormality. 5. Check the connector connection and the wiring between PRCB and the developing motor, and repair it when there is any abnormality. 6. Rotate the developing motor by I/O, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4): 16-B) 7. Replace TCRS. 8. Replace M7. 9. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "10",
+    "additional": "Возможные варианты: 1. Старый девелопер, 2. Плохой тонер"
   },
   {
     "code": "C-2453",
@@ -586,7 +652,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check TCRS, and clean or repair it when there is a sensor dirt or any abnormality. (Wiring diagram: Main body (2/4):20-B) 3. Check the developing section, and clean or repair it if there is a sensor dirt or any abnormality. 4. Check the connector connection and the wiring between PRCB and TCRS, and repair it when there is any abnormality. 5. Check the connector connection and the wiring between PRCB and the developing motor, and repair it when there is any abnormality.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "10",
+    "additional": "Возможные варианты: 1. Старый девелопер, 2. Плохой тонер"
   },
   {
     "code": "C-2454",
@@ -598,7 +666,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check TCRS, and clean or repair it when there is a sensor dirt or any abnormality. (Wiring diagram: Main body (2/4):20-B) 3. Check the developing section, and clean or repair it if there is a sensor dirt or any abnormality. 4. Check the connector connection and the wiring between PRCB and TCRS, and repair it when there is any abnormality. 5. Check the connector connection and the wiring between PRCB and the developing motor, and repair it when there is any abnormality. 6. Rotate the developing motor by I/O, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4): 15-B) 7. Replace TCRS. 8. Replace M5. 9. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "10",
+    "additional": "Возможные варианты: 1. Старый девелопер, 2. Плохой тонер"
   },
   {
     "code": "C-2455",
@@ -610,7 +680,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check TCRS, and clean or repair it when there is a sensor dirt or any abnormality. (Wiring diagram: Main body (2/4): 19-B) 3. Check the developing section, and clean or repair it when there is a sensor dirt or any abnormality. 4. Check the connector connection and the wiring between PRCB and TCRS, and repair it when there is any abnormality. 5. Check the connector connection and the wiring between PRCB and the developing motor, and repair it when there is any abnormality. 6. Rotate the developing motor by I/O, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4): 16-B) 7. Replace TCRS. 8. Replace M8. 9. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "10",
+    "additional": "Возможные варианты: 1. Старый девелопер, 2. Плохой тонер"
   },
   {
     "code": "C-2456",
@@ -622,7 +694,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check TCRS, and clean or repair it when there is a sensor dirt or any abnormality. (Wiring diagram: Main body (2/4): 19-B) 3. Check the developing section, and clean or repair it when there is a sensor dirt or any abnormality. 4. Check the connector connection and the wiring between PRCB and TCRS, and repair it when there is any abnormality. 5. Check the connector connection and the wiring between PRCB and the developing motor, and repair it when there is any abnormality. 6. Rotate the developing motor by I/O, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4): 16-B) 7. Replace TCRS. 8. Replace M7. 9. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "10",
+    "additional": "Возможные варианты: 1. Старый девелопер, 2. Плохой тонер"
   },
   {
     "code": "C-2457",
@@ -634,7 +708,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check TCRS, and clean or repair it when there is a sensor dirt or any abnormality. (Wiring diagram: Main body (2/4): 20-B) 3. Check the developing section, and clean or repair it when there is a sensor dirt or any abnormality. 4. Check the connector connection and the wiring between PRCB and TCRS, and repair it when there is any abnormality. 5. Check the connector connection and the wiring between PRCB and the developing motor, and repair it when there is any abnormality. 6. Rotate the developing motor by I/O, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4): 15-B) 7. Replace TCRS. 8. Replace M6. 9. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "10",
+    "additional": "Возможные варианты: 1. Старый девелопер, 2. Плохой тонер"
   },
   {
     "code": "C-2458",
@@ -646,7 +722,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check TCRS, and clean or repair it when there is a sensor dirt or any abnormality. (Wiring diagram: Main body (2/4): 20-B) 3. Check the developing section, and clean or repair it when there is a sensor dirt or any abnormality. 4. Check the connector connection and the wiring between PRCB and TCRS, and repair it when there is any abnormality.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "10",
+    "additional": "Возможные варианты: 1. Старый девелопер, 2. Плохой тонер"
   },
   {
     "code": "C-2470",
@@ -658,7 +736,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check the process mount, and repair or replace it when there is any abnormality. 3. Check the connector connection and the wiring between PRCB and the process mount, and repair it when there is any abnormality. 4. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": "Возможно не корректно установлен блок процесса. Для начала необходимо переустановить"
   },
   {
     "code": "C-2701",
@@ -670,7 +750,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection of the high voltage contact of the process unit, and clean or repair it when there is any abnormality. 2. Check the charger (charging wire and the grid), and clean or repair it if there is any dirt or abnormality. 3. Check the connector connection and the wiring between HV1 and the charger, and repair it when there is any abnormality. (Wiring diagram: Main body (3/4): 1-K) 4. Check the connector connection and the wiring between PRCB and HV1, and repair it when there is any abnormality. (Wiring diagram: Main body (3/4): 1-K). 5. Replace HV1. 6. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": ""
   },
   {
     "code": "C-2702",
@@ -682,7 +763,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection of the high voltage contact of the process unit, and clean or repair it when there is any abnormality. 2. Check the charger (charging wire and the grid), and clean or repair it if there is any dirt or abnormality. 3. Check the connector connection and the wiring between HV1 and the charger, and repair it when there is any abnormality. (Wiring diagram: Main body (3/4): 1-K) 4. Check the connector connection and the wiring between PRCB and HV1, and repair it when there is any abnormality. (Wiring diagram: Main body (3/4): 1-K). 5. Replace HV1. 6. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": ""
   },
   {
     "code": "C-2703",
@@ -694,7 +776,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection of the high voltage contact of the process unit, and clean or repair it when there is any abnormality. 2. Check the charger (charging wire and the grid), and clean or repair it if there is any dirt or abnormality. 3. Check the connector connection and the wiring between HV1 and the charger, and repair it when there is any abnormality. (Wiring diagram: Main body (3/4): 1-K) 4. Check the connector connection and the wiring between PRCB and HV1, and repair it when there is any abnormality. (Wiring diagram: Main body (3/4): 1-K). 5. Replace HV1. 6. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": ""
   },
   {
     "code": "C-2704",
@@ -706,7 +789,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection of the high voltage contact of the process unit, and clean or repair it when there is any abnormality. 2. Check the charger (charging wire and the grid), and clean or repair it if there is any dirt or abnormality. 3. Check the connector connection and the wiring between HV1 and the charger, and repair it when there is any abnormality. (Wiring diagram: Main body (3/4): 1-K) 4. Check the connector connection and the wiring between PRCB and HV1, and repair it when there is any abnormality. (Wiring diagram: Main body (3/4): 1-K). 5. Replace HV1. 6. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": ""
   },
   {
     "code": "C-2711",
@@ -718,7 +802,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection of the high voltage contact of the process unit, and clean or repair it when there is any abnormality. 2. Check the connector connection and the wiring between HV2 and the 1st transfer unit, and repair it when there is any abnormality. (Wiring diagram: Main body (3/4): 5-J) 3. Check the connector connection and the wiring between PRCB and HV2, and repair it when there is any abnormality. 4. Replace HV2. 5. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": ""
   },
   {
     "code": "C-2712",
@@ -730,7 +815,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection of the high voltage contact of the process unit, and clean or repair it when there is any abnormality. 2. Check the connector connection and the wiring between HV2 and the 1st transfer unit, and repair it when there is any abnormality. (Wiring diagram: Main body (3/4): 5-J) 3. Check the connector connection and the wiring between PRCB and HV2, and repair it when there is any abnormality. 4. Replace HV2. 5. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": ""
   },
   {
     "code": "C-2713",
@@ -742,7 +828,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection of the high voltage contact of the process unit, and clean or repair it when there is any abnormality. 2. Check the connector connection and the wiring between HV2 and the 1st transfer unit, and repair it when there is any abnormality. (Wiring diagram: Main body (3/4): 5-J)",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": ""
   },
   {
     "code": "C-2714",
@@ -754,7 +841,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection of the high voltage contact of the process unit, and clean or repair it when there is any abnormality. 2. Check the connector connection and the wiring between HV2 and the 1st transfer unit, and repair it when there is any abnormality. (Wiring diagram: Main body (3/4): 5-J) 3. Check the connector connection and the wiring between PRCB and HV2, and repair it when there is any abnormality. 4. Replace HV2. 5. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": ""
   },
   {
     "code": "C-2720",
@@ -766,7 +854,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection of the high voltage contact of the process unit, and clean or repair it when there is any abnormality. 2. Check the connector connection and the wiring between HV2 and the 2nd transfer unit, and repair it when there is any abnormality. (Wiring diagram: Main body (3/4): 5-J) 3. Check the connector connection and the wiring between PRCB and HV2, and repair it when there is any abnormality. 4. Replace HV2. 5. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": ""
   },
   {
     "code": "C-2721",
@@ -778,7 +867,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection of the high voltage contact of the process unit, and clean or repair it when there is any abnormality. 2. Check the connector connection and the wiring between HV2 and the separation charger, and repair it when there is any abnormality. (Wiring diagram: Main body (3/4): 5-J) 3. Check the connector connection and the wiring between PRCB and HV2, and repair it when there is any abnormality. 4. Replace HV2. 5. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": ""
   },
   {
     "code": "C-2801",
@@ -790,7 +880,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check the installation of the developing unit and I/O, and repair or replace it when there is any abnormality. 3. Check the connector connection and the wiring between PRCB and IDCS, and repair it when there is any abnormality. 4. Check the I/O of SD4 and repair or replace it when there is any abnormality. 5. Check the sensor and clean or replace it when there is any dirt or abnormality. (Wiring diagram: Main body (2/4): 23-O) 6. Replace IDCS. 7. Replacing the developing unit 8. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 9, 10",
+    "additional": "Возможные варианты: 1. Почистить датчики IDC, если необходимо - зафиксировать шторки, 2. Проверить блок проявки, осмотреть шубу, возможно низкая плотность тонера, 3. Проверить барабан, поменять местами."
   },
   {
     "code": "C-2802",
@@ -802,7 +894,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check the installation of the developing unit and I/O, and repair or replace it when there is any abnormality. 3. Check the connector connection and the wiring between PRCB and IDCS, and repair it when there is any abnormality. 4. Check the I/O of SD4 and repair or replace it when there is any abnormality. 5. Check the sensor and clean or replace it when there is any dirt or abnormality. (Wiring diagram: Main body (2/4): 23-O) 6. Replace IDCS. 7. Replacing the developing unit 8. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 9, 10",
+    "additional": "Возможные варианты: 1. Почистить датчики IDC, если необходимо - зафиксировать шторки, 2. Проверить блок проявки, осмотреть шубу, возможно низкая плотность тонера, 3. Проверить барабан, поменять местами."
   },
   {
     "code": "C-2803",
@@ -814,7 +908,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check the installation of the developing unit and I/O, and repair or replace it when there is any abnormality. 3. Check the connector connection and the wiring between PRCB and IDCS, and repair it when there is any abnormality. 4. Check the I/O of SD4 and repair or replace it when there is any abnormality. 5. Check the sensor and clean or replace it when there is any dirt or abnormality. (Wiring diagram: Main body (2/4): 23-O) 6. Replace IDCS. 7. Replacing the developing unit 8. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 9, 10",
+    "additional": "Возможные варианты: 1. Почистить датчики IDC, если необходимо - зафиксировать шторки, 2. Проверить блок проявки, осмотреть шубу, возможно низкая плотность тонера, 3. Проверить барабан, поменять местами."
   },
   {
     "code": "C-2804",
@@ -826,7 +922,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check the installation of the developing unit and I/O, and repair or replace it when there is any abnormality. 3. Check the connector connection and the wiring between PRCB and IDCS, and repair it when there is any abnormality. 4. Check the I/O of SD4 and repair or replace it when there is any abnormality. 5. Check the sensor and clean or replace it when there is any dirt or abnormality. (Wiring diagram: Main body (2/4): 23-O) 6. Replace IDCS. 7. Replacing the developing unit 8. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 9, 10",
+    "additional": "Возможные варианты: 1. Почистить датчики IDC, если необходимо - зафиксировать шторки, 2. Проверить блок проявки, осмотреть шубу, возможно низкая плотность тонера, 3. Проверить барабан, поменять местами."
   },
   {
     "code": "C-2811",
@@ -836,9 +934,11 @@ export const Label_190 = [
     "abnormal": "• Printer control board (PRCB) • Developing unit/Y • IDC sensor (IDCS) • Color registration shutter solenoid (SD4)",
     "corr": "",
     "note": "• The message \"Please call service\" is displayed on the panel.",
-    "solution": "",
+    "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check the installation of the developing unit and I/O, and repair or replace it when there is any abnormality. 3. Check the connector connection and the wiring between PRCB and IDCS, and repair it when there is any abnormality. 4. Check the I/O of SD4 and repair or replace it when there is any abnormality. 5. Check the sensor and clean or replace it when there is any dirt or abnormality. (Wiring diagram: Main body (2/4): 23-O) 6. Replace IDCS. 7. Replacing the developing unit 8. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 9, 10",
+    "additional": "Возможные варианты: 1. Почистить датчики IDC, если необходимо - зафиксировать шторки, 2. Проверить блок проявки, осмотреть шубу, возможно низкая плотность тонера, 3. Проверить барабан, поменять местами."
   },
   {
     "code": "C-2812",
@@ -850,7 +950,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check the installation of the developing unit and I/O, and repair or replace it when there is any abnormality. 3. Check the connector connection and the wiring between PRCB and IDCS, and repair it when there is any abnormality. 4. Check the I/O of SD4 and repair or replace it when there is any abnormality. 5. Check the sensor and clean or replace it when there is any dirt or abnormality. (Wiring diagram: Main body (2/4): 23-O) 6. Replace IDCS. 7. Replacing the developing unit 8. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 9, 10",
+    "additional": "Возможные варианты: 1. Почистить датчики IDC, если необходимо - зафиксировать шторки, 2. Проверить блок проявки, осмотреть шубу, возможно низкая плотность тонера, 3. Проверить барабан, поменять местами."
   },
   {
     "code": "C-2813",
@@ -862,7 +964,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check the installation of the developing unit and I/O, and repair or replace it when there is any abnormality. 3. Check the connector connection and the wiring between PRCB and IDCS, and repair it when there is any abnormality. 4. Check the I/O of SD4 and repair or replace it when there is any abnormality. 5. Check the sensor and clean or replace it when there is any dirt or abnormality. (Wiring diagram: Main body (2/4): 23-O) 6. Replace IDCS. 7. Replacing the developing unit 8. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 9, 10",
+    "additional": "Возможные варианты: 1. Почистить датчики IDC, если необходимо - зафиксировать шторки, 2. Проверить блок проявки, осмотреть шубу, возможно низкая плотность тонера, 3. Проверить барабан, поменять местами."
   },
   {
     "code": "C-2814",
@@ -874,7 +978,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check the installation of the developing unit and I/O, and repair or replace it when there is any abnormality. 3. Check the connector connection and the wiring between PRCB and IDCS, and repair it when there is any abnormality. 4. Check the I/O of SD4 and repair or replace it when there is any abnormality. 5. Check the sensor and clean or replace it when there is any dirt or abnormality. (Wiring diagram: Main body (2/4): 23-O) 6. Replace IDCS. 7. Replacing the developing unit 8. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 9, 10",
+    "additional": "Возможные варианты: 1. Почистить датчики IDC, если необходимо - зафиксировать шторки, 2. Проверить блок проявки, осмотреть шубу, возможно низкая плотность тонера, 3. Проверить барабан, поменять местами."
   },
   {
     "code": "C-2821",
@@ -886,7 +992,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check the installation of the developing unit and I/O, and repair or replace it when there is any abnormality. 3. Check the connector connection and the wiring between PRCB and IDCS, and repair it when there is any abnormality. 4. Check the I/O of SD4 and repair or replace it when there is any abnormality. 5. Check the sensor and clean or replace it when there is any dirt or abnormality. (Wiring diagram: Main body (2/4): 23-O) 6. Replace IDCS. 7. Replacing the developing unit 8. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 9, 10",
+    "additional": "Возможные варианты: 1. Почистить датчики IDC, если необходимо - зафиксировать шторки, 2. Проверить блок проявки, осмотреть шубу, возможно низкая плотность тонера, 3. Проверить барабан, поменять местами."
   },
   {
     "code": "C-2822",
@@ -898,7 +1006,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 9, 10",
+    "additional": "Возможные варианты: 1. Почистить датчики IDC, если необходимо - зафиксировать шторки, 2. Проверить блок проявки, осмотреть шубу, возможно низкая плотность тонера, 3. Проверить барабан, поменять местами."
   },
   {
     "code": "C-2823",
@@ -910,7 +1020,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check the installation of the developing unit and I/O, and repair or replace it when there is any abnormality. 3. Check the connector connection and the wiring between PRCB and IDCS, and repair it when there is any abnormality. 4. Check the I/O of SD4 and repair or replace it when there is any abnormality. 5. Check the sensor and clean or replace it when there is any dirt or abnormality. (Wiring diagram: Main body (2/4): 23-O) 6. Replace IDCS. 7. Replacing the developing unit 8. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 9, 10",
+    "additional": "Возможные варианты: 1. Почистить датчики IDC, если необходимо - зафиксировать шторки, 2. Проверить блок проявки, осмотреть шубу, возможно низкая плотность тонера, 3. Проверить барабан, поменять местами."
   },
   {
     "code": "C-2824",
@@ -922,7 +1034,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check the installation of the developing unit and I/O, and repair or replace it when there is any abnormality. 3. Check the connector connection and the wiring between PRCB and IDCS, and repair it when there is any abnormality. 4. Check the I/O of SD4 and repair or replace it when there is any abnormality. 5. Check the sensor and clean or replace it when there is any dirt or abnormality. (Wiring diagram: Main body (2/4): 23-O) 6. Replace IDCS. 7. Replacing the developing unit 8. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 9, 10",
+    "additional": "Возможные варианты: 1. Почистить датчики IDC, если необходимо - зафиксировать шторки, 2. Проверить блок проявки, осмотреть шубу, возможно низкая плотность тонера, 3. Проверить барабан, поменять местами."
   },
   {
     "code": "C-2831",
@@ -934,7 +1048,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check that the writing unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 3. Check the installation of the developing unit and I/O, and repair or replace it when there is any abnormality. 4. Check the connector connection and the wiring between PRCB and IDCS, and repair it when there is any abnormality. 5. Check the connector connection and the wiring between the writing unit and PRIPB, and repair it when there is any abnormality. 6. Check the I/O of SD4 and repair or replace it when there is any abnormality. 7. Check the sensor and clean or replace it when there is any dirt or abnormality. (Wiring diagram: Main body (2/4): 23-O) 8. Replace IDCS. 9. Replacing the developing unit 10. Replace PRIPB. 11. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 9, 10, 12",
+    "additional": "Возможные варианты: 1. Почистить датчики IDC, если необходимо - зафиксировать шторки, 2. Проверить блок проявки, осмотреть шубу, возможно низкая плотность тонера, 3. Проверить барабан, поменять местами, 4. Возможно проблема в блоке лазера"
   },
   {
     "code": "C-2832",
@@ -946,19 +1062,23 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check that the writing unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 3. Check the installation of the developing unit and I/O, and repair or replace it when there is any abnormality. 4. Check the connector connection and the wiring between PRCB and IDCS, and repair it when there is any abnormality. 5. Check the connector connection and the wiring between the writing unit and PRIPB, and repair it when there is any abnormality. 6. Check the I/O of SD4 and repair or replace it when there is any abnormality. 7. Check the sensor and clean or replace it when there is any dirt or abnormality. (Wiring diagram: Main body (2/4): 23-O) 8. Replace IDCS. 9. Replacing the developing unit 10. Replace PRIPB. 11. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 9, 10, 12",
+    "additional": "Возможные варианты: 1. Почистить датчики IDC, если необходимо - зафиксировать шторки, 2. Проверить блок проявки, осмотреть шубу, возможно низкая плотность тонера, 3. Проверить барабан, поменять местами, 4. Возможно проблема в блоке лазера"
   },
   {
     "code": "C-2833",
     "class": "Main body: Dot diameter correction abnormality",
     "cause": "The proper value cannot be figured out within the specified time by the correction of the dot diameter correction/C.",
     "measure": "The main body and the option stop immediately to deactivate the main relay.",
-    "abnormal": "• Printer control board (PRCB) • Developing unit/C • IDC sensor (IDCS) • Color registration shutter solenoid (SD4)",
+    "abnormal": "• Printer control board (PRCB) • Developing unit/С • IDC sensor (IDCS) • Color registration shutter solenoid (SD4) • Writing unit/С • Printer image processing board (PRIPB)",
     "corr": "",
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check that the writing unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 3. Check the installation of the developing unit and I/O, and repair or replace it when there is any abnormality. 4. Check the connector connection and the wiring between PRCB and IDCS, and repair it when there is any abnormality. 5. Check the connector connection and the wiring between the writing unit and PRIPB, and repair it when there is any abnormality. 6. Check the I/O of SD4 and repair or replace it when there is any abnormality. 7. Check the sensor and clean or replace it when there is any dirt or abnormality. (Wiring diagram: Main body (2/4): 23-O) 8. Replace IDCS. 9. Replacing the developing unit 10. Replace PRIPB. 11. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 9, 10, 12",
+    "additional": "Возможные варианты: 1. Почистить датчики IDC, если необходимо - зафиксировать шторки, 2. Проверить блок проявки, осмотреть шубу, возможно низкая плотность тонера, 3. Проверить барабан, поменять местами, 4. Возможно проблема в блоке лазера"
   },
   {
     "code": "C-2834",
@@ -970,7 +1090,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check that the writing unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 3. Check the installation of the developing unit and I/O, and repair or replace it when there is any abnormality. 4. Check the connector connection and the wiring between PRCB and IDCS, and repair it when there is any abnormality. 5. Check the connector connection and the wiring between the writing unit and PRIPB, and repair it when there is any abnormality. 6. Check the I/O of SD4 and repair or replace it when there is any abnormality. 7. Check the sensor and clean or replace it when there is any dirt or abnormality. (Wiring diagram: Main body (2/4): 23-O) 8. Replace IDCS. 9. Replacing the developing unit 10. Replace PRIPB. 11. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 9, 10, 12",
+    "additional": "Возможные варианты: 1. Почистить датчики IDC, если необходимо - зафиксировать шторки, 2. Проверить блок проявки, осмотреть шубу, возможно низкая плотность тонера, 3. Проверить барабан, поменять местами, 4. Возможно проблема в блоке лазера"
   },
   {
     "code": "C-2840",
@@ -980,9 +1102,11 @@ export const Label_190 = [
     "abnormal": "• Printer control board (PRCB) • IDC sensor (IDCS) • Color registration shutter solenoid (SD4) • Intermediate Transfer Belt",
     "corr": "",
     "note": "• The message \"Please call service\" is displayed on the panel.",
-    "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality.",
+    "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check that the belt cleaner blade on the intermediate transfer section is not curled and reinstall or repair it when there is any abnormality. 3. Check the intermediate transfer belt, and clean or replace it if there is any dirt or abnormality. 4. Check the connector connection and the wiring between PRCB and IDCS, and repair it when there is any abnormality. 5. Check the sensor and clean or replace it when there is any dirt or abnormality. (Wiring diagram: Main body (2/4): 23-O) 6. Replace IDCS. 7. Replace PRCB. 8. Replace IDCS and PRCB at a time",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 7",
+    "additional": "Возможные варианты: 1. Почистить датчики IDC, если необходимо - зафиксировать шторки, 2. Проверить ленту переноса",
   },
   {
     "code": "C-2841",
@@ -994,7 +1118,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the process unit is correctly installed without looseness, and reinstall or repair it when there is any abnormality. 2. Check that the belt cleaner blade on the intermediate transfer section is not curled and reinstall or repair it when there is any abnormality. 3. Check the intermediate transfer belt, and clean or replace it if there is any dirt or abnormality. 4. Check the connector connection and the wiring between PRCB and IDCS, and repair it when there is any abnormality. 5. Check the sensor and clean or replace it when there is any dirt or abnormality. (Wiring diagram: Main body (2/4): 23-O) 6. Replace IDCS. 7. Replace PRCB. 8. Replace IDCS and PRCB at a time",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 7",
+    "additional": "Возможные варианты: 1. Почистить датчики IDC, если необходимо - зафиксировать шторки, 2. Проверить ленту переноса"
   },
   {
     "code": "C-3101",
@@ -1006,7 +1132,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the fusing unit, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the motor and the PRCB, and repair it when there is any abnormality. 4. Check the I/O drive of the motor and the coupling of the gear, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 1-H) 5. Replace M46. 6. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": ""
   },
   {
     "code": "C-3102",
@@ -1018,7 +1146,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the front door is closed properly, and repair it when there is any abnormality. 2. Check the fusing unit, and repair it when there is any abnormality. 3. Check the fusing drive gear system, and repair it when there is any abnormality. 4. Check the connector connection and the wiring among the motor, the sensor, and the PRCB. Then repair it when there is any abnormality. 5. Check the I/O drive of the motor and the coupling of the gear, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 1-I) 6. Check I/O and the operation of the sensor, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 1-G, (1/4): 1-J) 7. Replace PS24, PS26, and PS25. 8. Replace M47. 9. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": ""
   },
   {
     "code": "C-3103",
@@ -1030,7 +1160,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the front door is closed properly, and repair it when there is any abnormality. 2. Check the 2nd transfer intermediate transfer unit, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between CDB and the motor the sensor, and repair it when there is any abnormality. 4. Check I/O of the sensor, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (1/4): 20-P) 5. Check the I/O drive of the motor and the coupling of the gear, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (1/4): 20-P) 6. Replace PS19. 7. Replace M38. 8. Replace CDB. 9. Replace M38 and CDB at a time.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "2, 8",
+    "additional": ""
   },
   {
     "code": "C-3104",
@@ -1042,7 +1174,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the front door is closed properly, and repair it when there is any abnormality. 2. Check the fusing unit, and repair it when there is any abnormality. 3. Check the fusing drive gear system, and repair it when there is any abnormality. 4. Check the connector connection and the wiring among the motor, the sensor, and the PRDB. Then repair it when there is any abnormality. 5. Check the I/O drive of the motor and the coupling of the gear, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 1-I) 6. Check I/O and the operation of the sensor, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 1-G, (1/4): 1-J) 7. Replace PS24, PS26, or PS25. 8. Replace M47. 9. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": ""
   },
   {
     "code": "C-3301",
@@ -1054,7 +1188,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connector connection and the wiring between the fan and PRCB, and repair it when there is any abnormality. 2. Rotate the fan or I/O manually, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 10-E) 3. Replace FM8. 4. Replace PRCB. 5. Replace FM8 and PRCB at a time.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-3302",
@@ -1066,7 +1202,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connector connection and the wiring between the fan and PRCB, and repair it when there is any abnormality. 2. Rotate the fan or I/O manually, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 11-E) 3. Replace FM9. 4. Replace PRCB. 5. Replace FM9 and PRCB at a time.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-3303",
@@ -1078,7 +1216,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the connector connection and the wiring among the fan, CDB and PRCB, and repair it when there is any abnormality. 3. Rotate the fan or I/O manually, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 2-K) 4. Replace FM33 and FM34. 5. Replace CDB. 6. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": "Ошибка по кулеру охлаждения печки, находится под посадочным местом печки"
   },
   {
     "code": "C-3304",
@@ -1090,7 +1230,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connector connection and the wiring between the fan and PRCB, and repair it when there is any abnormality. 2. Rotate the fan or I/O manually, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 11-E) 3. Replace FM10. 4. Replace PRCB. 5. Replace FM10 and PRCB at a time.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-3305",
@@ -1102,7 +1244,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connector connection and the wiring between the fan and PRCB, and repair it when there is any abnormality. 2. Rotate the fan by I/O or manually, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 12-E) 3. Replace FM11. 4. Replace PRCB. 5. Replace FM11 and PRCB at a time.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-3307",
@@ -1114,7 +1258,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connector connection and the wiring between the fan and PRCB, and repair it when there is any abnormality. 2. Rotate the fan by I/O or manually, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 12-E) 3. Replace FM12. 4. Replace PRCB. 5. Replace FM12 and PRCB at a time.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-3308",
@@ -1126,7 +1272,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connector connection and the wiring between the fan and PRCB, and repair it when there is any abnormality. 2. Rotate the fan by I/O or manually, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 12-L) 3. Replace FM13. 4. Replace PRCB. 5. Replace FM13 and PRCB at a time.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-3401",
@@ -1138,7 +1286,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the fusing unit that is inserted, and correct it if it is one of C1070 series.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "Необходимо проверить правильно ли установлена и закреплена печка"
   },
   {
     "code": "C-3501",
@@ -1150,7 +1300,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4):10-B) 4. Check the connector connection and the wiring among the fusing heater lamp, the FUSCB1, and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (4/4): 10-A, 10-C) (Only for Europe) 5. Check the installation condition of the fusing heater lamp and ON or OFF by I/O, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 6. Check the installation condition of TH1 and the temperature of I/O, and adjust it when there is any abnormality. (Wiring diagram: Main body (1/ 4):1-E) 7. Replace TH1. 8. Replace FUSCB1 (Only for Europe). 9. Replace DCPS1. 10. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3502",
@@ -1162,7 +1314,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4):10-B) 4. Check the connector connection and the wiring among the fusing heater lamp, the FUSCB2, the FUSCB3, and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (4/4): 10-A, 10-C, 10-D) (Only for Europe) 5. Check the installation condition of the fusing heater lamp and ON or OFF by I/O, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 6. Check the installation condition of TH2 and the temperature of I/O, and adjust it when there is any abnormality. (Wiring diagram: Main body (1/ 4):1-E) 7. Replace TH2. 8. Replace FUSCB2 and FUSCB3. (Only for Europe) 9. Replace DCPS1. 10. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3503",
@@ -1174,7 +1328,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 7-G) 4. Check the connector connection and the wiring among the fusing heater lamp, FUSCB3, and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (4/4): 10-A, 10-C) (Only for Europe) 5. Check the installation condition of the fusing heater lamp and ON or OFF by the I/O, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 2-F) 6. Check the installation condition of TH5 and the temperature of I/O, and adjust it when there is any abnormality. (Wiring diagram: Main body (1/ 4): 1-H) 7. Replace TH5. 8. Replace FUSCB3. (Only for Europe) 9. Replace DCPS1. 10. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3504",
@@ -1186,7 +1342,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 7-G) 4. Check the connector connection and the wiring among the fusing heater lamp, FUSCB3, and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (4/4): 10-A, 10-D) (Only for Europe) 5. Check the installation condition of the fusing heater lamp and ON or OFF by the I/O, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 2-F)",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3509",
@@ -1198,7 +1356,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the front door is not opened or closed frequently, and wait for several minutes while the front door is closed. 2. Check the fusing roller, and repair it when there is any abnormality such as a paper wrap. 3. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 4. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 5. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 6. Check the connector connection and the wiring among the fusing heater lamp, the FUSCB1, the FUSCB2, the FUSCB3, and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (4/4): 10-A, 10-C, 10-D) (Only for Europe) 7. Check the conduction of TS1 and TS2, and repair it when there is any abnormality. 8. Check the installation condition of the fusing heater lamp and ON or OFF by the I/O, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 9. Check the installation condition of TH1 and TH3, and the temperature of I/O. Then adjust it when there is any abnormality. (Wiring diagram: Main body (1/4): 1-D, 1-E) 10. Replace TH1 and TH3. 11. Replace TS1 and TS2. 12. Replace the fusing heater lamp assy/Up. 13. Replace FUSCB1, FUSCB2, and FUSCB3. (Only for Europe) 14. Replace DCPS1. 15. Replace PRCB. 16. Replace the fusing unit.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3510",
@@ -1210,7 +1370,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the front door is not opened or closed frequently, and wait for several minutes while the front door is closed. 2. Check the fusing roller, and repair it when there is any abnormality such as a paper wrap. 3. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 4. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 5. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 6. Check the connector connection and the wiring among the fusing heater lamp, the FUSCB2, the FUSCB3, and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (4/4): 10-A, 10-C, 10-D) (Only for Europe) 7. Check the conduction of TS2, and repair it when there is any abnormality. 8. Check the installation condition of the fusing heater lamp and ON or OFF by the I/O, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 9. Check the installation condition of TH2 and TH3, and the temperature of I/O. Then adjust it when there is any abnormality. (Wiring diagram: Main body (1/4): 1-D, 1-E) 10. Replace TH2 and TH3. 11. Replace TS2. 12. Replace the fusing heater lamp assy/Up. 13. Replace FUSCB2 and FUSCB3. (Only for Europe) 14. Replace DCPS1. 15. Replace PRCB. 16. Replace the fusing unit.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3511",
@@ -1222,7 +1384,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3512",
@@ -1234,7 +1398,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 10-B) 4. Check the connector connection and the wiring among the fusing heater lamp, the FUSCB2, the FUSCB3, and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (4/4): 10-A, 10-C, 10-D) (Only for Europe) 5. Check the installation condition of the fusing heater lamp and ON or OFF by the I/O, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 6. Check the installation condition of TH3 and the temperature of I/O, and adjust it when there is any abnormality. (Wiring diagram: Main body (1/ 4): 1-D) 7. Replace TH3. 8. Replace FUSCB2 and FUSCB3. (Only for Europe) 9. Replace DCPS1. 10. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3513",
@@ -1246,7 +1412,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 10-B) 4. Check the connector connection and the wiring among the fusing heater lamp, the FUSCB1, and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (4/4): 10-A, 10-C) (Only for Europe) 5. Check the conduction of TS1, and repair it when there is any abnormality. 6. Check the installation condition of the fusing heater lamp and ON or OFF by the I/O, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 7. Check the installation condition of TH1 and the temperature of I/O, and adjust it when there is any abnormality. (Wiring diagram: Main body (1/ 4): 1-E) 8. Replace TH1. 9. Replace TS1. 10. Replace the fusing heater lamp assy/Up. 11. Replace FUSCB1. (Only for Europe) 12. Replace DCPS1. 13. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3515",
@@ -1258,7 +1426,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 10-B)",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3517",
@@ -1270,7 +1440,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 10-B) 4. Check the connector connection and the wiring among the fusing heater lamp, the FUSCB2, the FUSCB3, and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (4/4): 10-A, 10-C, 10-D) (Only for Europe) 5. Check the conduction of TS2, and repair it when there is any abnormality. 6. Check the installation condition of the fusing heater lamp and ON or OFF by the I/O, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 7. Check the installation condition of TH3 and the temperature of I/O, and adjust it when there is any abnormality. (Wiring diagram: Main body (1/ 4): 1-D) 8. Replace TH3. 9. Replace TS2. 10. Replace the fusing heater lamp assy/Up. 11. Replace FUSCB2 and FUSCB3. (Only for Europe) 12. Replace DCPS1. 13. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3518",
@@ -1282,7 +1454,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 10-B) 4. Check the connector connection and the wiring among the fusing heater lamp, the FUSCB3, and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (4/4): 10-A, 10-D) (Only for Europe) 5. Check the conduction of TS3, and repair it when there is any abnormality. 6. Check the installation condition of the fusing heater lamp and ON or OFF by the I/O, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 2-F) 7. Check the installation condition of TH5 and the temperature of I/O, and adjust it when there is any abnormality. (Wiring diagram: Main body (1/ 4): 1-H) 8. Replace TH5. 9. Replace TS3. 10. Replace L4. 11. Replace FUSCB3. (Only for Europe) 12. Replace DCPS1. 13. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3519",
@@ -1294,7 +1468,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 10-B) 4. Check the connector connection and the wiring among the fusing heater lamp, the FUSCB3, and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (4/4): 10-A, 10-D) (Only for Europe) 5. Check the conduction of TS3, and repair it when there is any abnormality. 6. Check the installation condition of the fusing heater lamp and ON or OFF by the I/O, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 2-F)",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3801",
@@ -1306,7 +1482,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 4. Check the connector connection and the wiring among the fusing heater lamp, the FUSCB1, and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (4/4): 10-A, 10-C) (Only for Europe) 5. Check the conduction of TS1, and repair it when there is any abnormality. 6. Check the installation condition of the fusing heater lamp and ON or OFF by the I/O, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 7. Check the installation condition of TH1 and the temperature of I/O, and adjust it when there is any abnormality. (Wiring diagram: Main body (1/ 4): 1-E) 8. Replace TH1. 9. Replace TS1. 10. Replace the fusing heater lamp assy/Up. 11. Replace FUSCB1. (Only for Europe) 12. Replace DCPS1. 13. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3802",
