@@ -24,9 +24,7 @@ export const useMaterials = () => {
     const error = useAppSelector(state => state.materials.error);
 
     useEffect(() => {
-        if (materials.length === 0) {
-            dispatch(setLoading(true));
-        }
+        dispatch(setLoading(true));
         
         const unsubscribe = subscribeToMaterials((materialsData) => {
             dispatch(setMaterials(materialsData));
@@ -36,7 +34,7 @@ export const useMaterials = () => {
         return () => {
             unsubscribe();
         };
-    }, [dispatch, materials.length]);
+    }, [dispatch]);
 
     return { materials, isLoading, error };
 };
@@ -48,9 +46,7 @@ export const useLaminations = () => {
     const error = useAppSelector(state => state.laminations.error);
 
     useEffect(() => {
-        if (laminations.length === 0) {
-            dispatch(setLoading(true));
-        }
+        dispatch(setLoading(true));
         
         const unsubscribe = subscribeLaminations((laminationsData) => {
             dispatch(setLaminations(laminationsData));
@@ -60,7 +56,7 @@ export const useLaminations = () => {
         return () => {
             unsubscribe();
         };
-    }, [dispatch, laminations.length]);
+    }, [dispatch]);
 
     return { laminations, isLoading, error };
 };

@@ -121,15 +121,7 @@ const LaminationStockPage = () => {
         }
     }, [handleSave]);
 
-    if (isLoading) {
-        return <LoadingPlug />;
-    }
-
-    if (error) {
-        return <div>Error: {error}</div>;
-    }
-
-    const renderLaminationBox = (lamination: Lamination) => (
+    const renderLaminationBox = useCallback((lamination: Lamination) => (
         <div key={lamination.id} className={classNames(cls.paperBox, getIconClass(lamination.qty))}>
             <RollNarrow className={cls.paperBox__icon} />
             <div className={cls.descriptionBox}>
@@ -167,7 +159,15 @@ const LaminationStockPage = () => {
                 </div>
             </div>
         </div>
-    );
+    ), [editingMaterial, newQty, getIconClass, handleKeyPress, handleSave, handleEditClick]);
+
+    if (isLoading) {
+        return <LoadingPlug />;
+    }
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
 
     return (
         <div className={cls.PaperStockPage} ref={containerRef}>

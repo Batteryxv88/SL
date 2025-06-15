@@ -25,16 +25,6 @@ const PaperStockPage = () => {
         return material ? material.qty : 0;
     }, [materials]);
 
-    // Добавляем функцию для получения материала по комбинированному ID
-    const getMaterialByComboId = useCallback((comboId: string) => {
-        const [type, status] = comboId.split('-');
-        const material = materials.find(m =>
-            m.type.toLowerCase() === type.toLowerCase() &&
-            m.status === status
-        );
-        return material;
-    }, [materials]);
-
     const getIconClass = useCallback((qty: number, status: string) => {
         if (status === 'defective') {
             return cls.medium; // Для бракованных материалов всегда используем средний класс
@@ -126,17 +116,13 @@ const PaperStockPage = () => {
         }
     }, [handleSave]);
 
-    if (isLoading) {
-        return <LoadingPlug />;
-    }
-
-    const renderMaterialBox = (type: string, title: string, subtitle: string, status: string) => {
+    const renderMaterialBox = useCallback((type: string, title: string, subtitle: string, status: string) => {
         const isEditing = editingMaterial === `${type}-${status}`;
         const qty = getMaterialQty(type, status);
         const iconClass = getIconClass(qty, status);
 
         return (
-            <div className={classNames(cls.paperBox, iconClass)}>
+            <div key={`${type}-${status}`} className={classNames(cls.paperBox, iconClass)}>
                 <Roll className={cls.paperBox__icon} />
                 <div className={cls.descriptionBox}>
                     <h3 className={classNames(cls.paperBox__title, iconClass)}>{title}</h3>
@@ -173,7 +159,11 @@ const PaperStockPage = () => {
                 </div>
             </div>
         );
-    };
+    }, [editingMaterial, newQty, getMaterialQty, getIconClass, handleKeyPress, handleSave, handleEditClick]);
+
+    if (isLoading) {
+        return <LoadingPlug />;
+    }
 
     return (
         <div className={cls.PaperStockPage} ref={containerRef}>
