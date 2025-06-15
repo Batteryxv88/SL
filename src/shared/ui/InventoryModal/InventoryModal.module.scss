@@ -4,156 +4,283 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     z-index: 1000;
 }
 
 .modal {
     background: #1E1E1E;
-    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 8px;
-    padding: 24px;
-    max-width: 500px;
-    width: 100%;
-    box-sizing: border-box;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    color: rgba(255, 255, 255, 0.87);
+    padding: 32px;
+    max-width: 600px;
+    //width: 40%;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    animation: modalFadeIn 0.2s ease-out forwards;
 
     h2 {
-        color: rgba(255, 255, 255, 0.87);
-        font-size: 1.5rem;
+        background: linear-gradient(to right,
+            rgba(98, 218, 251, 0.9),
+            rgba(98, 218, 251, 0.7)
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
         margin-bottom: 16px;
+        font-size: 20px;
+        font-weight: 500;
         text-align: center;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
     }
 
     h3 {
         color: rgba(255, 255, 255, 0.6);
-        margin-bottom: 1.5rem;
-        font-size: 0.9rem;
-        font-weight: 400;
-        line-height: 1rem;
-        text-align: center;
-    }
-
-    p {
-        color: rgba(255, 255, 255, 0.6);
-        margin-bottom: 16px;
-    }
-
-    .tonerInputs {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
         margin-bottom: 24px;
-        width: 100%;
-        box-sizing: border-box;
+        font-size: 14px;
+        font-weight: 400;
+        text-align: center;
+        line-height: 1.4;
+    }
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+// .tonerInputs,
+// .materialInputs {
+//     display: grid;
+//     //grid-template-columns: repeat(4, 1fr);
+//     grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+//     gap: 16px;
+//     margin-bottom: 24px;
+//     justify-items: center;
+//     justify-content: center;
+//     min-height: 140px;
+//     align-content: center;
+// }
+
+.tonerInputs,
+.materialInputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 24px;
+    min-height: 140px;
+    align-content: center;
+}
+
+.inputWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    //width: 100%;
+    max-width: 100px;
+    align-items: center;
+}
+
+.inputLabel {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.inputField {
+    width: 90%;
+    //height: 36px;
+    height: 46px;
+    padding: 0 12px;
+    font-size: 14px;
+    background: #2A2A2A;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.87);
+    text-align: center;
+    transition: all 0.2s ease;
+
+    &:focus {
+        outline: none;
+        border-color: #BB86FC;
+        background: #2A2A2A;
     }
 
-    .tonerInput {
+    &:hover {
+        border-color: rgba(255, 255, 255, 0.24);
+    }
+
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.38);
+    }
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
+
+.streakInfo {
+    text-align: center;
+    margin-bottom: 20px;
+    
+    span {
+        background: rgba(98, 218, 251, 0.1);
+        border: 1px solid rgba(98, 218, 251, 0.2);
+        color: rgba(98, 218, 251, 0.9);
+        font-size: 12px;
+        padding: 6px 16px;
+        border-radius: 12px;
+        font-weight: 500;
+    }
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.confirmButton,
+.nextButton {
+    background: #BB86FC;
+    color: rgba(0, 0, 0, 0.87);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.1px;
+
+    &:hover:not(:disabled) {
+        background: #C397FC;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+        background: #B77EFC;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+.backButton {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover:not(:disabled) {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+.postponeButton {
+    background: rgba(207, 102, 121, 0.12);
+    border: 1px solid rgba(207, 102, 121, 0.24);
+    color: #FF8A80;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover:not(:disabled) {
+        background: rgba(207, 102, 121, 0.16);
+        border-color: rgba(207, 102, 121, 0.32);
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+.stepIndicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 12px;
+
+    .step {
         display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        width: 100%;
-        box-sizing: border-box;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        font-size: 12px;
+        font-weight: 600;
+        transition: all 0.2s ease;
 
-        label {
-            color: rgba(255, 255, 255, 0.87);
-            font-size: 0.875rem;
+        &.active {
+            background: #BB86FC;
+            color: rgba(0, 0, 0, 0.87);
         }
 
-        input {
-            width: 100%;
-            padding: 8px 12px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            color: rgba(255, 255, 255, 0.87);
-            font-size: 0.875rem;
-            box-sizing: border-box;
-            transition: all 0.2s ease;
-
-            &:focus {
-                outline: none;
-                border-color: #2196F3;
-                background: rgba(255, 255, 255, 0.1);
-            }
-
-            &::placeholder {
-                color: rgba(255, 255, 255, 0.3);
-            }
+        &.completed {
+            background: rgba(98, 218, 251, 0.9);
+            color: rgba(0, 0, 0, 0.87);
         }
 
-        input[type=number]::-webkit-outer-spin-button,
-        input[type=number]::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-
-        /* Firefox */
-        input[type=number] {
-            -moz-appearance: textfield;
+        &.inactive {
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.38);
         }
     }
 
-    .streakInfo {
-        color: rgba(255, 255, 255, 0.87);
-        margin-bottom: 16px;
-        font-size: 0.875rem;
-    }
+    .connector {
+        width: 20px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.12);
+        transition: background 0.2s ease;
 
-    .actions {
-        display: flex;
-        gap: 1rem;
-        justify-content: space-between;
-        margin-top: 24px;
-
-        button {
-            padding: 8px 16px;
-            border-radius: 4px;
-            font-size: 0.875rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: none;
-            outline: none;
-            width: 100%;
-
-            &:disabled {
-                opacity: 0.5;
-                cursor: not-allowed;
-            }
-        }
-
-        .confirmButton {
-            background: #2196F3;
-            color: white;
-
-            &:hover:not(:disabled) {
-                background: #1976D2;
-            }
-        }
-
-        .postponeButton {
-            background: transparent;
-            color: rgba(255, 255, 255, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-
-            &:hover {
-                background: rgba(255, 255, 255, 0.05);
-                color: rgba(255, 255, 255, 0.87);
-            }
+        &.active {
+            background: #BB86FC;
         }
     }
 }
 
 .error {
-    background-color: rgba(255, 0, 0, 0.1);
-    border: 1px solid rgba(255, 0, 0, 0.3);
-    border-radius: 4px;
-    padding: 0.75rem;
-    margin: 1rem 0;
-    color: #ff4444;
-    font-size: 0.9rem;
+    background: rgba(207, 102, 121, 0.12);
+    border: 1px solid rgba(207, 102, 121, 0.24);
+    color: #FF8A80;
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
 }

@@ -3,25 +3,55 @@ import { useAppDispatch, useAppSelector } from '../../../app/providers/StoreProv
 import { setShowModal, setReminderPostponed, incrementStreak, resetStreak } from '../../../app/providers/StoreProvider/Store/InventoryCheckSlice';
 import { updateInventoryCheck, fetchLastInventoryCheck } from '../../../app/providers/StoreProvider/Store/InventoryCheckSlice';
 import { updateToner, fetchTonersStorage } from '../../../app/providers/StoreProvider/Store/TonersStorageSlice';
+import { fetchMaterials, updateMaterialQuantity } from '../../../app/providers/StoreProvider/Store/MaterialsSlice';
 import { getStreakEmoji } from '../../../shared/lib/utils/inventoryCheck';
+import { useMaterials } from '../../../app/providers/StoreProvider/Store/hooks';
 import cls from './InventoryModal.module.scss';
 
 type TonerColor = 'C' | 'M' | 'Y' | 'K';
 type TonerQuantities = Record<TonerColor, string>;
+type MaterialQuantities = Record<string, string>;
 
 const InventoryModal = () => {
     const dispatch = useAppDispatch();
     const { showModal, reminderPostponed, streak, lastCheckDate } = useAppSelector((state) => state.inventoryCheck);
     const tonersArr = useAppSelector((state) => state.tonersStorage.tonersStorageArr);
+    const { materials } = useMaterials();
     const [isChecking, setIsChecking] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [currentStep, setCurrentStep] = useState<'toners' | 'materials'>('toners');
+    const [tonersInitialized, setTonersInitialized] = useState(false);
+    const [materialsInitialized, setMaterialsInitialized] = useState(false);
     const streakEmoji = getStreakEmoji(streak);
+    
+    // Состояния для количеств
     const [localTonerQuantities, setLocalTonerQuantities] = useState<TonerQuantities>({
         C: '',
         M: '',
         Y: '',
         K: ''
     });
+
+    const [localMaterialQuantities, setLocalMaterialQuantities] = useState<MaterialQuantities>({
+        'FA': '',
+        'FH': '',
+        'PA': '',
+        'PH': '',
+        'clear': '',
+        'metall': '',
+        'verge': ''
+    });
+
+    // Material names mapping for display
+    const materialNames: Record<string, string> = {
+        'FA': 'FA',
+        'FH': 'FH', 
+        'PA': 'PA',
+        'PH': 'PH',
+        'clear': 'Clear',
+        'metall': 'Metall',
+        'verge': 'Verge'
+    };
 
     // Загружаем историю пересчетов при монтировании
     useEffect(() => {
@@ -38,23 +68,24 @@ const InventoryModal = () => {
 
     useEffect(() => {
         if (showModal) {
-            const loadToners = async () => {
+            const loadData = async () => {
                 try {
-                    await dispatch(fetchTonersStorage()).unwrap();
-                    console.log('Loaded toners:', tonersArr);
+                    await Promise.all([
+                        dispatch(fetchTonersStorage()).unwrap(),
+                        dispatch(fetchMaterials()).unwrap()
+                    ]);
                 } catch (err) {
-                    console.error('Failed to load toners:', err);
-                    setError('Не удалось загрузить текущие значения тонеров');
+                    console.error('Failed to load data:', err);
+                    setError('Не удалось загрузить текущие значения');
                 }
             };
-            loadToners();
+            loadData();
         }
     }, [showModal, dispatch]);
 
     useEffect(() => {
-        // Инициализируем локальные значения из store
-        if (tonersArr.length > 0) {
-            console.log('Updating local quantities from tonersArr:', tonersArr);
+        // Инициализируем локальные значения тонеров из store только один раз
+        if (tonersArr.length > 0 && !tonersInitialized) {
             const newQuantities: TonerQuantities = {
                 C: '',
                 M: '',
@@ -67,14 +98,66 @@ const InventoryModal = () => {
                 }
             });
             setLocalTonerQuantities(newQuantities);
+            setTonersInitialized(true);
         }
-    }, [tonersArr]);
+    }, [tonersArr, tonersInitialized]);
+
+    useEffect(() => {
+        // Инициализируем локальные значения материалов из store только один раз
+        if (materials.length > 0 && !materialsInitialized) {
+            const newQuantities: MaterialQuantities = {
+                'FA': '',
+                'FH': '',
+                'PA': '',
+                'PH': '',
+                'clear': '',
+                'metall': '',
+                'verge': ''
+            };
+            
+            materials.forEach((material) => {
+                if (material.status === 'new') {
+                    const materialType = material.type;
+                    const materialTypeLower = material.type.toLowerCase();
+                    
+                    // Ищем по точному совпадению (для clear, metall, verge)
+                    if (materialTypeLower in newQuantities) {
+                        newQuantities[materialTypeLower] = material.qty.toString();
+                    }
+                    // Ищем по верхнему регистру (для FA, FH, PA, PH)  
+                    else if (materialType in newQuantities) {
+                        newQuantities[materialType] = material.qty.toString();
+                    }
+                }
+            });
+            
+            setLocalMaterialQuantities(newQuantities);
+            setMaterialsInitialized(true);
+        }
+    }, [materials, materialsInitialized]);
 
     const handleTonerChange = (color: TonerColor, value: string) => {
         setLocalTonerQuantities(prev => ({
             ...prev,
             [color]: value
         }));
+    };
+
+    const handleMaterialChange = (type: string, value: string) => {
+        setLocalMaterialQuantities(prev => ({
+            ...prev,
+            [type]: value
+        }));
+    };
+
+    const handleNext = () => {
+        setCurrentStep('materials');
+        setError(null);
+    };
+
+    const handleBack = () => {
+        setCurrentStep('toners');
+        setError(null);
     };
 
     const handleConfirm = async () => {
@@ -95,9 +178,31 @@ const InventoryModal = () => {
                 }
             }
             
+            // Обновляем количества материалов
+            for (const material of materials) {
+                if (material.status === 'new') {
+                    const materialType = material.type;
+                    const materialTypeLower = material.type.toLowerCase();
+                    
+                    // Проверяем есть ли такой материал в наших локальных данных
+                    let newQty = 0;
+                    if (materialTypeLower in localMaterialQuantities) {
+                        newQty = parseInt(localMaterialQuantities[materialTypeLower]) || 0;
+                    } else if (materialType in localMaterialQuantities) {
+                        newQty = parseInt(localMaterialQuantities[materialType]) || 0;
+                    }
+                    
+                    if (newQty !== undefined) {
+                        await dispatch(updateMaterialQuantity({
+                            id: material.id,
+                            qty: newQty
+                        })).unwrap();
+                    }
+                }
+            }
+            
             // Обновляем дату последней проверки
             const today = new Date().toISOString();
-            console.log('Updating inventory check date:', today);
             await dispatch(updateInventoryCheck(today)).unwrap();
             
             dispatch(incrementStreak());
@@ -119,33 +224,112 @@ const InventoryModal = () => {
     };
 
     // Проверяем, нужно ли показывать модальное окно
-    const shouldShowModal = showModal && !reminderPostponed && !lastCheckDate;
+    const shouldShowModal = showModal && !reminderPostponed;
     if (!shouldShowModal) return null;
+
+    const renderStepIndicator = () => (
+        <div className={cls.stepIndicator}>
+            <div className={`${cls.step} ${currentStep === 'toners' ? cls.active : cls.completed}`}>
+                1
+            </div>
+            <div className={`${cls.connector} ${currentStep === 'materials' ? cls.active : ''}`} />
+            <div className={`${cls.step} ${currentStep === 'materials' ? cls.active : cls.inactive}`}>
+                2
+            </div>
+        </div>
+    );
+
+    const renderTonersStep = () => (
+        <>
+            <h2>Пересчёт тонеров</h2>
+            <h3>Введите текущее количество тонеров в наличии:</h3>
+            
+            {error && <div className={cls.error}>{error}</div>}
+            
+            <div className={cls.tonerInputs}>
+                {Object.entries(localTonerQuantities).map(([color, quantity]) => (
+                    <div key={color} className={cls.inputWrapper}>
+                        <label className={cls.inputLabel} htmlFor={`toner-${color}`}>Тонер {color}:</label>
+                        <input
+                            className={cls.inputField}
+                            type="number"
+                            id={`toner-${color}`}
+                            value={quantity}
+                            onChange={(e) => handleTonerChange(color as TonerColor, e.target.value)}
+                            placeholder="0"
+                            min="0"
+                        />
+                    </div>
+                ))}
+            </div>
+
+            <div className={cls.actions}>
+                <button 
+                    className={cls.nextButton}
+                    onClick={handleNext}
+                    disabled={isChecking}
+                >
+                    Далее
+                </button>
+                <button 
+                    className={cls.postponeButton}
+                    onClick={handlePostpone}
+                >
+                    Напомнить позже
+                </button>
+            </div>
+        </>
+    );
+
+    const renderMaterialsStep = () => (
+        <>
+            <h2>Пересчёт материалов</h2>
+            <h3>Введите текущее количество материалов (бумаги) в наличии:</h3>
+            
+            {error && <div className={cls.error}>{error}</div>}
+            
+            <div className={cls.materialInputs}>
+                {Object.entries(localMaterialQuantities).map(([type, quantity]) => (
+                    <div key={type} className={cls.inputWrapper}>
+                        <label className={cls.inputLabel} htmlFor={`material-${type}`}>{materialNames[type]}</label>
+                        <input
+                            className={cls.inputField}
+                            type="number"
+                            id={`material-${type}`}
+                            value={quantity}
+                            onChange={(e) => handleMaterialChange(type, e.target.value)}
+                            placeholder="0"
+                            min="0"
+                        />
+                    </div>
+                ))}
+            </div>
+
+            <div className={cls.actions}>
+                <button 
+                    className={cls.backButton}
+                    onClick={handleBack}
+                    disabled={isChecking}
+                >
+                    Назад
+                </button>
+                <button 
+                    className={cls.confirmButton}
+                    onClick={handleConfirm}
+                    disabled={isChecking}
+                >
+                    Подтвердить пересчёт
+                </button>
+            </div>
+        </>
+    );
 
     return (
         <div className={cls.modalOverlay}>
             <div className={cls.modal}>
-                <h2>Пожалуйста, выполните пересчёт склада.</h2>
-                <h3>Актуальные данные необходимы для точного планирования заказов тонеров. Несвоевременный пересчёт может привести к задержкам в работе оборудования или дополнительным затратам при срочной закупке.</h3>
-                <p>Введите текущее количество тонеров:</p>
+                {renderStepIndicator()}
                 
-                {error && <div className={cls.error}>{error}</div>}
-                
-                <div className={cls.tonerInputs}>
-                    {Object.entries(localTonerQuantities).map(([color, quantity]) => (
-                        <div key={color} className={cls.tonerInput}>
-                            <label htmlFor={`toner-${color}`}>Тонер {color}:</label>
-                            <input
-                                type="number"
-                                id={`toner-${color}`}
-                                value={quantity}
-                                onChange={(e) => handleTonerChange(color as TonerColor, e.target.value)}
-                                placeholder="Количество"
-                                min="0"
-                            />
-                        </div>
-                    ))}
-                </div>
+                {currentStep === 'toners' ? renderTonersStep() : renderMaterialsStep()}
 
                 <div className={cls.streakInfo}>
                     {streak > 0 && (
@@ -153,22 +337,6 @@ const InventoryModal = () => {
                             {streakEmoji} Текущая серия: {streak} дней
                         </span>
                     )}
-                </div>
-
-                <div className={cls.actions}>
-                    <button 
-                        className={cls.confirmButton}
-                        onClick={handleConfirm}
-                        disabled={isChecking}
-                    >
-                        ✅ Подтвердить пересчёт
-                    </button>
-                    <button 
-                        className={cls.postponeButton}
-                        onClick={handlePostpone}
-                    >
-                        ⏳ Напомнить позже
-                    </button>
                 </div>
             </div>
         </div>
