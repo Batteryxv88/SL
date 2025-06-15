@@ -13,15 +13,23 @@ const PaperStockPage = () => {
     const { materials, isLoading } = useMaterials();
     const [editingMaterial, setEditingMaterial] = useState<string | null>(null);
     const [newQty, setNewQty] = useState<string>("");
+    const [isDefectiveExpanded, setIsDefectiveExpanded] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
     const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-    const getMaterialQty = (type: string) => {
-        const material = materials.find(m => m.type.toLowerCase() === type.toLowerCase());
+    const getMaterialQty = (type: string, status: string) => {
+        const material = materials.find(m =>
+            m.type.toLowerCase() === type.toLowerCase() &&
+            m.status === status
+        );
         return material ? material.qty : 0;
     };
 
-    const getIconClass = (qty: number) => {
+    const getIconClass = (qty: number, status: string) => {
+        if (status === 'defective') {
+            return cls.medium; // Для бракованных материалов всегда используем средний класс
+        }
+
         if (qty <= 3) {
             return cls.low;
         } else if (qty <= 6) {
@@ -69,13 +77,16 @@ const PaperStockPage = () => {
         };
     }, [editingMaterial]);
 
-    const handleEditClick = (type: string) => {
-        setEditingMaterial(type);
-        setNewQty(getMaterialQty(type).toString());
+    const handleEditClick = (type: string, status: string) => {
+        setEditingMaterial(`${type}-${status}`);
+        setNewQty(getMaterialQty(type, status).toString());
     };
 
-    const handleSave = async (type: string) => {
-        const material = materials.find(m => m.type.toLowerCase() === type.toLowerCase());
+    const handleSave = async (type: string, status: string) => {
+        const material = materials.find(m =>
+            m.type.toLowerCase() === type.toLowerCase() &&
+            m.status === status
+        );
         if (material && newQty) {
             await updateMaterialQty(material.id, parseInt(newQty));
             setEditingMaterial(null);
@@ -83,9 +94,9 @@ const PaperStockPage = () => {
         }
     };
 
-    const handleKeyPress = (e: React.KeyboardEvent, type: string) => {
+    const handleKeyPress = (e: React.KeyboardEvent, type: string, status: string) => {
         if (e.key === 'Enter') {
-            handleSave(type);
+            handleSave(type, status);
         }
     };
 
@@ -93,10 +104,10 @@ const PaperStockPage = () => {
         return <LoadingPlug />;
     }
 
-    const renderMaterialBox = (type: string, title: string, subtitle: string) => {
-        const isEditing = editingMaterial === type;
-        const qty = getMaterialQty(type);
-        const iconClass = getIconClass(qty);
+    const renderMaterialBox = (type: string, title: string, subtitle: string, status: string) => {
+        const isEditing = editingMaterial === `${type}-${status}`;
+        const qty = getMaterialQty(type, status);
+        const iconClass = getIconClass(qty, status);
 
         return (
             <div className={classNames(cls.paperBox, iconClass)}>
@@ -110,7 +121,7 @@ const PaperStockPage = () => {
                                 type="number"
                                 value={newQty}
                                 onChange={(e) => setNewQty(e.target.value)}
-                                onKeyPress={(e) => handleKeyPress(e, type)}
+                                onKeyPress={(e) => handleKeyPress(e, type, status)}
                                 className={cls.editBox__data}
                                 autoFocus
                             />
@@ -120,12 +131,12 @@ const PaperStockPage = () => {
                         {isEditing ? (
                             <CheckIcon
                                 className={cls.checkIcon}
-                                onClick={() => handleSave(type)}
+                                onClick={() => handleSave(type, status)}
                             />
                         ) : (
                             <EditPenIcon
                                 className={cls.editIcon}
-                                onClick={() => handleEditClick(type)}
+                                onClick={() => handleEditClick(type, status)}
                             />
                         )}
                     </div>
@@ -137,14 +148,41 @@ const PaperStockPage = () => {
     return (
         <div className={cls.PaperStockPage} ref={containerRef}>
             <h2 className={cls.title}>Склад бумаги</h2>
-            <div className={cls.container}>
-                {renderMaterialBox('FA', 'FA', 'Пленка акрил')}
-                {renderMaterialBox('FH', 'FH', 'Пленка каучук')}
-                {renderMaterialBox('PA', 'PA', 'Бумага акрил')}
-                {renderMaterialBox('PH', 'PH', 'Бумага каучук')}
-                {renderMaterialBox('clear', 'Clear', 'Пленка прозрачная')}
-                {renderMaterialBox('metall', 'Metall', 'Пленка металлизированная')}
-                {renderMaterialBox('verge', 'Verge', 'Бумага тиснёная')}
+            <div className={cls.columnsContainer}>
+                <div className={cls.column}>
+                    <div className={cls.materialBox}>
+                        <h3 className={cls.materialBox__title}>Основной склад</h3>
+                        <div className={cls.container}>
+                            {renderMaterialBox('FA', 'FA', 'Пленка акрил', 'new')}
+                            {renderMaterialBox('FH', 'FH', 'Пленка каучук', 'new')}
+                            {renderMaterialBox('PA', 'PA', 'Бумага акрил', 'new')}
+                            {renderMaterialBox('PH', 'PH', 'Бумага каучук', 'new')}
+                            {renderMaterialBox('clear', 'Clear', 'Пленка прозрачная', 'new')}
+                            {renderMaterialBox('metall', 'Metall', 'Пленка металлизированная', 'new')}
+                            {renderMaterialBox('verge', 'Verge', 'Бумага тиснёная', 'new')}
+                        </div>
+                    </div>
+                </div>
+                <div className={classNames(cls.column, { [cls.expanded]: isDefectiveExpanded })}>
+                    <div className={cls.materialBox}>
+                        <h3 
+                            className={cls.materialBox__title}
+                            onClick={() => setIsDefectiveExpanded(!isDefectiveExpanded)}
+                        >
+                            Брак
+                            <span className={cls.expandArrow}></span>
+                        </h3>
+                        <div className={cls.container}>
+                            {renderMaterialBox('FA', 'FA', 'Пленка акрил', 'defective')}
+                            {renderMaterialBox('FH', 'FH', 'Пленка каучук', 'defective')}
+                            {renderMaterialBox('PA', 'PA', 'Бумага акрил', 'defective')}
+                            {renderMaterialBox('PH', 'PH', 'Бумага каучук', 'defective')}
+                            {renderMaterialBox('clear', 'Clear', 'Пленка прозрачная', 'defective')}
+                            {renderMaterialBox('metall', 'Metall', 'Пленка металлизированная', 'defective')}
+                            {renderMaterialBox('verge', 'Verge', 'Бумага тиснёная', 'defective')}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );

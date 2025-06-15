@@ -314,7 +314,8 @@ export const Label_190 = [
     "solution": "1. Check the 1st transfer pressure release section, and clean or repair it when there is any abnormality. 2. Check the connector connection and the wiring between PRCB and the sensor, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between DCPS1 and the motor, and repair it when there is any abnormality.",
     "isolate": "",
     "control": "",
-    "section": "7" 
+    "section": "7",
+    "additional": "Проверить до конца и свободно ли встает блок процесса в машину. Если есть трудности, можно попробовать вытаскивать барабаны по одному и пробовать всталять блок процесса в машину. "
   },
   {
     "code": "C-2222",
@@ -1496,7 +1497,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 4. Check the connector connection and the wiring among the fusing heater lamp, the FUSCB2, the DCPS1, and the FUSCB3. Then repair it when there is any abnormality. (Wiring diagram: Main body (4/4): 10-A, 10-C, 10-D) (Only for Europe) 5. Check the conduction of TS2, and repair it when there is any abnormality. 6. Check the installation condition of the fusing heater lamp and ON or OFF by the I/O, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 7. Check the installation condition of TH2 and the temperature of I/O, and adjust it when there is any abnormality. (Wiring diagram: Main body (1/ 4): 1-E) 8. Replace TH2. 9. Replace TS2. 10. Replace the fusing heater lamp assy/Up. 11. Replace FUSCB2 and FUSCB3. (Only for Europe) 12. Replace DCPS1. 13. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3803",
@@ -1508,7 +1511,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 2-F) 4. Check the connector connection and the wiring among the fusing heater lamp, the FUSCB3, and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (4/4): 10-A, 10-D) (Only for Europe) 5. Check the conduction of TS3, and repair it when there is any abnormality. 6. Check the installation condition of the fusing heater lamp and ON or OFF by the I/O, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 2-F) 7. Check the installation condition of TH5 and the temperature of I/O, and adjust it when there is any abnormality. (Wiring diagram: Main body (1/ 4):1-H) 8. Replace TH5.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3807",
@@ -1520,7 +1525,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 4. Check the connector connection and the wiring among the fusing heater lamp, the FUSCB2, the DCPS1, and the FUSCB3. Then repair it when there is any abnormality. (Wiring diagram: Main body (4/4): 10-A, 10-C, 10-D) (Only for Europe) 5. Check the conduction of TS2, and repair it when there is any abnormality. 6. Check the installation condition of the fusing heater lamp and ON or OFF by the I/O, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 7. Check the installation condition of TH3 and the temperature of I/O, and adjust it when there is any abnormality. (Wiring diagram: Main body (1/ 4): 1-D) 8. Replace TH3. 9. Replace TS2. 10. Replace the fusing heater lamp assy/Up. 11. Replace FUSCB2 and FUSCB3. (Only for Europe) 12. Replace DCPS1. 13. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3901",
@@ -1532,7 +1539,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 4. Check the connector connection and the wiring among the fusing heater lamp, the FUSCB1, and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (4/4): 10-A, 10-C) (Only for Europe) 5. Check the installation condition of the fusing heater lamp and ON or OFF by the I/O, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 6. Check the installation condition of TH1 and the temperature of I/O, and adjust it when there is any abnormality. (Wiring diagram: Main body (1/ 4): 1-E) 7. Replace TH1. 8. Replace FUSCB1 (Only for Europe). 9. Replace DCPS1. 10. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3902",
@@ -1544,7 +1553,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 4. Check the connector connection and the wiring among the fusing heater lamp, the FUSCB1, and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (4/4): 10-A, 10-C) (Only for Europe) 5. Check the conduction of TS1, and repair it when there is any abnormality. 6. Check the installation condition of the fusing heater lamp and ON or OFF by the I/O, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 7. Check the installation condition of TH1 and the temperature of I/O, and adjust it when there is any abnormality. (Wiring diagram: Main body (1/ 4): 1-E) 8. Replace TH1. 9. Replace TS1. 10. Replace the fusing heater lamp assy/Up. 11. Replace FUSCB1 (Only for Europe). 12. Replace DCPS1. 13. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3903",
@@ -1556,7 +1567,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 4. Check the connector connection and the wiring among the fusing heater lamp, the FUSCB2, the FUSCB3, and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (4/4): 10-A, 10-C, 10-D) (Only for Europe) 5. Check the installation condition of the fusing heater lamp and ON or OFF by the I/O, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 6. Check the installation condition of TH2 and the temperature of I/O, and adjust it when there is any abnormality. (Wiring diagram: Main body (1/ 4): 1-E) 7. Replace TH2. 8. Replace FUSCB2 and FUSCB3. (Only for Europe) 9. Replace DCPS1. 10. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3904",
@@ -1568,7 +1581,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 4. Check the connector connection and the wiring among the fusing heater lamp, the FUSCB2, the FUSCB3, and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (4/4): 10-A, 10-C) (Only for Europe) 5. Check the conduction of TS2, and repair it when there is any abnormality.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3905",
@@ -1580,7 +1595,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 4. Check the connector connection and the wiring among the fusing heater lamp, the FUSCB2, the FUSCB3, and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (4/4): 10-A, 10-C, 10-D) (Only for Europe) 5. Check the installation condition of the fusing heater lamp and ON or OFF by the I/O, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 6. Check the installation condition of TH3 and the temperature of I/O, and adjust it when there is any abnormality. (Wiring diagram: Main body (1/ 4): 1-D) 7. Replace TH3. 8. Replace FUSCB2 and FUSCB3. (Only for Europe) 9. Replace DCPS1. 10. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3906",
@@ -1592,7 +1609,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 4. Check the connector connection and the wiring among the fusing heater lamp, the FUSCB2, the FUSCB3, and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (4/4): 10-A, 10-C) (Only for Europe) 5. Check the conduction of TS2, and repair it when there is any abnormality. 6. Check the installation condition of the fusing heater lamp and ON or OFF by the I/O, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 7. Check the installation condition of TH3 and the temperature of I/O, and adjust it when there is any abnormality. (Wiring diagram: Main body (1/ 4): 1-D) 8. Replace TH3. 9. Replace TS2. 10. Replace the fusing heater lamp assy/Up. 11. Replace FUSCB2 and FUSCB3. (Only for Europe) 12. Replace DCPS1. 13. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3907",
@@ -1604,7 +1623,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 2-F) 4. Check the connector connection and the wiring among the fusing heater lamp, the FUSCB3, and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (4/4): 10-A, 10-D) (Only for Europe) 5. Check the installation condition of the fusing heater lamp and ON or OFF by the I/O, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 2-F) 6. Check the installation condition of TH5 and the temperature of I/O, and adjust it when there is any abnormality. (Wiring diagram: Main body (1/ 4): 1-H) 7. Replace TH5. 8. Replace FUSCB3. (Only for Europe) 9. Replace DCPS1. 10. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3908",
@@ -1616,7 +1637,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 2-F) 4. Check the connector connection and the wiring among the fusing heater lamp, the FUSCB3, and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (4/4): 10-A, 10-D) (Only for Europe) 5. Check the conduction of TS3, and repair it when there is any abnormality. 6. Check the installation condition of the fusing heater lamp and ON or OFF by the I/O, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 2-F) 7. Check the installation condition of TH5 and the temperature of I/O, and adjust it when there is any abnormality. (Wiring diagram: Main body (1/ 4): 1-H) 8. Replace TH5. 9. Replace TS3. 10. Replace L4. 11. Replace FUSCB3. (Only for Europe) 12. Replace DCPS1. 13. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3909",
@@ -1628,7 +1651,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 2-F) 4. Check the connector connection and the wiring among the fusing heater lamp, the FUSCB3, and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (4/4): 10-A, 10-D) (Only for Europe) 5. Check the installation condition of the fusing heater lamp and ON or OFF by the I/O, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 2-F)",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3910",
@@ -1640,7 +1665,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 2-F) 4. Check the connector connection and the wiring among the fusing heater lamp, the FUSCB3, and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (4/4): 10-A, 10-D) (Only for Europe) 5. Check the conduction of TS3, and repair it when there is any abnormality. 6. Check the installation condition of the fusing heater lamp and ON or OFF by the I/O, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 2-F) 7. Check the installation condition of TH4 and the temperature of I/O, and adjust it when there is any abnormality. (Wiring diagram: Main body (1/ 4): 1-G) 8. Replace TH4. 9. Replace TS3. 10. Replace L4. 11. Replace FUSCB3. (Only for Europe) 12. Replace DCPS1. 13. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3911",
@@ -1648,11 +1675,13 @@ export const Label_190 = [
     "cause": "Within a specified period of time after the warm-up starts, the temperature that the fusing temperature sensor/1 (TH1) detects does not reach the prescribed value.",
     "measure": "The main body and the option stop immediately to deactivate the main relay.",
     "abnormal": "• Fusing unit • Printer control board (PRCB) • DC power supply/1 (DCPS1) • Fusing control board/1 (FUSCB1) (Only for Europe) • Fusing heater lamp/1 (L1) • Fusing temperature sensor/1 (TH1) • Thermostat/1 (TS1)",
-    "corr": "WARNING",
+    "corr": "WARNING • Be sure to select the DIPSW3-1 to 0 after you replace the defective parts. If DIPSW3-1 is selected to 0 before defective parts are fixed, it possibly cause a fire.",
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 4. Check the connector connection and the wiring among the fusing heater lamp, the FUSCB1, and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (4/4): 10-A, 10-C) (Only for Europe) 5. Check the conduction of TS1, and repair it when there is any abnormality. 6. Check the installation condition of the fusing heater lamp and ON or OFF by the I/O, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 7. Check the installation condition of TH1 and the temperature of I/O, and adjust it when there is any abnormality. (Wiring diagram: Main body (1/ 4): 1-E) 8. Replace TH1. 9. Replace TS1. 10. Replace the fusing heater lamp assy/Up. 11. Replace DCPS1. 12. Replace FUSCB1. (Only for Europe) 13. Replace PRCB. 14. Replace the fusing heater lamp assy/Up and DCPS1 at a time.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3912",
@@ -1664,7 +1693,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 2-F) 4. Check the connector connection and the wiring among the fusing heater lamp, the FUSCB3, and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (4/4): 10-A, 10-D) (Only for Europe) 5. Check the conduction of TS3, and repair it when there is any abnormality. 6. Check the installation condition of the fusing heater lamp and ON or OFF by the I/O, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 2-F) 7. Check the installation condition of TH4 and the temperature of I/O, and adjust it when there is any abnormality. (Wiring diagram: Main body (1/ 4): 1-G) 8. Replace TH4. 9. Replace TS3. 10. Replace L4. 11. Replace FUSCB3. (Only for Europe) 12. Replace DCPS1. 13. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3913",
@@ -1672,11 +1703,13 @@ export const Label_190 = [
     "cause": "The fusing unit is not installed.",
     "measure": "The main body and the option stop immediately to deactivate the main relay.",
     "abnormal": "• Fusing unit • Printer control board (PRCB)",
-    "corr": "",
+    "corr": "WARNING • Be sure to select the DIPSW3-1 to 0 after you replace the defective parts. If DIPSW3-1 is selected to 0 before defective parts are fixed, it possibly cause a fire.",
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the fusing unit is properly installed, and repair it when there is any abnormality. 2. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 3. Check the connector connection and the wiring on PRCB, and repair it when there is any abnormality. 4. Replace PRCB. 5. Replace the fusing unit.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-3917",
@@ -1688,7 +1721,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between the rear side connector of the fusing unit and the main body side connector, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between the fusing temperature sensor and the PRCB, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the fusing heater lamp and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 4. Check the connector connection and the wiring among the fusing heater lamp, the FUSCB2, the FUSCB3, and the DCPS1. Then repair it when there is any abnormality. (Wiring diagram: Main body (4/4): 10-A, 10-C, 10-D) (Only for Europe) 5. Check the conduction of TS2, and repair it when there is any abnormality. 6. Check the installation condition of the fusing heater lamp and ON or OFF by the I/O, and repair it when there is any abnormality. (Wiring diagram: Main body (1/4): 3-C, 3-D) 7. Check the installation condition of TH2 and the temperature of I/O, and adjust it when there is any abnormality. (Wiring diagram: Main body (1/ 4): 1-E) 8. Replace TH2. 9. Replace TS2. 10. Replace the fusing heater lamp assy/Up. 11. Replace FUSCB2 and FUSCB3. (Only for Europe) 12. Replace DCPS1. 13. Replace PRCB. 14. Replace the fusing heater lamp assy/Up and DCPS1 at a time.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "5",
+    "additional": "После проверки необходимо вернуть свич 3 - 1 в положение 0"
   },
   {
     "code": "C-4101",
@@ -1700,7 +1735,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the writing unit, and replace it when there is any abnormality. 2. Check the connector connection and the wiring between PRCB and the writing unit, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between DCPS/2 and the writing unit, and repair it when there is any abnormality. 4. Check the I/O drive of the motor, and replace the writing unit when there is any abnormality. 5. Replace the writing unit. 6. Replace PRCB. 7. Replace DCPS/2.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "12",
+    "additional": ""
   },
   {
     "code": "C-4102",
@@ -1712,7 +1749,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the writing unit, and replace it when there is any abnormality. 2. Check the connector connection and the wiring between PRCB and the writing unit, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between DCPS/2 and the writing unit, and repair it when there is any abnormality. 4. Check the I/O drive of the motor, and replace the writing unit when there is any abnormality. 5. Replace the writing unit. 6. Replace PRCB. 7. Replace DCPS/2.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "12",
+    "additional": ""
   },
   {
     "code": "C-4103",
@@ -1724,7 +1763,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the writing unit, and replace it when there is any abnormality. 2. Check the connector connection and the wiring between PRCB and the writing unit, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between DCPS/2 and the writing unit, and repair it when there is any abnormality. 4. Check the I/O drive of the motor, and replace the writing unit when there is any abnormality. 5. Replace the writing unit. 6. Replace PRCB. 7. Replace DCPS/2.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "12",
+    "additional": ""
   },
   {
     "code": "C-4104",
@@ -1736,7 +1777,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the writing unit, and replace it when there is any abnormality. 2. Check the connector connection and the wiring between PRCB and the writing unit, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between DCPS/2 and the writing unit, and repair it when there is any abnormality. 4. Check the I/O drive of the motor, and replace the writing unit when there is any abnormality. 5. Replace the writing unit. 6. Replace PRCB. 7. Replace DCPS/2.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "12",
+    "additional": ""
   },
   {
     "code": "C-4501",
@@ -1748,7 +1791,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the write unit, and replace it if there is any abnormality. 2. Check the connector connection and the wiring between PRCB and the write unit, and repair it when there is any abnormality. 3. Replace the write unit. 4. Replace PRCB. 5. Replace the writing unit and PRCB at a time.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "12",
+    "additional": ""
   },
   {
     "code": "C-4502",
@@ -1760,7 +1805,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the write unit, and replace it if there is any abnormality. 2. Check the connector connection and the wiring between PRCB and the write unit, and repair it when there is any abnormality. 3. Replace the write unit. 4. Replace PRCB. 5. Replace the writing unit and PRCB at a time.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "12",
+    "additional": ""
   },
   {
     "code": "C-4503",
@@ -1772,7 +1819,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the write unit, and replace it if there is any abnormality. 2. Check the connector connection and the wiring between PRCB and the write unit, and repair it when there is any abnormality. 3. Replace the write unit. 4. Replace PRCB. 5. Replace the writing unit and PRCB at a time.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "12",
+    "additional": ""
   },
   {
     "code": "C-4504",
@@ -1784,7 +1833,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the write unit, and replace it if there is any abnormality. 2. Check the connector connection and the wiring between PRCB and the write unit, and repair it when there is any abnormality. 3. Replace the write unit. 4. Replace PRCB. 5. Replace the writing unit and PRCB at a time.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "12",
+    "additional": ""
   },
   {
     "code": "C-4505",
@@ -1796,7 +1847,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Note down the value of Writing Unit Skew Pos. (Y) from Service Mode [01 Machine Adjustment] - [01 Printer Adjustment] - [09 Writing Initial Pos. Memory] - [01 Skew Initial Position Memory]. Note • Do not press the start button. • Press [01 Skew Initial Position Memory] button after the initialization is completed (Approximately 10 seconds). 2. Select I/O Check Mode to execute 35-17, 35-18, 35-19 in the order (move to the Initial Position). Note • Do not execute 35-20. 3. Execute [01 Machine Adjustment] -[01 Printer Adjustment] -[10 Color Registration Auto.] from Service Mode. 4. When an error occurs, go to the solution procedure 7. When it ends normally, go to the next procedure. 5. Execute the solution procedure 1 and note down the value again. 6. When the difference of the two values is more than 50, end the operation. When the difference is 49 or less, go to the next procedure. 7. Check the installation condition of the writing unit and the intermediate transfer unit, and repair it when there is any abnormality. 8. Check the writing unit, and replace it when there is any abnormality. 9. Check the connector connection and the wiring between PRCB and the writing unit, and repair it when there is any abnormality. 10. Replace the writing unit. 11. Replace PRCB. 12. Replace writing unit and PRCB at a time 13. Replace the intermediate transfer belt",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "7, 12",
+    "additional": ""
   },
   {
     "code": "C-4506",
@@ -1808,7 +1861,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Note down the value of Writing Unit Skew Pos. (M) from Service Mode [01 Machine Adjustment] - [01 Printer Adjustment] - [09 Writing Initial Pos. Memory] - [01 Skew Initial Position Memory]. Note • Do not press the start button. • Press [01 Skew Initial Position Memory] button after the initialization is completed (Approximately 10 seconds). 2. Select I/O Check Mode to execute 35-17, 35-18, 35-19 in the order (move to the Initial Position). Note • Do not execute 35-20. 3. Execute [01 Machine Adjustment] -[01 Printer Adjustment] -[10 Color Registration Auto.] from Service Mode. 4. When an error occurs, go to the solution procedure 7. When it ends normally, go to the next procedure. 5. Execute the solution procedure 1 and note down the value again. 6. When the difference of the two values is more than 50, end the operation. When the difference is 49 or less, go to the next procedure. 7. Check the installation condition of the writing unit and the intermediate transfer unit, and repair it when there is any abnormality. 8. Check the writing unit, and replace it when there is any abnormality. 9. Check the connector connection and the wiring between PRCB and the writing unit, and repair it when there is any abnormality. 10. Replace the writing unit. 11. Replace PRCB. 12. Replace writing unit and PRCB at a time 13. Replace the intermediate transfer belt",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "7, 12",
+    "additional": ""
   },
   {
     "code": "C-4507",
@@ -1820,7 +1875,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Note down the value of Writing Unit Skew Pos. (C) from Service Mode [01 Machine Adjustment] -[01 Printer Adjustment] -[09 Writing Initial Pos. Memory] - [01 Skew Initial Position Memory]. Note • Do not press the start button. • Press [01 Skew Initial Position Memory] button after the initialization is completed (Approximately 10 seconds). 2. Select I/O Check Mode to execute 35-17, 35-18, 35-19 in the order (move to the Initial Position). Note • Do not execute 35-20. 3. Execute [01 Machine Adjustment] -[01 Printer Adjustment] -[10 Color Registration Auto.] from Service Mode. 4. When an error occurs, go to the solution procedure 7. When it ends normally, go to the next procedure. 5. Execute the solution procedure 1 and note down the value again. 6. When the difference of the two values is more than 50, end the operation. When the difference is 49 or less, go to the next procedure. 7. Check the installation condition of the writing unit and the intermediate transfer unit, and repair it when there is any abnormality. 8. Check the writing unit, and replace it when there is any abnormality. 9. Check the connector connection and the wiring between PRCB and the writing unit, and repair it when there is any abnormality. 10. Replace the writing unit. 11. Replace PRCB. 12. Replace writing unit and PRCB at a time 13. Replace the intermediate transfer belt",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "7, 12",
+    "additional": ""
   },
   {
     "code": "C-4508",
@@ -1832,7 +1889,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the installation condition of the writing unit and the intermediate transfer unit, and repair it when there is any abnormality. 2. Check the writing unit, and replace it when there is any abnormality. 3. Check the connector connection and the wiring between PRCB and the writing unit, and repair it when there is any abnormality. 4. Replace the writing unit. 5. Replace PRCB. 6. Replace writing unit and PRCB at a time 7. Replace the intermediate transfer belt",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "7, 12",
+    "additional": ""
   },
   {
     "code": "C-4511",
@@ -1844,7 +1903,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the write unit, and replace it if there is any abnormality. 2. Check the connector connection and the wiring between PRCB and the write unit, and repair it when there is any abnormality. 3. Check the I/O drive of the motor, and replace the write unit when there is any abnormality. 4. Check the sensor, and replace the write unit when there is any abnormality. 5. Replace the write unit. 6. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "12",
+    "additional": ""
   },
   {
     "code": "C-4512",
@@ -1856,7 +1917,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the write unit, and replace it if there is any abnormality. 2. Check the connector connection and the wiring between PRCB and the write unit, and repair it when there is any abnormality. 3. Check the I/O drive of the motor, and replace the write unit when there is any abnormality. 4. Check the sensor, and replace the write unit when there is any abnormality. 5. Replace the write unit. 6. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "12",
+    "additional": ""
   },
   {
     "code": "C-4513",
@@ -1868,7 +1931,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the write unit, and replace it if there is any abnormality. 2. Check the connector connection and the wiring between PRCB and the write unit, and repair it when there is any abnormality. 3. Check the I/O drive of the motor, and replace the write unit when there is any abnormality. 4. Check the sensor, and replace the write unit when there is any abnormality. 5. Replace the write unit. 6. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "12",
+    "additional": ""
   },
   {
     "code": "C-4514",
@@ -1880,7 +1945,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the write unit, and replace it if there is any abnormality. 2. Check the connector connection and the wiring between PRCB and the write unit, and repair it when there is any abnormality. 3. Check the I/O drive of the motor, and replace the write unit when there is any abnormality. 4. Check the sensor, and replace the write unit when there is any abnormality. 5. Replace the write unit. 6. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "12",
+    "additional": ""
   },
   {
     "code": "C-4515",
@@ -1892,7 +1959,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the writing unit, and replace it when there is any abnormality. 2. Check the connector connection and the wiring between PRCB and the writing unit, and repair it when there is any abnormality. 3. Check the I/O drive of the motor, and replace the writing unit when there is any abnormality. 4. Check sensor, and replace the writing unit when there is any abnormality. 5. Replace the writing unit. 6. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "12",
+    "additional": ""
   },
   {
     "code": "C-4516",
@@ -1904,7 +1973,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the writing unit, and replace it when there is any abnormality. 2. Check the connector connection and the wiring between PRCB and the writing unit, and repair it when there is any abnormality. 3. Check the I/O drive of the motor, and replace the writing unit when there is any abnormality. 4. Check sensor, and replace the writing unit when there is any abnormality. 5. Replace the writing unit. 6. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "12",
+    "additional": ""
   },
   {
     "code": "C-4517",
@@ -1916,7 +1987,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the writing unit, and replace it when there is any abnormality. 2. Check the connector connection and the wiring between PRCB and the writing unit, and repair it when there is any abnormality. 3. Check the I/O drive of the motor, and replace the writing unit when there is any abnormality. 4. Check the sensor, and replace the writing unit when there is any abnormality. 5. Replace the writing unit. 6. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "12",
+    "additional": ""
   },
   {
     "code": "C-4518",
@@ -1928,7 +2001,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the writing unit, and replace it when there is any abnormality. 2. Check the connector connection and the wiring between PRCB and the writing unit, and repair it when there is any abnormality. 3. Check the I/O drive of the motor, and replace the writing unit when there is any abnormality. 4. Check the sensor, and replace the writing unit when there is any abnormality. 5. Replace the writing unit. 6. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "12",
+    "additional": ""
   },
   {
     "code": "C-4520",
@@ -1940,7 +2015,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. When a SC occurs, store the log by the Log Store in the service mode. 2. Report it with that log to KMBT.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6",
+    "additional": ""
   },
   {
     "code": "C-4521",
@@ -1952,7 +2029,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the shutter and around the color registration sensor, and clean or replace it if there is any dirt or abnormality. 2. Check the intermediate transfer belt, and clean or replace it if there is any dirt or abnormality. 3. Check the connector connection and the wiring between PRCB and the sensor, and repair it when there is any abnormality. 4. Check the I/O rate of the sensor by I/O of SD4, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4): 24-O) 5. Replace PS60. 6. Replace PRCB. 7. Replace SD4 and PRCB at a time.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 7",
+    "additional": ""
   },
   {
     "code": "C-4522",
@@ -1964,7 +2043,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the shutter and around the color registration sensor, and clean or replace it if there is any dirt or abnormality. 2. Check the intermediate transfer belt, and clean or replace it if there is any dirt or abnormality. 3. Check the connector connection and the wiring between PRCB and the sensor, and repair it when there is any abnormality. 4. Check the I/O rate of the sensor by I/O of SD4, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (2/4): 24-O) 5. Replace PS62. 6. Replace PRCB. 7. Replace SD4 and PRCB at a time.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 7",
+    "additional": ""
   },
   {
     "code": "C-4601",
@@ -1976,7 +2057,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Output the test pattern to check the Y toner density or whether the white spot occurs. 2. Output the test pattern Number 25 to check the registration mark position in the main scan direction. 3. When the registration mark is not output properly, check the writing, developing, and the transfer relation, and repair or replace it when there is any abnormality. 4. When the registration mark is output properly, check the connector connection and wiring between PRCB and the color registration sensor, and repair it when there is any abnormality. Check the color registration shutter solenoid and the color registration sensor, and repair or replace it when there is any abnormality. 5. Check the I/O drive of SD4 and repair or replace it when there is any abnormality. 6. Replace SD4. 7. Replace PS60. 8. Replace PRCB. 9. Replace the intermediate transfer belt",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 7",
+    "additional": ""
   },
   {
     "code": "C-4602",
@@ -1988,7 +2071,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Output the test pattern to check the M toner density or whether the white spot occurs. 2. Output the test pattern Number 25 to check the registration mark position in the main scan direction. 3. When the registration mark is not output properly, check the writing, developing, and the transfer relation, and repair or replace it when there is any abnormality. 4. When the registration mark is output properly, check the connector connection and wiring between PRCB and the color registration sensor, and repair it when there is any abnormality. 5. Check the color registration shutter solenoid and the color registration sensor, and repair or replace it when there is any abnormality. Check the I/O drive of SD4 and repair or replace it when there is any abnormality. 6. Replace SD4. 7. Replace PS60. 8. Replace PRCB. 9. Replace the intermediate transfer belt",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 7",
+    "additional": ""
   },
   {
     "code": "C-4603",
@@ -2000,7 +2085,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Output the test pattern to check the C toner density or whether the white spot occurs. 2. Output the test pattern Number 25 to check the registration mark position in the main scan direction. 3. When the registration mark is not output properly, check the writing, developing, and the transfer relation, and repair or replace it when there is any abnormality. 4. When the registration mark is output properly, check the connector connection and wiring between PRCB and the color registration sensor, and repair it when there is any abnormality. Check the color registration shutter solenoid and the color registration sensor, and repair or replace it when there is any abnormality. 5. Check the I/O drive of SD4 and repair or replace it when there is any abnormality.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 7",
+    "additional": ""
   },
   {
     "code": "C-4604",
@@ -2012,7 +2099,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Output the test pattern to check the K toner density or whether the white spot occurs. 2. Output the test pattern Number 25 to check the registration mark position in the main scan direction. 3. When the registration mark is not output properly, check the writing, developing, and the transfer relation, and repair or replace it when there is any abnormality. 4. When the registration mark is output properly, check the connector connection and wiring between PRCB and the color registration sensor, and repair it when there is any abnormality. 5. Check the color registration shutter solenoid and the color registration sensor, and repair or replace it when there is any abnormality. Check the I/O drive of SD4 and repair or replace it when there is any abnormality. 6. Replace SD4. 7. Replace PS60. 8. Replace PRCB. 9. Replace the intermediate transfer belt",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 7",
+    "additional": ""
   },
   {
     "code": "C-4611",
@@ -2024,7 +2113,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Output the test pattern to check the Y toner density or whether the white spot occurs. 2. Output the test pattern number 25 to check the registration mark position in the main scan direction. 3. When the registration mark is not output properly, check the writing, developing, and transfer relations and repair or replace it when there is any abnormality. 4. When the registration mark is output properly, check the connector connection and wiring between PRCB and the color registration sensor, and repair it when there is any abnormality. 5. Check the color registration sensor and the color registration shutter solenoid, and repair or replace it when there is any abnormality. Check the I/O drive of SD4 and repair or replace it when there is any abnormality. 6. Replace SD4. 7. Replace PS62. 8. Replace PRCB. 9. Replace the intermediate transfer belt",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 7",
+    "additional": ""
   },
   {
     "code": "C-4612",
@@ -2036,7 +2127,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Output the test pattern to check the M toner density or whether the white spot occurs. 2. Output the test pattern number 25 to check the registration mark position in the main scan direction. 3. When the registration mark is not output properly, check the writing, developing, and transfer relations and repair or replace it when there is any abnormality. 4. When the registration mark is output properly, check the connector connection and wiring between PRCB and the color registration sensor, and repair it when there is any abnormality. 5. Check the color registration sensor and the color registration shutter solenoid, and repair or replace it when there is any abnormality. Check the I/O drive of SD4 and repair or replace it when there is any abnormality. 6. Replace SD4. 7. Replace PS62. 8. Replace PRCB. 9. Replace the intermediate transfer belt",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 7",
+    "additional": ""
   },
   {
     "code": "C-4613",
@@ -2048,19 +2141,23 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Output the test pattern to check the C toner density or whether the white spot occurs. 2. Output the test pattern number 25 to check the registration mark position in the main scan direction. 3. When the registration mark is not output properly, check the writing, developing, and transfer relations and repair or replace it when there is any abnormality. 4. When the registration mark is output properly, check the connector connection and wiring between PRCB and the color registration sensor, and repair it when there is any abnormality. 5. Check the color registration sensor and the color registration shutter solenoid, and repair or replace it when there is any abnormality. Check the I/O drive of SD4 and repair or replace it when there is any abnormality. 6. Replace SD4. 7. Replace PS62. 8. Replace PRCB. 9. Replace the intermediate transfer belt",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 7",
+    "additional": ""
   },
   {
     "code": "C-4614",
     "class": "Main body: Color registration sensor/Rr (K) data undetected",
     "cause": "The color registration sensor/Rr (PS62) has detected no data of the K toner.",
     "measure": "The main body and the option stop immediately to deactivate the main relay.",
-    "abnormal": "• Printer control board",
+    "abnormal": "• Printer control board • Color registration sensor/Fr (PS62) • Color registration shutter solenoid (SD4) • Intermediate transfer belt",
     "corr": "",
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Output the test pattern to check the K toner density or whether the white spot occurs. 2. Output the test pattern number 25 to check the registration mark position in the main scan direction. 3. When the registration mark is not output properly, check the writing, developing, and transfer relations and repair or replace it when there is any abnormality. 4. When the registration mark is output properly, check the connector connection and wiring between PRCB and the color registration sensor, and repair it when there is any abnormality. 5. Check the color registration sensor and the color registration shutter solenoid, and repair or replace it when there is any abnormality. Check the I/O drive of SD4 and repair or replace it when there is any abnormality. 6. Replace SD4. 7. Replace PS62. 8. Replace PRCB. 9. Replace the intermediate transfer belt",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 7",
+    "additional": ""
   },
   {
     "code": "C-4631",
@@ -2072,7 +2169,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Output the test pattern to check whether the uneven density occurs on the Y toner area. 2. Check the intermediate transfer belt, and clean or replace it when there is any toner image, damage, or abnormality. 3. Check the connector connection and the wiring between PRCB and the color registration sensor, and repair it when there is any abnormality. 4. Check the color registration sensor and the color registration shutter solenoid, and repair or replace it when there is any abnormality. 5. Check the I/O drive of SD4 and repair or replace it when there is any abnormality. 6. Replace SD4. 7. Replace PS60. 8. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 7",
+    "additional": ""
   },
   {
     "code": "C-4632",
@@ -2084,7 +2183,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Output the test pattern to check whether the uneven density occurs on the M toner area. 2. Check the intermediate transfer belt, and clean or replace it if there is the toner image or the damage. 3. Check the connector connection and the wiring between PRCB and the color registration sensor, and repair it when there is any abnormality. 4. Check the color registration sensor and the color registration shutter solenoid, and repair or replace it when there is any abnormality. 5. Check the I/O drive of SD4 and repair or replace it when there is any abnormality.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 7",
+    "additional": ""
   },
   {
     "code": "C-4633",
@@ -2096,7 +2197,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Output the test pattern to check whether the uneven density occurs on the C toner area. 2. Check the intermediate transfer belt, and clean or replace it if there is the toner image or the damage. 3. Check the connector connection and the wiring between PRCB and the color registration sensor, and repair it when there is any abnormality. 4. Check the color registration sensor and the color registration shutter solenoid, and repair or replace it when there is any abnormality. 5. Check the I/O drive of SD4 and repair or replace it when there is any abnormality. 6. Replace SD4. 7. Replace PS60. 8. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 7",
+    "additional": ""
   },
   {
     "code": "C-4634",
@@ -2108,19 +2211,23 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Output the test pattern to check whether the uneven density occurs on the K toner area. 2. Check the intermediate transfer belt, and clean or replace it if there is the toner image or the damage. 3. Check the connector connection and the wiring between PRCB and the color registration sensor, and repair it when there is any abnormality. 4. Check the color registration sensor and the color registration shutter solenoid, and repair or replace it when there is any abnormality. 5. Check the I/O drive of SD4 and repair or replace it when there is any abnormality. 6. Replace SD4. 7. Replace PS60. 8. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 7",
+    "additional": ""
   },
   {
     "code": "C-4641",
     "class": "Main body: Color registration sensor/Rr (Y) abnormality",
     "cause": "The histogram processing of the Y toner has terminated abnormally in the color registration sensor/Rr (PS62).",
     "measure": "The main body and the option stop immediately to deactivate the main relay.",
-    "abnormal": "• Printer control board",
+    "abnormal": "• Printer control board • Color registration sensor/Rr (PS62) • Color registration shutter solenoid (SD4) • Intermediate transfer belt",
     "corr": "",
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Output the test pattern to check whether the uneven density occurs on the Y toner area. 2. Check the intermediate transfer belt, and clean or replace it when there is any toner image, scratch, or damage. 3. Check the connector connection and the wiring between PRCB and the color registration sensor, and repair it when there is any abnormality. 4. Check the color registration sensor and the color registration shutter solenoid, and repair or replace it when there is any abnormality. 5. Check the I/O drive of SD4 and repair or replace it when there is any abnormality. 6. Replace SD4. 7. Replace PS62. 8. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 7",
+    "additional": ""
   },
   {
     "code": "C-4642",
@@ -2132,7 +2239,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Output the test pattern to check whether the uneven density occurs on the M toner area. 2. Check the intermediate transfer belt, and clean or replace it if there is a the toner image or the damage. 3. Check the connector connection and the wiring between PRCB and the color registration sensor, and repair it when there is any abnormality. 4. Check the color registration sensor and the color registration shutter solenoid, and repair or replace it when there is any abnormality. 5. Check the I/O drive of SD4 and repair or replace it when there is any abnormality. 6. Replace SD4. 7. Replace PS62. 8. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 7",
+    "additional": ""
   },
   {
     "code": "C-4643",
@@ -2144,7 +2253,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Output the test pattern to check whether the uneven density occurs on the C toner area. 2. Check the intermediate transfer belt, and clean or replace it if there is a the toner image or the damage. 3. Check the connector connection and the wiring between PRCB and the color registration sensor, and repair it when there is any abnormality. 4. Check the color registration sensor and the color registration shutter solenoid, and repair or replace it when there is any abnormality. 5. Check the I/O drive of SD4 and repair or replace it when there is any abnormality. 6. Replace SD4. 7. Replace PS62. 8. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 7",
+    "additional": ""
   },
   {
     "code": "C-4644",
@@ -2156,7 +2267,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Output the test pattern to check whether the uneven density occurs on the K toner area. 2. Check the intermediate transfer belt, and clean or replace it if there is a the toner image or the damage. 3. Check the connector connection and the wiring between PRCB and the color registration sensor, and repair it when there is any abnormality. 4. Check the color registration sensor and the color registration shutter solenoid, and repair or replace it when there is any abnormality. 5. Check the I/O drive of SD4 and repair or replace it when there is any abnormality. 6. Replace SD4. 7. Replace PS62. 8. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 7",
+    "additional": ""
   },
   {
     "code": "C-4661",
@@ -2168,19 +2281,23 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the intermediate transfer belt, and clean or replace it when there is any dirt or abnormality. 2. Perform the color registration automatic adjustment. 3. When the error 2 occurs, acquire the log and analyze it. 4. When the error 1 occurs, it means that the color registration error level is not abnormal but not good. In this case, the error is cleared when the machine returns to the normal mode. However it possibly occurs again. 5. Check the connector connection and the wiring between PRCB and the color registration sensor, and repair it when there is any abnormality. 6. Check the color registration sensor and the color registration shutter solenoid, and repair or replace it when there is any abnormality. 7. Check the I/O drive of SD4 and repair or replace it when there is any abnormality. 8. Replace SD4. 9. Replace PS60 and PS62. 10. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 7",
+    "additional": ""
   },
   {
     "code": "C-4662",
     "class": "Main body: Color registration correction abnormality (M)",
     "cause": "The color registration correction/M has terminated abnormally.",
     "measure": "The main body and the option stop immediately to deactivate the main relay.",
-    "abnormal": "• Printer control board • Color registration sensor/Fr (PS60), color registration sensor/Rr (PS62)",
+    "abnormal": "• Printer control board • Color registration sensor/Fr (PS60), color registration sensor/Rr (PS62) • Color registration shutter solenoid (SD4) • Intermediate transfer belt",
     "corr": "",
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the intermediate transfer belt, and clean or replace it when there is any dirt or abnormality. 2. Perform the color registration automatic adjustment. 3. When the error 2 occurs, acquire the log and analyze it. 4. When the error 1 occurs, it means that the color registration error level is not abnormal but not good. In this case, the error is cleared when the machine returns to the normal mode. However it possibly occurs again. 5. Check the connector connection and the wiring between PRCB and the color registration sensor, and repair it when there is any abnormality. 6. Check the color registration sensor and the color registration shutter solenoid, and repair or replace it when there is any abnormality. 7. Check the I/O drive of SD4 and repair or replace it when there is any abnormality. 8. Replace SD4. 9. Replace PS60 and PS62. 10. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 7",
+    "additional": ""
   },
   {
     "code": "C-4663",
@@ -2192,7 +2309,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the intermediate transfer belt, and clean or replace it when there is any dirt or abnormality. 2. Perform the color registration automatic adjustment. 3. When the error 2 occurs, acquire the log and analyze it. 4. When the error 1 occurs, it means that the color registration error level is not abnormal but not good. In this case, the error is cleared when the machine returns to the normal mode. However it possibly occurs again. 5. Check the connector connection and the wiring between PRCB and the color registration sensor, and repair it when there is any abnormality. 6. Check the color registration sensor and the color registration shutter solenoid, and repair or replace it when there is any abnormality. 7. Check the I/O drive of SD4 and repair or replace it when there is any abnormality. 8. Replace SD4. 9. Replace PS60 and PS62. 10. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "6, 7",
+    "additional": ""
   },
   {
     "code": "C-4705",
@@ -2204,7 +2323,9 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Replace PRIPB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-4709",
@@ -2216,7 +2337,9 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Replace PRIPB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-4713",
@@ -2228,7 +2351,9 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Replace PRIPB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-4714",
@@ -2240,19 +2365,23 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Check the write unit, and repair or replace it if there is any abnormality. 2. Check the connector connection and the wiring between PRIB and the write unit, and repair it when there is any abnormality. 3. Replace the write unit. 4. Replace PRIPB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "12",
+    "additional": ""
   },
   {
     "code": "C-4715",
     "class": "Main body: Image processing abnormality/M",
     "cause": "On APC, the Index sensor output does not change. The index sensor failed to detect the laser because the polygon mirror does not rotate, the position of the index sensor is improper, or the index sensor is defective.",
     "measure": "The main body and the option stop immediately to deactivate the main relay.",
-    "abnormal": "",
+    "abnormal": "• Printer image processing board (PRIPB) • Writing unit/M",
     "corr": "Deactivate and activate the sub power switch (SW2) of the main body.",
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Check the write unit, and repair or replace it if there is any abnormality. 2. Check the connector connection and the wiring between PRIB and the write unit, and repair it when there is any abnormality. 3. Replace the write unit. 4. Replace PRIPB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "12",
+    "additional": ""
   },
   {
     "code": "C-4716",
@@ -2264,7 +2393,9 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Check the write unit, and repair or replace it if there is any abnormality. 2. Check the connector connection and the wiring between PRIB and the write unit, and repair it when there is any abnormality. 3. Replace the write unit. 4. Replace PRIPB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "12",
+    "additional": ""
   },
   {
     "code": "C-4717",
@@ -2276,19 +2407,23 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Check the write unit, and repair or replace it if there is any abnormality. 2. Check the connector connection and the wiring between PRIB and the write unit, and repair it when there is any abnormality. 3. Replace the write unit. 4. Replace PRIPB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "12",
+    "additional": ""
   },
   {
     "code": "C-4718",
     "class": "Main body: Image processing abnormality/Y",
     "cause": "APC abnormality. The laser does not turn ON because 12V DC power source for driving laser is not fed, MPC is wrong, or the laser is defective.",
     "measure": "The main body stops immediately to turn OFF the power relay (RL1).",
-    "abnormal": "",
+    "abnormal": "• Printer image processing board (PRIPB) • Writing unit/Y",
     "corr": "",
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Check the write unit, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between PRIB and write unit, and repair it if any abnormality. 3. Replace the write unit. 4. Replace PRIPB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "12",
+    "additional": ""
   },
   {
     "code": "C-4719",
@@ -2300,7 +2435,9 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Check the write unit, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between PRIB and write unit, and repair it if any abnormality. 3. Replace the write unit. 4. Replace PRIPB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "12",
+    "additional": ""
   },
   {
     "code": "C-4720",
@@ -2312,7 +2449,9 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Check the write unit, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between PRIB and write unit, and repair it if any abnormality. 3. Replace the write unit. 4. Replace PRIPB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "12",
+    "additional": ""
   },
   {
     "code": "C-4721",
@@ -2324,7 +2463,9 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Check the write unit, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between PRIB and write unit, and repair it if any abnormality. 3. Replace the write unit. 4. Replace PRIPB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "12",
+    "additional": ""
   },
   {
     "code": "C-4722",
@@ -2336,7 +2477,9 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Check the write unit, and repair or replace it if there is any abnormality. 2. Check the connector connection and the wiring between PRIB and the write unit, and repair it when there is any abnormality. 3. Replace the write unit. 4. Replace PRIPB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "12",
+    "additional": ""
   },
   {
     "code": "C-4723",
@@ -2348,7 +2491,9 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Check the write unit, and repair or replace it if there is any abnormality. 2. Check the connector connection and the wiring between PRIB and the write unit, and repair it when there is any abnormality. 3. Replace the write unit. 4. Replace PRIPB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "12",
+    "additional": ""
   },
   {
     "code": "C-4724",
@@ -2360,7 +2505,9 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "12",
+    "additional": ""
   },
   {
     "code": "C-4725",
@@ -2372,7 +2519,9 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Check the write unit, and repair or replace it if there is any abnormality. 2. Check the connector connection and the wiring between PRIB and the write unit, and repair it when there is any abnormality. 3. Replace the write unit. 4. Replace PRIPB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "12",
+    "additional": ""
   },
   {
     "code": "C-4726",
@@ -2384,7 +2533,9 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Check the condition of the mounting screw of the duct cover and repair it when there is any abnormality. 2. Check I/O and the operation of the sensor and repair it when there is any abnormality. 3. Check the connector connection and the wiring between the process stand open close sensor (PS30) and the PRCB, and repair it when there is any abnormality. 4. Replace PS30. 5. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": "Не закрыта крышка блока процесса, либо, если крышка не используется, скорее всего из датчика выпала бумажка."
   },
   {
     "code": "C-4727",
@@ -2396,7 +2547,9 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-4728",
@@ -2408,7 +2561,9 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Check the installation status of PRIPB, and repair or replace it when there is an abnormality. 2. Check the connector connection and the wiring on PRIPB, and repair it when there is an abnormality. (Wiring diagram: Main body (3/4): 1-B), Main body (4/4): 17-C) 3. Replace PRIPB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-4840",
@@ -2420,7 +2575,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connector connection and the wiring on PRCB, and repair it when there is any abnormality. 2. Reinstall the printer control firmware 3. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-4850",
@@ -2432,7 +2589,9 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Check the connector connection and the wiring on OACB, and repair it when there is any abnormality. 2. Reinstall the firmware of the overall control. 3. Replace OACB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-5001",
@@ -2444,7 +2603,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Disconnect CN131 on PRCB to boot the main body, and check the 12V output of CN131-2. 2. If there is no 12V output, check the connector connection and the wiring of PRCB and DCPS1. Repair it when there is any abnormality. If no abnormality exists, replace DCPS1. 3. Replace PRCB if 12V output performed. 4. Replace PRCB and DCPS1 at a time.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-5002",
@@ -2456,7 +2617,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Disconnect CN100 on PRCB to boot the main body, and check the 24V output of CN100-3 and CN100-4. 2. If there is no 24V output, check the connector connection and the wiring of PRCB and DCPS2. Repair it when there is any abnormality. If no abnormality exists, replace DCPS2. 3. Replace PRCB if the 24V output is performed. 4. Check the loading of the PRCB connection (the motor, the solenoid, and the clutch), and repair or replace it when there is any abnormality. 5. Replace PRCB and DCPS2 at a time.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-5003",
@@ -2468,7 +2631,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the front door is closed properly, and repair it when there is any abnormality. 2. Check the connector connection and the wiring between DCPS2 and CDB, and repair it when there is any abnormality. 3. Replace DCPS2.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-5006",
@@ -2480,7 +2645,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Disconnect CN100 on PRCB, boot the main body, and check the 24V output of CN100-7. 2. If there is no 24V output, check the connector connection and the wiring of PRCB and DCPS2. Repair it when there is any abnormality. If no abnormality exists, replace DCPS2. 3. Replace PRCB when the 24V output is performed. 4. Check the loading of the PRCB connection (the motor, the solenoid, and the clutch), and repair or replace it when there is any abnormality. 5. Replace PRCB and DCPS2 at a time.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-5007",
@@ -2492,7 +2659,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check that the front door is closed properly, and repair it when there is any abnormality. 2. Check the operation of the front door switch (MS1), and repair it when there is any abnormality. 3. Disconnect CN101 on PRCB to boot the main body, and check the 24V output of CN101-1. 4. If there is no 24V output, check the connector connection and the wiring of PRCB and DCPS2. Repair it when there is any abnormality. If no abnormality exists, replace DCPS2. 5. Replace PRCB when the 24V output is performed. 6. Check the loading of the PRCB connection (the motor, the solenoid, and the clutch), and repair or replace it when there is any abnormality. 7. Replace PRCB and DCPS2 at a time.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-5010",
@@ -2504,7 +2673,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connector connection and the wiring between PRIPB and OACB, and repair it when there is any abnormality. 2. Replace PRCB. 3. Replace OACB (Refer to \"G.3.2.8.Overall control board (OACB)\")",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-5301",
@@ -2516,7 +2687,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Rotate the fan or I/O manually, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (1/4): 21-E) 2. Check the connector connection and the wiring between PRCB and the fan, and repair it when there is any abnormality. 3. Replace FM4. 4. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-5305",
@@ -2528,7 +2701,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Rotate the fan or I/O manually, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (1/4): 21-E) 2. Check the connector connection and the wiring between PRCB and the fan, and repair it when there is any abnormality. 3. Replace FM5. 4. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-5307",
@@ -2540,7 +2715,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Rotate the fan or I/O manually, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (1/4): 12-L) 2. Check the connector connection and the wiring between PRCB and the fan, and repair it when there is any abnormality. 3. Replace FM3. 4. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-5309",
@@ -2552,7 +2729,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Rotate the fan by I/O or manually, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (1/4):15-L) 2. Check the connector connection and the wiring between PRCB and the fan, and repair it when there is any abnormality. 3. Replace FM18. 4. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-5310",
@@ -2564,7 +2743,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Rotate the fan by I/O or manually, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (1/4):13-L) 2. Check the connector connection and the wiring between PRCB and the fan, and repair it when there is any abnormality. 3. Replace FM14. 4. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-5311",
@@ -2576,7 +2757,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Rotate the fan or I/O manually, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (1/4): 21-E) 2. Check the connector connection and the wiring between PRCB and the fan, and repair it when there is any abnormality.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-5401",
@@ -2588,7 +2771,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Rotate the fan by hand, and repair or replace it when there is any abnormality. 2. Check that the fan cable is inserted into CN2301 of OACB. 3. Replace OACB when there is no abnormality with the insertion condition of the fan cable. (Refer to \"G.3.2.8.Overall control board (OACB)\")",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-5402",
@@ -2600,7 +2785,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Rotate the fan by hand, and repair it when there is any abnormality. 2. Disconnect CN405 on PRIPB to boot the main body, and check the 12V output of CN405-1. 3. Disconnect CN405 on PRIPB to boot the main body, and check the voltage level of CN405-3. 4. If there is the 3.3V output and no abnormality with the voltage level, replace PRIPB. 5. When there is no abnormality with the voltage level, replace OACB. (Refer to \"G.3.2.8.Overall control board (OACB)\")",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-5403",
@@ -2612,7 +2799,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Rotate the fan or I/O manually, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (3/4): 21-L) 2. Check the connector connection and the wiring between OACB and the fan, and repair it when there is any abnormality. 3. Replace FM1.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-5404",
@@ -2624,7 +2813,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Rotate the fan or I/O manually, and repair or replace it when there is any abnormality. (Wiring diagram: Main body (3/4): 21-L) 2. Check the connector connection and the wiring between OACB and the fan, and repair it when there is any abnormality. 3. Replace FM2.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-6801",
@@ -2636,7 +2827,9 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Check the connector connection and the wiring on OACB and OB1, and repair it when there is any abnormality. 2. Replace OB1. 3. Replace OACB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-6802",
@@ -2648,7 +2841,9 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Reinstall the firmware of the overall control.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-7001",
@@ -2660,7 +2855,9 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Check the connector connection and the wiring between the main body and the post processing machine, and repair it if any abnormality. 2. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-C101",
@@ -2672,7 +2869,9 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Check the connector connection and the wiring of PRIPB, PRCB and OACB, and repair it when there is any abnormality. 2. Replace PRIPB. 3. Replace PRCB. 4. Replace OACB (Refer to \"G.3.2.8.Overall control board (OACB)\") 5. Replace PRIPB, PRCB and OACB at a time",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-C102",
@@ -2684,7 +2883,9 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Check the connector connection and the wiring among PRIPB, PRCB and OACB and repair it when there is any abnormality. 2. Replace PRIPB. 3. Replace PRCB. 4. Replace OACB (Refer to \"G.3.2.8.Overall control board (OACB)\")",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-C104",
@@ -2696,7 +2897,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Reinstalling PRCB firmware 2. Check the I/F connector connection and the wiring for ISW on RBU, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between RBU and OACB, and repair it when there is any abnormality. 4. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-C120",
@@ -2708,7 +2911,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Reinstall PRCB firmware 2. Check the I/F connector connection and the wiring for ISW on RBU, and repair it when there is any abnormality. 3. Check the connector connection and the wiring between RBU and OACB, and repair it when there is any abnormality. 4. Replace PRCB.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-C121",
@@ -2720,7 +2925,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Reinstall the firmware of the overall control. 2. Check the connector connection and the wiring on OACB, and repair it when there is any abnormality. 3. Replace SSD (Refer to \"G.3.2.9.SSD (SSD)\") Note • For how to get or replace the SSD, contact the service manager of Konica Minolta. 4. Replace OACB (Refer to \"G.3.2.8.Overall control board (OACB)\")",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-C131",
@@ -2732,7 +2939,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-C136",
@@ -2744,7 +2953,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connector connection and the wiring on OACB, and repair it when there is any abnormality. 2. Reinstall the firmware of the overall control (I1) and the IC controller (P). 3. Replace OACB (Refer to \"G.3.2.8.Overall control board (OACB)\")",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-C140",
@@ -2756,7 +2967,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Change DIPSW52-2 to \"1\".",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": "Сменить свич 52-2 на 1"
   },
   {
     "code": "C-C150",
@@ -2768,7 +2981,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the installed protection chips that are equipped, and repair it when it is not correct.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-C151",
@@ -2780,7 +2995,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the relation between the memory size and the controller mode, and repair it if the relation is improper.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-C170",
@@ -2792,7 +3009,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Select \"0\" on DIPSW49-1.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-D010",
@@ -2804,7 +3023,9 @@ export const Label_190 = [
     "note": "• When you isolate the faulty part, the limited use is available. • The message \"Please call service\" and \"Press [Help] to disengage\" are displayed alternately on the touch panel. • When you press the help key, the message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Report it to KM.",
     "isolate": "DIPSW18-7",
-    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach."
+    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach.",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-D020",
@@ -2816,7 +3037,9 @@ export const Label_190 = [
     "note": "• When you isolate the faulty part, the limited use is available. • The message \"Please call service\" and \"Press [Help] to disengage\" are displayed alternately on the touch panel. • When you press the help key, the message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Check the firmware of the overall control (I) and the controller (P), and reinstall the firmware when the version is different. 2. Execute bad sectors check and recovery in the output check I/O 99-03. 3. Check the connection between each HDD, and repair it when there is any abnormality. 4. Format the HDD (Refer to I.4.15.2.Format HDD All Data) 5. When UK-104 is not mounted, replace HDD1, HDD2 and HDD3 (Refer to \"I.4.7.8.Hard disk replacing procedure\") When UK-104 is mounted, perform steps 6 to 9. 6. Change DIPSW40-7 to \"0\". 7. OFF/ON of the sub power switch (SW2) 8. Check if the malfunction code C-D0E1 occurs at the start. <When C-D0E1 occurs> • When either of HDD1, HDD2, or HDD3 is displayed on the touch panel, replace HDD1, HDD2, and HDD3. (Refer to \"I.4.7.8.Hard disk replacing procedure\") • When HDD4 is displayed on the touch panel, replace HDD4. (Refer to \"I.4.7.8.Hard disk replacing procedure\") <When C-D0E1 does not occur> • Replace HDD4 (Refer to \"I.4.7.8.Hard disk replacing procedure\") 9. Change DIPSW40-7 to \"1\". 10. Replace the other HDD which is not replaced yet. (Refer to \"I.4.7.8.Hard disk replacing procedure\") 11. Replace OACB (Refer to \"G.3.2.8.Overall control board (OACB)\")",
     "isolate": "DIPSW18-7",
-    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach."
+    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach.",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-D030",
@@ -2828,7 +3051,9 @@ export const Label_190 = [
     "note": "• When you isolate the faulty part, the limited use is available. • The message \"Please call service\" and \"Press [Help] to disengage\" are displayed alternately on the touch panel. • When you press the help key, the message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Check the firmware of the overall control (I) and the controller (P), and reinstall the firmware when the version is different. 2. Execute bad sectors check and recovery in the output check I/O 99-03. 3. Check the connection between each HDD, and repair it when there is any abnormality. 4. Format the HDD (Refer to I.4.15.2.Format HDD All Data) 5. When UK-104 is not mounted, replace HDD1, HDD2 and HDD3 (Refer to \"I.4.7.8.Hard disk replacing procedure\") When UK-104 is mounted, perform steps 6 to 9. 6. Change DIPSW40-7 to \"0\". 7. OFF/ON of the sub power switch (SW2) 8. Check if the malfunction code C-D0E1 occurs at the start. <When C-D0E1 occurs> • When either of HDD1, HDD2, or HDD3 is displayed on the touch panel, replace HDD1, HDD2, and HDD3. (Refer to \"I.4.7.8.Hard disk replacing procedure\")",
     "isolate": "DIPSW18-7",
-    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach."
+    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach.",
+    "section": "",
+    "additional": "Проверьте подключение HDD. Форматируйте HDD согласно сервисной инструкции"
   },
   {
     "code": "C-D040",
@@ -2840,7 +3065,9 @@ export const Label_190 = [
     "note": "• When you isolate the faulty part, the limited use is available. • The message \"Please call service\" and \"Press [Help] to disengage\" are displayed alternately on the touch panel. • When you press the help key, the message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Check the firmware of the overall control (I) and the controller (P), and reinstall the firmware when the version is different. 2. Execute bad sectors check and recovery in the output check I/O 99-03. 3. Check the connection between each HDD, and repair it when there is any abnormality. 4. Format the HDD (Refer to I.4.15.2.Format HDD All Data) 5. When UK-104 is not mounted, replace HDD1, HDD2 and HDD3 (Refer to \"I.4.7.8.Hard disk replacing procedure\") When UK-104 is mounted, perform steps 6 to 9. 6. Change DIPSW40-7 to \"0\". 7. OFF/ON of the sub power switch (SW2) 8. Check if the malfunction code C-D0E1 occurs at the start. <When C-D0E1 occurs> • When either of HDD1, HDD2, or HDD3 is displayed on the touch panel, replace HDD1, HDD2, and HDD3. (Refer to \"I.4.7.8.Hard disk replacing procedure\") • When HDD4 is displayed on the touch panel, replace HDD4. (Refer to \"I.4.7.8.Hard disk replacing procedure\") <When C-D0E1 does not occur> • Replace HDD4 (Refer to \"I.4.7.8.Hard disk replacing procedure\") 9. Change DIPSW40-7 to \"1\". 10. Replace the other HDD which is not replaced yet. (Refer to \"I.4.7.8.Hard disk replacing procedure\") 11. Replace OACB (Refer to \"G.3.2.8.Overall control board (OACB)\")",
     "isolate": "DIPSW18-7",
-    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach."
+    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach.",
+    "section": "",
+    "additional": "Проверьте подключение HDD. Форматируйте HDD согласно сервисной инструкции"
   },
   {
     "code": "C-D050",
@@ -2852,7 +3079,9 @@ export const Label_190 = [
     "note": "• When you isolate the faulty part, the limited use is available. • The message \"Please call service\" and \"Press [Help] to disengage\" are displayed alternately on the touch panel. • When you press the help key, the message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Check the firmware of the overall control (I) and the controller (P), and reinstall the firmware when the version is different. 2. Execute bad sectors check and recovery in the output check I/O 99-03. 3. Check the connection between each HDD, and repair it when there is any abnormality. 4. Format the HDD (Refer to I.4.15.2.Format HDD All Data) 5. When UK-104 is not mounted, replace HDD1, HDD2 and HDD3 (Refer to \"I.4.7.8.Hard disk replacing procedure\") When UK-104 is mounted, perform steps 6 to 9. 6. Change DIPSW40-7 to \"0\". 7. OFF/ON of the sub power switch (SW2) 8. Check if the malfunction code C-D0E1 occurs at the start. <When C-D0E1 occurs> • When either of HDD1, HDD2, or HDD3 is displayed on the touch panel, replace HDD1, HDD2, and HDD3. (Refer to \"I.4.7.8.Hard disk replacing procedure\") • When HDD4 is displayed on the touch panel, replace HDD4. (Refer to \"I.4.7.8.Hard disk replacing procedure\") <When C-D0E1 does not occur> • Replace HDD4 (Refer to \"I.4.7.8.Hard disk replacing procedure\") 9. Change DIPSW40-7 to \"1\". 10. Replace the other HDD which is not replaced yet. (Refer to \"I.4.7.8.Hard disk replacing procedure\") 11. Replace OACB (Refer to \"G.3.2.8.Overall control board (OACB)\")",
     "isolate": "DIPSW18-7",
-    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach."
+    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach.",
+    "section": "",
+    "additional": "Проверьте подключение HDD. Форматируйте HDD согласно сервисной инструкции"
   },
   {
     "code": "C-D060",
@@ -2864,7 +3093,9 @@ export const Label_190 = [
     "note": "• When you isolate the faulty part, the limited use is available. • The message \"Please call service\" and \"Press [Help] to disengage\" are displayed alternately on the touch panel. • When you press the help key, the message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Check the connection between SSD and OACB, and repair it when there is any abnormality. 2. Reinstall the firmware of the controller. 3. Replace SSD (Refer to \"G.3.2.9.SSD (SSD)\") Note • For how to get or replace the SSD (SSD), contact the service manager of Konica Minolta. 4. Replace OACB (Refer to \"G.3.2.8.Overall control board (OACB)\")",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-D070",
@@ -2876,7 +3107,9 @@ export const Label_190 = [
     "note": "",
     "solution": "1. Check the firmware of the overall control (I) and the controller (P), and reinstall the firmware when the version is different. 2. Execute bad sectors check and recovery in the output check I/O 99-03. 3. Check the connection between each HDD, and repair it when there is any abnormality. 4. Format the HDD (Refer to I.4.15.2.Format HDD All Data) 5. When UK-104 is not mounted, replace HDD1, HDD2 and HDD3 (Refer to \"I.4.7.8.Hard disk replacing procedure\") When UK-104 is mounted, perform steps 6 to 9. 6. Change DIPSW40-7 to \"0\". 7. OFF/ON of the sub power switch (SW2) 8. Check if the malfunction code C-D0E1 occurs at the start. <When C-D0E1 occurs> • When either of HDD1, HDD2, or HDD3 is displayed on the touch panel, replace HDD1, HDD2, and HDD3. (Refer to \"I.4.7.8.Hard disk replacing procedure\") • When HDD4 is displayed on the touch panel, replace HDD4. (Refer to \"I.4.7.8.Hard disk replacing procedure\") <When C-D0E1 does not occur> • Replace HDD4 (Refer to \"I.4.7.8.Hard disk replacing procedure\") 9. Change DIPSW40-7 to \"1\". 10. Replace the other HDD which is not replaced yet. (Refer to \"I.4.7.8.Hard disk replacing procedure\") 11. Replace OACB (Refer to \"G.3.2.8.Overall control board (OACB)\")",
     "isolate": "DIPSW18-7",
-    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach."
+    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach.",
+    "section": "",
+    "additional": "Проверьте подключение HDD. Форматируйте HDD согласно сервисной инструкции"
   },
   {
     "code": "C-D080",
@@ -2888,7 +3121,9 @@ export const Label_190 = [
     "note": "• When you isolate the faulty part, the limited use is available. • The message \"Please call service\" and \"Press [Help] to disengage\" are displayed alternately on the touch panel. • When you press the help key, the message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Execute bad sectors check and recovery in the output check I/O 99-03. 2. Check the connection between each HDD, and repair it when there is any abnormality. 3. Format the HDD (Refer to I.4.15.2.Format HDD All Data) 4. Replace HDD1, HDD2 and HDD3 (Refer to \"I.4.7.8.Hard disk replacing procedure\") 5. Replace OACB (Refer to \"G.3.2.8.Overall control board (OACB)\")",
     "isolate": "DIPSW18-7",
-    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach."
+    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach.",
+    "section": "",
+    "additional": "Проверьте подключение HDD. Форматируйте HDD согласно сервисной инструкции"
   },
   {
     "code": "C-D0C0",
@@ -2900,7 +3135,9 @@ export const Label_190 = [
     "note": "• When you isolate the faulty part, the limited use is available. • The message \"Please call service\" and \"Press [Help] to disengage\" are displayed alternately on the touch panel. • When you press the help key, the message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Initialize the file system by the I/O 99-92 output check. 2. Check the connection between each HDD, and repair it when there is any abnormality. 3. Format the HDD (Refer to I.4.15.2.Format HDD All Data) 4. Replace HDD1, HDD2 and HDD3 (Refer to \"I.4.7.8.Hard disk replacing procedure\") 5. Replace OACB (Refer to \"G.3.2.8.Overall control board (OACB)\")",
     "isolate": "DIPSW18-7",
-    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach."
+    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach.",
+    "section": "",
+    "additional": "Проверьте подключение HDD. Форматируйте HDD согласно сервисной инструкции"
   },
   {
     "code": "C-D0D0",
@@ -2912,7 +3149,9 @@ export const Label_190 = [
     "note": "• When you isolate the faulty part, the limited use is available. • The message \"Please call service\" and \"Press [Help] to disengage\" are displayed alternately on the touch panel. • When you press the help key, the message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Check that each HDD is connected to the appropriate port, and repair it when there is any abnormality. 2. Format the HDD (Refer to I.4.15.2.Format HDD All Data) 3. Replace HDD (Refer to \"I.4.7.8.Hard disk replacing procedure\") 4. Replace OACB (Refer to \"G.3.2.8.Overall control board (OACB)\")",
     "isolate": "DIPSW18-7",
-    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach."
+    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach.",
+    "section": "",
+    "additional": "Проверьте подключение HDD. Форматируйте HDD согласно сервисной инструкции"
   },
   {
     "code": "C-D0D1",
@@ -2924,7 +3163,9 @@ export const Label_190 = [
     "note": "• When you isolate the faulty part, the limited use is available. • The message \"Please call service\" and \"Press [Help] to disengage\" are displayed alternately on the touch panel. • When you press the help key, the message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Check that the HDD configuration matches the DIPSW setting, and repair it when there is any abnormality. <Proper DIPSW setting> • When the number of HDD is 0: DIPSW36-6=0, DIPSW2-0=0",
     "isolate": "DIPSW18-7",
-    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach."
+    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach.",
+    "section": "",
+    "additional": "Проверьте подключение HDD. Форматируйте HDD согласно сервисной инструкции"
   },
   {
     "code": "C-D0E1",
@@ -2936,7 +3177,9 @@ export const Label_190 = [
     "note": "• When you isolate the faulty part, the limited use is available. • The message \"Please call service\" and \"Press [Help] to disengage\" are displayed alternately on the touch panel. • When you press the help key, the message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Execute bad sectors check and recovery in the output check I/O 99-03. 2. Check the connection between each HDD, and repair it when there is any abnormality. 3. Format the HDD (Refer to I.4.15.2.Format HDD All Data) 4. When either of HDD1, HDD2, or HDD3 is displayed on the touch panel, replace HDD1, HDD2, and HDD3. (Refer to \"I.4.7.8.Hard disk replacing procedure\") When HDD4 is displayed on the touch panel, replace HDD4. (Refer to \"I.4.7.8.Hard disk replacing procedure\") 5. Replace the other HDD which is not replaced yet. (Refer to \"I.4.7.8.Hard disk replacing procedure\") 6. Replace OACB (Refer to \"G.3.2.8.Overall control board (OACB)\")",
     "isolate": "DIPSW18-7",
-    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach."
+    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach.",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-D0E3",
@@ -2948,7 +3191,9 @@ export const Label_190 = [
     "note": "• When you isolate the faulty part, the limited use is available. • The message \"Please call service\" and \"Press [Help] to disengage\" are displayed alternately on the touch panel. • When you press the help key, the message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Execute bad sectors check and recovery in the output check I/O 99-03. 2. Check the connection between each HDD, and repair it when there is any abnormality.",
     "isolate": "DIPSW18-7",
-    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach."
+    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach.",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-D0E4",
@@ -2960,7 +3205,9 @@ export const Label_190 = [
     "note": "• When you isolate the faulty part, the limited use is available. • The message \"Please call service\" and \"Press [Help] to disengage\" are displayed alternately on the touch panel. • When you press the help key, the message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Execute bad sectors check and recovery in the output check I/O 99-03. 2. Check the connection between each HDD, and repair it when there is any abnormality. 3. Replace HDD1, HDD2 and HDD3 (Refer to \"I.4.7.8.Hard disk replacing procedure\") 4. Replace OACB (Refer to \"G.3.2.8.Overall control board (OACB)\")",
     "isolate": "DIPSW18-7",
-    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach."
+    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach.",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-D0E5",
@@ -2972,7 +3219,9 @@ export const Label_190 = [
     "note": "• When you isolate the faulty part, the limited use is available. • The message \"Please call service\" and \"Press [Help] to disengage\" are displayed alternately on the touch panel. • When you press the help key, the message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Execute bad sectors check and recovery in the output check I/O 99-03. 2. Check the connection between each HDD, and repair it when there is any abnormality. 3. Replace HDD1, HDD2 and HDD3 (Refer to \"I.4.7.8.Hard disk replacing procedure\") 4. Replace OACB (Refer to \"G.3.2.8.Overall control board (OACB)\")",
     "isolate": "DIPSW18-7",
-    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach."
+    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach.",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-D0E8",
@@ -2984,7 +3233,9 @@ export const Label_190 = [
     "note": "• When you isolate the faulty part, the limited use is available. • The message \"Please call service\" and \"Press [Help] to disengage\" are displayed alternately on the touch panel. • When you press the help key, the message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Execute bad sectors check and recovery in the output check I/O 99-92. 2. Check the connection between each HDD, and repair it when there is any abnormality. 3. Execute Format HDD 4. Replace HDD1, HDD2, and HDD3 at the same time.(Refer to \"I.4.7.8.Hard disk replacing procedure\") 5. Replace OACB. (Refer to \"G.3.2.8.Overall control board (OACB)\")",
     "isolate": "DIPSW18-7",
-    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach."
+    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach.",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-D0EF",
@@ -2996,7 +3247,9 @@ export const Label_190 = [
     "note": "• When you isolate the faulty part, the limited use is available. • The message \"Please call service\" and \"Press [Help] to disengage\" are displayed alternately on the touch panel. • When you press the help key, the message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Execute bad sectors check and recovery in the output check I/O 99-03. 2. Check the connection between each HDD, and repair it when there is any abnormality. 3. Replace HDD1, HDD2 and HDD3 (Refer to \"I.4.7.8.Hard disk replacing procedure\") 4. Replace OACB (Refer to \"G.3.2.8.Overall control board (OACB)\")",
     "isolate": "DIPSW18-7",
-    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach."
+    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach.",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-D0F0",
@@ -3008,7 +3261,9 @@ export const Label_190 = [
     "note": "",
     "solution": "1. Enter the correct HDD lock password. 2. Check the installation status of EEPROM, and repair it when there is any abnormality. 3. Replace OACB (Refer to \"G.3.2.8.Overall control board (OACB)\") 4. Contact the service manager of Konica Minolta.",
     "isolate": "DIPSW18-7",
-    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach."
+    "control": "HDD unusable (HDD disconnected) *When connected to IC-602, do not detach.",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-D0F1",
@@ -3020,7 +3275,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the installation status of EEPROM, and repair it when there is any abnormality. 2. When the HDD lock password is disabled, replace OACB (Refer to \"G.3.2.8.Overall control board (OACB)\") 3. When the HDD lock password is enabled, contact the service manager of KMBT.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-D0F5",
@@ -3032,7 +3289,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between each HDD, and repair it when there is any abnormality. 2. Format the HDD (Refer to I.4.15.2.Format HDD All Data) 3. Replace HDD1, HDD2 and HDD3 (Refer to \"I.4.7.8.Hard disk replacing procedure\") 4. Replace OACB (Refer to \"G.3.2.8.Overall control board (OACB)\")",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-D0F6",
@@ -3044,7 +3303,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Check the connection between each HDD, and repair it when there is any abnormality. 2. Format the HDD (Refer to I.4.15.2.Format HDD All Data) 3. Replace HDD1, HDD2 and HDD3 (Refer to \"I.4.7.8.Hard disk replacing procedure\") 4. Replace OACB (Refer to \"G.3.2.8.Overall control board (OACB)\")",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-D0F8",
@@ -3056,7 +3317,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-E007",
@@ -3068,7 +3331,9 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Check that DIMM/1 (DIMM1), DIMM/2 (DIMM2), DIMM/3 (DIMM3), DIMM/4 (DIMM4) on the board are correctly installed, and repair it when there is any abnormality. 2. Check the connector connection and the wiring of PRIPB and OACB, and repair it when there is any abnormality. 3. Replace PRIPB. 4. Replace OACB (Refer to \"G.3.2.8.Overall control board (OACB)\")",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-E009",
@@ -3080,7 +3345,9 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Check the connector connection and the wiring on PRCB, PRIPB and OACB and repair it when there is any abnormality. 2. Replace PRCB. 3. Replace PRIPB. 4. Replace OACB (Refer to \"G.3.2.8.Overall control board (OACB)\")",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-E012",
@@ -3092,7 +3359,9 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Select \"0\" on DIPSW49-1.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-E013",
@@ -3104,7 +3373,9 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Select \"0\" on DIPSW49-1.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-E014",
@@ -3116,7 +3387,9 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Select \"0\" on DIPSW49-1.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-E015",
@@ -3128,7 +3401,9 @@ export const Label_190 = [
     "note": "• The message \"Please turn on power again\" is displayed on the touch panel.",
     "solution": "1. Select \"0\" on DIPSW49-1.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-E017",
@@ -3140,7 +3415,9 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Replace OACB (Refer to \"G.3.2.8.Overall control board (OACB)\")",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   },
   {
     "code": "C-E018",
@@ -3152,6 +3429,8 @@ export const Label_190 = [
     "note": "• The message \"Please call service\" is displayed on the panel.",
     "solution": "1. Operate according to the procedures displayed on the touch panel. 2. Deactivate the main power after you deactivate the sub power.",
     "isolate": "",
-    "control": ""
+    "control": "",
+    "section": "",
+    "additional": ""
   }
 ];

@@ -6,6 +6,7 @@ export interface Material {
     id: string;
     type: string;
     qty: number;
+    status: 'new' | 'defective';
 }
 
 export const subscribeToMaterials = (callback: (materials: Material[]) => void) => {

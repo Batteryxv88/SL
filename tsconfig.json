@@ -9,7 +9,8 @@
         "moduleResolution": "node",
         //"baseUrl": ".",
         "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "typeRoots": ["./node_modules/@types", "./src/types"]
     },
     "ts-node": {
         "compilerOptions": {

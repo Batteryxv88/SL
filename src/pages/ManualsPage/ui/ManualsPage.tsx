@@ -4,7 +4,7 @@ import { useState, FormEvent, useEffect } from "react";
 import { Label_190 } from "../../../shared/lib/manuals/Label190";
 import { Label_400 } from "../../../shared/lib/manuals/Label400";
 import cls from "./ManualsPage.module.scss";
-import MachineSvg from "../../../shared/assets/machine.svg";
+import MachineSvg from "../../../shared/assets/machine1.svg";
 
 const ManualsPage = () => {
     const dispatch = useAppDispatch();
@@ -13,6 +13,7 @@ const ManualsPage = () => {
     const manualState = useAppSelector((state) => state.manuals.manual);
     const [searchCode, setSearchCode] = useState("");
     const [foundErrors, setFoundErrors] = useState<any[]>([]);
+    console.log(foundErrors);
 
     // Сброс состояния поиска при смене машины
     useEffect(() => {
@@ -22,6 +23,37 @@ const ManualsPage = () => {
 
     // Выбираем нужный массив данных в зависимости от выбранной машины
     const currentManualData = manualState === "label_190" ? Label_190 : Label_400;
+
+    // Функция для преобразования номеров секций в названия
+    const getSectionNames = (sectionNumbers: string) => {
+        if (!sectionNumbers || sectionNumbers.trim() === "") return "";
+        
+        const sectionMap: { [key: string]: string } = {
+            "1": "Отработка",
+            "2": "Протяжка бумаги, ADU",
+            "3": "Входная секция",
+            "4": "Выходная секция",
+            "5": "Печка",
+            "6": "Блок с датчиками IDC",
+            "7": "Лента переноса",
+            "8": "Узел второго переноса",
+            "9": "Барабаны",
+            "10": "Блоки проявки",
+            "11": "Коронаторы",
+            "12": "Лазеры",
+            "13": "Регистрация бумаги",
+            "14": "Подача тонера"
+        };
+
+        // Разбиваем строку по запятым, удаляем пробелы и преобразуем номера в названия
+        const numbers = sectionNumbers.split(',').map(num => num.trim());
+        const sectionNames = numbers.map(num => {
+            const name = sectionMap[num];
+            return name ? `${num} ${name}` : num;
+        });
+
+        return sectionNames.join(', ');
+    };
 
     const handleSearch = (e: FormEvent) => {
         e.preventDefault();
@@ -70,23 +102,45 @@ const ManualsPage = () => {
                                 <p className={cls.des}>{item.measure}</p>
                                 <h3 className={cls.title}>Estimated abnormal parts</h3>
                                 <p className={cls.des}>{item.abnormal}</p>
-                                <h3 className={cls.title}>Correction</h3>
-                                <p className={cls.des}>{item.corr}</p>
+                                {item.corr && (
+                                    <>
+                                        <h3 className={cls.title}>Correction</h3>
+                                        <p className={cls.des}>{item.corr}</p>
+                                    </>
+                                )}
                                 <h3 className={cls.title}>Note</h3>
                                 <p className={cls.des}>{item.note}</p>
                                 <h3 className={cls.title}>Solution</h3>
                                 <p className={cls.des}>{item.solution}</p>
-                                <h3 className={cls.title}>Faulty part isolation DIPSW</h3>
-                                <p className={cls.des}>{item.isolate}</p>
+                                {item.isolate && (
+                                    <>
+                                        <h3 className={cls.title}>Faulty part isolation DIPSW</h3>
+                                        <p className={cls.des}>{item.isolate}</p>
+                                    </>
+                                )}
                                 {item.control && (
                                     <>
                                         <h3 className={cls.title}>Control</h3>
                                         <p className={cls.des}>{item.control}</p>
                                     </>
                                 )}
-                                <div className={cls.machine}>
-                                    <MachineSvg />
-                                </div>
+                                {item.additional && item.additional.trim() !== "" && (
+                                    <>
+                                        <h3 className={cls.title}>Комментарий</h3>
+                                        <p className={cls.des}>{item.additional}</p>
+                                    </>
+                                )}
+                                {item.section && (
+                                    <>
+                                        <h3 className={cls.title}>Секция</h3>
+                                        <p className={cls.des}>{getSectionNames(item.section)}</p>
+                                    </>
+                                )}
+                                {manualState === "label_190" && (
+                                    <div className={cls.machine}>
+                                        <MachineSvg />
+                                    </div>
+                                )}
                             </div>
                         ))
                     )}
