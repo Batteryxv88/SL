@@ -2,7 +2,7 @@ import cls from './RotationSizePart.module.scss';
 import { RectangleIcon, SquareIcon, CircleIcon, OvalIcon, CustomShapeIcon } from '../../assets/icons/shapes';
 import EditPenIcon from '../../assets/icons/edit-pen.svg';
 import CheckIcon from '../../assets/icons/check-icon.svg';
-import { useState, CSSProperties, useEffect, useRef } from 'react';
+import { useState, CSSProperties, useEffect, useRef, useCallback } from 'react';
 import { useAppDispatch } from '../../../app/providers/StoreProvider/Store/hooks';
 import { updateForm } from '../../../app/providers/StoreProvider/Store/RotationFormsSlice';
 import { setSelectedFormId } from '../../../app/providers/StoreProvider/Store/SelectedFormSlice';
@@ -37,6 +37,8 @@ const RotationSizePart = (props: RotationSizePartProps) => {
 
     const dispatch = useAppDispatch();
     const [isEditing, setIsEditing] = useState(false);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const timerRef = useRef<NodeJS.Timeout | null>(null);
 
     // Обновляем глобальное состояние редактирования при изменении локального
     useEffect(() => {
@@ -73,6 +75,66 @@ const RotationSizePart = (props: RotationSizePartProps) => {
     // Добавляем рефы для проверки обрезания текста
     const commentRef = useRef<HTMLParagraphElement>(null);
     const [isCommentTruncated, setIsCommentTruncated] = useState(false);
+
+    // Обработчик клика вне блока - оптимизированный для множественных инпутов
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            const target = event.target as HTMLElement;
+            
+            // Проверяем, что клик НЕ по инпуту, селекту или области редактирования
+            const isInput = target.tagName === 'INPUT';
+            const isSelect = target.tagName === 'SELECT';
+            const isEditContainer = target.closest(`.${cls.editContainer}`);
+            const isEditableArea = target.closest(`.${cls.RotationSizePart}`) && (isInput || isSelect || isEditContainer);
+            
+            if (!isEditableArea && containerRef.current && !containerRef.current.contains(target)) {
+                setIsEditing(false);
+                resetEditedValues();
+            }
+        };
+
+        if (isEditing) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isEditing]);
+
+    // Таймер для автоматического закрытия
+    useEffect(() => {
+        if (isEditing) {
+            if (timerRef.current) {
+                clearTimeout(timerRef.current);
+            }
+            
+            timerRef.current = setTimeout(() => {
+                setIsEditing(false);
+                resetEditedValues();
+            }, 30000); // 30 секунд для множественных полей
+        }
+
+        return () => {
+            if (timerRef.current) {
+                clearTimeout(timerRef.current);
+            }
+        };
+    }, [isEditing]);
+
+    const resetEditedValues = useCallback(() => {
+        setEditedHeight(height);
+        setEditedWidth(width);
+        setEditedRows(rows);
+        setEditedShape(shape);
+        setEditedSizeForColumn(size_for_column);
+        setEditedMark(mark);
+        setEditedHeightWithout1(height_without1);
+        setEditedMaterial(material);
+        setEditedColumns(columns);
+        setEditedComment(comment);
+        setEditedNumber(number);
+    }, [height, width, rows, shape, size_for_column, mark, height_without1, material, columns, comment, number]);
     
     // Проверяем, обрезан ли текст при монтировании и изменении comment
     useEffect(() => {
@@ -93,7 +155,7 @@ const RotationSizePart = (props: RotationSizePartProps) => {
         };
     }, [comment]);
 
-    const getShapeIcon = () => {
+    const getShapeIcon = useCallback(() => {
         switch (shape.toLowerCase()) {
             case 'прямоугольник':
                 return <RectangleIcon />;
@@ -108,9 +170,13 @@ const RotationSizePart = (props: RotationSizePartProps) => {
             default:
                 return <RectangleIcon />;
         }
-    };
+    }, [shape]);
 
-    const handleSaveChanges = () => {
+    const handleSaveChanges = useCallback(() => {
+        if (timerRef.current) {
+            clearTimeout(timerRef.current);
+        }
+
         const updatedData = {
             height: editedHeight,
             width: editedWidth,
@@ -129,16 +195,60 @@ const RotationSizePart = (props: RotationSizePartProps) => {
         setIsEditing(false);
         // При сохранении сбрасываем глобальное состояние
         isAnyFormBeingEdited = false;
-    };
+    }, [dispatch, id, editedHeight, editedWidth, editedRows, editedShape, editedSizeForColumn, editedMark, editedHeightWithout1, editedMaterial, editedColumns, editedComment, editedNumber]);
+
+    // Глобальный обработчик Enter для всего компонента
+    useEffect(() => {
+        const handleGlobalKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                e.stopPropagation();
+                handleSaveChanges();
+            }
+        };
+
+        if (isEditing) {
+            document.addEventListener('keydown', handleGlobalKeyDown);
+        }
+
+        return () => {
+            document.removeEventListener('keydown', handleGlobalKeyDown);
+        };
+    }, [isEditing, handleSaveChanges]);
 
     // Обработчик клика для просмотра формы
-    const handleRowClick = () => {
+    const handleRowClick = useCallback(() => {
         // Проверяем, что никакая форма не редактируется в данный момент
         if (!isEditing && !isAnyFormBeingEdited) {
             dispatch(setSelectedFormId(id.toString()));
             dispatch(changeRotationModule('preview'));
         }
-    };
+    }, [isEditing, dispatch, id]);
+
+    const handleEditClick = useCallback((e: React.MouseEvent) => {
+        e.stopPropagation();
+        // Разрешаем редактирование только если никакая другая форма не редактируется
+        if (!isAnyFormBeingEdited) {
+            setIsEditing(true);
+            resetEditedValues(); // Восстанавливаем текущие значения при начале редактирования
+        }
+    }, [resetEditedValues]);
+
+    const handleKeyPress = useCallback((e: React.KeyboardEvent) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            e.stopPropagation();
+            handleSaveChanges();
+        }
+    }, [handleSaveChanges]);
+
+    const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            e.stopPropagation();
+            handleSaveChanges();
+        }
+    }, [handleSaveChanges]);
 
     // Общий стиль для полей ввода
     const inputStyle: CSSProperties = {
@@ -154,37 +264,37 @@ const RotationSizePart = (props: RotationSizePartProps) => {
     };
 
     // Стили для отдельных полей ввода, соответствующие ширине оригинальных полей
-    const getColumnInputStyle = (): CSSProperties => ({
+    const getColumnInputStyle = useCallback((): CSSProperties => ({
         ...inputStyle,
         width: '37px'
-    });
+    }), []);
 
-    const getRowInputStyle = (): CSSProperties => ({
+    const getRowInputStyle = useCallback((): CSSProperties => ({
         ...inputStyle,
         width: '32px'
-    });
+    }), []);
 
-    const getSizeForColumnInputStyle = (): CSSProperties => ({
+    const getSizeForColumnInputStyle = useCallback((): CSSProperties => ({
         ...inputStyle,
         width: '72px'
-    });
+    }), []);
 
-    const getHeightWithout1InputStyle = (): CSSProperties => ({
+    const getHeightWithout1InputStyle = useCallback((): CSSProperties => ({
         ...inputStyle,
         width: '65px'
-    });
+    }), []);
 
-    const getCommentInputStyle = (): CSSProperties => ({
+    const getCommentInputStyle = useCallback((): CSSProperties => ({
         ...inputStyle,
         width: '190px'
-    });
+    }), []);
 
-    const getOrderInputStyle = (): CSSProperties => ({
+    const getOrderInputStyle = useCallback((): CSSProperties => ({
         ...inputStyle,
         width: '40px'
-    });
+    }), []);
 
-    const getSelectMaterialStyle = (): CSSProperties => ({
+    const getSelectMaterialStyle = useCallback((): CSSProperties => ({
         ...inputStyle,
         width: '68px',
         appearance: 'none',
@@ -193,9 +303,9 @@ const RotationSizePart = (props: RotationSizePartProps) => {
         backgroundPosition: 'right 4px center',
         backgroundSize: '8px',
         paddingRight: '14px'
-    });
+    }), []);
 
-    const getSelectMarkStyle = (): CSSProperties => ({
+    const getSelectMarkStyle = useCallback((): CSSProperties => ({
         ...inputStyle,
         width: '48px',
         appearance: 'none',
@@ -204,9 +314,9 @@ const RotationSizePart = (props: RotationSizePartProps) => {
         backgroundPosition: 'right 4px center',
         backgroundSize: '8px',
         paddingRight: '14px'
-    });
+    }), []);
 
-    const getSelectShapeStyle = (): CSSProperties => ({
+    const getSelectShapeStyle = useCallback((): CSSProperties => ({
         ...inputStyle,
         width: '42px',
         appearance: 'none',
@@ -215,16 +325,17 @@ const RotationSizePart = (props: RotationSizePartProps) => {
         backgroundPosition: 'right 4px center',
         backgroundSize: '8px',
         paddingRight: '14px'
-    });
+    }), []);
 
     // Добавляем стиль для полей ввода размеров
-    const getSizeInputStyle = (): CSSProperties => ({
+    const getSizeInputStyle = useCallback((): CSSProperties => ({
         ...inputStyle,
         width: '30px'
-    });
+    }), []);
 
     return (
         <div
+            ref={containerRef}
             className={cls.RotationSizePart}
             onClick={handleRowClick}
             style={{
@@ -241,6 +352,7 @@ const RotationSizePart = (props: RotationSizePartProps) => {
                             value={editedWidth}
                             onChange={(e) => setEditedWidth(Number(e.target.value))}
                             style={getSizeInputStyle()}
+                            onKeyPress={handleKeyPress}
                         />
                         <span>×</span>
                         <input
@@ -248,6 +360,7 @@ const RotationSizePart = (props: RotationSizePartProps) => {
                             value={editedHeight}
                             onChange={(e) => setEditedHeight(Number(e.target.value))}
                             style={getSizeInputStyle()}
+                            onKeyPress={handleKeyPress}
                         />
                     </>
                 ) : (
@@ -267,6 +380,7 @@ const RotationSizePart = (props: RotationSizePartProps) => {
                         value={editedColumns}
                         onChange={(e) => setEditedColumns(Number(e.target.value))}
                         style={getColumnInputStyle()}
+                        onKeyPress={handleKeyPress}
                     />
                 </div>
             ) : (
@@ -280,6 +394,7 @@ const RotationSizePart = (props: RotationSizePartProps) => {
                         value={editedRows}
                         onChange={(e) => setEditedRows(Number(e.target.value))}
                         style={getRowInputStyle()}
+                        onKeyPress={handleKeyPress}
                     />
                 </div>
             ) : (
@@ -292,6 +407,7 @@ const RotationSizePart = (props: RotationSizePartProps) => {
                         value={editedShape}
                         onChange={(e) => setEditedShape(e.target.value)}
                         style={getSelectShapeStyle()}
+                        onKeyDown={handleKeyDown}
                     >
                         {SHAPES.map(shapeOption => (
                             <option key={shapeOption} value={shapeOption}>{shapeOption}</option>
@@ -311,6 +427,7 @@ const RotationSizePart = (props: RotationSizePartProps) => {
                         value={editedSizeForColumn}
                         onChange={(e) => setEditedSizeForColumn(Number(e.target.value))}
                         style={getSizeForColumnInputStyle()}
+                        onKeyPress={handleKeyPress}
                     />
                 </div>
             ) : (
@@ -323,6 +440,7 @@ const RotationSizePart = (props: RotationSizePartProps) => {
                         value={editedMark}
                         onChange={(e) => setEditedMark(e.target.value)}
                         style={getSelectMarkStyle()}
+                        onKeyDown={handleKeyDown}
                     >
                         {MARKS.map(markOption => (
                             <option key={markOption} value={markOption}>{markOption}</option>
@@ -340,6 +458,7 @@ const RotationSizePart = (props: RotationSizePartProps) => {
                         value={editedHeightWithout1}
                         onChange={(e) => setEditedHeightWithout1(Number(e.target.value))}
                         style={getHeightWithout1InputStyle()}
+                        onKeyPress={handleKeyPress}
                     />
                 </div>
             ) : (
@@ -352,6 +471,7 @@ const RotationSizePart = (props: RotationSizePartProps) => {
                         value={editedMaterial}
                         onChange={(e) => setEditedMaterial(e.target.value)}
                         style={getSelectMaterialStyle()}
+                        onKeyDown={handleKeyDown}
                     >
                         {MATERIALS.map(materialOption => (
                             <option key={materialOption} value={materialOption}>{materialOption}</option>
@@ -369,6 +489,7 @@ const RotationSizePart = (props: RotationSizePartProps) => {
                         value={editedComment}
                         onChange={(e) => setEditedComment(e.target.value)}
                         style={getCommentInputStyle()}
+                        onKeyPress={handleKeyPress}
                     />
                 </div>
             ) : (
@@ -395,6 +516,7 @@ const RotationSizePart = (props: RotationSizePartProps) => {
                         value={editedNumber}
                         onChange={(e) => setEditedNumber(Number(e.target.value))}
                         style={getOrderInputStyle()}
+                        onKeyPress={handleKeyPress}
                     />
                 </div>
             ) : (
@@ -405,7 +527,8 @@ const RotationSizePart = (props: RotationSizePartProps) => {
                 {isEditing ? (
                     <CheckIcon
                         className={cls.editPenIcon}
-                        onClick={(e) => {
+                        onMouseDown={(e) => {
+                            e.preventDefault();
                             e.stopPropagation();
                             handleSaveChanges();
                         }}
@@ -413,13 +536,7 @@ const RotationSizePart = (props: RotationSizePartProps) => {
                 ) : (
                     <EditPenIcon
                         className={cls.editPenIcon}
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            // Разрешаем редактирование только если никакая другая форма не редактируется
-                            if (!isAnyFormBeingEdited) {
-                                setIsEditing(true);
-                            }
-                        }}
+                        onClick={handleEditClick}
                     />
                 )}
             </div>

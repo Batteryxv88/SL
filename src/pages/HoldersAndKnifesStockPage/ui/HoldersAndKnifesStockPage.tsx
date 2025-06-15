@@ -4,9 +4,10 @@ import Knife from '../../../shared/assets/icons/knife.svg';
 import EditIcon from '../../../shared/assets/icons/edit-pen.svg';
 import CheckIcon from '../../../shared/assets/icons/check-icon.svg';
 import { useHoldersAndKnifes } from '../../../app/providers/StoreProvider/Store/hooks';
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { updateHolderAndKnifeQty } from '../../../services/holdersAndKnifes';
 import LoadingPlug from '../../../shared/ui/LoadingPlug/LoadingPlug';
+
 const HoldersAndKnifesStockPage = () => {
     const { holdersAndKnifes, isLoading, error } = useHoldersAndKnifes();
     const [editingMaterial, setEditingMaterial] = useState<string | null>(null);
@@ -14,10 +15,25 @@ const HoldersAndKnifesStockPage = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-    // Обработчик клика вне блока
+    // Фильтруем держатели и ножи
+    const holders = useMemo(() => 
+        holdersAndKnifes.filter(item => item.type === 'holder'), [holdersAndKnifes]
+    );
+    
+    const knifes = useMemo(() => 
+        holdersAndKnifes.filter(item => item.type === 'knife'), [holdersAndKnifes]
+    );
+
+    // Обработчик клика вне блока - оптимизированный
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
-            if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+            const target = event.target as HTMLElement;
+            
+            // Проверяем, что клик НЕ по инпуту и НЕ по области редактирования
+            const isInput = target.tagName === 'INPUT';
+            const isEditBox = target.closest(`.${cls.holder__qty_box}`) || target.closest(`.${cls.holder__edit_icon_box}`);
+            
+            if (!isInput && !isEditBox) {
                 setEditingMaterial(null);
                 setNewQty("");
             }
@@ -60,10 +76,14 @@ const HoldersAndKnifesStockPage = () => {
     const handleSave = useCallback(async (id: string) => {
         try {
             const material = holdersAndKnifes.find(h => h.id === id);
-            if (material && newQty) {
-                await updateHolderAndKnifeQty(material.id, parseInt(newQty));
-                setEditingMaterial(null);
-                setNewQty("");
+            if (material && newQty !== "") {
+                const qty = parseInt(newQty);
+                
+                if (!isNaN(qty) && qty >= 0) {
+                    await updateHolderAndKnifeQty(material.id, qty);
+                    setEditingMaterial(null);
+                    setNewQty("");
+                }
             }
         } catch (error) {
             console.error('Error updating material quantity:', error);
@@ -76,7 +96,42 @@ const HoldersAndKnifesStockPage = () => {
         }
     }, [handleSave]);
 
-    
+    const renderItem = useCallback((item: any) => (
+        <div key={item.id} className={cls.holder__info}>
+            <p className={cls.holder__sub_title}>{item.sub_type === 'new' ? 'Новый' : 'Старый'}</p>
+            <div className={cls.holder__qty_box}>
+                {editingMaterial === item.id ? (
+                    <input
+                        type="number"
+                        value={newQty}
+                        onChange={(e) => setNewQty(e.target.value)}
+                        onKeyPress={(e) => handleKeyPress(e, item.id)}
+                        className={cls.holder__qty_input}
+                        autoFocus
+                    />
+                ) : (
+                    <p className={cls.holder__qty}>{item.qty}</p>
+                )}
+                <div className={cls.holder__edit_icon_box}>
+                    {editingMaterial === item.id ? (
+                        <CheckIcon 
+                            className={cls.checkIcon} 
+                            onMouseDown={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                handleSave(item.id);
+                            }}
+                        />
+                    ) : (
+                        <EditIcon 
+                            className={cls.holder__edit_icon} 
+                            onClick={() => handleEditClick(item.id, item.qty)}
+                        />
+                    )}
+                </div>
+            </div>
+        </div>
+    ), [editingMaterial, newQty, handleKeyPress, handleSave, handleEditClick]);
 
     if (isLoading) {
         return <LoadingPlug />
@@ -95,38 +150,7 @@ const HoldersAndKnifesStockPage = () => {
                     <div className={cls.info__container}>
                         <h3 className={cls.holder__title}>Держатели</h3>
                         <div className={cls.map__box}>
-                            {holdersAndKnifes.map((item) => (item.type === 'holder') && (
-                                <div key={item.id} className={cls.holder__info}>
-                                    <p className={cls.holder__sub_title}>{item.sub_type === 'new' ? 'Новый' : 'Старый'}</p>
-                                    <div className={cls.holder__qty_box}>
-                                        {editingMaterial === item.id ? (
-                                            <input
-                                                type="number"
-                                                value={newQty}
-                                                onChange={(e) => setNewQty(e.target.value)}
-                                                onKeyPress={(e) => handleKeyPress(e, item.id)}
-                                                className={cls.holder__qty_input}
-                                                autoFocus
-                                            />
-                                        ) : (
-                                            <p className={cls.holder__qty}>{item.qty}</p>
-                                        )}
-                                        <div className={cls.holder__edit_icon_box}>
-                                            {editingMaterial === item.id ? (
-                                                <CheckIcon 
-                                                    className={cls.checkIcon} 
-                                                    onClick={() => handleSave(item.id)}
-                                                />
-                                            ) : (
-                                                <EditIcon 
-                                                    className={cls.holder__edit_icon} 
-                                                    onClick={() => handleEditClick(item.id, item.qty)}
-                                                />
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
+                            {holders.map(renderItem)}
                         </div>
                     </div>
                 </div>
@@ -135,38 +159,7 @@ const HoldersAndKnifesStockPage = () => {
                     <div className={cls.info__container}>
                         <h3 className={cls.holder__title}>Ножи</h3>
                         <div className={cls.map__box}>
-                            {holdersAndKnifes.map((item) => (item.type === 'knife') && (
-                                <div key={item.id} className={cls.holder__info}>
-                                    <p className={cls.holder__sub_title}>{item.sub_type === 'new' ? 'Новый' : 'Старый'}</p>
-                                    <div className={cls.holder__qty_box}>
-                                        {editingMaterial === item.id ? (
-                                            <input
-                                                type="number"
-                                                value={newQty}
-                                                onChange={(e) => setNewQty(e.target.value)}
-                                                onKeyPress={(e) => handleKeyPress(e, item.id)}
-                                                className={cls.holder__qty_input}
-                                                autoFocus
-                                            />
-                                        ) : (
-                                            <p className={cls.holder__qty}>{item.qty}</p>
-                                        )}
-                                        <div className={cls.holder__edit_icon_box}>
-                                            {editingMaterial === item.id ? (
-                                                <CheckIcon 
-                                                    className={cls.checkIcon} 
-                                                    onClick={() => handleSave(item.id)}
-                                                />
-                                            ) : (
-                                                <EditIcon 
-                                                    className={cls.holder__edit_icon} 
-                                                    onClick={() => handleEditClick(item.id, item.qty)}
-                                                />
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
+                            {knifes.map(renderItem)}
                         </div>
                     </div>
                 </div>

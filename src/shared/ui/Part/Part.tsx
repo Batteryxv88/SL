@@ -1,7 +1,7 @@
 import cls from "./Part.module.scss";
 import CheckIcon from "../../assets/icons/check-circle.svg";
 import EditPenIcon from "../../assets/icons/edit-pen.svg";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { updateStock } from "../../../app/providers/StoreProvider/Store/PartSlice";
 import { useAppDispatch } from "../../../app/providers/StoreProvider/Store/hooks";
 import classNames from "classnames";
@@ -15,17 +15,23 @@ export type PartProps = {
 
 const Part = (props: PartProps) => {
     const [onEdit, setOnEdit] = useState<boolean>(false);
-    const [newQuantity, setNewQuantity] = useState<string | number>("");
+    const [newQuantity, setNewQuantity] = useState<string>("");
     const partRef = useRef<HTMLDivElement>(null);
     const timerRef = useRef<NodeJS.Timeout | null>(null);
 
     const dispatch = useAppDispatch();
     const { name, number, qty, id } = props;
 
-    // Обработчик клика вне блока
+    // Обработчик клика вне блока - оптимизированный
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
-            if (partRef.current && !partRef.current.contains(event.target as Node)) {
+            const target = event.target as HTMLElement;
+            
+            // Проверяем, что клик НЕ по инпуту и НЕ по области редактирования
+            const isInput = target.tagName === 'INPUT';
+            const isQtyBox = target.closest(`.${cls.qtyBox}`);
+            
+            if (!isInput && !isQtyBox) {
                 setOnEdit(false);
                 setNewQuantity("");
             }
@@ -43,12 +49,10 @@ const Part = (props: PartProps) => {
     // Таймер для автоматического закрытия
     useEffect(() => {
         if (onEdit) {
-            // Очищаем предыдущий таймер если он есть
             if (timerRef.current) {
                 clearTimeout(timerRef.current);
             }
             
-            // Устанавливаем новый таймер
             timerRef.current = setTimeout(() => {
                 setOnEdit(false);
                 setNewQuantity("");
@@ -56,55 +60,79 @@ const Part = (props: PartProps) => {
         }
 
         return () => {
-            // Очищаем таймер при размонтировании или изменении onEdit
             if (timerRef.current) {
                 clearTimeout(timerRef.current);
             }
         };
     }, [onEdit]);
 
-    const submitFormHandler = (e: React.FormEvent) => {
-        e.preventDefault();
+    const handleEditClick = useCallback(() => {
+        setOnEdit(true);
+        setNewQuantity(qty.toString()); // Показываем текущее количество
+    }, [qty]);
 
-        // Очищаем таймер при подтверждении формы
+    const handleSave = useCallback(() => {
         if (timerRef.current) {
             clearTimeout(timerRef.current);
         }
 
-        const updatedPart = {
-            id: id,
-            part: {
-                quantity: newQuantity,
-            },
-        };
+        if (newQuantity !== "") {
+            const qtyNum = parseInt(newQuantity);
+            
+            if (!isNaN(qtyNum) && qtyNum >= 0) {
+                const updatedPart = {
+                    id: id,
+                    part: {
+                        quantity: newQuantity,
+                    },
+                };
 
-        dispatch(updateStock(updatedPart));
-        setNewQuantity("");
-        setOnEdit(false);
-    };
+                dispatch(updateStock(updatedPart));
+                setNewQuantity("");
+                setOnEdit(false);
+            }
+        }
+    }, [newQuantity, id, dispatch]);
+
+    const handleKeyPress = useCallback((e: React.KeyboardEvent) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            handleSave();
+        }
+    }, [handleSave]);
 
     return (
         <div className={classNames(cls.part, { [cls.zeroQuantity]: qty <= 0 })} ref={partRef}>
             <p className={cls.name}>{name}</p>
             <p className={cls.number}>{number}</p>
             {onEdit ? (
-                <form onSubmit={submitFormHandler} className={cls.qtyBox}>
+                <div className={cls.qtyBox}>
                     <input
                         type="number"
+                        value={newQuantity}
                         onChange={(e) => setNewQuantity(e.target.value)}
+                        onKeyPress={handleKeyPress}
                         autoFocus
                         className={cls.input}
                     />
-                    <button type="submit" className={cls.buttonDone}>
+                    <button 
+                        type="button" 
+                        className={cls.buttonDone}
+                        onMouseDown={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            handleSave();
+                        }}
+                    >
                         <CheckIcon className={cls.checkIcon} />
                     </button>
-                </form>
+                </div>
             ) : (
                 <div className={cls.qtyBox}>
                     <p className={cls.qty}>{qty}</p>
                     <EditPenIcon 
                         className={cls.editIcon} 
-                        onClick={() => setOnEdit(true)}
+                        onClick={handleEditClick}
                     />
                 </div>
             )}
