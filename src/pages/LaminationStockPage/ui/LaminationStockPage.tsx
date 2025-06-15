@@ -13,8 +13,18 @@ const LaminationStockPage = () => {
     const { laminations, isLoading, error } = useLaminations();
     const [editingMaterial, setEditingMaterial] = useState<string | null>(null);
     const [newQty, setNewQty] = useState<string>("");
+    const [isDefectiveExpanded, setIsDefectiveExpanded] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
     const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+    // Фильтруем ламинации по статусу
+    const newLaminations = useMemo(() => 
+        laminations.filter(l => l.status === 'new'), [laminations]
+    );
+    
+    const defectiveLaminations = useMemo(() => 
+        laminations.filter(l => l.status === 'defective'), [laminations]
+    );
 
     const getMaterialQty = useCallback((type: string) => {
         const lamination = laminations.find(l => l.type.toLowerCase() === type.toLowerCase());
@@ -101,45 +111,70 @@ const LaminationStockPage = () => {
         return <div>Error: {error}</div>;
     }
 
+    const renderLaminationBox = (lamination: Lamination) => (
+        <div key={lamination.id} className={classNames(cls.paperBox, getIconClass(lamination.qty))}>
+            <RollNarrow className={cls.paperBox__icon} />
+            <div className={cls.descriptionBox}>
+                <h3 className={classNames(cls.paperBox__title, getIconClass(lamination.qty))}>{lamination.type}</h3>
+                <h4 className={cls.paperBox__subtitle}>{lamination.title}</h4>
+                <h5 className={cls.paperBox__subtitle}>{lamination.sub_type}</h5>
+                <div className={cls.editBox}>
+                    {editingMaterial === lamination.id ? (
+                        <input
+                            type="number"
+                            value={newQty}
+                            onChange={(e) => setNewQty(e.target.value)}
+                            onKeyPress={(e) => handleKeyPress(e, lamination.id)}
+                            className={cls.editBox__data}
+                            autoFocus
+                        />
+                    ) : (
+                        <data className={cls.editBox__data}>{lamination.qty}</data>
+                    )}
+                    {editingMaterial === lamination.id ? (
+                        <CheckIcon 
+                            className={cls.checkIcon} 
+                            onClick={() => handleSave(lamination.id)}
+                        />
+                    ) : (
+                        <EditPenIcon 
+                            className={cls.editIcon} 
+                            onClick={() => handleEditClick(lamination.id)}
+                        />
+                    )}
+                </div>
+            </div>
+        </div>
+    );
+
     return (
         <div className={cls.PaperStockPage} ref={containerRef}>
             <h2 className={cls.title}>Склад ламинации</h2>
-            <div className={cls.container}>
-            {laminations.map((lamination: Lamination) => (
-                <div key={lamination.id} className={classNames(cls.paperBox, getIconClass(lamination.qty))}>
-                <RollNarrow className={cls.paperBox__icon} />
-                <div className={cls.descriptionBox}>
-                    <h3 className={classNames(cls.paperBox__title, getIconClass(lamination.qty))}>{lamination.type}</h3>
-                    <h4 className={cls.paperBox__subtitle}>{lamination.title}</h4>
-                    <h5 className={cls.paperBox__subtitle}>{lamination.sub_type}</h5>
-                    <div className={cls.editBox}>
-                        {editingMaterial === lamination.id ? (
-                            <input
-                                type="number"
-                                value={newQty}
-                                onChange={(e) => setNewQty(e.target.value)}
-                                onKeyPress={(e) => handleKeyPress(e, lamination.id)}
-                                className={cls.editBox__data}
-                                autoFocus
-                            />
-                        ) : (
-                            <data className={cls.editBox__data}>{lamination.qty}</data>
-                        )}
-                        {editingMaterial === lamination.id ? (
-                            <CheckIcon 
-                                className={cls.checkIcon} 
-                                onClick={() => handleSave(lamination.id)}
-                            />
-                        ) : (
-                            <EditPenIcon 
-                                className={cls.editIcon} 
-                                onClick={() => handleEditClick(lamination.id)}
-                            />
-                        )}
+            
+            <div className={cls.columnsContainer}>
+                <div className={cls.column}>
+                    <div className={cls.materialBox}>
+                        <h3 className={cls.materialBox__title}>Основной склад</h3>
+                        <div className={cls.container}>
+                            {newLaminations.map(renderLaminationBox)}
+                        </div>
                     </div>
                 </div>
-            </div>
-            ))}
+                
+                <div className={classNames(cls.column, { [cls.expanded]: isDefectiveExpanded })}>
+                    <div className={cls.materialBox}>
+                        <h3 
+                            className={cls.materialBox__title}
+                            onClick={() => setIsDefectiveExpanded(!isDefectiveExpanded)}
+                        >
+                            Брак
+                            <span className={cls.expandArrow}></span>
+                        </h3>
+                        <div className={cls.container}>
+                            {defectiveLaminations.map(renderLaminationBox)}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );

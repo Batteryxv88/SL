@@ -7,6 +7,7 @@ export interface Lamination {
     sub_type: string;
     title: string;
     qty: number;
+    status: string;
 }
 
 export const subscribeToMaterials = (callback: (laminations: Lamination[]) => void) => {
