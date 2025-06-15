@@ -47,16 +47,16 @@ const LaminationStockPage = () => {
         }
     }, []);
 
-    // Обработчик клика вне блока
+    // Обработчик клика вне блока - упрощенный
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             const target = event.target as HTMLElement;
             
-            // Проверяем, что клик не по инпуту и не по иконке сохранения
+            // Проверяем, что клик НЕ по инпуту и НЕ по области редактирования
             const isInput = target.tagName === 'INPUT';
-            const isCheckIcon = target.closest(`.${cls.checkIcon}`);
+            const isEditBox = target.closest(`.${cls.editBox}`);
             
-            if (!isInput && !isCheckIcon) {
+            if (!isInput && !isEditBox) {
                 setEditingMaterial(null);
                 setNewQty("");
             }
@@ -92,6 +92,7 @@ const LaminationStockPage = () => {
     }, [editingMaterial]);
 
     const handleEditClick = useCallback((id: string) => {
+        console.log('handleEditClick called with id:', id);
         setEditingMaterial(id);
         setNewQty(getLaminationQtyById(id).toString());
     }, [getLaminationQtyById]);
@@ -99,10 +100,15 @@ const LaminationStockPage = () => {
     const handleSave = useCallback(async (id: string) => {
         try {
             const lamination = laminations.find(l => l.id === id);
-            if (lamination && newQty) {
-                await updateLaminationQty(lamination.id, parseInt(newQty));
-                setEditingMaterial(null);
-                setNewQty("");
+            
+            if (lamination && newQty !== "") {
+                const qty = parseInt(newQty);
+                
+                if (!isNaN(qty) && qty >= 0) {
+                    await updateLaminationQty(lamination.id, qty);
+                    setEditingMaterial(null);
+                    setNewQty("");
+                }
             }
         } catch (error) {
             console.error('Error updating lamination quantity:', error);
@@ -146,7 +152,11 @@ const LaminationStockPage = () => {
                     {editingMaterial === lamination.id ? (
                         <CheckIcon 
                             className={cls.checkIcon} 
-                            onClick={() => handleSave(lamination.id)}
+                            onMouseDown={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                handleSave(lamination.id);
+                            }}
                         />
                     ) : (
                         <EditPenIcon 

@@ -4,7 +4,7 @@ import RollNarrow from "../../../shared/assets/icons/roll-narrow.svg"
 import EditPenIcon from "../../../shared/assets/icons/edit-pen.svg"
 import CheckIcon from "../../../shared/assets/icons/check-icon.svg"
 import { useMaterials } from "../../../app/providers/StoreProvider/Store/hooks";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { updateMaterialQty } from "../../../services/materials";
 import classNames from "classnames";
 import LoadingPlug from "../../../shared/ui/LoadingPlug/LoadingPlug";
@@ -17,15 +17,25 @@ const PaperStockPage = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-    const getMaterialQty = (type: string, status: string) => {
+    const getMaterialQty = useCallback((type: string, status: string) => {
         const material = materials.find(m =>
             m.type.toLowerCase() === type.toLowerCase() &&
             m.status === status
         );
         return material ? material.qty : 0;
-    };
+    }, [materials]);
 
-    const getIconClass = (qty: number, status: string) => {
+    // Добавляем функцию для получения материала по комбинированному ID
+    const getMaterialByComboId = useCallback((comboId: string) => {
+        const [type, status] = comboId.split('-');
+        const material = materials.find(m =>
+            m.type.toLowerCase() === type.toLowerCase() &&
+            m.status === status
+        );
+        return material;
+    }, [materials]);
+
+    const getIconClass = useCallback((qty: number, status: string) => {
         if (status === 'defective') {
             return cls.medium; // Для бракованных материалов всегда используем средний класс
         }
@@ -37,12 +47,18 @@ const PaperStockPage = () => {
         } else {
             return cls.high;
         }
-    };
+    }, []);
 
-    // Обработчик клика вне блока
+    // Обработчик клика вне блока - упрощенный
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
-            if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+            const target = event.target as HTMLElement;
+            
+            // Проверяем, что клик НЕ по инпуту и НЕ по области редактирования
+            const isInput = target.tagName === 'INPUT';
+            const isEditBox = target.closest(`.${cls.editBox}`);
+            
+            if (!isInput && !isEditBox) {
                 setEditingMaterial(null);
                 setNewQty("");
             }
@@ -77,28 +93,38 @@ const PaperStockPage = () => {
         };
     }, [editingMaterial]);
 
-    const handleEditClick = (type: string, status: string) => {
-        setEditingMaterial(`${type}-${status}`);
+    const handleEditClick = useCallback((type: string, status: string) => {
+        const comboId = `${type}-${status}`;
+        setEditingMaterial(comboId);
         setNewQty(getMaterialQty(type, status).toString());
-    };
+    }, [getMaterialQty]);
 
-    const handleSave = async (type: string, status: string) => {
-        const material = materials.find(m =>
-            m.type.toLowerCase() === type.toLowerCase() &&
-            m.status === status
-        );
-        if (material && newQty) {
-            await updateMaterialQty(material.id, parseInt(newQty));
-            setEditingMaterial(null);
-            setNewQty("");
+    const handleSave = useCallback(async (type: string, status: string) => {
+        try {
+            const material = materials.find(m =>
+                m.type.toLowerCase() === type.toLowerCase() &&
+                m.status === status
+            );
+            
+            if (material && newQty !== "") {
+                const qty = parseInt(newQty);
+                
+                if (!isNaN(qty) && qty >= 0) {
+                    await updateMaterialQty(material.id, qty);
+                    setEditingMaterial(null);
+                    setNewQty("");
+                }
+            }
+        } catch (error) {
+            console.error('Error updating material quantity:', error);
         }
-    };
+    }, [materials, newQty]);
 
-    const handleKeyPress = (e: React.KeyboardEvent, type: string, status: string) => {
+    const handleKeyPress = useCallback((e: React.KeyboardEvent, type: string, status: string) => {
         if (e.key === 'Enter') {
             handleSave(type, status);
         }
-    };
+    }, [handleSave]);
 
     if (isLoading) {
         return <LoadingPlug />;
@@ -131,7 +157,11 @@ const PaperStockPage = () => {
                         {isEditing ? (
                             <CheckIcon
                                 className={cls.checkIcon}
-                                onClick={() => handleSave(type, status)}
+                                onMouseDown={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    handleSave(type, status);
+                                }}
                             />
                         ) : (
                             <EditPenIcon
