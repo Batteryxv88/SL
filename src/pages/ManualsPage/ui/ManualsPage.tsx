@@ -13,13 +13,27 @@ const ManualsPage = () => {
     const manualState = useAppSelector((state) => state.manuals.manual);
     const [searchCode, setSearchCode] = useState("");
     const [foundErrors, setFoundErrors] = useState<any[]>([]);
+    const [showWarning, setShowWarning] = useState(false);
+    const [searchPerformed, setSearchPerformed] = useState(false);
     console.log(foundErrors);
 
     // Сброс состояния поиска при смене машины
     useEffect(() => {
         setSearchCode("");
         setFoundErrors([]);
+        setShowWarning(false);
+        setSearchPerformed(false);
     }, [manualState]);
+
+    // Автоматически скрываем предупреждение через 3 секунды
+    useEffect(() => {
+        if (showWarning) {
+            const timer = setTimeout(() => {
+                setShowWarning(false);
+            }, 3000);
+            return () => clearTimeout(timer);
+        }
+    }, [showWarning]);
 
     // Выбираем нужный массив данных в зависимости от выбранной машины
     const currentManualData = manualState === "label_190" ? Label_190 : Label_400;
@@ -57,6 +71,8 @@ const ManualsPage = () => {
 
     const handleSearch = (e: FormEvent) => {
         e.preventDefault();
+        setSearchPerformed(true);
+        
         if (!searchCode.trim()) {
             setFoundErrors([]);
             return;
@@ -69,6 +85,18 @@ const ManualsPage = () => {
         setFoundErrors(results);
     };
 
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        
+        if (value.length <= 4) {
+            setSearchCode(value);
+            setShowWarning(false);
+            setSearchPerformed(false); // Сбрасываем статус поиска при изменении инпута
+        } else {
+            setShowWarning(true);
+        }
+    };
+
     return (
         <div className={cls.manualsPage}>
             <div className={cls.manualsContainer}>
@@ -78,16 +106,21 @@ const ManualsPage = () => {
                             type="text"
                             placeholder="Введите номер ошибки"
                             value={searchCode}
-                            onChange={(e) => setSearchCode(e.target.value)}
+                            onChange={handleInputChange}
                         />
                         <button type="submit">Найти</button>
                     </form>
+                    {showWarning && (
+                        <div className={cls.warning}>
+                            Код ошибки не может быть длинней 4х символов
+                        </div>
+                    )}
                 </div>
                 <div className={cls.errorDescription}>
                     <h1>Описание ошибки</h1>
                     {foundErrors.length === 0 ? (
-                        <p className={cls.not_found}>
-                            {searchCode ? "Error code not found" : "Введите код ошибки для поиска"}
+                        <p className={searchPerformed && searchCode ? cls.error_not_found : cls.not_found}>
+                            {searchPerformed && searchCode ? "Код ошибки не найден" : "Введите код ошибки для поиска"}
                         </p>
                     ) : (
                         foundErrors.map((item: any) => (

@@ -121,45 +121,51 @@ const LaminationStockPage = () => {
         }
     }, [handleSave]);
 
-    const renderLaminationBox = useCallback((lamination: Lamination) => (
-        <div key={lamination.id} className={classNames(cls.paperBox, getIconClass(lamination.qty))}>
-            <RollNarrow className={cls.paperBox__icon} />
-            <div className={cls.descriptionBox}>
-                <h3 className={classNames(cls.paperBox__title, getIconClass(lamination.qty))}>{lamination.type}</h3>
-                <h4 className={cls.paperBox__subtitle}>{lamination.title}</h4>
-                <h5 className={cls.paperBox__subtitle}>{lamination.sub_type}</h5>
-                <div className={cls.editBox}>
-                    {editingMaterial === lamination.id ? (
-                        <input
-                            type="number"
-                            value={newQty}
-                            onChange={(e) => setNewQty(e.target.value)}
-                            onKeyPress={(e) => handleKeyPress(e, lamination.id)}
-                            className={cls.editBox__data}
-                            autoFocus
-                        />
-                    ) : (
-                        <data className={cls.editBox__data}>{lamination.qty}</data>
-                    )}
-                    {editingMaterial === lamination.id ? (
-                        <CheckIcon 
-                            className={cls.checkIcon} 
-                            onMouseDown={(e) => {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                handleSave(lamination.id);
-                            }}
-                        />
-                    ) : (
-                        <EditPenIcon 
-                            className={cls.editIcon} 
-                            onClick={() => handleEditClick(lamination.id)}
-                        />
-                    )}
+    const renderLaminationBox = useCallback((lamination: Lamination) => {
+        // Для брака не применяем цветную подсветку
+        const shouldApplyColorClass = lamination.status !== 'defective';
+        const colorClass = shouldApplyColorClass ? getIconClass(lamination.qty) : '';
+        
+        return (
+            <div key={lamination.id} className={classNames(cls.paperBox, colorClass)}>
+                <RollNarrow className={cls.paperBox__icon} />
+                <div className={cls.descriptionBox}>
+                    <h3 className={classNames(cls.paperBox__title, colorClass)}>{lamination.type}</h3>
+                    <h4 className={cls.paperBox__subtitle}>{lamination.title}</h4>
+                    <h5 className={cls.paperBox__subtitle}>{lamination.sub_type}</h5>
+                    <div className={cls.editBox}>
+                        {editingMaterial === lamination.id ? (
+                            <input
+                                type="number"
+                                value={newQty}
+                                onChange={(e) => setNewQty(e.target.value)}
+                                onKeyPress={(e) => handleKeyPress(e, lamination.id)}
+                                className={cls.editBox__data}
+                                autoFocus
+                            />
+                        ) : (
+                            <data className={cls.editBox__data}>{lamination.qty}</data>
+                        )}
+                        {editingMaterial === lamination.id ? (
+                            <CheckIcon 
+                                className={cls.checkIcon} 
+                                onMouseDown={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    handleSave(lamination.id);
+                                }}
+                            />
+                        ) : (
+                            <EditPenIcon 
+                                className={cls.editIcon} 
+                                onClick={() => handleEditClick(lamination.id)}
+                            />
+                        )}
+                    </div>
                 </div>
             </div>
-        </div>
-    ), [editingMaterial, newQty, getIconClass, handleKeyPress, handleSave, handleEditClick]);
+        );
+    }, [editingMaterial, newQty, getIconClass, handleKeyPress, handleSave, handleEditClick]);
 
     if (isLoading) {
         return <LoadingPlug />;
