@@ -68,9 +68,7 @@ export const useHoldersAndKnifes = () => {
     const error = useAppSelector(state => state.holdersAndKnifes.error);
 
     useEffect(() => {
-        if (holdersAndKnifes.length === 0) {
-            dispatch(setHoldersAndKnifesLoading(true));
-        }
+        dispatch(setHoldersAndKnifesLoading(true));
         
         const unsubscribe = HolderAndKnifeService((holdersAndKnifesData) => {
             dispatch(setHoldersAndKnifes(holdersAndKnifesData));
@@ -80,7 +78,7 @@ export const useHoldersAndKnifes = () => {
         return () => {
             unsubscribe();
         };
-    }, [dispatch, holdersAndKnifes.length]);
+    }, [dispatch]);
 
     return { holdersAndKnifes, isLoading, error };
 };
@@ -90,9 +88,7 @@ export const useToners = () => {
     const tonersArr = useAppSelector(state => state.tonersStorage.tonersStorageArr);
 
     useEffect(() => {
-        if (tonersArr.length === 0) {
-            dispatch(setLoading(true));
-        }
+        dispatch(setLoading(true));
 
         const unsubscribe = TonerService((tonersData) => {
             dispatch(setTonersStorage(tonersData));
@@ -102,7 +98,7 @@ export const useToners = () => {
         return () => {
             unsubscribe();
         };
-    }, [dispatch, tonersArr.length]);
+    }, [dispatch]);
 
     return { tonersArr };
 };
