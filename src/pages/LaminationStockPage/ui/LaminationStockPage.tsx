@@ -31,6 +31,12 @@ const LaminationStockPage = () => {
         return lamination ? lamination.qty : 0;
     }, [laminations]);
 
+    // Добавляем функцию для получения количества по ID
+    const getLaminationQtyById = useCallback((id: string) => {
+        const lamination = laminations.find(l => l.id === id);
+        return lamination ? lamination.qty : 0;
+    }, [laminations]);
+
     const getIconClass = useCallback((qty: number) => {
         if (qty <= 3) {
             return cls.low;
@@ -44,7 +50,13 @@ const LaminationStockPage = () => {
     // Обработчик клика вне блока
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
-            if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+            const target = event.target as HTMLElement;
+            
+            // Проверяем, что клик не по инпуту и не по иконке сохранения
+            const isInput = target.tagName === 'INPUT';
+            const isCheckIcon = target.closest(`.${cls.checkIcon}`);
+            
+            if (!isInput && !isCheckIcon) {
                 setEditingMaterial(null);
                 setNewQty("");
             }
@@ -81,8 +93,8 @@ const LaminationStockPage = () => {
 
     const handleEditClick = useCallback((id: string) => {
         setEditingMaterial(id);
-        setNewQty(getMaterialQty(id).toString());
-    }, [getMaterialQty]);
+        setNewQty(getLaminationQtyById(id).toString());
+    }, [getLaminationQtyById]);
 
     const handleSave = useCallback(async (id: string) => {
         try {
