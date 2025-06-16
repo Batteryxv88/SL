@@ -32,3 +32,18 @@
      border-bottom: 1px solid rgba(98, 218, 251, 0.15);
      padding-bottom: 5px;
 }
+
+.titleBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 50px 10px 50px;
+    background: linear-gradient(to right, rgba(98, 218, 251, 0.08), rgba(98, 218, 251, 0.02));
+    border-radius: 8px;
+    border: 1px solid rgba(98, 218, 251, 0.15);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2),
+                inset 0 0 0 1px rgba(98, 218, 251, 0.05);
+    margin-bottom: 14px;
+    font-size: 14px;
+}
