@@ -4,10 +4,13 @@ import { createNewUser } from '../services/adminUtils';
 import { useAuth } from '../contexts/AuthContext';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../services/firebase';
-import styles from './AdminPage.module.scss';
+import styles from './AdminMainComponent.module.scss';
 import { activateUserCheck as activateCheck, isUserCheckActive } from '../services/auth';
+import { changePage } from '../app/providers/StoreProvider/Store/ChangePageSlice';
+import { useAppDispatch } from '../app/providers/StoreProvider/Store/hooks';
 
-export const AdminPage: React.FC = () => {
+
+export const AdminMainComponent: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');

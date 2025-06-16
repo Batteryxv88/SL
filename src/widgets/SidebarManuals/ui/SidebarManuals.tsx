@@ -8,12 +8,11 @@ const SidebarManuals = () => {
     const dispatch = useAppDispatch();
 
     const manualState = useAppSelector((state) => state.manuals.manual);
-    console.log(manualState);
 
     return (
         <div className={cls.sidebar}>
-            <ChoiseButton name="label_190" onClick={() => dispatch(changeManual("label_190"))} />
-            <ChoiseButton name="label_400" onClick={() => dispatch(changeManual("label_400"))} />
+            <ChoiseButton name="label_190" onClick={() => dispatch(changeManual("label_190"))} state={manualState} />
+            <ChoiseButton name="label_400" onClick={() => dispatch(changeManual("label_400"))} state={manualState}/>
         </div>
     );
 };

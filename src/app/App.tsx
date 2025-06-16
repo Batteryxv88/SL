@@ -15,8 +15,8 @@ import { ProtectedRoute } from "../components/ProtectedRoute";
 import { RoleBasedRoute } from "../components/RoleBasedRoute";
 import cls from './App.module.scss';
 import { RotationPageAsync } from "../pages/RotationPage/ui/RotationPage.async";
-import { AdminPage } from "../pages/AdminPage";
 import { ManualsPageAsync } from "../pages/ManualsPage/ui/ManualsPage.async";
+import { AdminPageAsync } from "../pages/AdminPage/ui/AdminPage.async";
 
 const App = () => {
   return (
@@ -79,7 +79,7 @@ const App = () => {
                             path="/admin"
                             element={
                               <RoleBasedRoute allowedRoles={['администратор']}>
-                                <AdminPage />
+                                <AdminPageAsync />
                               </RoleBasedRoute>
                             }
                           />

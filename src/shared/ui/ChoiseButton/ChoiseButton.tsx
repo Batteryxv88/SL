@@ -5,18 +5,17 @@ import cls from "./ChoiseButton.module.scss";
 interface ChoiseButtonProps {
     name: string;
     onClick: () => void;
+    state: string;
 }
 
-const ChoiseButton = ({ name, onClick }: ChoiseButtonProps) => {
+const ChoiseButton = ({ name, onClick, state }: ChoiseButtonProps) => {
 
-    const dispatch = useAppDispatch();
-    const manualState = useAppSelector((state) => state.manuals.manual);
 
     return (
         <button
             onClick={onClick}
             className={
-                manualState === name ? cls.activeButton : cls.button
+                state === name ? cls.activeButton : cls.button
             }
         >
             {name}

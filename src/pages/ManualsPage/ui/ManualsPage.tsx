@@ -15,7 +15,7 @@ const ManualsPage = () => {
     const [foundErrors, setFoundErrors] = useState<any[]>([]);
     const [showWarning, setShowWarning] = useState(false);
     const [searchPerformed, setSearchPerformed] = useState(false);
-    console.log(foundErrors);
+    
 
     // Сброс состояния поиска при смене машины
     useEffect(() => {

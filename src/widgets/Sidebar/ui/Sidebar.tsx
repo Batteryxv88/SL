@@ -13,7 +13,7 @@ import { SidebarLamination } from "../../SidebarLamination";
 import SidebarRotation from "../../SidebarRotation/ui/SidebarRotation";
 import { RoleBasedRoute } from "../../../components/RoleBasedRoute";
 import { SidebarManuals } from "../../SidebarManuals";
-
+import { SidebarAdmin } from "../../SidebarAdmin";
 
 
 const Sidebar = () => {
@@ -42,6 +42,8 @@ const Sidebar = () => {
                 <GenerateAReport />
             ) : pageState === "manuals" ? (
                 <SidebarManuals />
+            ) : pageState === "admin" ? (
+                <SidebarAdmin />
             ) : pageState === "main" ? (
                 <ChangeButton
                     dispatch1={dispatchStorage}

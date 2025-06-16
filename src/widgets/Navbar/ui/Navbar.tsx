@@ -5,7 +5,6 @@ import Button from "../../../shared/ui/Button/Button";
 import { useAuth } from "../../../contexts/AuthContext";
 import { logout } from "../../../services/auth";
 import { useAppSelector } from '../../../app/providers/StoreProvider/Store/hooks';
-import StorageIcon from '../../../shared/ui/StorageIcon/StorageIcon';
 import InventoryReminder from '../../../shared/ui/InventoryReminder/InventoryReminder';
 import InventoryModal from '../../../shared/ui/InventoryModal/InventoryModal';
 import { useInventoryCheck } from '../../../shared/lib/hooks/useInventoryCheck';
