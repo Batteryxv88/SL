@@ -1,16 +1,12 @@
 .MainPageButtonsBar {
-    padding: 15px 0 0 38px;
+    padding: 25px 0 0 38px;
     display: flex;
     align-items: center;
-    //background: #1e1e1e80;
-    //border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    //box-shadow: 2px 0 4px rgba(0, 0, 0, 0.2);
 }
 
 .button {
     margin-left: 10px;
     padding: 2px 15px;
-    //background-color: #BB86FC;
     background: #2A2A2A;
     color: rgba(255, 255, 255, 0.87);
     border: 1px solid rgba(255, 255, 255, 0.12);
@@ -31,10 +27,5 @@
     &:active {
         background: #3A3A3A;
     }
-}
-
-.buttonText {
-    display: inline-block;
-    //transform: skewX(12deg);
 }
 
