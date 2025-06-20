@@ -35,8 +35,8 @@ export const exportOrderListToExcel = (orderList: OrderListItem[]) => {
             'Секция': item.section,
             'Артикул': item.partN,
             'Наименование': item.partName,
+            'Необходимо': item.targetQty,
             'На складе': item.currentQty,
-            'Должно быть': item.targetQty,
             'К заказу': item.needToOrder
         });
     });
@@ -46,8 +46,8 @@ export const exportOrderListToExcel = (orderList: OrderListItem[]) => {
         'Секция': '',
         'Артикул': '',
         'Наименование': '',
+        'Необходимо': '',
         'На складе': '',
-        'Должно быть': '',
         'К заказу': ''
     });
 
@@ -56,8 +56,8 @@ export const exportOrderListToExcel = (orderList: OrderListItem[]) => {
         'Секция': 'ИТОГО позиций:',
         'Артикул': orderList.length,
         'Наименование': '',
+        'Необходимо': '',
         'На складе': '',
-        'Должно быть': '',
         'К заказу': ''
     });
 
@@ -66,11 +66,11 @@ export const exportOrderListToExcel = (orderList: OrderListItem[]) => {
     
     // Настраиваем ширину колонок
     worksheet['!cols'] = [
-        { wch: 25 }, // Секция
+        { wch: 28 }, // Секция
         { wch: 15 }, // Артикул  
         { wch: 35 }, // Наименование
-        { wch: 12 }, // На складе
-        { wch: 15 }, // Должно быть
+        { wch: 15 }, // На складе
+        { wch: 12 }, // Необходимо
         { wch: 12 }  // К заказу
     ];
 

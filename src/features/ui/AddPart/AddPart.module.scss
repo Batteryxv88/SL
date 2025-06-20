@@ -215,17 +215,18 @@
 }
 
 .openModalButton {
-    padding: 4px 10px;
+    padding: 2px 15px;
     background-color: #BB86FC;
     color: rgba(0, 0, 0, 0.87);
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.1px;
     transition: all 0.2s ease;
+    //transform: skewX(-12deg);
 
     &:hover {
         background-color: #C397FC;
@@ -235,4 +236,9 @@
     &:active {
         background-color: #B77EFC;
     }
+}
+
+.buttonText {
+    display: inline-block;
+    //transform: skewX(12deg);
 }

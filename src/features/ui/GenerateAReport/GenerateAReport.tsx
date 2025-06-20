@@ -6,7 +6,7 @@ import {
 } from "../../../app/providers/StoreProvider/Store/hooks";
 import { fetchToners } from "../../../app/providers/StoreProvider/Store/TonerSlice";
 import { fetchUsedParts } from "../../../app/providers/StoreProvider/Store/ReplacedPartSlice";
-import * as XLSX from "xlsx";
+import * as XLSX from "xlsx-js-style";
 import { changeReport } from "../../../app/providers/StoreProvider/Store/ReportSlice";
 import { useForm } from "react-hook-form";
 import { transformArray } from "../../lib/transformReport/transformReport";
@@ -142,239 +142,380 @@ const GenerateAReport = () => {
         XLSX.writeFile(workbook, `${fileName}.xlsx`);
     };
 
-    // Новая функция для полного отчета
+    // Функция для применения стилей к листу
+    const applySheetStyles = (worksheet: any) => {
+        const range = XLSX.utils.decode_range(worksheet['!ref'] || 'A1');
+        
+        for (let row = range.s.r; row <= range.e.r; row++) {
+            for (let col = range.s.c; col <= range.e.c; col++) {
+                const cellAddress = XLSX.utils.encode_cell({ r: row, c: col });
+                if (worksheet[cellAddress]) {
+                    // Базовый стиль для всех ячеек
+                    worksheet[cellAddress].s = {
+                        alignment: { 
+                            horizontal: "center", 
+                            vertical: "center" 
+                        },
+                        border: {
+                            top: { style: "thin", color: { rgb: "000000" } },
+                            bottom: { style: "thin", color: { rgb: "000000" } },
+                            left: { style: "thin", color: { rgb: "000000" } },
+                            right: { style: "thin", color: { rgb: "000000" } }
+                        }
+                    };
+
+                    // Заголовки (первая строка) - жирный шрифт и серый фон
+                    if (row === 0) {
+                        worksheet[cellAddress].s = {
+                            ...worksheet[cellAddress].s,
+                            font: { bold: true, size: 12 },
+                            fill: { 
+                                fgColor: { rgb: "E0E0E0" } 
+                            }
+                        };
+                    }
+
+                    // Особое форматирование для разделительных колонок (пустые заголовки)
+                    if (worksheet[cellAddress].v === '') {
+                        worksheet[cellAddress].s = {
+                            ...worksheet[cellAddress].s,
+                            fill: { 
+                                fgColor: { rgb: "F5F5F5" } 
+                            }
+                        };
+                    }
+                }
+            }
+        }
+    };
+
+    // Новая функция для полного отчета - ОПТИМИЗИРОВАНО для избежания лимита Firebase
     const exportFullReport = () => {
         const workbook = XLSX.utils.book_new();
         
         // Текущая дата для названия файла
         const currentDate = new Date().toLocaleDateString('ru-RU');
 
-        // 1. Лист "Потраченные тонеры" - машины в разных колонках
-        const c71cfToners = toners.filter(t => t.toner.machine === 'C71cf');
-        const label190Toners = toners.filter(t => t.toner.machine === 'Label 190');
-        
-        const maxTonerRows = Math.max(c71cfToners.length, label190Toners.length);
-        const usedTonersData: any[] = [];
-        
-        // Заголовки
-        usedTonersData.push({
-            'C71cf - Аппарат': 'C71cf',
-            'C71cf - Цвет': 'Цвет', 
-            'C71cf - Счетчик': 'Счетчик',
-            'C71cf - Ответственный': 'Ответственный',
-            'C71cf - Дата': 'Дата',
-            '': '',
-            'Label 190 - Аппарат': 'Label 190',
-            'Label 190 - Цвет': 'Цвет',
-            'Label 190 - Счетчик': 'Счетчик', 
-            'Label 190 - Ответственный': 'Ответственный',
-            'Label 190 - Дата': 'Дата'
-        });
-        
-        // Данные
-        for (let i = 0; i < maxTonerRows; i++) {
-            const c71cfToner = c71cfToners[i];
-            const label190Toner = label190Toners[i];
+        // 1. Лист "Потраченные тонеры C71cf" - только если данные есть
+        if (toners && toners.length > 0) {
+            const c71cfTonersData = toners.filter(t => t.toner.machine === 'C71cf').map(toner => ({
+                'Аппарат': toner.toner.machine,
+                'Цвет': toner.toner.color,
+                'Счетчик': toner.toner.counter,
+                'Ответственный': toner.toner.man,
+                'Дата': new Date(toner.toner.date).toLocaleDateString('ru-RU')
+            }));
             
-            usedTonersData.push({
-                'C71cf - Аппарат': c71cfToner ? c71cfToner.toner.machine : '',
-                'C71cf - Цвет': c71cfToner ? c71cfToner.toner.color : '',
-                'C71cf - Счетчик': c71cfToner ? c71cfToner.toner.counter : '',
-                'C71cf - Ответственный': c71cfToner ? c71cfToner.toner.man : '',
-                'C71cf - Дата': c71cfToner ? new Date(c71cfToner.toner.date).toLocaleDateString('ru-RU') : '',
-                '': '',
-                'Label 190 - Аппарат': label190Toner ? label190Toner.toner.machine : '',
-                'Label 190 - Цвет': label190Toner ? label190Toner.toner.color : '',
-                'Label 190 - Счетчик': label190Toner ? label190Toner.toner.counter : '',
-                'Label 190 - Ответственный': label190Toner ? label190Toner.toner.man : '',
-                'Label 190 - Дата': label190Toner ? new Date(label190Toner.toner.date).toLocaleDateString('ru-RU') : ''
-            });
+            if (c71cfTonersData.length > 0) {
+                const c71cfTonersSheet = XLSX.utils.json_to_sheet(c71cfTonersData);
+                c71cfTonersSheet['!cols'] = [
+                    { wch: 15 }, // Аппарат
+                    { wch: 10 }, // Цвет
+                    { wch: 15 }, // Счетчик
+                    { wch: 20 }, // Ответственный
+                    { wch: 12 }  // Дата
+                ];
+                applySheetStyles(c71cfTonersSheet);
+                XLSX.utils.book_append_sheet(workbook, c71cfTonersSheet, "Потраченные тонеры C71cf");
+            }
         }
-        
-        const usedTonersSheet = XLSX.utils.json_to_sheet(usedTonersData);
-        XLSX.utils.book_append_sheet(workbook, usedTonersSheet, "Потраченные тонеры");
 
-        // 2. Лист "Потраченные детали" - машины в разных колонках
-        const c71cfParts = parts.filter(p => p.part.machine === 'C71cf');
-        const label190Parts = parts.filter(p => p.part.machine === 'Label 190');
-        
-        const maxPartRows = Math.max(c71cfParts.length, label190Parts.length);
-        const usedPartsData: any[] = [];
-        
-        // Заголовки
-        usedPartsData.push({
-            'C71cf - Аппарат': 'C71cf',
-            'C71cf - Наименование': 'Наименование',
-            'C71cf - Артикул': 'Артикул',
-            'C71cf - Количество': 'Количество',
-            'C71cf - Ресурс': 'Ресурс',
-            'C71cf - Процент': 'Процент',
-            'C71cf - Ответственный': 'Ответственный',
-            'C71cf - Дата': 'Дата',
-            'C71cf - Секция': 'Секция',
-            '': '',
-            'Label 190 - Аппарат': 'Label 190',
-            'Label 190 - Наименование': 'Наименование',
-            'Label 190 - Артикул': 'Артикул',
-            'Label 190 - Количество': 'Количество',
-            'Label 190 - Ресурс': 'Ресурс',
-            'Label 190 - Процент': 'Процент',
-            'Label 190 - Ответственный': 'Ответственный',
-            'Label 190 - Дата': 'Дата',
-            'Label 190 - Секция': 'Секция'
-        });
-        
-        // Данные
-        for (let i = 0; i < maxPartRows; i++) {
-            const c71cfPart = c71cfParts[i];
-            const label190Part = label190Parts[i];
+        // 2. Лист "Потраченные тонеры Label 190" - только если данные есть
+        if (toners && toners.length > 0) {
+            const label190TonersData = toners.filter(t => t.toner.machine === 'Label 190').map(toner => ({
+                'Аппарат': toner.toner.machine,
+                'Цвет': toner.toner.color,
+                'Счетчик': toner.toner.counter,
+                'Ответственный': toner.toner.man,
+                'Дата': new Date(toner.toner.date).toLocaleDateString('ru-RU')
+            }));
             
-            usedPartsData.push({
-                'C71cf - Аппарат': c71cfPart ? c71cfPart.part.machine : '',
-                'C71cf - Наименование': c71cfPart ? c71cfPart.part.partName : '',
-                'C71cf - Артикул': c71cfPart ? c71cfPart.part.partN : '',
-                'C71cf - Количество': c71cfPart ? c71cfPart.part.quantity : '',
-                'C71cf - Ресурс': c71cfPart ? (c71cfPart.part.serviceLife || 0) : '',
-                'C71cf - Процент': c71cfPart ? c71cfPart.part.percent : '',
-                'C71cf - Ответственный': c71cfPart ? c71cfPart.part.man : '',
-                'C71cf - Дата': c71cfPart ? new Date(c71cfPart.part.date).toLocaleDateString('ru-RU') : '',
-                'C71cf - Секция': c71cfPart ? c71cfPart.part.section : '',
-                '': '',
-                'Label 190 - Аппарат': label190Part ? label190Part.part.machine : '',
-                'Label 190 - Наименование': label190Part ? label190Part.part.partName : '',
-                'Label 190 - Артикул': label190Part ? label190Part.part.partN : '',
-                'Label 190 - Количество': label190Part ? label190Part.part.quantity : '',
-                'Label 190 - Ресурс': label190Part ? (label190Part.part.serviceLife || 0) : '',
-                'Label 190 - Процент': label190Part ? label190Part.part.percent : '',
-                'Label 190 - Ответственный': label190Part ? label190Part.part.man : '',
-                'Label 190 - Дата': label190Part ? new Date(label190Part.part.date).toLocaleDateString('ru-RU') : '',
-                'Label 190 - Секция': label190Part ? label190Part.part.section : ''
-            });
+            if (label190TonersData.length > 0) {
+                const label190TonersSheet = XLSX.utils.json_to_sheet(label190TonersData);
+                label190TonersSheet['!cols'] = [
+                    { wch: 15 }, // Аппарат
+                    { wch: 10 }, // Цвет
+                    { wch: 15 }, // Счетчик
+                    { wch: 20 }, // Ответственный
+                    { wch: 12 }  // Дата
+                ];
+                applySheetStyles(label190TonersSheet);
+                XLSX.utils.book_append_sheet(workbook, label190TonersSheet, "Потраченные тонеры Label 190");
+            }
         }
-        
-        const usedPartsSheet = XLSX.utils.json_to_sheet(usedPartsData);
-        XLSX.utils.book_append_sheet(workbook, usedPartsSheet, "Потраченные детали");
 
-        // 3. Лист "Склад тонеров"
-        const tonersStockData = tonersArr.map((toner: any) => ({
-            'Цвет': toner.toner.color,
-            'Количество': toner.toner.qty
-        }));
-        const tonersStockSheet = XLSX.utils.json_to_sheet(tonersStockData);
-        XLSX.utils.book_append_sheet(workbook, tonersStockSheet, "Склад тонеров");
-
-        // 4. Лист "Склад материалов" - основной склад и брак в разных колонках
-        const newMaterials = materials.filter(m => m.status === 'new');
-        const defectiveMaterials = materials.filter(m => m.status === 'defective');
-        
-        const maxMaterialRows = Math.max(newMaterials.length, defectiveMaterials.length);
-        const materialsStockData: any[] = [];
-        
-        // Заголовки
-        materialsStockData.push({
-            'Основной склад - Тип': 'ОСНОВНОЙ СКЛАД',
-            'Основной склад - Количество': 'Количество',
-            'Основной склад - Статус': 'Статус',
-            '': '',
-            'Брак - Тип': 'БРАК',
-            'Брак - Количество': 'Количество',
-            'Брак - Статус': 'Статус'
-        });
-        
-        // Данные
-        for (let i = 0; i < maxMaterialRows; i++) {
-            const newMaterial = newMaterials[i];
-            const defectiveMaterial = defectiveMaterials[i];
+        // 3. Лист "Потраченные детали C71cf" - только если данные есть
+        if (parts && parts.length > 0) {
+            const c71cfPartsData = parts.filter(p => p.part.machine === 'C71cf').map(part => ({
+                'Аппарат': part.part.machine,
+                'Наименование': part.part.partName,
+                'Артикул': part.part.partN,
+                'Количество': part.part.quantity,
+                'Ресурс': part.part.serviceLife || 0,
+                'Процент': part.part.percent,
+                'Ответственный': part.part.man,
+                'Дата': new Date(part.part.date).toLocaleDateString('ru-RU'),
+                'Секция': part.part.section
+            }));
             
-            materialsStockData.push({
-                'Основной склад - Тип': newMaterial ? newMaterial.type : '',
-                'Основной склад - Количество': newMaterial ? newMaterial.qty : '',
-                'Основной склад - Статус': newMaterial ? 'Новый' : '',
-                '': '',
-                'Брак - Тип': defectiveMaterial ? defectiveMaterial.type : '',
-                'Брак - Количество': defectiveMaterial ? defectiveMaterial.qty : '',
-                'Брак - Статус': defectiveMaterial ? 'Брак' : ''
-            });
+            if (c71cfPartsData.length > 0) {
+                const c71cfPartsSheet = XLSX.utils.json_to_sheet(c71cfPartsData);
+                c71cfPartsSheet['!cols'] = [
+                    { wch: 15 }, // Аппарат
+                    { wch: 35 }, // Наименование
+                    { wch: 15 }, // Артикул
+                    { wch: 12 }, // Количество
+                    { wch: 10 }, // Ресурс
+                    { wch: 10 }, // Процент
+                    { wch: 20 }, // Ответственный
+                    { wch: 12 }, // Дата
+                    { wch: 25 }  // Секция
+                ];
+                applySheetStyles(c71cfPartsSheet);
+                XLSX.utils.book_append_sheet(workbook, c71cfPartsSheet, "Потраченные детали C71cf");
+            }
         }
-        
-        const materialsStockSheet = XLSX.utils.json_to_sheet(materialsStockData);
-        XLSX.utils.book_append_sheet(workbook, materialsStockSheet, "Склад материалов");
 
-        // 5. Лист "Склад ламинации" - основной склад и брак в разных колонках
-        const newLaminations = laminations.filter(l => l.status === 'new');
-        const defectiveLaminations = laminations.filter(l => l.status === 'defective');
-        
-        const maxLaminationRows = Math.max(newLaminations.length, defectiveLaminations.length);
-        const laminationsStockData: any[] = [];
-        
-        // Заголовки
-        laminationsStockData.push({
-            'Основной склад - Тип': 'ОСНОВНОЙ СКЛАД',
-            'Основной склад - Количество': 'Количество',
-            'Основной склад - Статус': 'Статус',
-            '': '',
-            'Брак - Тип': 'БРАК',
-            'Брак - Количество': 'Количество',
-            'Брак - Статус': 'Статус'
-        });
-        
-        // Данные
-        for (let i = 0; i < maxLaminationRows; i++) {
-            const newLamination = newLaminations[i];
-            const defectiveLamination = defectiveLaminations[i];
+        // 4. Лист "Потраченные детали Label 190" - только если данные есть
+        if (parts && parts.length > 0) {
+            const label190PartsData = parts.filter(p => p.part.machine === 'Label 190').map(part => ({
+                'Аппарат': part.part.machine,
+                'Наименование': part.part.partName,
+                'Артикул': part.part.partN,
+                'Количество': part.part.quantity,
+                'Ресурс': part.part.serviceLife || 0,
+                'Процент': part.part.percent,
+                'Ответственный': part.part.man,
+                'Дата': new Date(part.part.date).toLocaleDateString('ru-RU'),
+                'Секция': part.part.section
+            }));
             
-            laminationsStockData.push({
-                'Основной склад - Тип': newLamination ? newLamination.type : '',
-                'Основной склад - Количество': newLamination ? newLamination.qty : '',
-                'Основной склад - Статус': newLamination ? 'Новый' : '',
-                '': '',
-                'Брак - Тип': defectiveLamination ? defectiveLamination.type : '',
-                'Брак - Количество': defectiveLamination ? defectiveLamination.qty : '',
-                'Брак - Статус': defectiveLamination ? 'Брак' : ''
-            });
+            if (label190PartsData.length > 0) {
+                const label190PartsSheet = XLSX.utils.json_to_sheet(label190PartsData);
+                label190PartsSheet['!cols'] = [
+                    { wch: 15 }, // Аппарат
+                    { wch: 35 }, // Наименование
+                    { wch: 15 }, // Артикул
+                    { wch: 12 }, // Количество
+                    { wch: 10 }, // Ресурс
+                    { wch: 10 }, // Процент
+                    { wch: 20 }, // Ответственный
+                    { wch: 12 }, // Дата
+                    { wch: 25 }  // Секция
+                ];
+                applySheetStyles(label190PartsSheet);
+                XLSX.utils.book_append_sheet(workbook, label190PartsSheet, "Потраченные детали Label 190");
+            }
         }
-        
-        const laminationsStockSheet = XLSX.utils.json_to_sheet(laminationsStockData);
-        XLSX.utils.book_append_sheet(workbook, laminationsStockSheet, "Склад ламинации");
 
-        // 6. Лист "Склад деталей"
-        const partsStockData = partsArray.map((part: any) => ({
-            'Наименование': part.part.partName,
-            'Артикул': part.part.partN,
-            'Количество': part.part.quantity,
-            'Секция': part.part.section,
-            'Ресурс': part.part.serviceLife || 0
-        }));
-        const partsStockSheet = XLSX.utils.json_to_sheet(partsStockData);
-        XLSX.utils.book_append_sheet(workbook, partsStockSheet, "Склад деталей");
+        // 5. Лист "Склад тонеров" - только если данные есть
+        if (tonersArr && tonersArr.length > 0) {
+            const tonersStockData = tonersArr.map((toner: any) => ({
+                'Цвет': toner.toner.color,
+                'Количество': toner.toner.qty
+            }));
+            const tonersStockSheet = XLSX.utils.json_to_sheet(tonersStockData);
+            tonersStockSheet['!cols'] = [
+                { wch: 20 }, // Цвет
+                { wch: 15 }  // Количество
+            ];
+            applySheetStyles(tonersStockSheet);
+            XLSX.utils.book_append_sheet(workbook, tonersStockSheet, "Склад тонеров");
+        }
 
-        // 7. Лист "Держатели и ножи"
-        const holdersData = holdersAndKnifes.map((item: any) => ({
-            'Тип': item.type === 'holder' ? 'Держатель' : 'Нож',
-            'Подтип': item.sub_type === 'new' ? 'Новый' : 'Старый',
-            'Количество': item.qty
-        }));
-        const holdersSheet = XLSX.utils.json_to_sheet(holdersData);
-        XLSX.utils.book_append_sheet(workbook, holdersSheet, "Держатели и ножи");
+        // 6. Лист "Материалы основной склад" - только если данные есть
+        if (materials && materials.length > 0) {
+            const newMaterialsData = materials.filter(m => m.status === 'new').map(material => ({
+                'Тип': material.type,
+                'Количество': material.qty,
+                'Статус': 'Новый'
+            }));
+            
+            if (newMaterialsData.length > 0) {
+                const newMaterialsSheet = XLSX.utils.json_to_sheet(newMaterialsData);
+                newMaterialsSheet['!cols'] = [
+                    { wch: 35 }, // Тип
+                    { wch: 15 }, // Количество
+                    { wch: 15 }  // Статус
+                ];
+                applySheetStyles(newMaterialsSheet);
+                XLSX.utils.book_append_sheet(workbook, newMaterialsSheet, "Материалы основной склад");
+            }
+        }
 
-        // 8. Сводный лист
+        // 7. Лист "Материалы брак" - только если данные есть
+        if (materials && materials.length > 0) {
+            const defectiveMaterialsData = materials.filter(m => m.status === 'defective').map(material => ({
+                'Тип': material.type,
+                'Количество': material.qty,
+                'Статус': 'Брак'
+            }));
+            
+            if (defectiveMaterialsData.length > 0) {
+                const defectiveMaterialsSheet = XLSX.utils.json_to_sheet(defectiveMaterialsData);
+                defectiveMaterialsSheet['!cols'] = [
+                    { wch: 35 }, // Тип
+                    { wch: 15 }, // Количество
+                    { wch: 15 }  // Статус
+                ];
+                applySheetStyles(defectiveMaterialsSheet);
+                XLSX.utils.book_append_sheet(workbook, defectiveMaterialsSheet, "Материалы брак");
+            }
+        }
+
+        // 8. Лист "Ламинация основной склад" - только если данные есть
+        if (laminations && laminations.length > 0) {
+            const newLaminationsData = laminations.filter(l => l.status === 'new').map(lamination => ({
+                'Тип': lamination.type,
+                'Количество': lamination.qty,
+                'Статус': 'Новый'
+            }));
+            
+            if (newLaminationsData.length > 0) {
+                const newLaminationsSheet = XLSX.utils.json_to_sheet(newLaminationsData);
+                newLaminationsSheet['!cols'] = [
+                    { wch: 35 }, // Тип
+                    { wch: 15 }, // Количество
+                    { wch: 15 }  // Статус
+                ];
+                applySheetStyles(newLaminationsSheet);
+                XLSX.utils.book_append_sheet(workbook, newLaminationsSheet, "Ламинация основной склад");
+            }
+        }
+
+        // 9. Лист "Ламинация брак" - только если данные есть
+        if (laminations && laminations.length > 0) {
+            const defectiveLaminationsData = laminations.filter(l => l.status === 'defective').map(lamination => ({
+                'Тип': lamination.type,
+                'Количество': lamination.qty,
+                'Статус': 'Брак'
+            }));
+            
+            if (defectiveLaminationsData.length > 0) {
+                const defectiveLaminationsSheet = XLSX.utils.json_to_sheet(defectiveLaminationsData);
+                defectiveLaminationsSheet['!cols'] = [
+                    { wch: 35 }, // Тип
+                    { wch: 15 }, // Количество
+                    { wch: 15 }  // Статус
+                ];
+                applySheetStyles(defectiveLaminationsSheet);
+                XLSX.utils.book_append_sheet(workbook, defectiveLaminationsSheet, "Ламинация брак");
+            }
+        }
+
+        // 10. Лист "Склад деталей" - только если данные есть
+        if (partsArray && partsArray.length > 0) {
+            const partsStockData = partsArray.map((part: any) => ({
+                'Наименование': part.part.partName,
+                'Артикул': part.part.partN,
+                'Количество': part.part.quantity,
+                'Секция': part.part.section,
+                'Ресурс': part.part.serviceLife || 0
+            }));
+            const partsStockSheet = XLSX.utils.json_to_sheet(partsStockData);
+            partsStockSheet['!cols'] = [
+                { wch: 35 }, // Наименование
+                { wch: 15 }, // Артикул
+                { wch: 12 }, // Количество
+                { wch: 25 }, // Секция
+                { wch: 12 }  // Ресурс
+            ];
+            applySheetStyles(partsStockSheet);
+            XLSX.utils.book_append_sheet(workbook, partsStockSheet, "Склад деталей");
+        }
+
+        // 11. Лист "Держатели и ножи" - только если данные есть
+        if (holdersAndKnifes && holdersAndKnifes.length > 0) {
+            const holdersData = holdersAndKnifes.map((item: any) => ({
+                'Тип': item.type === 'holder' ? 'Держатель' : 'Нож',
+                'Подтип': item.sub_type === 'new' ? 'Новый' : 'Старый',
+                'Количество': item.qty
+            }));
+            const holdersSheet = XLSX.utils.json_to_sheet(holdersData);
+            holdersSheet['!cols'] = [
+                { wch: 20 }, // Тип
+                { wch: 15 }, // Подтип
+                { wch: 15 }  // Количество
+            ];
+            applySheetStyles(holdersSheet);
+            XLSX.utils.book_append_sheet(workbook, holdersSheet, "Держатели и ножи");
+        }
+
+        // 12. Сводный лист - только с доступными данными
         const summaryData = [
-            { 'Категория': '=== СКЛАДЫ ===', 'Общее количество': '' },
-            { 'Категория': 'Тонеры на складе', 'Общее количество': tonersArr.reduce((sum: number, t: any) => sum + t.toner.qty, 0) },
-            { 'Категория': 'Материалы на складе (новые)', 'Общее количество': materials.filter((m: any) => m.status === 'new').reduce((sum: number, m: any) => sum + m.qty, 0) },
-            { 'Категория': 'Материалы брак', 'Общее количество': materials.filter((m: any) => m.status === 'defective').reduce((sum: number, m: any) => sum + m.qty, 0) },
-            { 'Категория': 'Ламинация на складе (новая)', 'Общее количество': laminations.filter((l: any) => l.status === 'new').reduce((sum: number, l: any) => sum + l.qty, 0) },
-            { 'Категория': 'Ламинация брак', 'Общее количество': laminations.filter((l: any) => l.status === 'defective').reduce((sum: number, l: any) => sum + l.qty, 0) },
-            { 'Категория': 'Детали на складе', 'Общее количество': partsArray.reduce((sum: number, p: any) => sum + p.part.quantity, 0) },
-            { 'Категория': 'Держатели и ножи', 'Общее количество': holdersAndKnifes.reduce((sum: number, h: any) => sum + h.qty, 0) },
-            { 'Категория': '', 'Общее количество': '' },
-            { 'Категория': '=== ПОТРАЧЕНО ===', 'Общее количество': '' },
-            { 'Категория': 'Потрачено тонеров C71cf', 'Общее количество': toners.filter((t: any) => t.toner.machine === 'C71cf').length },
-            { 'Категория': 'Потрачено тонеров Label 190', 'Общее количество': toners.filter((t: any) => t.toner.machine === 'Label 190').length },
-            { 'Категория': 'Потрачено деталей C71cf', 'Общее количество': parts.filter((p: any) => p.part.machine === 'C71cf').length },
-            { 'Категория': 'Потрачено деталей Label 190', 'Общее количество': parts.filter((p: any) => p.part.machine === 'Label 190').length }
+            { 'Категория': '=== СКЛАДЫ ===', 'Общее количество': '' }
         ];
+
+        // Добавляем строки только если данные есть
+        if (tonersArr && tonersArr.length > 0) {
+            summaryData.push({ 'Категория': 'Тонеры на складе', 'Общее количество': tonersArr.reduce((sum: number, t: any) => sum + t.toner.qty, 0).toString() });
+        }
+        
+        if (materials && materials.length > 0) {
+            const newMaterials = materials.filter((m: any) => m.status === 'new');
+            if (newMaterials.length > 0) {
+                summaryData.push({ 'Категория': 'Материалы на складе (новые)', 'Общее количество': newMaterials.reduce((sum: number, m: any) => sum + m.qty, 0).toString() });
+            }
+            
+            const defectiveMaterials = materials.filter((m: any) => m.status === 'defective');
+            if (defectiveMaterials.length > 0) {
+                summaryData.push({ 'Категория': 'Материалы брак', 'Общее количество': defectiveMaterials.reduce((sum: number, m: any) => sum + m.qty, 0).toString() });
+            }
+        }
+        
+        if (laminations && laminations.length > 0) {
+            const newLaminations = laminations.filter((l: any) => l.status === 'new');
+            if (newLaminations.length > 0) {
+                summaryData.push({ 'Категория': 'Ламинация на складе (новая)', 'Общее количество': newLaminations.reduce((sum: number, l: any) => sum + l.qty, 0).toString() });
+            }
+            
+            const defectiveLaminations = laminations.filter((l: any) => l.status === 'defective');
+            if (defectiveLaminations.length > 0) {
+                summaryData.push({ 'Категория': 'Ламинация брак', 'Общее количество': defectiveLaminations.reduce((sum: number, l: any) => sum + l.qty, 0).toString() });
+            }
+        }
+        
+        if (partsArray && partsArray.length > 0) {
+            summaryData.push({ 'Категория': 'Детали на складе', 'Общее количество': partsArray.reduce((sum: number, p: any) => sum + p.part.quantity, 0).toString() });
+        }
+        
+        if (holdersAndKnifes && holdersAndKnifes.length > 0) {
+            summaryData.push({ 'Категория': 'Держатели и ножи', 'Общее количество': holdersAndKnifes.reduce((sum: number, h: any) => sum + h.qty, 0).toString() });
+        }
+
+        summaryData.push({ 'Категория': '', 'Общее количество': '' });
+        summaryData.push({ 'Категория': '=== ПОТРАЧЕНО ===', 'Общее количество': '' });
+
+        if (toners && toners.length > 0) {
+            const c71cfToners = toners.filter((t: any) => t.toner.machine === 'C71cf');
+            if (c71cfToners.length > 0) {
+                summaryData.push({ 'Категория': 'Потрачено тонеров C71cf', 'Общее количество': c71cfToners.length.toString() });
+            }
+            
+            const label190Toners = toners.filter((t: any) => t.toner.machine === 'Label 190');
+            if (label190Toners.length > 0) {
+                summaryData.push({ 'Категория': 'Потрачено тонеров Label 190', 'Общее количество': label190Toners.length.toString() });
+            }
+        }
+        
+        if (parts && parts.length > 0) {
+            const c71cfParts = parts.filter((p: any) => p.part.machine === 'C71cf');
+            if (c71cfParts.length > 0) {
+                summaryData.push({ 'Категория': 'Потрачено деталей C71cf', 'Общее количество': c71cfParts.length.toString() });
+            }
+            
+            const label190Parts = parts.filter((p: any) => p.part.machine === 'Label 190');
+            if (label190Parts.length > 0) {
+                summaryData.push({ 'Категория': 'Потрачено деталей Label 190', 'Общее количество': label190Parts.length.toString() });
+            }
+        }
+
         const summarySheet = XLSX.utils.json_to_sheet(summaryData);
+        summarySheet['!cols'] = [
+            { wch: 40 }, // Категория
+            { wch: 20 }  // Общее количество
+        ];
+        applySheetStyles(summarySheet);
         XLSX.utils.book_append_sheet(workbook, summarySheet, "Сводка");
 
         // Сохраняем файл с указанием даты

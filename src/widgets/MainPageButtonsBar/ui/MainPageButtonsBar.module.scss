@@ -1,28 +1,40 @@
 .MainPageButtonsBar {
-    padding: 38px 0 0 38px;
+    padding: 15px 0 0 38px;
+    display: flex;
+    align-items: center;
+    //background: #1e1e1e80;
+    //border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    //box-shadow: 2px 0 4px rgba(0, 0, 0, 0.2);
 }
 
 .button {
     margin-left: 10px;
-    padding: 4px 10px;
+    padding: 2px 15px;
     //background-color: #BB86FC;
-    background-color: transparent;
-    color: rgba(197, 197, 197, 0.87);
-    border: 1px solid rgba(69, 69, 69, 0.87);
+    background: #2A2A2A;
+    color: rgba(255, 255, 255, 0.87);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 6px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.1px;
     transition: all 0.2s ease;
+    //transform: skewX(-12deg);
 
     &:hover {
-        background-color: #C397FC;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
+        background: #333333;
+        border-color: rgba(255, 255, 255, 0.24);
+        }
 
     &:active {
-        background-color: #B77EFC;
+        background: #3A3A3A;
     }
 }
+
+.buttonText {
+    display: inline-block;
+    //transform: skewX(12deg);
+}
+

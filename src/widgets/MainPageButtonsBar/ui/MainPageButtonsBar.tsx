@@ -64,9 +64,9 @@ const MainPageButtonsBar = () => {
         <>
             <div className={cls.MainPageButtonsBar}>
                 <AddPart />
-                <button className={cls.button}>Аудит</button>
+                <button className={cls.button}><span className={cls.buttonText}>Аудит</span></button>
                 <button className={cls.button} onClick={handleOrderExport}>
-                    Заказ деталей
+                    <span className={cls.buttonText}>Заказ деталей</span>
                 </button>
             </div>
             

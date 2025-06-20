@@ -96,7 +96,7 @@ const AddPart = () => {
                 className={cls.openModalButton} 
                 onClick={() => setIsModalOpen(true)}
             >
-                Добавить деталь
+                <span className={cls.buttonText}>Добавить деталь</span>
             </button>
 
             <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
