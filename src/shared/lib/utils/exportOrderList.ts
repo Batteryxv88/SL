@@ -1,4 +1,4 @@
-import * as XLSX from 'xlsx';
+import * as XLSX from 'xlsx-js-style';
 import { OrderListItem } from '../hooks/useOrderList';
 
 let showNotificationCallback: ((title: string, message: string, type?: 'info' | 'warning' | 'error' | 'success') => void) | null = null;
@@ -52,7 +52,6 @@ export const exportOrderListToExcel = (orderList: OrderListItem[]) => {
     });
 
     // Добавляем итоги
-    const totalQuantity = orderList.reduce((sum, item) => sum + item.needToOrder, 0);
     excelData.push({
         'Секция': 'ИТОГО позиций:',
         'Артикул': orderList.length,
@@ -64,6 +63,59 @@ export const exportOrderListToExcel = (orderList: OrderListItem[]) => {
 
     // Создаем Excel файл
     const worksheet = XLSX.utils.json_to_sheet(excelData);
+    
+    // Настраиваем ширину колонок
+    worksheet['!cols'] = [
+        { wch: 25 }, // Секция
+        { wch: 15 }, // Артикул  
+        { wch: 35 }, // Наименование
+        { wch: 12 }, // На складе
+        { wch: 15 }, // Должно быть
+        { wch: 12 }  // К заказу
+    ];
+
+    // Применяем стили с помощью xlsx-js-style
+    const range = XLSX.utils.decode_range(worksheet['!ref'] || 'A1');
+    for (let row = range.s.r; row <= range.e.r; row++) {
+        for (let col = range.s.c; col <= range.e.c; col++) {
+            const cellAddress = XLSX.utils.encode_cell({ r: row, c: col });
+            if (worksheet[cellAddress]) {
+                // Базовый стиль для всех ячеек
+                worksheet[cellAddress].s = {
+                    alignment: { 
+                        horizontal: "center", 
+                        vertical: "center" 
+                    },
+                    border: {
+                        top: { style: "thin", color: { rgb: "000000" } },
+                        bottom: { style: "thin", color: { rgb: "000000" } },
+                        left: { style: "thin", color: { rgb: "000000" } },
+                        right: { style: "thin", color: { rgb: "000000" } }
+                    }
+                };
+
+                // Заголовки (первая строка) - жирный шрифт
+                if (row === 0) {
+                    worksheet[cellAddress].s = {
+                        ...worksheet[cellAddress].s,
+                        font: { bold: true, size: 12 },
+                        fill: { 
+                            fgColor: { rgb: "E0E0E0" } 
+                        }
+                    };
+                }
+
+                // Строка итогов - жирный шрифт
+                if (row === range.e.r) {
+                    worksheet[cellAddress].s = {
+                        ...worksheet[cellAddress].s,
+                        font: { bold: true, size: 11 }
+                    };
+                }
+            }
+        }
+    }
+
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "Заказ деталей");
 
@@ -81,5 +133,5 @@ export const exportOrderListToExcel = (orderList: OrderListItem[]) => {
         'success'
     );
     
-    console.log(`Экспортировано ${orderList.length} позиций на общую сумму ${totalQuantity} деталей`);
+    console.log(`Экспортировано ${orderList.length} позиций`);
 }; 
