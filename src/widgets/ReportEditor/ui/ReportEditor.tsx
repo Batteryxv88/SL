@@ -56,9 +56,33 @@ const ReportEditor = () => {
                 qtyOrder: orderData?.qty || 0,
                 use: orderData?.use || false,
                 orderDataId: orderData?.id || null,
+                section: part.section || "Other",
             };
         });
     }, [partsArray, orders]);
+
+    // Функция для рендера секции - аналогично Stock
+    const renderSection = (section: string) => {
+        const filteredData = reportData.filter(
+            (item) => item.section === section
+        );
+
+        if (filteredData.length === 0) {
+            return null;
+        }
+
+        return (
+            <>
+                <h3 className={cls.title}>{section}</h3>
+                {filteredData.map((item) => (
+                    <EditReportPart
+                        key={`${item.id}-${item.number}`}
+                        {...item}
+                    />
+                ))}
+            </>
+        );
+    };
 
     return (
         <div className={cls.reportEditor}>
@@ -73,12 +97,17 @@ const ReportEditor = () => {
                     <p className={cls.editMain}>Редактировать</p>
                 </div>
             </div>
-            {reportData.map((item) => (
-                <EditReportPart
-                    key={`${item.id}-${item.number}`}
-                    {...item}
-                />
-            ))}
+            {renderSection("External section")}
+            {renderSection("Photo conductor section")}
+            {renderSection("Charging section")}
+            {renderSection("Developing section")}
+            {renderSection("Intermediate transfer section")}
+            {renderSection("Fusing section")}
+            {renderSection("Toner collection section")}
+            {renderSection("Paper feed section")}
+            {renderSection("Paper exit section")}
+            {renderSection("RW-101")}
+            {renderSection("Other")}
         </div>
     );
 };

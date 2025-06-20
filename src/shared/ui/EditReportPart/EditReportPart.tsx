@@ -14,10 +14,11 @@ interface EditReportPartProps {
     use: boolean;
     id: string;
     orderDataId: string | null;
+    section?: string;
 }
 
 const EditReportPart = (props: EditReportPartProps) => {
-    const { name, number, qtyStock, qtyOrder, use, id, orderDataId } = props;
+    const { name, number, qtyStock, qtyOrder, use, id, orderDataId, section } = props;
 
     const [isEditing, setIsEditing] = useState(false);
     const [newQuantity, setNewQuantity] = useState("");

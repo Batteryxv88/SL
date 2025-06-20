@@ -33,6 +33,20 @@
      padding-bottom: 5px;
 }
 
+.title {
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: 4px;
+    letter-spacing: 0.15px;
+    background: linear-gradient(to right,
+       rgba(98, 218, 251, 0.9),
+        rgba(98, 218, 251, 0.7)
+    );
+    background-clip: text;
+    color: transparent;
+}
+
 .titleBox {
     display: flex;
     flex-direction: row;

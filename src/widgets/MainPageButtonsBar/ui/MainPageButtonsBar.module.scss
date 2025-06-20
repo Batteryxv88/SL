@@ -3,13 +3,13 @@
 }
 
 .button {
-    margin-left: 30px;
-    //margin: 38px 0 0 38px;
-    padding: 10px 20px;
-    background-color: #BB86FC;
-    color: rgba(0, 0, 0, 0.87);
-    border: none;
-    border-radius: 8px;
+    margin-left: 10px;
+    padding: 4px 10px;
+    //background-color: #BB86FC;
+    background-color: transparent;
+    color: rgba(197, 197, 197, 0.87);
+    border: 1px solid rgba(69, 69, 69, 0.87);
+    border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
     font-weight: 500;
