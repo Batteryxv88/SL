@@ -16,6 +16,8 @@ import holdersAndKnifesReducer from './HoldersAndKnifesSlice';
 import inventoryCheckReducer from './InventoryCheckSlice';
 import ChangeManualSlice from "./ChangeManual";
 import ChangeAdminComponentSlice from "./ChangeAdminComponent";
+import quantityToOrderReducer from './QuantityToOrderSlice';
+
 const store = configureStore({
     reducer: {
         parts: partsReducer,
@@ -35,6 +37,7 @@ const store = configureStore({
         holdersAndKnifes: holdersAndKnifesReducer,
         manuals: ChangeManualSlice,
         adminComponent: ChangeAdminComponentSlice,
+        quantityToOrder: quantityToOrderReducer,
     }
 })
 

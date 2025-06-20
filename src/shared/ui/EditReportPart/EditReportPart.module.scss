@@ -1,0 +1,228 @@
+.editReportPart {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 50px 4px 50px;
+    background: #1E1E1E;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.2s ease;
+    font-size: 14px;
+    margin-bottom: 2px;
+
+    &:nth-child(odd) {
+        background: #1E1E1E;
+    }
+
+    &:nth-child(even) {
+        background: #2A2A2A;
+    }
+
+    &:hover {
+        background: #333333;
+        border-color: rgba(255, 255, 255, 0.12);
+    }
+}
+
+.name {
+    width: 300px;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.number {
+    width: 110px;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 14px;
+    padding: 3px 0 3px 0;
+    text-align: center;
+}
+
+.quantity {
+    width: 80px;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 14px;
+    text-align: center;
+}
+
+.qty {
+    width: 93px;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 14px;
+    text-align: center;
+}
+
+.qtyBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 380px;
+    gap: 12px;
+    min-width: 280px;
+}
+
+.input {
+    width: 93px;
+    height: 30px;
+    padding: 0 12px;
+    font-size: 14px;
+    line-height: 20px;
+    background: #2A2A2A;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+    color: rgba(255, 255, 255, 0.87);
+    text-align: center;
+    transition: all 0.2s ease;
+    
+
+    &:focus {
+        outline: none;
+        border-color: #BB86FC;
+        background: #2A2A2A;
+    }
+
+    &:hover {
+        border-color: rgba(255, 255, 255, 0.24);
+    }
+
+    &[type="number"] {
+        color: rgba(255, 255, 255, 0.87);
+        -moz-appearance: textfield;
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    }
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    width: 20px;
+    height: 20px;
+
+    input[type="checkbox"] {
+        opacity: 0;
+        position: absolute;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+
+        &:checked ~ .checkmark {
+            background-color: #BB86FC;
+            border-color: #BB86FC;
+
+            &:after {
+                display: block;
+            }
+        }
+    }
+}
+
+.checkboxBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 20px;
+}
+
+.buttonBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 20px;
+}
+
+.buttonBox:last-of-type {
+    justify-content: flex-end;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.38);
+    border-radius: 4px;
+    transition: all 0.2s ease;
+
+    &:hover {
+        border-color: rgba(255, 255, 255, 0.6);
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        display: none;
+        left: 5px;
+        top: 1px;
+        width: 6px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+}
+
+.buttonDone {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 4px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.87);
+    }
+
+    &:active {
+        background: rgba(255, 255, 255, 0.12);
+    }
+}
+
+.checkIcon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    stroke: rgba(255, 255, 255, 0.6);
+    transition: all 0.2s ease;
+    
+    &:hover {
+        stroke: #BB86FC;
+        transform: scale(1.1);
+    }
+}
+
+.editIcon {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    stroke: rgba(255, 255, 255, 0.6);
+    transition: all 0.2s ease;
+    
+    &:hover {
+        stroke: #BB86FC;
+        transform: scale(1.1);
+    }
+}
+
+
+
+
+

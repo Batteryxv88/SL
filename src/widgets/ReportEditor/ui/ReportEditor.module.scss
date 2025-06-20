@@ -46,4 +46,38 @@
                 inset 0 0 0 1px rgba(98, 218, 251, 0.05);
     margin-bottom: 14px;
     font-size: 14px;
+    word-wrap: break-word;
 }
+
+.name {
+    width: 300px;
+}
+
+.number {
+    width: 110px;
+    text-align: center;
+}
+
+.quantity {
+    width: 80px;
+    text-align: center;
+}
+
+.edit {
+    width: 93px;
+    text-align: center;
+}
+
+.editBox {
+    width: 380px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.editMain {
+    width: 120px;
+    text-align: center;
+}
+
