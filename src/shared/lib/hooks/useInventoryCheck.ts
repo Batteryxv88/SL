@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/providers/StoreProvider/Store/hooks';
 import { fetchLastInventoryCheck, setShowModal } from '../../../app/providers/StoreProvider/Store/InventoryCheckSlice';
-import { isToday, isAfterTime } from '../utils/inventoryCheck';
+import { isToday, isAfterTime, isInventoryCheckDay, wasLastCheckOnCurrentWeek } from '../utils/inventoryCheck';
 
 export const useInventoryCheck = () => {
     const dispatch = useAppDispatch();
@@ -31,8 +31,14 @@ export const useInventoryCheck = () => {
             localStorage.setItem('lastInventoryCheck', today);
         }
 
-        // Check if we need to show the modal
-        if (!isToday(lastCheckDate) && isAfterTime('14:00') && !showModal) {
+        // Check if we need to show the modal - ТОЛЬКО в дни проверки (вторник и четверг)
+        const shouldShowModal = isInventoryCheckDay() && 
+                               !isToday(lastCheckDate) && 
+                               !wasLastCheckOnCurrentWeek(lastCheckDate) &&
+                               isAfterTime('14:00') && 
+                               !showModal;
+        
+        if (shouldShowModal) {
             dispatch(setShowModal(true));
         }
     }, [lastCheckDate, showModal, dispatch]);

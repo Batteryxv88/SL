@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { collection, addDoc, query, orderBy, limit, getDocs } from 'firebase/firestore';
 import { db } from '../../../../services/firebase';
 import { getAuth } from 'firebase/auth';
+import { isInventoryCheckDay, wasLastCheckOnCurrentWeek, isToday, isAfterTime } from '../../../../shared/lib/utils/inventoryCheck';
 
 export interface InventoryCheckRecord {
     date: string;
@@ -31,10 +32,31 @@ const getLocalStorageCheck = () => {
     return storedDateObj.toDateString() === today.toDateString() ? storedDate : null;
 };
 
+const shouldShowModalInitially = () => {
+    // Если сегодня не день проверки, то модалка не нужна
+    if (!isInventoryCheckDay()) {
+        return false;
+    }
+    
+    const localStorageCheck = getLocalStorageCheck();
+    if (!localStorageCheck) {
+        // Если нет записи в localStorage и сейчас день проверки + после 14:00
+        return isAfterTime('14:00');
+    }
+    
+    // Если есть запись в localStorage, проверяем была ли проверка сегодня или на этой неделе
+    if (isToday(localStorageCheck) || wasLastCheckOnCurrentWeek(localStorageCheck)) {
+        return false;
+    }
+    
+    // Если проверки не было и время после 14:00
+    return isAfterTime('14:00');
+};
+
 const initialState: InventoryCheckState = {
     lastCheckDate: getLocalStorageCheck(),
-    showReminder: !getLocalStorageCheck(),
-    showModal: !getLocalStorageCheck(),
+    showReminder: false, // будет установлено в useInventoryCheck через getInventoryStatus
+    showModal: shouldShowModalInitially(),
     reminderPostponed: false,
     streak: 0
 };
@@ -123,8 +145,10 @@ const inventoryCheckSlice = createSlice({
                     state.showReminder = false;
                     state.showModal = false;
                 } else {
-                    state.showReminder = true;
-                    state.showModal = true;
+                    // Показываем модалку только если сегодня день проверки и время после 14:00
+                    const shouldShow = isInventoryCheckDay() && isAfterTime('14:00');
+                    state.showReminder = shouldShow;
+                    state.showModal = shouldShow;
                 }
             })
             .addCase(updateInventoryCheck.fulfilled, (state, action) => {
